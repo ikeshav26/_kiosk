@@ -1,7 +1,7 @@
 import React from 'react';
 import { Loader2 } from 'lucide-react';
 
-const PageLoader = ({ icon: Icon = Loader2, message = "Loading..." }) => {
+const PageLoader = ({ icon: Icon = Loader2, message = 'Loading...' }) => {
   return (
     <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col items-center justify-center bg-slate-50/50">
       <div className="relative">

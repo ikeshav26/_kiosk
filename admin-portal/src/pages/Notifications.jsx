@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Bell, 
-  Plus, 
-  Clock, 
-  Trash2, 
-  ChevronRight, 
-  Megaphone,
-  RefreshCw
-} from 'lucide-react';
+import { Bell, Plus, Clock, Trash2, ChevronRight, Megaphone, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { PageLoader, SearchInput, Button } from '../components/ui';
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
 
   const fetchNotifications = async () => {
@@ -25,8 +17,8 @@ const Notifications = () => {
       const response = await axios.get('/api/announcement/all');
       setNotifications(response.data.announcements || []);
     } catch (err) {
-      console.error("Fetch Error:", err);
-      toast.error("Unable to load announcements.");
+      console.error('Fetch Error:', err);
+      toast.error('Unable to load announcements.');
     } finally {
       setLoading(false);
     }
@@ -38,19 +30,20 @@ const Notifications = () => {
 
   const handleDelete = async (id, e) => {
     e.stopPropagation();
-    if (!window.confirm("Delete this announcement?")) return;
+    if (!window.confirm('Delete this announcement?')) return;
     try {
       await axios.delete(`/api/announcement/delete/${id}`);
-      toast.success("Announcement deleted!");
+      toast.success('Announcement deleted!');
       fetchNotifications();
     } catch (err) {
-      toast.error("Failed to delete announcement.");
+      toast.error('Failed to delete announcement.');
     }
   };
 
-  const filteredNotifications = notifications.filter(n => 
-    n.subject.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    n.message.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredNotifications = notifications.filter(
+    (n) =>
+      n.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      n.message.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   if (loading) return <PageLoader message="Loading Announcements..." />;
@@ -79,7 +72,7 @@ const Notifications = () => {
           <Button icon={Plus} onClick={() => navigate('/create-notifications')}>
             Create
           </Button>
-          <button 
+          <button
             onClick={fetchNotifications}
             className="p-2.5 bg-slate-100 text-slate-500 rounded-lg hover:text-[#002b5c] transition-colors"
           >
@@ -92,7 +85,7 @@ const Notifications = () => {
       <div className="space-y-4">
         {filteredNotifications.length > 0 ? (
           filteredNotifications.map((item) => (
-            <div 
+            <div
               key={item._id}
               onClick={() => navigate(`/notification/${item._id}`)}
               className="group bg-white p-5 rounded-xl flex items-center gap-4 shadow-sm border border-slate-100 hover:shadow-lg hover:border-blue-100 transition-all cursor-pointer"
@@ -111,7 +104,7 @@ const Notifications = () => {
                 <p className="text-xs text-slate-500 line-clamp-2">{item.message}</p>
               </div>
               <div className="flex items-center gap-2 shrink-0">
-                <button 
+                <button
                   onClick={(e) => handleDelete(item._id, e)}
                   className="p-2 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all opacity-0 group-hover:opacity-100"
                 >
@@ -127,7 +120,7 @@ const Notifications = () => {
           <div className="py-16 text-center">
             <Bell size={48} className="mx-auto text-slate-200 mb-4" />
             <p className="text-sm font-medium text-slate-400">
-              {searchQuery ? `No results for "${searchQuery}"` : "No announcements yet"}
+              {searchQuery ? `No results for "${searchQuery}"` : 'No announcements yet'}
             </p>
           </div>
         )}

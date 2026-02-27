@@ -16,19 +16,21 @@ const Modal = ({ isOpen, onClose, title, subtitle, icon: Icon, children }) => {
             )}
             <div>
               <h2 className="text-lg font-bold text-[#002b5c]">{title}</h2>
-              {subtitle && <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">{subtitle}</p>}
+              {subtitle && (
+                <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
+                  {subtitle}
+                </p>
+              )}
             </div>
           </div>
-          <button 
+          <button
             onClick={onClose}
             className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all"
           >
             <X size={20} />
           </button>
         </header>
-        <div className="p-8">
-          {children}
-        </div>
+        <div className="p-8">{children}</div>
       </div>
     </div>
   );

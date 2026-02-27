@@ -1,17 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { 
-  Settings as SettingsIcon, 
-  User, 
-  Lock, 
-  Mail, 
-  Bell, 
-  Shield, 
-  Eye, 
+import {
+  Settings as SettingsIcon,
+  User,
+  Lock,
+  Mail,
+  Bell,
+  Shield,
+  Eye,
   EyeOff,
   Save,
   RefreshCw,
   LogOut,
-  Fingerprint
+  Fingerprint,
 } from 'lucide-react';
 import { authContext } from '../context/AuthContext';
 import { PageLoader, Card, FormInput, Button } from '../components/ui';
@@ -22,16 +22,16 @@ const Settings = () => {
   const { user, setuser, navigate } = useContext(authContext);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  
+
   const [profileData, setProfileData] = useState({
     name: user?.name || '',
-    email: user?.email || ''
+    email: user?.email || '',
   });
 
   const [passwordData, setPasswordData] = useState({
     currentPassword: '',
     newPassword: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
 
   const handleProfileUpdate = async (e) => {
@@ -42,9 +42,9 @@ const Settings = () => {
       const updatedUser = { ...user, ...profileData };
       setuser(updatedUser);
       localStorage.setItem('user', JSON.stringify(updatedUser));
-      toast.success("Profile updated successfully!");
+      toast.success('Profile updated successfully!');
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to update profile");
+      toast.error(err.response?.data?.message || 'Failed to update profile');
     } finally {
       setLoading(false);
     }
@@ -57,19 +57,19 @@ const Settings = () => {
       return;
     }
     if (passwordData.newPassword.length < 6) {
-      toast.error("Password must be at least 6 characters");
+      toast.error('Password must be at least 6 characters');
       return;
     }
     setLoading(true);
     try {
       await axios.put('/api/auth/change-password', {
         currentPassword: passwordData.currentPassword,
-        newPassword: passwordData.newPassword
+        newPassword: passwordData.newPassword,
       });
       setPasswordData({ currentPassword: '', newPassword: '', confirmPassword: '' });
-      toast.success("Password changed successfully!");
+      toast.success('Password changed successfully!');
     } catch (err) {
-      toast.error(err.response?.data?.message || "Failed to change password");
+      toast.error(err.response?.data?.message || 'Failed to change password');
     } finally {
       setLoading(false);
     }
@@ -81,7 +81,7 @@ const Settings = () => {
       setuser(null);
       localStorage.removeItem('user');
       navigate('/login');
-      toast.success("Logged out successfully");
+      toast.success('Logged out successfully');
     } catch (err) {
       console.error(err);
     }
@@ -104,9 +104,9 @@ const Settings = () => {
 
       <div className="max-w-4xl space-y-6">
         {/* Profile Settings */}
-        <Card 
-          headerIcon={User} 
-          headerTitle="Profile Information" 
+        <Card
+          headerIcon={User}
+          headerTitle="Profile Information"
           headerSubtitle="Update your personal details"
         >
           <form onSubmit={handleProfileUpdate} className="p-6 space-y-4">
@@ -145,26 +145,28 @@ const Settings = () => {
         </Card>
 
         {/* Password Settings */}
-        <Card 
-          headerIcon={Lock} 
-          headerTitle="Change Password" 
+        <Card
+          headerIcon={Lock}
+          headerTitle="Change Password"
           headerSubtitle="Update your security credentials"
         >
           <form onSubmit={handlePasswordChange} className="p-6 space-y-4">
             <FormInput
               label="Current Password"
               name="currentPassword"
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               icon={Lock}
               value={passwordData.currentPassword}
-              onChange={(e) => setPasswordData({ ...passwordData, currentPassword: e.target.value })}
+              onChange={(e) =>
+                setPasswordData({ ...passwordData, currentPassword: e.target.value })
+              }
               placeholder="Enter current password"
             />
             <div className="grid grid-cols-2 gap-4">
               <FormInput
                 label="New Password"
                 name="newPassword"
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 icon={Lock}
                 value={passwordData.newPassword}
                 onChange={(e) => setPasswordData({ ...passwordData, newPassword: e.target.value })}
@@ -173,10 +175,12 @@ const Settings = () => {
               <FormInput
                 label="Confirm Password"
                 name="confirmPassword"
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? 'text' : 'password'}
                 icon={Lock}
                 value={passwordData.confirmPassword}
-                onChange={(e) => setPasswordData({ ...passwordData, confirmPassword: e.target.value })}
+                onChange={(e) =>
+                  setPasswordData({ ...passwordData, confirmPassword: e.target.value })
+                }
                 placeholder="Confirm new password"
               />
             </div>
@@ -187,7 +191,7 @@ const Settings = () => {
                 className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-700"
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                {showPassword ? "Hide passwords" : "Show passwords"}
+                {showPassword ? 'Hide passwords' : 'Show passwords'}
               </button>
             </div>
             <div className="flex justify-end pt-2">
@@ -199,9 +203,9 @@ const Settings = () => {
         </Card>
 
         {/* Account Info */}
-        <Card 
-          headerIcon={Shield} 
-          headerTitle="Account Information" 
+        <Card
+          headerIcon={Shield}
+          headerTitle="Account Information"
           headerSubtitle="Your account status"
         >
           <div className="p-6">
@@ -210,11 +214,15 @@ const Settings = () => {
                 <p className="text-sm font-medium text-slate-700">Account Role</p>
                 <p className="text-xs text-slate-500">Your access level in the system</p>
               </div>
-              <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
-                user?.role === 'superAdmin' ? 'bg-purple-100 text-purple-700' :
-                user?.role === 'admin' ? 'bg-emerald-100 text-emerald-700' :
-                'bg-slate-100 text-slate-700'
-              }`}>
+              <span
+                className={`px-3 py-1 rounded-full text-xs font-bold uppercase ${
+                  user?.role === 'superAdmin'
+                    ? 'bg-purple-100 text-purple-700'
+                    : user?.role === 'admin'
+                      ? 'bg-emerald-100 text-emerald-700'
+                      : 'bg-slate-100 text-slate-700'
+                }`}
+              >
                 {user?.role || 'User'}
               </span>
             </div>

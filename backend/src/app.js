@@ -12,7 +12,7 @@ const app = express();
 connectDb();
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.get('/api', (req, res) => {
@@ -22,7 +22,7 @@ app.use('/api/kiosk', kioskRoutes);
 app.use('/api/building', buildingRoutes);
 app.use('/api/announcement', announcementRoutes);
 app.use('/api/faculty', facultyRoutes);
-app.use('/api/auth',authRoutes)
+app.use('/api/auth', authRoutes);
 app.use('/api/help-ticket', helpTicketRoutes);
 
 export default app;

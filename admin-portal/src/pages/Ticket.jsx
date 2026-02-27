@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { 
-  ArrowLeft, 
-  Clock, 
-  Calendar, 
-  Trash2, 
-  Loader2, 
+import {
+  ArrowLeft,
+  Clock,
+  Calendar,
+  Trash2,
+  Loader2,
   AlertCircle,
   Bug,
   Fingerprint,
@@ -14,9 +14,8 @@ import {
   Settings,
   Cpu,
   Wifi,
-  MoreHorizontal
+  MoreHorizontal,
 } from 'lucide-react';
-
 
 const Ticket = () => {
   const { id } = useParams();
@@ -41,8 +40,8 @@ const Ticket = () => {
       const res = await axios.get(`/api/help-ticket/${id}`);
       setData(res.data.ticket || res.data);
     } catch (err) {
-      console.error("Fetch Error:", err);
-      setError("The incident record could not be retrieved from the central registry.");
+      console.error('Fetch Error:', err);
+      setError('The incident record could not be retrieved from the central registry.');
     } finally {
       setLoading(false);
     }
@@ -56,22 +55,27 @@ const Ticket = () => {
     setActionLoading(true);
     try {
       await axios.put(`/api/help-ticket/update-status/${id}`, { status: newStatus });
-      setData(prev => ({ ...prev, status: newStatus }));
+      setData((prev) => ({ ...prev, status: newStatus }));
     } catch (err) {
-      setError("Administrative status update failed.");
+      setError('Administrative status update failed.');
     } finally {
       setActionLoading(false);
     }
   };
 
   const handleDelete = async () => {
-    if (!window.confirm("Permanent Deletion: This action will expunge the record from the database. Proceed?")) return;
+    if (
+      !window.confirm(
+        'Permanent Deletion: This action will expunge the record from the database. Proceed?'
+      )
+    )
+      return;
     setActionLoading(true);
     try {
       await axios.delete(`/api/help-ticket/delete/${id}`);
       navigate('/help-requests');
     } catch (err) {
-      setError("Deletion failed. System override required.");
+      setError('Deletion failed. System override required.');
     } finally {
       setActionLoading(false);
     }
@@ -79,19 +83,26 @@ const Ticket = () => {
 
   const getCategoryIcon = (cat) => {
     switch (cat?.toLowerCase()) {
-      case 'software': return <Settings size={18} />;
-      case 'hardware': return <Cpu size={18} />;
-      case 'network': return <Wifi size={18} />;
-      default: return <MoreHorizontal size={18} />;
+      case 'software':
+        return <Settings size={18} />;
+      case 'hardware':
+        return <Cpu size={18} />;
+      case 'network':
+        return <Wifi size={18} />;
+      default:
+        return <MoreHorizontal size={18} />;
     }
   };
 
-  if (loading) return (
-    <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col items-center justify-center bg-white">
-      <Loader2 size={32} className="text-[#002b5c] animate-spin mb-4" />
-      <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">Syncing Data</span>
-    </div>
-  );
+  if (loading)
+    return (
+      <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col items-center justify-center bg-white">
+        <Loader2 size={32} className="text-[#002b5c] animate-spin mb-4" />
+        <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+          Syncing Data
+        </span>
+      </div>
+    );
   return (
     <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col font-sans bg-white overflow-hidden">
       <header className="px-12 py-8 border-b border-slate-100 flex items-center justify-between shrink-0">
@@ -111,7 +122,7 @@ const Ticket = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <button 
+          <button
             onClick={handleDelete}
             disabled={actionLoading}
             className="flex items-center gap-2 px-5 py-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest"
@@ -124,15 +135,18 @@ const Ticket = () => {
 
       <div className="flex-1 overflow-y-auto custom-scrollbar">
         <div className="max-w-4xl mx-auto py-16 px-12">
-          
           <div className="flex items-center gap-8 mb-12 pb-8 border-b border-slate-50 text-slate-400">
             <div className="flex items-center gap-2">
               <Calendar size={16} />
-              <span className="text-xs font-bold">{new Date(data.createdAt).toLocaleDateString()}</span>
+              <span className="text-xs font-bold">
+                {new Date(data.createdAt).toLocaleDateString()}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               <Clock size={16} />
-              <span className="text-xs font-bold">{new Date(data.createdAt).toLocaleTimeString()}</span>
+              <span className="text-xs font-bold">
+                {new Date(data.createdAt).toLocaleTimeString()}
+              </span>
             </div>
             <div className="flex items-center gap-2">
               {getCategoryIcon(data.category)}
@@ -155,7 +169,7 @@ const Ticket = () => {
             <h3 className="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-8">
               System Lifecycle Management
             </h3>
-            
+
             <div className="grid grid-cols-4 gap-4">
               {statusOptions.map((opt) => {
                 const isActive = data.status === opt.value;
@@ -166,15 +180,21 @@ const Ticket = () => {
                     disabled={actionLoading}
                     className={`
                       relative group flex flex-col items-center justify-center p-6 rounded-3xl border-2 transition-all duration-300
-                      ${isActive 
-                        ? `${opt.bg} ${opt.color} border-current shadow-lg` 
-                        : 'bg-white border-slate-100 text-slate-400 hover:border-slate-200'}
+                      ${
+                        isActive
+                          ? `${opt.bg} ${opt.color} border-current shadow-lg`
+                          : 'bg-white border-slate-100 text-slate-400 hover:border-slate-200'
+                      }
                       ${actionLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer active:scale-95'}
                     `}
                   >
                     {isActive && <CheckCircle2 size={16} className="absolute top-4 right-4" />}
-                    <span className="text-xs font-black uppercase tracking-widest">{opt.label}</span>
-                    <span className={`text-[8px] font-bold mt-1 opacity-60 ${isActive ? '' : 'hidden group-hover:block'}`}>
+                    <span className="text-xs font-black uppercase tracking-widest">
+                      {opt.label}
+                    </span>
+                    <span
+                      className={`text-[8px] font-bold mt-1 opacity-60 ${isActive ? '' : 'hidden group-hover:block'}`}
+                    >
                       {isActive ? 'Current State' : 'Change Status'}
                     </span>
                   </button>
@@ -182,14 +202,15 @@ const Ticket = () => {
               })}
             </div>
           </div>
-
         </div>
       </div>
 
       <footer className="p-8 border-t border-slate-50 flex justify-center grayscale opacity-30">
         <div className="flex items-center gap-4">
           <Bug size={14} />
-          <span className="text-[9px] font-black uppercase tracking-[0.6em]">System Support Interface</span>
+          <span className="text-[9px] font-black uppercase tracking-[0.6em]">
+            System Support Interface
+          </span>
         </div>
       </footer>
 

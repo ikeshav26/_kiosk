@@ -13,7 +13,6 @@ interface Announcement {
   __v: number;
 }
 
-
 const TimeAgo = ({ date }: { date: string }) => {
   const { t, i18n } = useTranslation();
   const diff = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
@@ -21,8 +20,16 @@ const TimeAgo = ({ date }: { date: string }) => {
   if (isNaN(diff)) return null;
   let text = '';
   if (diff < 60) text = t('announcements.justNow', 'Just now');
-  else if (diff < 3600) text = t('announcements.minutesAgo', { count: Math.floor(diff / 60), defaultValue: '{{count}}m ago' });
-  else if (diff < 86400) text = t('announcements.hoursAgo', { count: Math.floor(diff / 3600), defaultValue: '{{count}}h ago' });
+  else if (diff < 3600)
+    text = t('announcements.minutesAgo', {
+      count: Math.floor(diff / 60),
+      defaultValue: '{{count}}m ago',
+    });
+  else if (diff < 86400)
+    text = t('announcements.hoursAgo', {
+      count: Math.floor(diff / 3600),
+      defaultValue: '{{count}}h ago',
+    });
   else text = new Date(date).toLocaleDateString(i18n.language, { month: 'short', day: 'numeric' });
 
   return (
@@ -44,7 +51,9 @@ const Announcements = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/announcement/all`, { params: { lang: i18n.language } });
+      const response = await axios.get(`/api/announcement/all`, {
+        params: { lang: i18n.language },
+      });
       setAnnouncements(response.data.announcements || []);
     } catch (err) {
       console.error('Kiosk Announcements Fetch Error:', err);
@@ -59,7 +68,6 @@ const Announcements = () => {
     const autoRefresh = setInterval(fetchAnnouncements, 300000);
     return () => clearInterval(autoRefresh);
   }, [i18n.language]);
-
 
   return (
     <div className="flex flex-col h-full bg-[#fcfdfe] rounded-[40px] shadow-2xl overflow-hidden border border-slate-100 font-sans relative">
@@ -118,8 +126,12 @@ const Announcements = () => {
         ) : announcements.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center opacity-40 grayscale">
             <Bell size={120} strokeWidth={0.5} className="text-[#002b5c] mb-6" />
-            <h3 className="text-3xl font-black text-[#002b5c]">{t('announcements.boardClear', 'Board Clear')}</h3>
-            <p className="text-lg mt-2 font-medium">{t('announcements.noNew', 'No new announcements at this time')}</p>
+            <h3 className="text-3xl font-black text-[#002b5c]">
+              {t('announcements.boardClear', 'Board Clear')}
+            </h3>
+            <p className="text-lg mt-2 font-medium">
+              {t('announcements.noNew', 'No new announcements at this time')}
+            </p>
           </div>
         ) : (
           <div className="space-y-6 pb-12">

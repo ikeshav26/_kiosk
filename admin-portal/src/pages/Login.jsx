@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import { 
-  User, 
-  Lock, 
-  ArrowRight, 
-  ShieldCheck, 
+import {
+  User,
+  Lock,
+  ArrowRight,
+  ShieldCheck,
   GraduationCap,
   Loader2,
-  AlertCircle
+  AlertCircle,
 } from 'lucide-react';
 import { authContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
@@ -25,14 +25,14 @@ const Login = () => {
 
   const [bgIndex, setBgIndex] = useState(0);
   const images = [
-    "https://plus.unsplash.com/premium_photo-1677567996070-68fa4181775a?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=1920",
-    "https://media.istockphoto.com/id/171271182/photo/delhi-university-building-and-corridor.webp?s=2048x2048&w=is&k=20&c=63Su_Hgd1hMJ3kxaQNyXYdqXXThFhFZYENEakkFHgFs="
+    'https://plus.unsplash.com/premium_photo-1677567996070-68fa4181775a?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80&w=1920',
+    'https://media.istockphoto.com/id/171271182/photo/delhi-university-building-and-corridor.webp?s=2048x2048&w=is&k=20&c=63Su_Hgd1hMJ3kxaQNyXYdqXXThFhFZYENEakkFHgFs=',
   ];
 
   const [formData, setFormData] = useState({
     userId: '',
-    password: ''
+    password: '',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -47,7 +47,7 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     if (error) setError(null);
   };
@@ -55,7 +55,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!formData.userId || !formData.password) {
-      setError("Please fill in all credentials.");
+      setError('Please fill in all credentials.');
       return;
     }
 
@@ -66,16 +66,15 @@ const Login = () => {
       const response = await axios.post('/api/auth/login', formData);
       setuser(response.data.user);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/dashboard')
+      navigate('/dashboard');
       toast.success(`Welcome back, ${response.data.user.role || 'Admin'}!`);
-      console.log("Login Success:", response.data.user);
+      console.log('Login Success:', response.data.user);
     } catch (err) {
-      setError(err.response?.data?.message || "Invalid User ID or Password.");
+      setError(err.response?.data?.message || 'Invalid User ID or Password.');
     } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-6 relative overflow-hidden font-sans bg-slate-900">
@@ -95,7 +94,6 @@ const Login = () => {
       <div className="absolute top-[-10%] right-[-5%] w-125 h-125 bg-blue-500/20 rounded-full blur-[120px] z-2 pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-5%] w-100 h-100 bg-blue-400/10 rounded-full blur-[100px] z-2 pointer-events-none" />
 
-
       <div className="w-full max-w-125 bg-white rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] border border-white relative z-10 overflow-hidden">
         <div className="bg-[#002b5c] p-12 text-center relative overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
@@ -103,9 +101,14 @@ const Login = () => {
               <GraduationCap size={44} className="text-white" />
             </div>
             <h1 className="text-3xl font-black text-white tracking-tight">Admin Console</h1>
-            <p className="text-blue-200/60 font-bold text-xs uppercase tracking-[0.3em] mt-2">Access Portal</p>
+            <p className="text-blue-200/60 font-bold text-xs uppercase tracking-[0.3em] mt-2">
+              Access Portal
+            </p>
           </div>
-          <ShieldCheck size={200} className="absolute -bottom-12.5 -right-12.5 text-white/5 rotate-12" />
+          <ShieldCheck
+            size={200}
+            className="absolute -bottom-12.5 -right-12.5 text-white/5 rotate-12"
+          />
         </div>
 
         <form onSubmit={handleLogin} className="p-10 lg:p-14 space-y-8">
@@ -118,13 +121,15 @@ const Login = () => {
 
           <div className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">User Identifier</label>
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                User Identifier
+              </label>
               <div className="relative group">
                 <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#002b5c] transition-colors">
                   <User size={22} />
                 </div>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="userId"
                   autoComplete="username"
                   value={formData.userId}
@@ -136,13 +141,15 @@ const Login = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Security Key</label>
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                Security Key
+              </label>
               <div className="relative group">
                 <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#002b5c] transition-colors">
                   <Lock size={22} />
                 </div>
-                <input 
-                  type="password" 
+                <input
+                  type="password"
                   name="password"
                   autoComplete="current-password"
                   value={formData.password}
@@ -154,7 +161,7 @@ const Login = () => {
             </div>
           </div>
 
-          <button 
+          <button
             type="submit"
             disabled={loading}
             className="w-full bg-[#002b5c] text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-blue-900/20 active:scale-[0.98] disabled:opacity-70 disabled:active:scale-100 transition-all flex items-center justify-center gap-3 group"

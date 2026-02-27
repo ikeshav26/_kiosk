@@ -1,14 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { 
-  Users, 
+import {
+  Users,
   ChevronRight,
   Search,
   Building2,
   Loader2,
   AlertCircle,
-  Contact2
+  Contact2,
 } from 'lucide-react';
 
 interface FacultyMember {
@@ -55,9 +55,7 @@ export const Faculty = () => {
   const filteredFaculty = useMemo(() => {
     return faculty.filter((member) => {
       const matchesDept = member.department === selectedDept;
-      const matchesSearch = member.facultyName
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
+      const matchesSearch = member.facultyName.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesDept && matchesSearch;
     });
   }, [faculty, selectedDept, searchQuery]);
@@ -73,18 +71,16 @@ export const Faculty = () => {
                 Department Directory
               </span>
             </div>
-            <h2 className="text-4xl font-black text-[#002b5c] tracking-tight">
-              Our Faculty
-            </h2>
+            <h2 className="text-4xl font-black text-[#002b5c] tracking-tight">Our Faculty</h2>
           </div>
-          
+
           <div className="flex items-center gap-3 bg-slate-100/50 p-1.5 rounded-xl border border-slate-200 w-72 transition-all focus-within:ring-2 focus-within:ring-[#002b5c]/10">
             <Search className="ml-3 text-slate-400" size={18} />
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search directory..." 
+              placeholder="Search directory..."
               className="bg-transparent py-2 pr-4 text-base focus:outline-none font-bold text-[#002b5c] w-full placeholder:text-slate-400"
             />
           </div>
@@ -96,9 +92,9 @@ export const Faculty = () => {
               key={dept}
               onClick={() => setSelectedDept(dept)}
               className={`px-6 py-2.5 rounded-lg text-sm font-black transition-all active:scale-95 whitespace-nowrap border ${
-                selectedDept === dept 
-                ? 'bg-[#002b5c] text-white border-transparent shadow-lg shadow-[#002b5c]/20' 
-                : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'
+                selectedDept === dept
+                  ? 'bg-[#002b5c] text-white border-transparent shadow-lg shadow-[#002b5c]/20'
+                  : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'
               }`}
             >
               {dept}
@@ -119,7 +115,7 @@ export const Faculty = () => {
           <div className="h-full flex flex-col items-center justify-center text-center">
             <AlertCircle size={40} className="text-red-300 mb-4" />
             <h3 className="text-xl font-bold text-slate-800 mb-6">{error}</h3>
-            <button 
+            <button
               onClick={fetchFaculty}
               className="px-8 py-3 bg-[#002b5c] text-white rounded-xl font-bold active:scale-95 transition-all text-sm"
             >
@@ -135,14 +131,16 @@ export const Faculty = () => {
                 className="group bg-white rounded-3xl p-6 flex flex-col items-center text-center shadow-sm border border-slate-100 hover:border-[#002b5c]/30 hover:shadow-xl hover:shadow-[#002b5c]/5 transition-all duration-300 cursor-pointer active:scale-[0.97] relative overflow-hidden"
               >
                 <div className="absolute top-0 left-0 w-full h-1 bg-[#002b5c] opacity-0 group-hover:opacity-100 transition-opacity" />
-                
+
                 <div className="relative mb-5 shrink-0">
                   <div className="absolute inset-0 bg-[#002b5c] rounded-full blur-xl opacity-0 group-hover:opacity-10 transition-all duration-500" />
-                  <img 
-                    src={member.imageUrl || 'https://via.placeholder.com/300'} 
-                    alt={member.facultyName} 
+                  <img
+                    src={member.imageUrl || 'https://via.placeholder.com/300'}
+                    alt={member.facultyName}
                     className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md relative z-10 group-hover:scale-105 transition-transform"
-                    onError={(e) => { (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300'; }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300';
+                    }}
                   />
                 </div>
 
@@ -154,7 +152,7 @@ export const Faculty = () => {
                     {member.designation}
                   </p>
                 </div>
-                
+
                 <div className="w-full pt-4 border-t border-slate-50 flex items-center justify-center gap-2 text-[#002b5c] font-black text-[10px] group-hover:gap-3 transition-all uppercase tracking-[0.2em] opacity-80 group-hover:opacity-100">
                   <Contact2 size={14} />
                   View Contact Details <ChevronRight size={14} strokeWidth={3} />

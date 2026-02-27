@@ -21,8 +21,8 @@ const SidePanel = () => {
     { key: 'rooms', label: 'Rooms', icon: DoorOpen, route: '/rooms' },
   ];
 
-  const {t}=useTranslation();
-  
+  const { t } = useTranslation();
+
   const getNavLinkClass = (isActive: boolean, activeColor?: string) => {
     const baseClasses =
       'flex items-center gap-5 px-8 py-6 rounded-[32px] transition-all active:scale-95 duration-200 border shadow-sm';
@@ -91,7 +91,9 @@ const SidePanel = () => {
       </div>
 
       <div className="pt-8">
-        <h2 className="text-slate-400 font-black tracking-[0.2em] text-xs mb-5 uppercase">{t('sidebar.help')}</h2>
+        <h2 className="text-slate-400 font-black tracking-[0.2em] text-xs mb-5 uppercase">
+          {t('sidebar.help')}
+        </h2>
         <NavLink to="/help">
           {({ isActive }) => (
             <div className={getNavLinkClass(isActive, 'bg-slate-800')}>

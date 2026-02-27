@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Megaphone, 
-  ArrowLeft, 
-  Send, 
-  Loader2, 
+import {
+  Megaphone,
+  ArrowLeft,
+  Send,
+  Loader2,
   AlertCircle,
   CheckCircle2,
   Clock,
   Terminal,
   Layers,
   Type,
-  AlignLeft
+  AlignLeft,
 } from 'lucide-react';
-
 
 const CreateNotifications = () => {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ const CreateNotifications = () => {
 
   const [formData, setFormData] = useState({
     subject: '',
-    message: ''
+    message: '',
   });
 
   const handleChange = (e) => {
@@ -35,7 +34,7 @@ const CreateNotifications = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.subject || !formData.message) {
-      setError("Broadcast rejected: Subject and Message body required.");
+      setError('Broadcast rejected: Subject and Message body required.');
       return;
     }
 
@@ -45,7 +44,9 @@ const CreateNotifications = () => {
       setSuccess(true);
       setTimeout(() => navigate('/notifications'), 2000);
     } catch (err) {
-      setError(err.response?.data?.message || "Uplink Error: Failed to transmit notice to network.");
+      setError(
+        err.response?.data?.message || 'Uplink Error: Failed to transmit notice to network.'
+      );
     } finally {
       setLoading(false);
     }
@@ -53,7 +54,6 @@ const CreateNotifications = () => {
 
   return (
     <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col font-sans bg-[#f8fafc] overflow-hidden relative">
-      
       <header className="px-10 py-8 flex justify-between items-center shrink-0 z-10 border-b border-slate-200 bg-white shadow-sm">
         <div className="flex items-center gap-6">
           <button
@@ -65,26 +65,31 @@ const CreateNotifications = () => {
           <div>
             <div className="flex items-center gap-2 mb-0.5">
               <Terminal className="text-[#002b5c]" size={14} />
-              <span className="text-[10px] font-black text-[#002b5c]/60 uppercase tracking-[0.4em]">Bulletin Management</span>
+              <span className="text-[10px] font-black text-[#002b5c]/60 uppercase tracking-[0.4em]">
+                Bulletin Management
+              </span>
             </div>
-            <h1 className="text-3xl font-black text-[#002b5c] tracking-tight">Compose Announcement</h1>
+            <h1 className="text-3xl font-black text-[#002b5c] tracking-tight">
+              Compose Announcement
+            </h1>
           </div>
         </div>
 
         <div className="bg-slate-50 px-6 py-3 rounded-2xl flex items-center gap-4 border border-slate-200">
-           <div className="w-8 h-8 bg-[#002b5c] rounded-lg flex items-center justify-center">
-              <Layers size={16} className="text-white" />
-           </div>
-           <div>
-              <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Network Status</p>
-              <p className="text-xs font-bold tracking-tight text-[#002b5c]">Direct Kiosk Uplink</p>
-           </div>
+          <div className="w-8 h-8 bg-[#002b5c] rounded-lg flex items-center justify-center">
+            <Layers size={16} className="text-white" />
+          </div>
+          <div>
+            <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
+              Network Status
+            </p>
+            <p className="text-xs font-bold tracking-tight text-[#002b5c]">Direct Kiosk Uplink</p>
+          </div>
         </div>
       </header>
 
       <div className="flex-1 overflow-y-auto px-10 py-10 z-10 custom-scrollbar">
         <div className="max-w-4xl mx-auto">
-          
           {error && (
             <div className="flex items-center gap-4 p-5 bg-red-50 border border-red-100 rounded-2xl mb-8 animate-in slide-in-from-top-4">
               <AlertCircle size={20} className="text-red-500 shrink-0" />
@@ -97,7 +102,9 @@ const CreateNotifications = () => {
               <div className="w-24 h-24 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-inner border border-emerald-100">
                 <CheckCircle2 size={48} />
               </div>
-              <h2 className="text-3xl font-black text-[#002b5c] tracking-tight mb-2">Notice Transmitted</h2>
+              <h2 className="text-3xl font-black text-[#002b5c] tracking-tight mb-2">
+                Notice Transmitted
+              </h2>
               <p className="text-slate-400 font-medium">Synchronizing with campus terminals...</p>
               <div className="mt-8 w-16 h-1 bg-slate-100 rounded-full overflow-hidden">
                 <div className="h-full bg-emerald-500 w-1/2 animate-[loading_2s_ease-in-out_infinite]" />
@@ -105,7 +112,6 @@ const CreateNotifications = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
-            
               <div className="bg-white rounded-[32px] shadow-sm border border-slate-200 overflow-hidden">
                 <div className="p-10 space-y-10">
                   <div className="space-y-3">
@@ -114,9 +120,11 @@ const CreateNotifications = () => {
                         <Type size={14} className="text-blue-500" />
                         Notice Subject
                       </label>
-                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{formData.subject.length}/100</span>
+                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+                        {formData.subject.length}/100
+                      </span>
                     </div>
-                    <input 
+                    <input
                       type="text"
                       name="subject"
                       value={formData.subject}
@@ -134,10 +142,12 @@ const CreateNotifications = () => {
                       </label>
                       <div className="flex items-center gap-2">
                         <Clock size={12} className="text-slate-300" />
-                        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">{formData.message.length} Characters</span>
+                        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+                          {formData.message.length} Characters
+                        </span>
                       </div>
                     </div>
-                    <textarea 
+                    <textarea
                       name="message"
                       rows={8}
                       value={formData.message}
@@ -165,7 +175,10 @@ const CreateNotifications = () => {
                     ) : (
                       <>
                         <span className="tracking-widest uppercase">Publish to Network</span>
-                        <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        <Send
+                          size={18}
+                          className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                        />
                       </>
                     )}
                   </button>
@@ -174,7 +187,9 @@ const CreateNotifications = () => {
 
               <div className="flex items-center justify-center gap-3 opacity-30">
                 <div className="w-1 h-1 bg-slate-400 rounded-full" />
-                <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.4em]">Administrative Security Protocol Active</p>
+                <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.4em]">
+                  Administrative Security Protocol Active
+                </p>
                 <div className="w-1 h-1 bg-slate-400 rounded-full" />
               </div>
             </form>
