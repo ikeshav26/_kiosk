@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 import axios from 'axios';
 import {
   Users,
@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { PageLoader, Card, FormInput, Button, SearchInput } from '../components/ui';
+import { authContext } from '../context/AuthContext';
 
 const Faculty = () => {
   const [faculty, setFaculty] = useState([]);
@@ -26,6 +27,8 @@ const Faculty = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDept, setSelectedDept] = useState('All');
 
+  const { user } = useContext(authContext);
+  const isAdmin = user?.role === 'admin' || user?.role === 'superAdmin';
   const fileInputRef = useRef(null);
   const departments = ['CSE', 'ECE', 'MECH', 'CIVIL', 'EEE', 'IT'];
 
@@ -136,10 +139,10 @@ const Faculty = () => {
   if (loading) return <PageLoader message="Loading Faculty..." />;
 
   return (
-    <div className="ml-72 mt-24 min-h-[calc(100vh-6rem)] bg-[#f8fafc] p-8">
-      <div className="grid grid-cols-3 gap-6">
+    <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
+      <div className={`grid gap-6 ${isAdmin ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1'}`}>
         {/* Add Faculty Form */}
-        <Card
+        {isAdmin && <Card
           headerIcon={Camera}
           headerTitle="Add Faculty"
           headerSubtitle="Register new member"
@@ -148,7 +151,7 @@ const Faculty = () => {
           <form onSubmit={handleSubmit} className="p-5 space-y-4">
             {/* Image Upload */}
             <div>
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                 Profile Photo
               </label>
               {!formData.imageUrl ? (
@@ -157,7 +160,7 @@ const Faculty = () => {
                   className="flex flex-col items-center justify-center h-32 bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl cursor-pointer hover:bg-white hover:border-blue-400 transition-all"
                 >
                   <Upload className="text-slate-300 mb-2" size={24} />
-                  <p className="text-[10px] font-bold text-slate-400">Upload Photo</p>
+                  <p className="text-xs font-bold text-slate-400">Upload Photo</p>
                   <input
                     ref={fileInputRef}
                     type="file"
@@ -250,7 +253,7 @@ const Faculty = () => {
             />
 
             <div>
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                 Department
               </label>
               <div className="grid grid-cols-3 gap-1.5">
@@ -259,7 +262,7 @@ const Faculty = () => {
                     key={dept}
                     type="button"
                     onClick={() => setFormData({ ...formData, department: dept })}
-                    className={`py-2 rounded-lg text-[10px] font-bold transition-all ${formData.department === dept ? 'bg-[#002b5c] text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'}`}
+                    className={`py-2 rounded-lg text-xs font-bold transition-all ${formData.department === dept ? 'bg-slate-900 text-white' : 'bg-slate-50 text-slate-500 hover:bg-slate-100'}`}
                   >
                     {dept}
                   </button>
@@ -271,11 +274,11 @@ const Faculty = () => {
               Add Faculty
             </Button>
           </form>
-        </Card>
+        </Card>}
 
         {/* Faculty List */}
         <Card
-          className="col-span-2"
+          className={isAdmin ? 'col-span-2' : 'col-span-1'}
           headerIcon={Users}
           headerTitle="Faculty Directory"
           headerSubtitle="All registered faculty"
@@ -306,18 +309,20 @@ const Faculty = () => {
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-100">
                 <tr className="text-left">
-                  <th className="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Faculty
                   </th>
-                  <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Dept
                   </th>
-                  <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Credentials
                   </th>
-                  <th className="px-6 py-3 text-right text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  {isAdmin && (
+                  <th className="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Actions
                   </th>
+                  )}
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50">
@@ -337,7 +342,7 @@ const Faculty = () => {
                             />
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-[#002b5c]">
+                            <p className="text-sm font-semibold text-slate-900">
                               {member.facultyName}
                             </p>
                             <p className="text-xs text-slate-400">{member.designation}</p>
@@ -345,7 +350,7 @@ const Faculty = () => {
                         </div>
                       </td>
                       <td className="px-4 py-4">
-                        <span className="px-2 py-1 bg-slate-100 text-slate-600 rounded-md text-[10px] font-bold">
+                        <span className="px-2 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-bold">
                           {member.department}
                         </span>
                       </td>
@@ -353,6 +358,7 @@ const Faculty = () => {
                         <p className="text-sm text-slate-600">{member.qualification}</p>
                         <p className="text-xs text-slate-400">{member.totalExperience}Y exp</p>
                       </td>
+                      {isAdmin && (
                       <td className="px-6 py-4">
                         <div className="flex items-center justify-end gap-1">
                           <button className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
@@ -366,6 +372,7 @@ const Faculty = () => {
                           </button>
                         </div>
                       </td>
+                      )}
                     </tr>
                   ))
                 ) : (

@@ -24,7 +24,7 @@ const HelpRequests = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedStatus, setSelectedStatus] = useState('all');
-  const { navigate } = useContext(authContext);
+  const { navigate, user } = useContext(authContext);
 
   const categories = [
     { value: 'all', label: 'All Reports', icon: LifeBuoy },
@@ -163,9 +163,9 @@ const HelpRequests = () => {
   ];
 
   return (
-    <div className="ml-72 mt-24 min-h-[calc(100vh-6rem)] bg-[#f8fafc] p-8">
+    <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       {/* Stats */}
-      <section className="grid grid-cols-4 gap-4 mb-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {statsData.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
@@ -177,13 +177,13 @@ const HelpRequests = () => {
         headerTitle="Help Tickets"
         headerSubtitle="Support requests"
         headerAction={
-          <div className="flex items-center gap-2">
-            <div className="flex gap-1 bg-slate-100 p-1 rounded-lg">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+            <div className="flex flex-wrap gap-1 bg-slate-100 p-1 rounded-lg w-full sm:w-auto">
               {['all', 'open', 'in-progress', 'resolved'].map((st) => (
                 <button
                   key={st}
                   onClick={() => setSelectedStatus(st)}
-                  className={`px-3 py-1.5 rounded-md text-[10px] font-bold capitalize transition-all ${selectedStatus === st ? 'bg-white text-[#002b5c] shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
+                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-md text-xs font-bold capitalize transition-all ${selectedStatus === st ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-400 hover:text-slate-600'}`}
                 >
                   {st}
                 </button>
@@ -193,20 +193,20 @@ const HelpRequests = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search..."
-              className="w-48"
+              className="w-full sm:w-48"
             />
           </div>
         }
       >
         {/* Category Filter */}
-        <div className="px-5 py-3 border-b border-slate-50 flex gap-2">
+        <div className="px-5 py-3 border-b border-slate-50 flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setSelectedCategory(cat.value)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 selectedCategory === cat.value
-                  ? 'bg-[#002b5c] text-white'
+                  ? 'bg-slate-900 text-white'
                   : 'bg-slate-50 text-slate-500 hover:bg-slate-100'
               }`}
             >
@@ -219,19 +219,19 @@ const HelpRequests = () => {
           <table className="w-full">
             <thead className="bg-slate-50 border-b border-slate-100">
               <tr className="text-left">
-                <th className="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                   Ticket
                 </th>
-                <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                   Category
                 </th>
-                <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                   Status
                 </th>
-                <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                   Date
                 </th>
-                <th className="px-6 py-3 text-right text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -276,7 +276,7 @@ const HelpRequests = () => {
                             )}
                           </div>
                           <div className="min-w-0">
-                            <p className="text-sm font-semibold text-[#002b5c] truncate">
+                            <p className="text-sm font-semibold text-slate-900 truncate">
                               {ticket.subject}
                             </p>
                             <p className="text-xs text-slate-400 line-clamp-1">
@@ -296,7 +296,7 @@ const HelpRequests = () => {
                             value={ticket.status || 'open'}
                             onChange={(e) => handleUpdateStatus(ticket._id, e.target.value)}
                             disabled={actionLoading}
-                            className={`appearance-none px-3 py-1.5 pr-7 rounded-lg text-[10px] font-bold uppercase cursor-pointer transition-all outline-none ${status.bg} ${status.color}`}
+                            className={`appearance-none px-3 py-1.5 pr-7 rounded-lg text-xs font-bold uppercase cursor-pointer transition-all outline-none ${status.bg} ${status.color}`}
                             onClick={(e) => e.stopPropagation()}
                           >
                             {statusOptions.map((opt) => (

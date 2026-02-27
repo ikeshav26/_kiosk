@@ -53,42 +53,42 @@ const CreateNotifications = () => {
   };
 
   return (
-    <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col font-sans bg-[#f8fafc] overflow-hidden relative">
-      <header className="px-10 py-8 flex justify-between items-center shrink-0 z-10 border-b border-slate-200 bg-white shadow-sm">
-        <div className="flex items-center gap-6">
+    <div className="lg:ml-64 mt-20 h-[calc(100vh-5rem)] flex flex-col font-sans bg-slate-50 overflow-hidden relative">
+      <header className="px-6 sm:px-10 py-6 sm:py-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0 z-10 border-b border-slate-200 bg-white shadow-sm">
+        <div className="flex items-center gap-4 sm:gap-6">
           <button
             onClick={() => navigate(-1)}
-            className="group p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-400 hover:text-[#002b5c] hover:border-[#002b5c] transition-all active:scale-95"
+            className="group p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-slate-400 hover:text-slate-900 hover:border-slate-900 transition-all active:scale-95 shrink-0"
           >
             <ArrowLeft size={22} className="group-hover:-translate-x-1 transition-transform" />
           </button>
           <div>
             <div className="flex items-center gap-2 mb-0.5">
-              <Terminal className="text-[#002b5c]" size={14} />
-              <span className="text-[10px] font-black text-[#002b5c]/60 uppercase tracking-[0.4em]">
+              <Terminal className="text-slate-900" size={14} />
+              <span className="text-[10px] sm:text-xs font-black text-slate-900/60 uppercase tracking-[0.4em]">
                 Bulletin Management
               </span>
             </div>
-            <h1 className="text-3xl font-black text-[#002b5c] tracking-tight">
+            <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
               Compose Announcement
             </h1>
           </div>
         </div>
 
-        <div className="bg-slate-50 px-6 py-3 rounded-2xl flex items-center gap-4 border border-slate-200">
-          <div className="w-8 h-8 bg-[#002b5c] rounded-lg flex items-center justify-center">
+        <div className="bg-slate-50 px-4 sm:px-6 py-3 rounded-2xl flex items-center gap-4 border border-slate-200 w-full sm:w-auto">
+          <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center shrink-0">
             <Layers size={16} className="text-white" />
           </div>
           <div>
             <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
               Network Status
             </p>
-            <p className="text-xs font-bold tracking-tight text-[#002b5c]">Direct Kiosk Uplink</p>
+            <p className="text-xs font-bold tracking-tight text-slate-900">Direct Kiosk Uplink</p>
           </div>
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto px-10 py-10 z-10 custom-scrollbar">
+      <div className="flex-1 overflow-y-auto px-6 sm:px-10 py-8 sm:py-10 z-10 custom-scrollbar">
         <div className="max-w-4xl mx-auto">
           {error && (
             <div className="flex items-center gap-4 p-5 bg-red-50 border border-red-100 rounded-2xl mb-8 animate-in slide-in-from-top-4">
@@ -102,7 +102,7 @@ const CreateNotifications = () => {
               <div className="w-24 h-24 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mb-6 shadow-inner border border-emerald-100">
                 <CheckCircle2 size={48} />
               </div>
-              <h2 className="text-3xl font-black text-[#002b5c] tracking-tight mb-2">
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight mb-2">
                 Notice Transmitted
               </h2>
               <p className="text-slate-400 font-medium">Synchronizing with campus terminals...</p>
@@ -116,11 +116,11 @@ const CreateNotifications = () => {
                 <div className="p-10 space-y-10">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between px-1">
-                      <label className="text-[11px] font-black text-[#002b5c] uppercase tracking-widest flex items-center gap-2">
+                      <label className="text-[11px] font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
                         <Type size={14} className="text-blue-500" />
                         Notice Subject
                       </label>
-                      <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+                      <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">
                         {formData.subject.length}/100
                       </span>
                     </div>
@@ -130,19 +130,19 @@ const CreateNotifications = () => {
                       value={formData.subject}
                       onChange={handleChange}
                       placeholder="e.g. Mid-term examinations rescheduled"
-                      className="w-full bg-slate-50 border border-slate-100 focus:border-[#002b5c] focus:bg-white rounded-2xl py-4 px-6 text-xl font-bold text-[#002b5c] transition-all outline-none placeholder:text-slate-300"
+                      className="w-full bg-slate-50 border border-slate-100 focus:border-slate-900 focus:bg-white rounded-2xl py-4 px-6 text-xl font-bold text-slate-900 transition-all outline-none placeholder:text-slate-300"
                     />
                   </div>
 
                   <div className="space-y-3">
                     <div className="flex items-center justify-between px-1">
-                      <label className="text-[11px] font-black text-[#002b5c] uppercase tracking-widest flex items-center gap-2">
+                      <label className="text-[11px] font-black text-slate-900 uppercase tracking-widest flex items-center gap-2">
                         <AlignLeft size={14} className="text-blue-500" />
                         Full Broadcast Message
                       </label>
                       <div className="flex items-center gap-2">
                         <Clock size={12} className="text-slate-300" />
-                        <span className="text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+                        <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">
                           {formData.message.length} Characters
                         </span>
                       </div>
@@ -153,7 +153,7 @@ const CreateNotifications = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Enter the detailed announcement text here..."
-                      className="w-full bg-slate-50 border border-slate-100 focus:border-[#002b5c] focus:bg-white rounded-2xl py-5 px-6 text-base font-medium text-slate-600 transition-all outline-none placeholder:text-slate-200 leading-relaxed resize-none"
+                      className="w-full bg-slate-50 border border-slate-100 focus:border-slate-900 focus:bg-white rounded-2xl py-5 px-6 text-base font-medium text-slate-600 transition-all outline-none placeholder:text-slate-200 leading-relaxed resize-none"
                     />
                   </div>
                 </div>
@@ -168,7 +168,7 @@ const CreateNotifications = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex-1 bg-[#002b5c] text-white py-4 rounded-2xl font-black text-sm shadow-xl shadow-blue-900/10 active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-3 group"
+                    className="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-black text-sm shadow-xl shadow-blue-900/10 active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-3 group"
                   >
                     {loading ? (
                       <Loader2 className="animate-spin" size={20} />

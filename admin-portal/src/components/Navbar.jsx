@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, Search, User, ChevronDown } from 'lucide-react';
+import { Bell, Search, User, ChevronDown, Menu, X } from 'lucide-react';
 import { useContext } from 'react';
 import { authContext } from '../context/AuthContext';
 import axios from 'axios';
 
-const Navbar = () => {
+const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [time, setTime] = useState(new Date());
   const { user, navigate, setuser } = useContext(authContext);
 
@@ -14,64 +14,68 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-72 right-0 h-24 bg-[#002b5c] px-10 grid grid-cols-3 items-center z-40 shadow-[0_10px_40px_rgba(0,0,0,0.1)] border-b border-white/5 font-sans">
-      <div className="flex items-center gap-8 justify-self-start">
-        <div className="flex flex-col min-w-fit">
-          <div className="flex items-center gap-2 mb-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">
+    <nav className="fixed top-0 left-0 lg:left-64 right-0 h-20 bg-white/80 backdrop-blur-xl px-4 sm:px-8 flex items-center justify-between z-40 border-b border-slate-200 font-sans">
+      <div className="flex items-center gap-4 sm:gap-6">
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="lg:hidden p-2 -ml-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+        >
+          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        <div className="flex flex-col hidden sm:flex">
+          <div className="flex items-center gap-2 mb-0.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
               System Live
             </span>
           </div>
-          <h2 className="text-xl font-bold text-white tracking-tight whitespace-nowrap">
-            Admin-Portal
+          <h2 className="text-lg font-bold text-slate-900 tracking-tight">
+            Admin Portal
           </h2>
         </div>
 
-        <div className="hidden xl:flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-5 py-2.5 w-72 group focus-within:bg-white/10 focus-within:border-white/20 transition-all">
-          <Search size={16} className="text-white/30 group-focus-within:text-white" />
+        <div className="hidden xl:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 w-64 group focus-within:bg-white focus-within:border-slate-300 focus-within:ring-4 focus-within:ring-slate-100 transition-all">
+          <Search size={16} className="text-slate-400 group-focus-within:text-slate-600" />
           <input
             type="text"
             placeholder="Search (⌘K)"
-            className="bg-transparent text-sm font-bold text-white placeholder:text-white/20 focus:outline-none w-full"
+            className="bg-transparent text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none w-full"
           />
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center text-center">
-        <div className="text-4xl font-black text-white tabular-nums tracking-tighter leading-none">
+      <div className="flex flex-col items-center justify-center">
+        <div className="text-2xl font-bold text-slate-900 tabular-nums tracking-tight">
           {time
             .toLocaleTimeString([], {
               hour: '2-digit',
               minute: '2-digit',
               hour12: true,
-            })
-            .toUpperCase()}
+            })}
         </div>
-        <div className="text-[9px] font-black text-white/30 uppercase tracking-[0.5em] mt-2 whitespace-nowrap">
+        <div className="text-[10px] font-medium text-slate-500 uppercase tracking-wider mt-0.5">
           {time.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' })}
         </div>
       </div>
 
-      <div className="flex items-center gap-6 justify-self-end">
-        <div className="w-[1px] h-10 bg-white/10" />
+      <div className="flex items-center gap-4">
+        <div className="w-px h-8 bg-slate-200" />
 
-        <button className="flex items-center gap-4 group active:scale-95 transition-all outline-none">
+        <button className="flex items-center gap-3 group active:scale-95 transition-all outline-none hover:bg-slate-50 p-1.5 rounded-xl">
           <div className="flex flex-col items-end hidden sm:flex">
-            <span className="text-sm font-black text-white tracking-tight leading-none mb-1 group-hover:text-blue-400 transition-colors">
-              {user ? user.role : ''}
+            <span className="text-sm font-bold text-slate-900 leading-none mb-1 group-hover:text-slate-700 transition-colors">
+              {user ? user.role : 'Admin'}
             </span>
-            <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest leading-none">
+            <span className="text-[10px] font-medium text-slate-500 uppercase tracking-wider leading-none">
               Management
             </span>
           </div>
-          <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-xl group-hover:border-white/40 transition-all overflow-hidden relative">
-            <User size={24} className="opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 group-hover:border-slate-300 transition-all overflow-hidden relative">
+            <User size={20} className="opacity-80 group-hover:opacity-100 transition-opacity" />
           </div>
           <ChevronDown
             size={14}
-            className="text-white/20 group-hover:text-white transition-colors"
+            className="text-slate-400 group-hover:text-slate-600 transition-colors"
           />
         </button>
       </div>

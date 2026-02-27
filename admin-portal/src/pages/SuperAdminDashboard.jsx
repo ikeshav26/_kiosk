@@ -79,7 +79,7 @@ const SuperAdminDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     setActionLoading(true);
     try {
-      await axios.delete(`/api/auth/delete/${userId}`);
+      await axios.get(`/api/auth/delete-user/${ userId }`);
       toast.success('User deleted successfully!');
       fetchData();
     } catch (err) {
@@ -141,18 +141,18 @@ const SuperAdminDashboard = () => {
   ];
 
   return (
-    <div className="ml-72 mt-24 min-h-[calc(100vh-6rem)] bg-[#f8fafc] p-8">
+    <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       <PageHeader user={user} roleLabel="Super Admin" />
 
       {/* Stats */}
-      <section className="grid grid-cols-4 gap-4 mb-8">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {statsData.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
       </section>
 
       {/* Main Content */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Create User Form */}
         <Card
           headerIcon={UserPlus}
@@ -202,7 +202,7 @@ const SuperAdminDashboard = () => {
 
             {/* Role Selector */}
             <div>
-              <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                 Role
               </label>
               <div className="flex gap-2 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
@@ -213,7 +213,7 @@ const SuperAdminDashboard = () => {
                     onClick={() => setNewUser({ ...newUser, role: r })}
                     className={`flex-1 py-2 rounded-lg font-bold text-xs transition-all ${
                       newUser.role === r
-                        ? 'bg-white text-[#002b5c] shadow-sm'
+                        ? 'bg-white text-slate-900 shadow-sm'
                         : 'text-slate-400 hover:text-slate-600'
                     }`}
                   >
@@ -248,16 +248,16 @@ const SuperAdminDashboard = () => {
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-100">
                 <tr className="text-left">
-                  <th className="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
-                    User
+                  <th className="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    Admin
                   </th>
-                  <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-3 text-right text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -272,7 +272,7 @@ const SuperAdminDashboard = () => {
                             className={`w-9 h-9 rounded-lg flex items-center justify-center ${
                               u.role?.toLowerCase() === 'admin' ||
                               u.role?.toLowerCase() === 'superadmin'
-                                ? 'bg-[#002b5c] text-white'
+                                ? 'bg-slate-900 text-white'
                                 : 'bg-slate-100 text-slate-500'
                             }`}
                           >
@@ -284,7 +284,7 @@ const SuperAdminDashboard = () => {
                             )}
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-[#002b5c]">
+                            <p className="text-sm font-semibold text-slate-900">
                               {u.name || 'N/A'}
                             </p>
                             <p className="text-xs text-slate-400">ID: {u.userId}</p>
@@ -311,7 +311,7 @@ const SuperAdminDashboard = () => {
                         <div className="flex items-center justify-end">
                           {u.role?.toLowerCase() !== 'superadmin' && (
                             <button
-                              onClick={() => handleDeleteUser(u._id)}
+                              onClick={() => handleDeleteUser(u.userId)}
                               className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                             >
                               <Trash2 size={15} />

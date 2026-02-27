@@ -88,16 +88,16 @@ const Settings = () => {
   };
 
   return (
-    <div className="ml-72 mt-24 min-h-[calc(100vh-6rem)] bg-[#f8fafc] p-8">
+    <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       {/* Page Title */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-[#002b5c] rounded-xl flex items-center justify-center text-white">
+          <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white shrink-0">
             <SettingsIcon size={20} />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-[#002b5c]">Settings</h1>
-            <p className="text-sm text-slate-500">Manage your account preferences</p>
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-900">Settings</h1>
+            <p className="text-xs sm:text-sm text-slate-500">Manage your account preferences</p>
           </div>
         </div>
       </div>
@@ -109,8 +109,8 @@ const Settings = () => {
           headerTitle="Profile Information"
           headerSubtitle="Update your personal details"
         >
-          <form onSubmit={handleProfileUpdate} className="p-6 space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <form onSubmit={handleProfileUpdate} className="p-4 sm:p-6 space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <FormInput
                 label="Full Name"
                 name="name"
@@ -130,14 +130,14 @@ const Settings = () => {
               />
             </div>
             <div className="bg-slate-50 rounded-xl p-4 flex items-center gap-3">
-              <Fingerprint size={18} className="text-slate-400" />
+              <Fingerprint size={18} className="text-slate-400 shrink-0" />
               <div>
                 <p className="text-sm font-medium text-slate-700">User ID</p>
                 <p className="text-xs text-slate-500">{user?.userId || 'N/A'}</p>
               </div>
             </div>
             <div className="flex justify-end pt-2">
-              <Button type="submit" loading={loading} icon={Save}>
+              <Button type="submit" loading={loading} icon={Save} className="w-full sm:w-auto">
                 Save Changes
               </Button>
             </div>
@@ -150,7 +150,7 @@ const Settings = () => {
           headerTitle="Change Password"
           headerSubtitle="Update your security credentials"
         >
-          <form onSubmit={handlePasswordChange} className="p-6 space-y-4">
+          <form onSubmit={handlePasswordChange} className="p-4 sm:p-6 space-y-4">
             <FormInput
               label="Current Password"
               name="currentPassword"
@@ -162,7 +162,7 @@ const Settings = () => {
               }
               placeholder="Enter current password"
             />
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <FormInput
                 label="New Password"
                 name="newPassword"
@@ -195,7 +195,7 @@ const Settings = () => {
               </button>
             </div>
             <div className="flex justify-end pt-2">
-              <Button type="submit" loading={loading} icon={RefreshCw}>
+              <Button type="submit" loading={loading} icon={RefreshCw} className="w-full sm:w-auto">
                 Update Password
               </Button>
             </div>

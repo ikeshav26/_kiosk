@@ -95,7 +95,7 @@ const Login = () => {
       <div className="absolute bottom-[-10%] left-[-5%] w-100 h-100 bg-blue-400/10 rounded-full blur-[100px] z-2 pointer-events-none" />
 
       <div className="w-full max-w-125 bg-white rounded-[40px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] border border-white relative z-10 overflow-hidden">
-        <div className="bg-[#002b5c] p-12 text-center relative overflow-hidden">
+        <div className="bg-slate-900 p-12 text-center relative overflow-hidden">
           <div className="relative z-10 flex flex-col items-center">
             <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-3xl flex items-center justify-center mb-6 border border-white/20">
               <GraduationCap size={44} className="text-white" />
@@ -121,11 +121,11 @@ const Login = () => {
 
           <div className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+              <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">
                 User Identifier
               </label>
               <div className="relative group">
-                <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#002b5c] transition-colors">
+                <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-slate-900 transition-colors">
                   <User size={22} />
                 </div>
                 <input
@@ -135,17 +135,17 @@ const Login = () => {
                   value={formData.userId}
                   onChange={handleChange}
                   placeholder="Enter Admin ID"
-                  className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-5 pl-14 pr-6 text-lg font-bold text-[#002b5c] focus:outline-none focus:ring-4 focus:ring-[#002b5c]/5 focus:bg-white transition-all placeholder:text-slate-300"
+                  className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-5 pl-14 pr-6 text-lg font-bold text-slate-900 focus:outline-none focus:ring-4 focus:ring-slate-900/5 focus:bg-white transition-all placeholder:text-slate-300"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+              <label className="text-xs font-black text-slate-400 uppercase tracking-widest ml-1">
                 Security Key
               </label>
               <div className="relative group">
-                <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-[#002b5c] transition-colors">
+                <div className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-slate-900 transition-colors">
                   <Lock size={22} />
                 </div>
                 <input
@@ -155,7 +155,7 @@ const Login = () => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-5 pl-14 pr-6 text-lg font-bold text-[#002b5c] focus:outline-none focus:ring-4 focus:ring-[#002b5c]/5 focus:bg-white transition-all placeholder:text-slate-300"
+                  className="w-full bg-slate-50 border border-slate-100 rounded-2xl py-5 pl-14 pr-6 text-lg font-bold text-slate-900 focus:outline-none focus:ring-4 focus:ring-slate-900/5 focus:bg-white transition-all placeholder:text-slate-300"
                 />
               </div>
             </div>
@@ -164,7 +164,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#002b5c] text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-blue-900/20 active:scale-[0.98] disabled:opacity-70 disabled:active:scale-100 transition-all flex items-center justify-center gap-3 group"
+            className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black text-xl shadow-xl shadow-blue-900/20 active:scale-[0.98] disabled:opacity-70 disabled:active:scale-100 transition-all flex items-center justify-center gap-3 group"
           >
             {loading ? (
               <Loader2 size={24} className="animate-spin" />
@@ -185,7 +185,7 @@ const Login = () => {
       </div>
 
       <footer className="absolute bottom-10 text-center pointer-events-none z-10 w-full">
-        <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.5em]">
+        <p className="text-xs font-black text-white/50 uppercase tracking-[0.5em]">
           Smart Campus Management System
         </p>
       </footer>

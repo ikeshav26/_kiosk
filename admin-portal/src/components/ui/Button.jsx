@@ -14,19 +14,19 @@ const Button = ({
   fullWidth = false,
 }) => {
   const baseClasses =
-    'font-bold transition-all flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed';
+    'font-medium transition-all flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantClasses = {
-    primary: 'bg-[#002b5c] text-white hover:bg-[#003d80] shadow-sm',
-    secondary: 'bg-slate-100 text-slate-700 hover:bg-slate-200',
-    ghost: 'bg-transparent text-slate-600 hover:bg-slate-100',
+    primary: 'bg-slate-900 text-white hover:bg-slate-800:bg-slate-100 shadow-sm',
+    secondary: 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-50:bg-slate-700 shadow-sm',
+    ghost: 'bg-transparent text-slate-600 hover:bg-slate-100:bg-slate-800',
     danger: 'bg-red-500 text-white hover:bg-red-600 shadow-sm',
   };
 
   const sizeClasses = {
-    small: 'px-3 py-2 text-xs rounded-lg',
-    default: 'px-5 py-3 text-sm rounded-xl',
-    large: 'px-6 py-4 text-base rounded-2xl',
+    small: 'px-3 py-1.5 text-xs rounded-md',
+    default: 'px-4 py-2 text-sm rounded-lg',
+    large: 'px-6 py-3 text-base rounded-xl',
   };
 
   return (

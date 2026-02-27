@@ -8,7 +8,7 @@ import Announcements from './pages/Announcements';
 import AnnouncementDetail from './pages/AnnouncementDetail';
 import Schedule from './pages/Schedule';
 import Faculty from './pages/Faculty';
-import Rooms from './pages/Rooms';
+import Blocks from './pages/Blocks';
 import Campus360 from './pages/Campus360';
 import useInactivityTimer from './hooks/TrackInactivity';
 import FacultyDetail from './pages/FacultyDetail';
@@ -36,7 +36,7 @@ const App = () => {
               <Route path="/help" element={<HelpDesk />} />
               <Route path="/schedule" element={<Schedule />} />
               <Route path="/faculty" element={<Faculty />} />
-              <Route path="/rooms" element={<Rooms />} />
+              <Route path="/blocks" element={<Blocks />} />
               <Route path="/faculty/:id" element={<FacultyDetail />} />
             </Routes>
           </div>

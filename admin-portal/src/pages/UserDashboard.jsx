@@ -45,7 +45,7 @@ const UserDashboard = () => {
           .length,
       });
 
-      setRecentAnnouncements(announcements.slice(0, 5));
+      setRecentAnnouncements(announcements.slice(0, 2));
     } catch (err) {
       console.error('Dashboard Sync Error:', err);
       toast.error('Unable to sync with the server.');
@@ -109,11 +109,11 @@ const UserDashboard = () => {
   ];
 
   return (
-    <div className="ml-72 mt-24 min-h-[calc(100vh-6rem)] bg-[#f8fafc] p-8">
+    <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       <PageHeader user={user} roleLabel="User" />
 
       {/* Stats */}
-      <section className="grid grid-cols-3 gap-4 mb-8">
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
         {statsData.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
@@ -140,15 +140,15 @@ const UserDashboard = () => {
                   onClick={() => navigate(`/notification/${announcement._id}`)}
                   className="p-4 bg-slate-50/50 rounded-xl hover:bg-slate-50 transition-all cursor-pointer group flex items-center gap-4"
                 >
-                  <div className="w-1 h-12 bg-[#002b5c] rounded-full opacity-30 group-hover:opacity-100 transition-opacity" />
+                  <div className="w-1 h-12 bg-slate-900 rounded-full opacity-30 group-hover:opacity-100 transition-opacity" />
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-sm text-[#002b5c] mb-1 group-hover:text-blue-600 transition-colors truncate">
+                    <h3 className="font-bold text-sm text-slate-900 mb-1 group-hover:text-blue-600 transition-colors truncate">
                       {announcement.subject}
                     </h3>
                     <p className="text-xs text-slate-500 line-clamp-1 mb-1">
                       {announcement.message}
                     </p>
-                    <div className="flex items-center gap-3 text-[10px] text-slate-400">
+                    <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
                       <div className="flex items-center gap-1">
                         <Calendar size={10} />
                         {new Date(announcement.createdAt).toLocaleDateString()}
@@ -162,7 +162,7 @@ const UserDashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-slate-300 group-hover:bg-[#002b5c] group-hover:text-white transition-all shadow-sm shrink-0">
+                  <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center text-slate-300 group-hover:bg-slate-900 group-hover:text-white transition-all shadow-sm shrink-0">
                     <Eye size={14} />
                   </div>
                 </div>
@@ -181,12 +181,12 @@ const UserDashboard = () => {
       {/* Quick Actions */}
       <Card headerIcon={ChevronRight} headerTitle="Quick Actions" headerSubtitle="Navigate quickly">
         <div className="p-5">
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {quickActions.map((action, i) => (
               <button
                 key={i}
                 onClick={() => navigate(action.route)}
-                className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl hover:bg-[#002b5c] hover:text-white transition-all group"
+                className="flex items-center gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-900 hover:text-white transition-all group"
               >
                 <div
                   className={`w-10 h-10 ${action.color} rounded-lg flex items-center justify-center group-hover:bg-white/20 group-hover:text-white transition-all`}

@@ -13,7 +13,7 @@
     "schedule": "Schedule",
     "library": "Library",
     "faculty": "Faculty",
-    "rooms": "Rooms",
+    "Blocks": "Blocks",
     "announcements": "Announcements",
     "maintenance": "Upcoming network maintenance: Fri at 5 PM",
     "help": "HELP",
@@ -28,6 +28,6 @@
     "helpDesk": "Help Desk Content Area",
     "schedule": "Schedule Content Area",
     "faculty": "Faculty Content Area",
-    "rooms": "Rooms Content Area"
+    "blocks": "Rooms Content Area"
   }
 }

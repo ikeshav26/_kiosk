@@ -143,14 +143,14 @@ export const deleteUser = async (req, res) => {
       return res.status(403).json({ message: 'Only admin or super admin can delete user' });
     }
 
-    const user = await User.findOneAndDelete({ userId });
+    const user = await User.findOne({ userId });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
     if (user.role === 'admin' && req.user.role !== 'superAdmin') {
       return res.status(403).json({ message: 'Only super admin can delete admin' });
     }
-    user.remove();
+    await User.deleteOne({ userId }); 
     res.json({ message: 'User deleted successfully' });
   } catch (err) {
     res.status(500).json({ message: 'Error deleting user', error: err.message });

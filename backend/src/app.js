@@ -11,8 +11,8 @@ import helpTicketRoutes from './routes/HelpTicket.routes.js';
 const app = express();
 connectDb();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 
 app.get('/api', (req, res) => {

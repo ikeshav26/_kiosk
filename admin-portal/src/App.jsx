@@ -33,11 +33,12 @@ const App = () => {
   const location = useLocation();
   const { user } = useContext(authContext);
   const isLoginPage = location.pathname === '/login' || location.pathname === '/';
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
   return (
     <div className="">
-      {!isLoginPage && <Navbar />}
-      {!isLoginPage && <SideBar />}
+      {!isLoginPage && <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />}
+      {!isLoginPage && <SideBar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Navigate to="/login" replace />} />

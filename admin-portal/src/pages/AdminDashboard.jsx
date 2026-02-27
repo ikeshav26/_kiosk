@@ -204,18 +204,18 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <div className="ml-72 mt-24 min-h-[calc(100vh-6rem)] bg-[#f8fafc] p-8">
+    <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       <PageHeader user={user} roleLabel="Admin" />
 
       {/* Stats */}
-      <section className="grid grid-cols-5 gap-4 mb-8">
+      <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
         {statsData.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
       </section>
 
       {/* Main Content */}
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Create User Form */}
         <Card
           headerIcon={UserPlus}
@@ -287,16 +287,16 @@ const AdminDashboard = () => {
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-100">
                 <tr className="text-left">
-                  <th className="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     User
                   </th>
-                  <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-4 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-3 text-right text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-right text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -307,19 +307,19 @@ const AdminDashboard = () => {
                     <tr key={u._id} className="hover:bg-slate-50/50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 bg-slate-100 rounded-lg flex items-center justify-center text-slate-500">
+                          <div className="w-9 h-9 bg-white border border-slate-200 rounded-lg flex items-center justify-center text-slate-500 shadow-sm">
                             <UserIcon size={16} />
                           </div>
                           <div>
-                            <p className="text-sm font-semibold text-[#002b5c]">
+                            <p className="text-sm font-semibold text-slate-900">
                               {u.name || 'N/A'}
                             </p>
-                            <p className="text-xs text-slate-400">ID: {u.userId}</p>
+                            <p className="text-xs text-slate-500">ID: {u.userId}</p>
                           </div>
                         </div>
                       </td>
                       <td className="px-4 py-4">
-                        <span className="px-2 py-1 rounded-md text-[10px] font-bold uppercase bg-slate-100 text-slate-600">
+                        <span className="px-2 py-1 rounded-md text-[10px] font-bold uppercase bg-slate-100 text-slate-600 border border-slate-200">
                           {u.role}
                         </span>
                       </td>

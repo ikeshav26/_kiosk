@@ -13,7 +13,7 @@ import {
 import axios from 'axios';
 import { authContext } from '../context/AuthContext';
 
-const SideBar = () => {
+const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const menuItems = [
     { label: 'Dashboard', icon: LayoutDashboard, route: '/dashboard' },
     { label: 'Faculty', icon: Users, route: '/faculty' },
@@ -24,10 +24,10 @@ const SideBar = () => {
 
   const getNavLinkClass = (isActive) => {
     const base =
-      'group flex items-center gap-4 px-6 py-4 rounded-2xl transition-all duration-300 mb-2 relative overflow-hidden';
+      'group flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 mb-1 relative overflow-hidden';
     const active = isActive
-      ? 'bg-white text-[#002b5c] shadow-lg shadow-black/20 translate-x-2'
-      : 'text-white/60 hover:text-white hover:bg-white/5';
+      ? 'bg-white shadow-sm text-slate-900 font-semibold'
+      : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100/50 font-medium';
     return `${base} ${active}`;
   };
 
@@ -44,80 +44,84 @@ const SideBar = () => {
   };
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-72 bg-[#002b5c] flex flex-col z-50 shadow-[10px_0_40px_rgba(0,0,0,0.1)] border-r border-white/5 font-sans">
-      <div className="p-10 shrink-0">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 bg-white/10 rounded-xl backdrop-blur-md border border-white/20">
-            <ShieldCheck size={24} className="text-white" />
+    <>
+      {/* Mobile Backdrop */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+      <aside
+        className={`fixed left-0 top-0 h-screen w-64 bg-slate-50/80 backdrop-blur-xl flex flex-col z-50 border-r border-slate-200 font-sans transition-transform duration-300 ease-in-out ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        }`}
+      >
+      <div className="p-6 shrink-0 border-b border-slate-200/50">
+        <div className="flex items-center gap-3 mb-1">
+          <div className="p-2 bg-white rounded-lg shadow-sm border border-slate-200">
+            <ShieldCheck size={20} className="text-slate-700" />
           </div>
-          <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em]">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
             Admin Portal
           </span>
         </div>
-        <h1 className="text-2xl font-black text-white tracking-tight uppercase italic">
-          Smart <span className="text-white/50 font-medium">Console</span>
+        <h1 className="text-xl font-bold text-slate-900 tracking-tight mt-2">
+          Smart Console
         </h1>
       </div>
 
-      <nav className="flex-1 px-6 overflow-y-auto custom-scrollbar pt-4">
+      <nav className="flex-1 px-4 overflow-y-auto custom-scrollbar pt-6">
         <div className="mb-6">
-          <p className="px-6 text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-4">
+          <p className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
             Main Menu
           </p>
           {menuItems.map((item) => (
             <NavLink
               key={item.label}
               to={item.route}
+              onClick={() => setIsSidebarOpen(false)}
               className={({ isActive }) => getNavLinkClass(isActive)}
             >
               {({ isActive }) => (
                 <>
                   <item.icon
-                    size={22}
-                    className={isActive ? 'text-[#002b5c]' : 'text-white/40 group-hover:text-white'}
+                    size={18}
+                    className={isActive ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'}
                   />
-                  <span className="font-bold text-sm tracking-wide">{item.label}</span>
-                  {isActive && (
-                    <div className="ml-auto animate-in slide-in-from-left-2 duration-300">
-                      <ChevronRight size={18} />
-                    </div>
-                  )}
+                  <span className="text-sm">{item.label}</span>
                 </>
               )}
             </NavLink>
           ))}
         </div>
 
-        <div className="mt-8">
-          <p className="px-6 text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-4">
+        <div className="mt-6">
+          <p className="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3">
             System
           </p>
-          <NavLink to="/settings" className={({ isActive }) => getNavLinkClass(isActive)}>
-            <Settings size={22} className="opacity-40" />
-            <span className="font-bold text-sm tracking-wide">Settings</span>
+          <NavLink 
+            to="/settings" 
+            onClick={() => setIsSidebarOpen(false)}
+            className={({ isActive }) => getNavLinkClass(isActive)}
+          >
+            {({ isActive }) => (
+              <>
+                <Settings size={18} className={isActive ? 'text-slate-900' : 'text-slate-400 group-hover:text-slate-600'} />
+                <span className="text-sm">Settings</span>
+              </>
+            )}
           </NavLink>
         </div>
       </nav>
 
-      <div className="p-8 border-t border-white/5 bg-black/10">
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white overflow-hidden">
-            <Users size={24} className="opacity-30" />
-          </div>
-          <div className="overflow-hidden">
-            <p className="text-xs font-black text-white tracking-tight truncate">Administrator</p>
-            <p className="text-[9px] font-bold text-white/30 uppercase tracking-widest">
-              Master Access
-            </p>
-          </div>
-        </div>
-
+      <div className="p-4 border-t border-slate-200/50 bg-slate-50/50">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center justify-center gap-3 py-4 bg-red-500/10 hover:bg-red-500 text-red-400 hover:text-white rounded-2xl transition-all font-black text-xs uppercase tracking-widest active:scale-95 group"
+          className="w-full flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-xl transition-all font-medium text-sm shadow-sm"
         >
-          <LogOut size={16} className="group-hover:-translate-x-1 transition-transform" />
-          Logout Session
+          <LogOut size={16} />
+          Logout
         </button>
       </div>
 
@@ -125,11 +129,12 @@ const SideBar = () => {
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { 
-          background: rgba(255, 255, 255, 0.1); 
+          background: rgba(0, 0, 0, 0.1); 
           border-radius: 10px;
         }
       `}</style>
     </aside>
+    </>
   );
 };
 

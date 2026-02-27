@@ -96,36 +96,36 @@ const Ticket = () => {
 
   if (loading)
     return (
-      <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col items-center justify-center bg-white">
-        <Loader2 size={32} className="text-[#002b5c] animate-spin mb-4" />
-        <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+      <div className="lg:ml-64 mt-20 h-[calc(100vh-5rem)] flex flex-col items-center justify-center bg-slate-50">
+        <Loader2 size={32} className="text-slate-900 animate-spin mb-4" />
+        <span className="text-xs font-black text-slate-300 uppercase tracking-widest">
           Syncing Data
         </span>
       </div>
     );
   return (
-    <div className="ml-72 mt-24 h-[calc(100vh-6rem)] flex flex-col font-sans bg-white overflow-hidden">
-      <header className="px-12 py-8 border-b border-slate-100 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-8">
+    <div className="lg:ml-64 mt-20 h-[calc(100vh-5rem)] flex flex-col font-sans bg-slate-50 overflow-hidden">
+      <header className="px-6 sm:px-12 py-6 sm:py-8 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between shrink-0 gap-4">
+        <div className="flex items-center gap-4 sm:gap-8">
           <button
             onClick={() => navigate(-1)}
-            className="p-2 hover:bg-slate-50 rounded-full transition-all text-slate-400 hover:text-[#002b5c]"
+            className="p-2 hover:bg-slate-50 rounded-full transition-all text-slate-400 hover:text-slate-900"
           >
             <ArrowLeft size={24} />
           </button>
           <div className="flex flex-col">
-            <span className="text-[10px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">
+            <span className="text-xs font-black text-slate-300 uppercase tracking-widest leading-none mb-1">
               Ticket ID: {data._id.slice(-6).toUpperCase()}
             </span>
-            <h1 className="text-xl font-bold text-[#002b5c] tracking-tight">Help Desk Briefing</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">Help Desk Briefing</h1>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 w-full sm:w-auto">
           <button
             onClick={handleDelete}
             disabled={actionLoading}
-            className="flex items-center gap-2 px-5 py-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest"
+            className="flex items-center justify-center gap-2 px-5 py-2.5 text-red-500 hover:bg-red-50 rounded-xl transition-all font-bold text-xs uppercase tracking-widest w-full sm:w-auto"
           >
             {actionLoading ? <Loader2 size={14} className="animate-spin" /> : <Trash2 size={14} />}
             Delete Ticket
@@ -134,8 +134,8 @@ const Ticket = () => {
       </header>
 
       <div className="flex-1 overflow-y-auto custom-scrollbar">
-        <div className="max-w-4xl mx-auto py-16 px-12">
-          <div className="flex items-center gap-8 mb-12 pb-8 border-b border-slate-50 text-slate-400">
+        <div className="max-w-4xl mx-auto py-8 sm:py-16 px-6 sm:px-12">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-8 mb-8 sm:mb-12 pb-6 sm:pb-8 border-b border-slate-50 text-slate-400">
             <div className="flex items-center gap-2">
               <Calendar size={16} />
               <span className="text-xs font-bold">
@@ -154,23 +154,23 @@ const Ticket = () => {
             </div>
           </div>
 
-          <div className="mb-16">
-            <h2 className="text-5xl font-black text-[#002b5c] tracking-tight leading-tight mb-8">
+          <div className="mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-6 sm:mb-8">
               {data.subject}
             </h2>
-            <div className="bg-slate-50 rounded-4xl p-10 border border-slate-100">
-              <p className="text-xl font-medium text-slate-600 leading-relaxed whitespace-pre-wrap">
+            <div className="bg-slate-50 rounded-3xl sm:rounded-4xl p-6 sm:p-10 border border-slate-100">
+              <p className="text-lg sm:text-xl font-medium text-slate-600 leading-relaxed whitespace-pre-wrap">
                 {data.description}
               </p>
             </div>
           </div>
 
-          <div className="pt-12 border-t border-slate-100">
-            <h3 className="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-8">
+          <div className="pt-8 sm:pt-12 border-t border-slate-100">
+            <h3 className="text-xs font-black text-slate-300 uppercase tracking-[0.4em] mb-6 sm:mb-8">
               System Lifecycle Management
             </h3>
 
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {statusOptions.map((opt) => {
                 const isActive = data.status === opt.value;
                 return (

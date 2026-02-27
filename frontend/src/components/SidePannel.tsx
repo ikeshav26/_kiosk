@@ -18,7 +18,7 @@ const SidePanel = () => {
     { key: 'navigate', label: 'Navigate', icon: Navigation, route: '/navigate' },
     { key: 'schedule', label: 'Schedule', icon: Calendar, route: '/schedule' },
     { key: 'faculty', label: 'Faculty', icon: Users, route: '/faculty' },
-    { key: 'rooms', label: 'Rooms', icon: DoorOpen, route: '/rooms' },
+    { key: 'Blocks', label: 'Blocks', icon: DoorOpen, route: '/blocks' },
   ];
 
   const { t } = useTranslation();

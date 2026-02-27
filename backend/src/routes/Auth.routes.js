@@ -18,6 +18,6 @@ router.post('/login', login);
 router.get('/logout', logout);
 router.get('/user-info', auth, getProfile);
 router.get('/all-users', auth, getAllUsers);
-router.get('/delete-user/:id', auth, deleteUser);
+router.get('/delete-user/:userId', auth, deleteUser);
 
 export default router;
