@@ -48,6 +48,11 @@ const BuildingSchema = new mongoose.Schema(
 
     departments: [{ type: String }],
 
+    departmentInfo: {
+      about: { type: String },
+      coursesOffered: [{ type: String }],
+    },
+
     openTime: { type: String, default: '09:00' },
     closeTime: { type: String, default: '16:00' },
     isOpenWeekends: { type: Boolean, default: false },

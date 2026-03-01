@@ -19,6 +19,7 @@ export const addBuilding = async (req, res) => {
       isOpenWeekends,
       contactNumber,
       contactEmail,
+      departmentInfo,
       imageUrl = [],
     } = req.body;
 
@@ -55,6 +56,7 @@ export const addBuilding = async (req, res) => {
       isOpenWeekends,
       contactNumber,
       contactEmail,
+      departmentInfo,
       imageUrl: uploadedImageArray,
     });
 
@@ -82,6 +84,22 @@ export const getBuildingById = async (req, res) => {
       return res.status(404).json({ message: 'Building not found' });
     }
     res.status(200).json(building);
+  } catch (err) {
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+};
+
+export const updateBuilding = async (req, res) => {
+  try {
+    const updated = await Building.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true, runValidators: true }
+    );
+    if (!updated) {
+      return res.status(404).json({ message: 'Building not found' });
+    }
+    res.status(200).json(updated);
   } catch (err) {
     res.status(500).json({ message: 'Server error', error: err.message });
   }

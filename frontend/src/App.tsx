@@ -12,6 +12,7 @@ import Blocks from './pages/Blocks';
 import Campus360 from './pages/Campus360';
 import useInactivityTimer from './hooks/TrackInactivity';
 import FacultyDetail from './pages/FacultyDetail';
+import BlockDetail from './pages/BlockDetail';
 
 const App = () => {
   useInactivityTimer();
@@ -38,6 +39,7 @@ const App = () => {
               <Route path="/faculty" element={<Faculty />} />
               <Route path="/blocks" element={<Blocks />} />
               <Route path="/faculty/:id" element={<FacultyDetail />} />
+              <Route path="/block/:id" element={<BlockDetail />} />
             </Routes>
           </div>
         </div>
