@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && electron-builder",
+    "build:publish": "tsc -b && vite build && electron-builder --publish always",
     "lint": "eslint .",
     "preview": "vite preview"
   },
