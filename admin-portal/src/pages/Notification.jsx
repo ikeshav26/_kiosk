@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   ArrowLeft,
   Clock,
@@ -29,7 +29,7 @@ const Notification = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`/api/announcement/${id}`);
+        const res = await axiosInstance.get(`/api/announcement/${id}`);
         setData(res.data.announcement || res.data);
       } catch (err) {
         console.error('Fetch Error:', err);
@@ -52,7 +52,7 @@ const Notification = () => {
 
     setActionLoading(true);
     try {
-      await axios.delete(`/api/announcement/delete/${id}`);
+      await axiosInstance.delete(`/api/announcement/delete/${id}`);
       navigate('/notifications');
     } catch (err) {
       setError('Administrative deletion failed. System override required.');

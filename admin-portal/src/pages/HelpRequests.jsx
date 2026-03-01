@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   LifeBuoy,
   Trash2,
@@ -62,7 +62,7 @@ const HelpRequests = () => {
   const fetchTickets = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/help-ticket/all');
+      const res = await axiosInstance.get('/api/help-ticket/all');
       setTickets(res.data.tickets || res.data || []);
     } catch (err) {
       console.error('Ticket Sync Error:', err);
@@ -79,7 +79,7 @@ const HelpRequests = () => {
   const handleUpdateStatus = async (id, newStatus) => {
     setActionLoading(true);
     try {
-      await axios.put(`/api/help-ticket/update-status/${id}`, { status: newStatus });
+      await axiosInstance.put(`/api/help-ticket/update-status/${id}`, { status: newStatus });
       setTickets((prev) => prev.map((t) => (t._id === id ? { ...t, status: newStatus } : t)));
       toast.success('Status updated!');
     } catch (err) {
@@ -93,7 +93,7 @@ const HelpRequests = () => {
     if (!window.confirm('Delete this ticket?')) return;
     setActionLoading(true);
     try {
-      await axios.delete(`/api/help-ticket/delete/${id}`);
+      await axiosInstance.delete(`/api/help-ticket/delete/${id}`);
       toast.success('Ticket deleted!');
       fetchTickets();
     } catch (err) {

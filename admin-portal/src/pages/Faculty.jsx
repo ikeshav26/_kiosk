@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   Users,
   UserPlus,
@@ -46,7 +46,7 @@ const Faculty = () => {
   const fetchFaculty = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/faculty/all');
+      const res = await axiosInstance.get('/api/faculty/all');
       setFaculty(res.data.faculties || res.data || []);
     } catch (err) {
       console.error('Faculty Sync Error:', err);
@@ -92,7 +92,7 @@ const Faculty = () => {
     }
     setActionLoading(true);
     try {
-      await axios.post('/api/faculty/add', formData);
+      await axiosInstance.post('/api/faculty/add', formData);
       setFormData({
         facultyName: '',
         designation: '',
@@ -116,7 +116,7 @@ const Faculty = () => {
     if (!window.confirm('Delete this faculty member?')) return;
     setActionLoading(true);
     try {
-      await axios.get(`/api/faculty/delete/${id}`);
+      await axiosInstance.get(`/api/faculty/delete/${id}`);
       toast.success('Faculty deleted!');
       fetchFaculty();
     } catch (err) {

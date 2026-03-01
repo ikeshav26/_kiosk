@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bell, Search, User, ChevronDown, Menu, X } from 'lucide-react';
 import { useContext } from 'react';
 import { authContext } from '../context/AuthContext';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 
 const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const [time, setTime] = useState(new Date());

@@ -10,7 +10,7 @@ import {
   ChevronRight,
   Settings,
 } from 'lucide-react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import { authContext } from '../context/AuthContext';
 
 const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
@@ -33,7 +33,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   const handleLogout = async () => {
     try {
-      const res = await axios.get('/api/auth/logout');
+      const res = await axiosInstance.get('/api/auth/logout');
       console.log(res.data);
       setuser(null);
       localStorage.removeItem('user');

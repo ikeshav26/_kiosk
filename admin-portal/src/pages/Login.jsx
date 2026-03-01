@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   User,
   Lock,
@@ -63,7 +63,7 @@ const Login = () => {
     setError(null);
 
     try {
-      const response = await axios.post('/api/auth/login', formData);
+      const response = await axiosInstance.post('/api/auth/login', formData);
       setuser(response.data.user);
       localStorage.setItem('user', JSON.stringify(response.data.user));
       navigate('/dashboard');

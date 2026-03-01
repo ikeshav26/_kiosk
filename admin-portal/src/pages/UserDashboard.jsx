@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   User as UserIcon,
   Bell,
@@ -31,8 +31,8 @@ const UserDashboard = () => {
     setLoading(true);
     try {
       const [announcementsRes, ticketsRes] = await Promise.all([
-        axios.get('/api/announcement/all'),
-        axios.get('/api/help-ticket/all'),
+        axiosInstance.get('/api/announcement/all'),
+        axiosInstance.get('/api/help-ticket/all'),
       ]);
 
       const announcements = announcementsRes.data.announcements || [];

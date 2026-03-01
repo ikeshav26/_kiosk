@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   ShieldCheck,
   UserPlus,
@@ -42,7 +42,7 @@ const SuperAdminDashboard = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const usersRes = await axios.get('/api/auth/all-users');
+      const usersRes = await axiosInstance.get('/api/auth/all-users');
       setAllUsers(usersRes.data.users || usersRes.data);
     } catch (err) {
       console.error('Dashboard Sync Error:', err);
@@ -64,7 +64,7 @@ const SuperAdminDashboard = () => {
     }
     setActionLoading(true);
     try {
-      await axios.post('/api/auth/create-user', newUser);
+      await axiosInstance.post('/api/auth/create-user', newUser);
       setNewUser({ name: '', userId: '', email: '', password: '', role: 'user' });
       toast.success('User created successfully!');
       fetchData();
@@ -79,7 +79,7 @@ const SuperAdminDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     setActionLoading(true);
     try {
-      await axios.get(`/api/auth/delete-user/${ userId }`);
+      await axiosInstance.get(`/api/auth/delete-user/${ userId }`);
       toast.success('User deleted successfully!');
       fetchData();
     } catch (err) {

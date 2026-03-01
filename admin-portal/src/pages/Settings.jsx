@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { authContext } from '../context/AuthContext';
 import { PageLoader, Card, FormInput, Button } from '../components/ui';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import toast from 'react-hot-toast';
 
 const Settings = () => {
@@ -38,7 +38,7 @@ const Settings = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.put('/api/auth/update-profile', profileData);
+      const res = await axiosInstance.put('/api/auth/update-profile', profileData);
       const updatedUser = { ...user, ...profileData };
       setuser(updatedUser);
       localStorage.setItem('user', JSON.stringify(updatedUser));
@@ -62,7 +62,7 @@ const Settings = () => {
     }
     setLoading(true);
     try {
-      await axios.put('/api/auth/change-password', {
+      await axiosInstance.put('/api/auth/change-password', {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword,
       });
@@ -77,7 +77,7 @@ const Settings = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get('/api/auth/logout');
+      await axiosInstance.get('/api/auth/logout');
       setuser(null);
       localStorage.removeItem('user');
       navigate('/login');

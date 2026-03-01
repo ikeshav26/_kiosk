@@ -1,5 +1,6 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { register401Handler } from '../utils/Instance';
 
 const authContext = createContext();
 
@@ -8,6 +9,16 @@ const AuthProvider = ({ children }) => {
     localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
   );
   const navigate = useNavigate();
+
+  const handleUnauthorized = useCallback(() => {
+    setuser(null);
+    navigate('/login', { replace: true });
+  }, [navigate]);
+
+  useEffect(() => {
+    register401Handler(handleUnauthorized);
+  }, [handleUnauthorized]);
+
   const value = {
     user,
     setuser,

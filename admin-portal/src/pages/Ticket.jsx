@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   ArrowLeft,
   Clock,
@@ -37,7 +37,7 @@ const Ticket = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`/api/help-ticket/${id}`);
+      const res = await axiosInstance.get(`/api/help-ticket/${id}`);
       setData(res.data.ticket || res.data);
     } catch (err) {
       console.error('Fetch Error:', err);
@@ -54,7 +54,7 @@ const Ticket = () => {
   const handleUpdateStatus = async (newStatus) => {
     setActionLoading(true);
     try {
-      await axios.put(`/api/help-ticket/update-status/${id}`, { status: newStatus });
+      await axiosInstance.put(`/api/help-ticket/update-status/${id}`, { status: newStatus });
       setData((prev) => ({ ...prev, status: newStatus }));
     } catch (err) {
       setError('Administrative status update failed.');
@@ -72,7 +72,7 @@ const Ticket = () => {
       return;
     setActionLoading(true);
     try {
-      await axios.delete(`/api/help-ticket/delete/${id}`);
+      await axiosInstance.delete(`/api/help-ticket/delete/${id}`);
       navigate('/help-requests');
     } catch (err) {
       setError('Deletion failed. System override required.');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useContext } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import {
   Users,
   Mail,
@@ -58,10 +58,10 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const [facultyRes, announcementsRes, ticketsRes, usersRes] = await Promise.all([
-        axios.get('/api/faculty/all'),
-        axios.get('/api/announcement/all'),
-        axios.get('/api/help-ticket/all'),
-        axios.get('/api/auth/all-users'),
+        axiosInstance.get('/api/faculty/all'),
+        axiosInstance.get('/api/announcement/all'),
+        axiosInstance.get('/api/help-ticket/all'),
+        axiosInstance.get('/api/auth/all-users'),
       ]);
 
       const faculty = facultyRes.data.faculties || facultyRes.data || [];
@@ -100,7 +100,7 @@ const AdminDashboard = () => {
     }
     setActionLoading(true);
     try {
-      await axios.post('/api/auth/create-user', newUser);
+      await axiosInstance.post('/api/auth/create-user', newUser);
       setNewUser({ name: '', userId: '', email: '', password: '', role: 'user' });
       toast.success('User created successfully!');
       fetchDashboardData();
@@ -115,7 +115,7 @@ const AdminDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
     setActionLoading(true);
     try {
-      await axios.delete(`/api/auth/delete/${userId}`);
+      await axiosInstance.delete(`/api/auth/delete/${userId}`);
       toast.success('User deleted successfully!');
       fetchDashboardData();
     } catch (err) {
@@ -139,7 +139,7 @@ const AdminDashboard = () => {
     if (!editingUser) return;
     setActionLoading(true);
     try {
-      await axios.put(`/api/auth/update/${editingUser._id}`, editFormData);
+      await axiosInstance.put(`/api/auth/update/${editingUser._id}`, editFormData);
       toast.success('User updated successfully!');
       setEditingUser(null);
       fetchDashboardData();

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import { useNavigate } from 'react-router-dom';
 import {
   Megaphone,
@@ -40,7 +40,7 @@ const CreateNotifications = () => {
 
     setLoading(true);
     try {
-      await axios.post('/api/announcement/add', formData);
+      await axiosInstance.post('/api/announcement/add', formData);
       setSuccess(true);
       setTimeout(() => navigate('/notifications'), 2000);
     } catch (err) {

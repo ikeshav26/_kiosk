@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosInstance from '../utils/Instance';
 import { useNavigate } from 'react-router-dom';
 import { Bell, Plus, Clock, Trash2, ChevronRight, Megaphone, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
@@ -14,7 +14,7 @@ const Notifications = () => {
   const fetchNotifications = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/announcement/all');
+      const response = await axiosInstance.get('/api/announcement/all');
       setNotifications(response.data.announcements || []);
     } catch (err) {
       console.error('Fetch Error:', err);
@@ -32,7 +32,7 @@ const Notifications = () => {
     e.stopPropagation();
     if (!window.confirm('Delete this announcement?')) return;
     try {
-      await axios.delete(`/api/announcement/delete/${id}`);
+      await axiosInstance.delete(`/api/announcement/delete/${id}`);
       toast.success('Announcement deleted!');
       fetchNotifications();
     } catch (err) {
