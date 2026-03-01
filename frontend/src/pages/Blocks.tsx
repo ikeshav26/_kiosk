@@ -1,16 +1,31 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Building2, Search, ChevronRight, AlertCircle, Navigation, Layers } from 'lucide-react';
+import {
+  Building2,
+  Search,
+  ChevronRight,
+  AlertCircle,
+  Navigation,
+  Layers,
+} from 'lucide-react';
 
 interface BuildingBlock {
   _id: string;
   name: string;
-  blockCode: string;
+  code: string;
+  type: string;
   description: string;
-  imageUrl: string;
-  category: string;
-  floors: number;
+  imageUrl: string[];
+  totalFloors: number;
+  departments: string[];
+  coordinates: { lat: number; lng: number };
+  isAccessible: boolean;
+  hasLift: boolean;
+  openTime: string;
+  closeTime: string;
+  contactEmail: string;
+  contactNumber: string;
 }
 
 /**
@@ -67,7 +82,7 @@ const Blocks = () => {
 
     return blocks.filter((block) => {
       const name = String(block?.name || '').toLowerCase();
-      const code = String(block?.blockCode || '').toLowerCase();
+      const code = String(block?.code || '').toLowerCase();
       const query = searchQuery.toLowerCase();
       return name.includes(query) || code.includes(query);
     });
@@ -77,15 +92,12 @@ const Blocks = () => {
    * Helper to resolve the correct image source.
    * Prevents crashes if path is non-string or malformed.
    */
-  const resolveImageSrc = (path: string | null | undefined) => {
+  const resolveImageSrc = (images: string | string[] | undefined) => {
+    const path = Array.isArray(images) ? images[0] : images;
     if (typeof path !== 'string' || !path) return DEFAULT_IMAGE;
     if (path.startsWith('http') || path.startsWith('data:')) return path;
-
-    // Fallback for relative paths: assuming they live on the same host
-    // If your backend uses a specific port, you can hardcode it here like: 'http://localhost:5000'
-    const baseUrl = '';
     const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-    return `${baseUrl}${normalizedPath}`;
+    return normalizedPath;
   };
 
   if (loading)
@@ -167,15 +179,15 @@ const Blocks = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80" />
 
                   <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md border border-white/20 px-3 py-1 rounded-lg text-white text-[8px] font-black uppercase tracking-widest">
-                    {block.category || 'Facility'}
+                    {block.type || 'Facility'}
                   </div>
 
                   <div className="absolute bottom-4 left-6 text-white">
                     <p className="text-2xl font-black tracking-tight leading-none uppercase italic">
-                      {block.blockCode || 'N/A'}
+                      {block.code || 'N/A'}
                     </p>
                     <p className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60">
-                      Block ID
+                      Block Code
                     </p>
                   </div>
                 </div>
@@ -199,7 +211,7 @@ const Blocks = () => {
                           Scale
                         </p>
                         <p className="text-xs font-bold text-[#002b5c]">
-                          {block.floors || 0} Levels
+                          {block.totalFloors || 0} Levels
                         </p>
                       </div>
                     </div>

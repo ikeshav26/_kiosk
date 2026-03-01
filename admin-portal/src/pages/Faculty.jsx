@@ -26,6 +26,7 @@ const Faculty = () => {
   const [actionLoading, setActionLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDept, setSelectedDept] = useState('All');
+  const [isDragging, setIsDragging] = useState(false);
 
   const { user } = useContext(authContext);
   const isAdmin = user?.role === 'admin' || user?.role === 'superAdmin';
@@ -77,6 +78,43 @@ const Faculty = () => {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const processFile = (file) => {
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      toast.error('Only image files are allowed.');
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error('Image exceeds 2MB limit.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFormData((prev) => ({ ...prev, imageUrl: reader.result }));
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    processFile(file);
   };
 
   const removeImage = () => {
@@ -157,10 +195,24 @@ const Faculty = () => {
               {!formData.imageUrl ? (
                 <div
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex flex-col items-center justify-center h-32 bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl cursor-pointer hover:bg-white hover:border-blue-400 transition-all"
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  className={`flex flex-col items-center justify-center h-32 border-2 border-dashed rounded-xl cursor-pointer transition-all ${
+                    isDragging
+                      ? 'bg-blue-50 border-blue-400 scale-[1.01]'
+                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-blue-400'
+                  }`}
                 >
-                  <Upload className="text-slate-300 mb-2" size={24} />
-                  <p className="text-xs font-bold text-slate-400">Upload Photo</p>
+                  <Upload className={`mb-2 ${isDragging ? 'text-blue-400' : 'text-slate-300'}`} size={24} />
+                  {isDragging ? (
+                    <p className="text-xs font-bold text-blue-400">Drop to upload</p>
+                  ) : (
+                    <>
+                      <p className="text-xs font-bold text-slate-400">Drag & drop or click to upload</p>
+                      <p className="text-[10px] text-slate-300 mt-0.5">PNG, JPG up to 2MB</p>
+                    </>
+                  )}
                   <input
                     ref={fileInputRef}
                     type="file"
