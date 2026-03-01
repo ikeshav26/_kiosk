@@ -1,15 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {
-  Building2,
-  Search,
-  ChevronRight,
-  Loader2,
-  AlertCircle,
-  Navigation,
-  Layers,
-} from 'lucide-react';
+import { Building2, Search, ChevronRight, AlertCircle, Navigation, Layers } from 'lucide-react';
 
 interface BuildingBlock {
   _id: string;
@@ -85,7 +77,7 @@ const Blocks = () => {
    * Helper to resolve the correct image source.
    * Prevents crashes if path is non-string or malformed.
    */
-  const resolveImageSrc = (path: any) => {
+  const resolveImageSrc = (path: string | null | undefined) => {
     if (typeof path !== 'string' || !path) return DEFAULT_IMAGE;
     if (path.startsWith('http') || path.startsWith('data:')) return path;
 
