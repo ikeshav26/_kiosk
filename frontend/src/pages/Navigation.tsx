@@ -1,129 +1,74 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { MapPin, Navigation2, ChevronRight, Compass } from 'lucide-react';
-
-// ── Map Data ──────────────────────────────────────────────────────────────────
-const MAP_DATA = {
-  nodes: [
-    { id: 'Gate',                    lat: 30.25324731661996,  lng: 74.84412526180347 },
-    { id: 'Parking',                 lat: 30.25269024585599,  lng: 74.84417006980173 },
-    { id: 'Park1',                   lat: 30.252113382642953, lng: 74.84341430638237 },
-    { id: 'Parking_junction',        lat: 30.252705445441148, lng: 74.84361061425308 },
-    { id: 'park_junction',           lat: 30.252421699498658, lng: 74.84336620891912 },
-    { id: 'kiosk_placed',            lat: 30.251786667710704, lng: 74.84289473509908 },
-    { id: 'blockA_junction1',        lat: 30.25208052769207,  lng: 74.84305141485102 },
-    { id: 'blockA',                  lat: 30.251867716958323, lng: 74.8427757256478  },
-    { id: 'connect_junction1',       lat: 30.25160687721107,  lng: 74.8424932630872  },
-    { id: 'cad_junction',            lat: 30.251423858059713, lng: 74.84232174821103 },
-    { id: 'cad_block',               lat: 30.251326247709308, lng: 74.84243474624569 },
-    { id: 'Boys_Hostel_junction',    lat: 30.251301845104784, lng: 74.8428625245402  },
-    { id: 'Boys_Hostel_mid_junction',lat: 30.251085064145318, lng: 74.84308539989519 },
-    { id: 'Boys_Hostel',             lat: 30.25091508958664,  lng: 74.84335023764241 },
-    { id: 'blockB_junction',         lat: 30.251127540621148, lng: 74.84194441547791 },
-    { id: 'blockB',                  lat: 30.251035262118187, lng: 74.84209645870588 },
-    { id: 'Library_junction',        lat: 30.25145228956008,  lng: 74.84156280849645 },
-    { id: 'Library',                 lat: 30.251383139875884, lng: 74.84148036552736 },
-    { id: 'main_junction',           lat: 30.250685164845926, lng: 74.84132588717452 },
-    { id: 'main_canteen',            lat: 30.250797379793315, lng: 74.84117052272076 },
-    { id: 'blockE_junction',         lat: 30.250913934480067, lng: 74.84096114051607 },
-    { id: 'blockE',                  lat: 30.25099133511851,  lng: 74.84065703676549 },
-  ],
-  paths: [
-    {
-      id: 'to_cad_block',
-      label: 'CAD Block',
-      segments: [
-        { from: 'kiosk_placed', to: 'blockA'      },
-        { from: 'blockA',       to: 'cad_junction' },
-        { from: 'cad_junction', to: 'cad_block'    },
-      ],
-    },
-    {
-      id: 'to_blockB',
-      label: 'Block B',
-      segments: [
-        { from: 'kiosk_placed',    to: 'blockA'          },
-        { from: 'blockA',          to: 'cad_junction'    },
-        { from: 'cad_junction',    to: 'blockB_junction' },
-        { from: 'blockB_junction', to: 'blockB'          },
-      ],
-    },
-    {
-      id: 'to_main_canteen',
-      label: 'Main Canteen',
-      segments: [
-        { from: 'kiosk_placed',  to: 'blockA'        },
-        { from: 'blockA',        to: 'cad_junction'  },
-        { from: 'cad_junction',  to: 'main_junction' },
-        { from: 'main_junction', to: 'main_canteen'  },
-      ],
-    },
-    {
-      id: 'to_boys_hostel',
-      label: 'Boys Hostel',
-      segments: [
-        { from: 'kiosk_placed',            to: 'blockA'                  },
-        { from: 'blockA',                  to: 'connect_junction1'       },
-        { from: 'connect_junction1',       to: 'Boys_Hostel_junction'    },
-        { from: 'Boys_Hostel_junction',    to: 'Boys_Hostel_mid_junction'},
-        { from: 'Boys_Hostel_mid_junction',to: 'Boys_Hostel'             },
-      ],
-    },
-    {
-      id: 'to_library',
-      label: 'Library',
-      segments: [
-        { from: 'kiosk_placed',    to: 'blockA'           },
-        { from: 'blockA',          to: 'cad_junction'     },
-        { from: 'cad_junction',    to: 'blockB_junction'  },
-        { from: 'blockB_junction', to: 'Library_junction' },
-        { from: 'Library_junction',to: 'Library'          },
-      ],
-    },
-  ],
-};
+import { MapPin, Navigation2, ChevronRight, Compass, Loader2 } from 'lucide-react';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 interface LatLng { lat: number; lng: number; }
+interface MapNode  { id: string; lat: number; lng: number; }
+interface Segment  { from: string; to: string; }
+interface PathLabel { en: string; hi?: string; pa?: string; }
+interface MapPath  { id: string; label: PathLabel | string; segments: Segment[]; }
+interface MapData  { nodes: MapNode[]; paths: MapPath[]; }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
-const nodeMap = new Map<string, LatLng>(
-  MAP_DATA.nodes.map((n) => [n.id, { lat: n.lat, lng: n.lng }])
-);
-
 /** Returns an ordered array of LatLng coords for the given path ID. */
-function getCoordinatesFromPath(pathId: string): LatLng[] {
-  const path = MAP_DATA.paths.find((p) => p.id === pathId);
+function getCoordinatesFromPath(pathId: string, nodeMap: Map<string, LatLng>, paths: MapPath[]): LatLng[] {
+  const path = paths.find((p) => p.id === pathId);
   if (!path || path.segments.length === 0) return [];
-
   const ids: string[] = [path.segments[0].from];
   for (const seg of path.segments) ids.push(seg.to);
-
-  return ids.flatMap((id) => {
-    const coord = nodeMap.get(id);
-    return coord ? [coord] : [];
-  });
+  return ids.flatMap((id) => { const c = nodeMap.get(id); return c ? [c] : []; });
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
 const Navigation = () => {
-  const mapRef        = useRef<HTMLDivElement>(null);
-  const leafletMapRef = useRef<L.Map | null>(null);
-  const routeLayerRef = useRef<L.Polyline | null>(null);
-  const startMarkerRef= useRef<L.CircleMarker | null>(null);
-  const endMarkerRef  = useRef<L.CircleMarker | null>(null);
+  const { i18n } = useTranslation();
 
+  /** Resolve a path label to the current UI language, falling back to English. */
+  const resolveLabel = (label: MapPath['label']): string => {
+    if (!label) return '';
+    if (typeof label === 'string') return label;
+    const lang = i18n.language as 'en' | 'hi' | 'pa';
+    return label[lang] || label.en;
+  };
+  const mapRef         = useRef<HTMLDivElement>(null);
+  const leafletMapRef  = useRef<L.Map | null>(null);
+  const routeLayerRef  = useRef<L.Polyline | null>(null);
+  const startMarkerRef = useRef<L.CircleMarker | null>(null);
+  const endMarkerRef   = useRef<L.CircleMarker | null>(null);
+
+  const [mapData,      setMapData]      = useState<MapData | null>(null);
+  const [loadingData,  setLoadingData]  = useState(false);
+  const [dataError,    setDataError]    = useState<string | null>(null);
   const [activePathId, setActivePathId] = useState<string | null>(null);
-  const [mapStarted, setMapStarted]     = useState(false);
+  const [mapStarted,   setMapStarted]   = useState(false);
 
-  // ── Initialise map once user taps "Start Navigation" ────────────────────
+  // ── 1. Fetch map data from API when user starts navigation ──────────────
   useEffect(() => {
-    if (!mapStarted || !mapRef.current || leafletMapRef.current) return;
+    if (!mapStarted) return;
+    setLoadingData(true);
+    setDataError(null);
+    axios
+      .get('/api/kiosk/map-data')
+      .then((res) => setMapData(res.data))
+      .catch(() => setDataError('Failed to load map data from server.'))
+      .finally(() => setLoadingData(false));
+  }, [mapStarted]);
 
-    // Auto-centre: compute average lat/lng of all nodes
-    const lats = MAP_DATA.nodes.map((n) => n.lat);
-    const lngs = MAP_DATA.nodes.map((n) => n.lng);
+  // ── 2. Initialise Leaflet map once map data is available ─────────────────
+  useEffect(() => {
+    if (!mapStarted || !mapData || !mapRef.current || leafletMapRef.current) return;
+
+    const nodeMap = new Map<string, LatLng>(
+      mapData.nodes.map((n) => [n.id, { lat: n.lat, lng: n.lng }])
+    );
+
+    // Auto-centre: average lat/lng of all nodes
+    const lats = mapData.nodes.map((n) => n.lat);
+    const lngs = mapData.nodes.map((n) => n.lng);
     const centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
     const centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
 
@@ -143,7 +88,7 @@ const Navigation = () => {
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
     // Plot every node as a small grey circle marker
-    MAP_DATA.nodes.forEach((node) => {
+    mapData.nodes.forEach((node) => {
       L.circleMarker([node.lat, node.lng], {
         radius: 5,
         color: '#ffffff',
@@ -175,13 +120,13 @@ const Navigation = () => {
 
     leafletMapRef.current = map;
     return () => { map.remove(); leafletMapRef.current = null; };
-  }, [mapStarted]);
+  }, [mapStarted, mapData]);
 
   // ── drawPath ─────────────────────────────────────────────────────────────
   /** Draws the selected path on the map: blue polyline, green start, red end. */
   function drawPath(pathId: string) {
     const map = leafletMapRef.current;
-    if (!map) return;
+    if (!map || !mapData) return;
 
     // Remove previous route layers
     routeLayerRef.current?.remove();
@@ -191,7 +136,10 @@ const Navigation = () => {
     startMarkerRef.current = null;
     endMarkerRef.current = null;
 
-    const coords = getCoordinatesFromPath(pathId);
+    const nodeMap = new Map<string, LatLng>(
+      mapData.nodes.map((n) => [n.id, { lat: n.lat, lng: n.lng }])
+    );
+    const coords = getCoordinatesFromPath(pathId, nodeMap, mapData.paths);
     if (coords.length < 2) return;
 
     const latlngs: [number, number][] = coords.map((c) => [c.lat, c.lng]);
@@ -268,7 +216,19 @@ const Navigation = () => {
           <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] px-2 mb-3">
             Destinations
           </p>
-          {MAP_DATA.paths.map((path) => {
+
+          {loadingData && (
+            <div className="flex items-center gap-2 px-2 py-3">
+              <Loader2 size={14} className="text-[#002b5c] animate-spin" />
+              <span className="text-[10px] font-bold text-slate-400">Loading routes…</span>
+            </div>
+          )}
+
+          {dataError && (
+            <p className="text-[10px] font-bold text-red-400 px-2">{dataError}</p>
+          )}
+
+          {(mapData?.paths ?? []).map((path) => {
             const isActive = activePathId === path.id;
             return (
               <button
@@ -287,7 +247,7 @@ const Navigation = () => {
                 >
                   <MapPin size={14} />
                 </div>
-                <span className="text-xs font-black flex-1 leading-snug">{path.label}</span>
+                <span className="text-xs font-black flex-1 leading-snug">{resolveLabel(path.label)}</span>
                 <ChevronRight size={13} className={isActive ? 'opacity-60' : 'opacity-30'} />
               </button>
             );

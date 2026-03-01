@@ -22,8 +22,8 @@ const BuildingSchema = new mongoose.Schema(
     description: { type: String },
 
     coordinates: {
-      x: { type: Number, required: true },
-      y: { type: Number, required: true },
+      lat: { type: Number, required: true },
+      lng: { type: Number, required: true },
     },
 
     totalFloors: { type: Number, default: 2 },
@@ -40,8 +40,8 @@ const BuildingSchema = new mongoose.Schema(
           enum: ['classroom', 'lab', 'office', 'washroom', 'staircase', 'other'],
         },
         coordinates: {
-          x: { type: Number },
-          y: { type: Number },
+          lat: { type: Number },
+          lng: { type: Number },
         },
       },
     ],
@@ -81,7 +81,7 @@ export default Building;
 //   "code": "LIB",
 //   "type": "library",
 //   "description": "Main campus library with reading halls, digital resources, and study rooms.",
-//   "coordinates": { "x": 150, "y": 400 },
+//   "coordinates": { "lat": 30.2514, "lng": 74.8415 },
 //   "totalFloors": 2,
 //   "isAccessible": true,
 //   "hasLift": false,
@@ -91,14 +91,14 @@ export default Building;
 //       "roomName": "Issue & Return Counter",
 //       "floor": 0,
 //       "type": "office",
-//       "coordinates": { "x": 152, "y": 402 }
+//       "coordinates": { "lat": 30.2515, "lng": 74.8416 }
 //     },
 //     {
 //       "roomNumber": "101",
 //       "roomName": "Digital Resource Lab",
 //       "floor": 1,
 //       "type": "lab",
-//       "coordinates": { "x": 150, "y": 395 }
+//       "coordinates": { "lat": 30.2516, "lng": 74.8417 }
 //     }
 //   ],
 //   "departments": ["All Departments"],
