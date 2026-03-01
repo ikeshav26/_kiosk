@@ -26,8 +26,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "mannuvilasara",
-        "repo": "kiosk-bfgi"
+        "owner": "ikeshav26",
+        "repo": "_kiosk"
       }
     ],
     "linux": {
