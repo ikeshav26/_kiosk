@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   ChevronRight,
   Settings,
+  Building,
 } from 'lucide-react';
 import axiosInstance from '../utils/Instance';
 import { authContext } from '../context/AuthContext';
@@ -17,6 +18,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const menuItems = [
     { label: 'Dashboard', icon: LayoutDashboard, route: '/dashboard' },
     { label: 'Faculty', icon: Users, route: '/faculty' },
+    {label:'Blocks', icon: Building, route: '/blocks'},
     { label: 'Notifications', icon: Bell, route: '/notifications' },
     { label: 'Help Tickets', icon: Ticket, route: '/help-requests' },
   ];
