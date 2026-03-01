@@ -84,7 +84,7 @@ ipcMain.handle('get-store-val', (_event, key: string) => {
   return store.get(key);
 });
 
-ipcMain.handle('set-store-val', (_event, key: string, val: any) => {
+ipcMain.handle('set-store-val', (_event, key: string, val: string | number | boolean | object) => {
   store.set(key, val);
   return store.get(key);
 });
