@@ -8,9 +8,17 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/Auth.routes.js';
 import helpTicketRoutes from './routes/HelpTicket.routes.js';
 import { auth } from './middlewares/auth.middleware.js';
+import cors from 'cors';
 
 const app = express();
 connectDb();
+
+app.use(
+  cors({
+    origin: '*',
+    credentials: true,
+  })
+);
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));

@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Initialize electron store
 const store = new Store({
   defaults: {
-    githubRepo: 'mannuvilasara/kiosk-bfgi',
+    githubRepo: 'ikeshav26/_kiosk', // Default GitHub repo for updates
   },
 });
 
