@@ -1,20 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import SidePanel from './components/SidePannel';
-import Navigation from './pages/Navigation';
-import HelpDesk from './pages/HelpDesk';
-import Announcements from './pages/Announcements';
-import AnnouncementDetail from './pages/AnnouncementDetail';
-import Schedule from './pages/Schedule';
-import Faculty from './pages/Faculty';
-import Blocks from './pages/Blocks';
-import Campus360 from './pages/Campus360';
 import useInactivityTimer from './hooks/TrackInactivity';
-import FacultyDetail from './pages/FacultyDetail';
-import BlockDetail from './pages/BlockDetail';
-import Settings from './pages/Settings';
 import { Toaster } from 'react-hot-toast';
+
+// Lazy load pages for code-splitting (Vite Option 1)
+const Navigation = lazy(() => import('./pages/Navigation'));
+const HelpDesk = lazy(() => import('./pages/HelpDesk'));
+const Announcements = lazy(() => import('./pages/Announcements'));
+const AnnouncementDetail = lazy(() => import('./pages/AnnouncementDetail'));
+const Schedule = lazy(() => import('./pages/Schedule'));
+const Faculty = lazy(() => import('./pages/Faculty'));
+const Blocks = lazy(() => import('./pages/Blocks'));
+const Campus360 = lazy(() => import('./pages/Campus360'));
+const FacultyDetail = lazy(() => import('./pages/FacultyDetail'));
+const BlockDetail = lazy(() => import('./pages/BlockDetail'));
+const Settings = lazy(() => import('./pages/Settings'));
 
 const App = () => {
   useInactivityTimer();
@@ -31,19 +34,29 @@ const App = () => {
 
         <div className="fixed top-36 left-[430px] right-0 bottom-20 pr-6 z-30">
           <div className="h-full w-full">
-            <Routes>
-              <Route path="/" element={<Campus360 />} />
-              <Route path="/navigate" element={<Navigation />} />
-              <Route path="/announcements" element={<Announcements />} />
-              <Route path="/announcement/:id" element={<AnnouncementDetail />} />
-              <Route path="/help" element={<HelpDesk />} />
-              <Route path="/schedule" element={<Schedule />} />
-              <Route path="/faculty" element={<Faculty />} />
-              <Route path="/blocks" element={<Blocks />} />
-              <Route path="/faculty/:id" element={<FacultyDetail />} />
-              <Route path="/block/:id" element={<BlockDetail />} />
-              <Route path="/settings" element={<Settings />} />
-            </Routes>
+            <Suspense
+              fallback={
+                <div className="flex h-full w-full items-center justify-center">
+                  <div className="animate-pulse text-xl text-gray-500 font-semibold">
+                    Loading...
+                  </div>
+                </div>
+              }
+            >
+              <Routes>
+                <Route path="/" element={<Campus360 />} />
+                <Route path="/navigate" element={<Navigation />} />
+                <Route path="/announcements" element={<Announcements />} />
+                <Route path="/announcement/:id" element={<AnnouncementDetail />} />
+                <Route path="/help" element={<HelpDesk />} />
+                <Route path="/schedule" element={<Schedule />} />
+                <Route path="/faculty" element={<Faculty />} />
+                <Route path="/blocks" element={<Blocks />} />
+                <Route path="/faculty/:id" element={<FacultyDetail />} />
+                <Route path="/block/:id" element={<BlockDetail />} />
+                <Route path="/settings" element={<Settings />} />
+              </Routes>
+            </Suspense>
           </div>
         </div>
       </div>
