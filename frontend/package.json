@@ -1,6 +1,6 @@
 {
   "name": "campus-kiosk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Kiosk Application",
   "author": "Manpreet Singh <mannuvilasara@gmail.com>",
   "homepage": "https://kiosk.com",
@@ -27,7 +27,8 @@
       {
         "provider": "github",
         "owner": "ikeshav26",
-        "repo": "_kiosk", "releaseType": "release"
+        "repo": "_kiosk",
+        "releaseType": "release"
       }
     ],
     "linux": {
