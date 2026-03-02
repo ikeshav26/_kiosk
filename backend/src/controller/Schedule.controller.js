@@ -1,4 +1,4 @@
-import Schedule from "../models/Schedule.controller.js";
+import Schedule from "../models/Schedule.model.js";
 import cloudinary from '../config/Cloudinary.js';
 
 
@@ -6,7 +6,7 @@ export const addSchedule=async(req,res)=>{
     try{
         const {departmentName,semester,sectionName,scheduleLink}=req.body;
 
-        const cloudinaryRes=await cloudinary.uploader.upload(scheduleLink)
+        const cloudinaryRes=await cloudinary.uploader.upload(scheduleLink, { resource_type: 'auto' })
         const schedule=new Schedule({
             departmentName,
             semester,
@@ -44,12 +44,13 @@ export const getAllSchedules=async(req,res)=>{
 
 export const updateSchedule=async(req,res)=>{
     try{
-        const scheduleId=req.params;
-        const {departmentName,semester,sectionName,scheduleLink}=req.body;
+        const { id: scheduleId }=req.params;
+        const {departmentName,semester,sectionName}=req.body;
+        let { scheduleLink }=req.body;
 
         if(scheduleLink){
-            const cloudinaryRes=await cloudinary.uploader.upload(scheduleLink)
-            scheduleLink=cloudinary.secure_url;
+            const cloudinaryRes=await cloudinary.uploader.upload(scheduleLink, { resource_type: 'auto' })
+            scheduleLink=cloudinaryRes.secure_url;
         }
 
         const updatedSchedule=await Schedule.findByIdAndUpdate(scheduleId,{
