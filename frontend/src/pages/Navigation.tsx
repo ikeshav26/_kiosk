@@ -5,7 +5,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapPin, Navigation2, ChevronRight, Compass, Loader2 } from 'lucide-react';
 
-// ── Types ─────────────────────────────────────────────────────────────────────
+
 interface LatLng {
   lat: number;
   lng: number;
@@ -41,8 +41,8 @@ interface MapData {
   paths: MapPath[];
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-/** Returns an ordered array of LatLng coords for the given path ID. */
+
+
 function getCoordinatesFromPath(
   pathId: string,
   nodeMap: Map<string, LatLng>,
@@ -58,11 +58,10 @@ function getCoordinatesFromPath(
   });
 }
 
-// ── Component ─────────────────────────────────────────────────────────────────
+
 const Navigation = () => {
   const { t, i18n } = useTranslation();
 
-  /** Resolve a path label to the current UI language, falling back to English. */
   const resolveLabel = (label: MapPath['label']): string => {
     if (!label) return '';
     if (typeof label === 'string') return label;
@@ -83,7 +82,7 @@ const Navigation = () => {
   const [activePathId, setActivePathId] = useState<string | null>(null);
   const [mapStarted, setMapStarted] = useState(false);
 
-  // ── 1. Fetch map data + building labels in parallel ─────────────────────
+
   useEffect(() => {
     if (!mapStarted) return;
     setLoadingData(true);
@@ -100,7 +99,7 @@ const Navigation = () => {
       .finally(() => setLoadingData(false));
   }, [mapStarted]);
 
-  // ── 2. Initialise Leaflet map once map data is available ─────────────────
+
   useEffect(() => {
     if (!mapStarted || !mapData || !mapRef.current || leafletMapRef.current) return;
 
@@ -108,19 +107,25 @@ const Navigation = () => {
       mapData.nodes.map((n) => [n.id, { lat: n.lat, lng: n.lng }])
     );
 
-    // Auto-centre: average lat/lng of all nodes
+
     const lats = mapData.nodes.map((n) => n.lat);
     const lngs = mapData.nodes.map((n) => n.lng);
     const centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
     const centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
 
+    const nodeBounds = L.latLngBounds(mapData.nodes.map((n) => [n.lat, n.lng] as [number, number]));
+    const campusBounds = nodeBounds.pad(0.3); 
+
     const map = L.map(mapRef.current, {
       center: [centerLat, centerLng],
       zoom: 18,
+      minZoom: 16,
+      maxZoom: 21,
+      maxBounds: campusBounds,
+      maxBoundsViscosity: 1.0,
       zoomControl: false,
     });
 
-    // Google Satellite tiles – no API key required
     L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       maxZoom: 21,
@@ -129,7 +134,6 @@ const Navigation = () => {
 
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-    // Plot every node as a small grey circle marker
     mapData.nodes.forEach((node) => {
       L.circleMarker([node.lat, node.lng], {
         radius: 5,
@@ -146,7 +150,6 @@ const Navigation = () => {
         });
     });
 
-    // Kiosk "You Are Here" marker
     const kioskCoord = nodeMap.get('kiosk_placed');
     if (kioskCoord) {
       L.circleMarker([kioskCoord.lat, kioskCoord.lng], {
@@ -171,12 +174,11 @@ const Navigation = () => {
     };
   }, [mapStarted, mapData]);
 
-  // ── 3. Render permanent building labels (re-runs if labels or map change) ─
   useEffect(() => {
     const map = leafletMapRef.current;
     if (!map || buildingLabels.length === 0) return;
 
-    // Remove previous label layer
+
     buildingLayerGroupRef.current?.remove();
     const group = L.layerGroup();
 
@@ -204,13 +206,12 @@ const Navigation = () => {
     buildingLayerGroupRef.current = group;
   }, [buildingLabels, leafletMapRef.current]);
 
-  // ── drawPath ─────────────────────────────────────────────────────────────
-  /** Draws the selected path on the map: blue polyline, green start, red end. */
+  
   function drawPath(pathId: string) {
     const map = leafletMapRef.current;
     if (!map || !mapData) return;
 
-    // Remove previous route layers
+
     routeLayerRef.current?.remove();
     startMarkerRef.current?.remove();
     endMarkerRef.current?.remove();
@@ -226,7 +227,7 @@ const Navigation = () => {
 
     const latlngs: [number, number][] = coords.map((c) => [c.lat, c.lng]);
 
-    // Blue route polyline
+
     const polyline = L.polyline(latlngs, {
       color: '#1d4ed8',
       weight: 5,
@@ -234,7 +235,6 @@ const Navigation = () => {
     }).addTo(map);
     routeLayerRef.current = polyline;
 
-    // Green start marker
     startMarkerRef.current = L.circleMarker(latlngs[0], {
       radius: 9,
       color: '#ffffff',
@@ -243,7 +243,7 @@ const Navigation = () => {
       fillOpacity: 1,
     }).addTo(map);
 
-    // Red end marker
+  
     const last = latlngs[latlngs.length - 1];
     endMarkerRef.current = L.circleMarker(last, {
       radius: 9,
@@ -261,15 +261,13 @@ const Navigation = () => {
     drawPath(pathId);
   };
 
-  // ── Render ────────────────────────────────────────────────────────────────
+  
   return (
     <div
       className="h-full w-full rounded-[40px] overflow-hidden flex font-sans relative shadow-sm"
       style={{ border: '1px solid #e2e8f0' }}
     >
-      {/* ── Sidebar ────────────────────────────────────────────────────── */}
       <div className="w-72 shrink-0 flex flex-col bg-white border-r border-slate-100 z-10">
-        {/* Header */}
         <div className="px-7 py-7 border-b border-slate-100">
           <div className="flex items-center gap-2 mb-1">
             <Navigation2 size={12} className="text-[#002b5c]/40" />
@@ -285,7 +283,6 @@ const Navigation = () => {
           </p>
         </div>
 
-        {/* "You Are Here" chip */}
         <div className="mx-5 mt-5 flex items-center gap-3 bg-[#002b5c]/5 rounded-2xl px-4 py-3 shrink-0">
           <div className="w-3 h-3 rounded-full bg-[#002b5c] ring-4 ring-[#002b5c]/20" />
           <span className="text-[9px] font-black text-[#002b5c] uppercase tracking-widest">
@@ -293,7 +290,6 @@ const Navigation = () => {
           </span>
         </div>
 
-        {/* Destination list */}
         <div
           className="flex-1 overflow-y-auto px-4 mt-4 space-y-2 pb-4"
           style={{ scrollbarWidth: 'thin' }}
@@ -341,7 +337,6 @@ const Navigation = () => {
           })}
         </div>
 
-        {/* Legend */}
         <div className="px-6 py-4 border-t border-slate-100 space-y-2 shrink-0">
           <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest mb-2">
             {t('navigation.legend')}
@@ -364,9 +359,8 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* ── Map ─────────────────────────────────────────────────────────── */}
+      
       <div className="flex-1 relative bg-[#0a1628]">
-        {/* Splash screen — shown until user starts navigation */}
         {!mapStarted && (
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0a1628]">
             {/* Decorative rings */}
@@ -406,7 +400,6 @@ const Navigation = () => {
         <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Tooltip styles injected once */}
       <style>{`
         .leaflet-tooltip-custom {
           background: rgba(0,0,0,0.75);
