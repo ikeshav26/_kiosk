@@ -151,7 +151,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
             <div className={getNavLinkClass(isActive, 'bg-slate-800')}>
               <MessageSquare size={22} className={isActive ? 'text-white' : 'text-blue-500'} />
               {!isCollapsed && (
-                <span className="text-xl font-bold">{t('sidebar.contactSupport')}</span>
+                <span className="text-xl font-bold">{t('sidebar.helpDesk')}</span>
               )}
               {isActive && !isCollapsed && (
                 <ChevronRight size={24} className="ml-auto opacity-60" />

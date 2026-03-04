@@ -14,13 +14,20 @@ import {
 
 const api = axios.create({ withCredentials: true });
 
+interface Schedule {
+  departmentName: string;
+  semester: number | string;
+  sectionName: string;
+  scheduleLink: string;
+}
+
 const Timetable = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [schedule, setSchedule] = useState(null);
+  const [schedule, setSchedule] = useState<Schedule | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const [iframeReady, setIframeReady] = useState(false);
 
   useEffect(() => {
