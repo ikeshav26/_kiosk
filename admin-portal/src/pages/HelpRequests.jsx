@@ -311,18 +311,16 @@ const HelpRequests = () => {
                           />
                         </div>
                       </td>
-                      <td className="px-4 py-4">
-                        <span className="text-xs text-slate-500">
-                          {new Date(ticket.createdAt).toLocaleDateString()}
-                        </span>
+                      <td className="px-4 py-4 text-xs text-slate-500">
+                        {new Date(ticket.createdAt).toLocaleDateString()}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 text-right">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             handleDelete(ticket._id);
                           }}
-                          className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                          className="inline-flex items-center justify-center p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                         >
                           <Trash2 size={15} />
                         </button>

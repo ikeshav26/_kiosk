@@ -70,10 +70,6 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 group-hover:border-slate-300 transition-all overflow-hidden relative">
             <User size={20} className="opacity-80 group-hover:opacity-100 transition-opacity" />
           </div>
-          <ChevronDown
-            size={14}
-            className="text-slate-400 group-hover:text-slate-600 transition-colors"
-          />
         </button>
       </div>
 

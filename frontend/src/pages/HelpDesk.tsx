@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, forwardRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import {
@@ -9,137 +9,23 @@ import {
   AlertCircle,
   MessageSquare,
   ChevronDown,
-  Keyboard as KeyboardIcon,
-  X,
-  Delete,
-  ArrowUp,
   Terminal,
   Layers,
   ShieldCheck,
   Zap,
+  User,
+  Phone,
 } from 'lucide-react';
+import { VirtualKeyboard } from '../components/VirtualKeyboard';
 
-/**
- * Integrated Virtual Keyboard Component
- * Scoped precisely to the component bounds.
- * Designed with physical depth and tactile feedback.
- */
-const VirtualKeyboard = forwardRef<
-  HTMLDivElement,
-  {
-    onKeyPress: (key: string) => void;
-    onClose: () => void;
-    activeInputName: string;
-  }
->(({ onKeyPress, onClose, activeInputName }, ref) => {
-  const [isShift, setIsShift] = useState(false);
-  const { t } = useTranslation();
 
-  const layouts = {
-    default: [
-      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'BKSP'],
-      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '@'],
-      ['SHIFT', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '.', '-'],
-      ['SPACE', 'DONE'],
-    ],
-    shift: [
-      ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'BKSP'],
-      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '_'],
-      ['SHIFT', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '!', '?'],
-      ['SPACE', 'DONE'],
-    ],
-  };
-
-  const currentLayout = isShift ? layouts.shift : layouts.default;
-
-  const handleKeyClick = (key: string) => {
-    if (key === 'SHIFT') {
-      setIsShift(!isShift);
-    } else if (key === 'DONE') {
-      onClose();
-    } else {
-      onKeyPress(key);
-    }
-  };
-
-  return (
-    <div
-      ref={ref}
-      className="absolute bottom-0 left-0 right-0 z-[60] bg-[#fdfdfd] border-t border-slate-200 p-8 shadow-[0_-30px_80px_rgba(0,0,0,0.12)] animate-in slide-in-from-bottom-full duration-500 rounded-b-[60px]"
-    >
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6 px-4">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-[#002b5c] rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-900/20">
-              <KeyboardIcon size={20} />
-            </div>
-            <div>
-              <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">
-                {t('helpDesk.hardwareInterface')}
-              </p>
-              <p className="text-sm font-bold text-[#002b5c] tracking-tight uppercase italic">
-                {t('helpDesk.activeInput', { name: activeInputName })}
-              </p>
-            </div>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            title="Close keyboard"
-            className="p-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-400 hover:text-red-500 transition-all active:scale-90 shadow-sm"
-          >
-            <X size={20} />
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-2.5">
-          {currentLayout.map((row, rowIndex) => (
-            <div key={rowIndex} className="flex justify-center gap-2.5">
-              {row.map((key) => {
-                return (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => handleKeyClick(key)}
-                    className={`
-                      h-16 flex items-center justify-center rounded-[20px] font-bold text-xl transition-all active:translate-y-1 shadow-sm border-b-4
-                      ${key === 'SPACE' ? 'flex-[4]' : 'flex-1'}
-                      ${key === 'DONE' ? 'bg-[#002b5c] text-white border-blue-900 flex-[1.4]' : 'bg-white text-[#002b5c] border-slate-200 hover:bg-slate-50'}
-                      ${key === 'SHIFT' && isShift ? 'bg-blue-600 text-white border-blue-800' : ''}
-                      ${key === 'BKSP' ? 'text-red-500' : ''}
-                    `}
-                  >
-                    {key === 'BKSP' ? (
-                      <Delete size={24} />
-                    ) : key === 'SHIFT' ? (
-                      <ArrowUp size={24} />
-                    ) : key === 'DONE' ? (
-                      t('keyboard.confirm')
-                    ) : key === 'SPACE' ? (
-                      t('keyboard.space')
-                    ) : (
-                      key
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-});
-
-/**
- * HelpDesk Module
- * Executive Interface for Kiosk Maintenance.
- */
 const HelpDesk = () => {
   const [formData, setFormData] = useState({
+    helperName: '',
+    helperContactNumber: '',
     subject: '',
     description: '',
-    category: 'other',
+    category: 'fees',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -152,7 +38,7 @@ const HelpDesk = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Close keyboard on outside click logic
+
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
       const target = e.target as Node;
@@ -173,10 +59,17 @@ const HelpDesk = () => {
 
   const handleVirtualKeyPress = (key: string) => {
     if (!activeInput) return;
-    const field = activeInput === 'Heading' ? 'subject' : 'description';
+    const fieldMap: Record<string, string> = {
+      Name: 'helperName',
+      Contact: 'helperContactNumber',
+      Heading: 'subject',
+      Description: 'description',
+    };
+    const field = fieldMap[activeInput];
+    if (!field) return;
 
     setFormData((prev) => {
-      const current = prev[field];
+      const current = prev[field as keyof typeof prev] as string;
       if (key === 'BKSP') return { ...prev, [field]: current.slice(0, -1) };
       if (key === 'SPACE') return { ...prev, [field]: current + ' ' };
       return { ...prev, [field]: current + key };
@@ -185,7 +78,7 @@ const HelpDesk = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.subject || !formData.description) {
+    if (!formData.helperName || !formData.helperContactNumber || !formData.subject || !formData.description) {
       setError(t('helpDesk.incompletePayload'));
       return;
     }
@@ -197,7 +90,7 @@ const HelpDesk = () => {
     try {
       await axios.post('/api/help-ticket/create', formData);
       setIsSuccess(true);
-      setFormData({ subject: '', description: '', category: 'other' });
+      setFormData({ helperName: '', helperContactNumber: '', subject: '', description: '', category: 'fees' });
     } catch (err: any) {
       setError(t('helpDesk.diagnosticFailure'));
     } finally {
@@ -207,7 +100,6 @@ const HelpDesk = () => {
 
   return (
     <div className="h-full w-full bg-[#fff]/80 rounded-[60px] shadow-[inset_0_4px_20px_rgba(0,0,0,0.03)] border border-white flex flex-col font-sans relative overflow-hidden">
-      {/* 1. Refined Identity Header */}
       <header className="p-10 pb-8 bg-white border-b border-slate-100 flex justify-between items-center shrink-0 z-10">
         <div className="flex items-center gap-6">
           <div className="w-16 h-16 bg-[#002b5c] rounded-[24px] flex items-center justify-center text-white shadow-2xl shadow-blue-900/30">
@@ -275,37 +167,77 @@ const HelpDesk = () => {
                 </div>
               )}
 
+              {/* Complainant Details */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="space-y-3">
+                  <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2 flex items-center gap-3">
+                    <User size={13} className="text-blue-500" /> {t('helpDesk.yourName')}
+                  </label>
+                  <input
+                    value={formData.helperName}
+                    readOnly
+                    onFocus={() => setActiveInput('Name')}
+                    placeholder={t('helpDesk.yourNamePlaceholder')}
+                    className={`w-full bg-white border border-slate-200 rounded-[24px] py-4 px-5 text-base font-bold text-[#002b5c] transition-all outline-none ${activeInput === 'Name' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2 flex items-center gap-3">
+                    <Phone size={13} className="text-blue-500" /> {t('helpDesk.contactNumber')}
+                  </label>
+                  <input
+                    value={formData.helperContactNumber}
+                    readOnly
+                    onFocus={() => {
+                      setActiveInput('Contact');
+                      setTimeout(() => scrollRef.current?.scrollBy({ top: 200, behavior: 'smooth' }), 100);
+                    }}
+                    placeholder={t('helpDesk.contactNumberPlaceholder')}
+                    className={`w-full bg-white border border-slate-200 rounded-[24px] py-4 px-5 text-base font-bold text-[#002b5c] transition-all outline-none ${activeInput === 'Contact' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}
+                  />
+                </div>
+              </div>
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 {/* Subject Heading */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2 flex items-center gap-3">
-                    <Terminal size={14} className="text-blue-500" /> {t('helpDesk.incidentHeading')}
+                    <Terminal size={13} className="text-blue-500" /> {t('helpDesk.incidentHeading')}
                   </label>
                   <input
                     value={formData.subject}
                     readOnly
                     onFocus={() => setActiveInput('Heading')}
                     placeholder={t('helpDesk.subjectPlaceholder')}
-                    className={`w-full bg-white border border-slate-200 rounded-[24px] py-5 px-6 text-xl font-bold text-[#002b5c] transition-all outline-none ${activeInput === 'Heading' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}
+                    className={`w-full bg-white border border-slate-200 rounded-[24px] py-4 px-5 text-base font-bold text-[#002b5c] transition-all outline-none ${activeInput === 'Heading' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}
                   />
                 </div>
 
                 {/* Category Selection */}
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2 flex items-center gap-3">
-                    <Layers size={14} className="text-blue-500" /> {t('helpDesk.systemCategory')}
+                    <Layers size={13} className="text-blue-500" /> {t('helpDesk.systemCategory')}
                   </label>
                   <div className="relative group">
                     <select
                       value={formData.category}
                       onChange={(e) => setFormData((p) => ({ ...p, category: e.target.value }))}
                       title="Select system category for the support ticket"
-                      className="w-full bg-white border border-slate-200 rounded-[24px] py-5 px-6 text-xl font-bold text-[#002b5c] appearance-none focus:outline-none focus:border-[#002b5c] transition-all cursor-pointer shadow-sm group-hover:border-slate-300"
+                      className="w-full bg-white border border-slate-200 rounded-[24px] py-4 px-5 text-base font-bold text-[#002b5c] appearance-none focus:outline-none focus:border-[#002b5c] transition-all cursor-pointer shadow-sm group-hover:border-slate-300"
                     >
-                      <option value="software">{t('helpDesk.softwareDefect')}</option>
-                      <option value="hardware">{t('helpDesk.terminalIssue')}</option>
-                      <option value="network">{t('helpDesk.connectivityLog')}</option>
-                      <option value="other">{t('helpDesk.otherAnomaly')}</option>
+                      <option value="fees">{t('helpDesk.cat_fees')}</option>
+                      <option value="admission">{t('helpDesk.cat_admission')}</option>
+                      <option value="exam">{t('helpDesk.cat_exam')}</option>
+                      <option value="scholarship">{t('helpDesk.cat_scholarship')}</option>
+                      <option value="library">{t('helpDesk.cat_library')}</option>
+                      <option value="hostel">{t('helpDesk.cat_hostel')}</option>
+                      <option value="transport">{t('helpDesk.cat_transport')}</option>
+                      <option value="attendance">{t('helpDesk.cat_attendance')}</option>
+                      <option value="faculty">{t('helpDesk.cat_faculty')}</option>
+                      <option value="infrastructure">{t('helpDesk.cat_infrastructure')}</option>
+                      <option value="it">{t('helpDesk.cat_it')}</option>
+                      <option value="bug">{t('helpDesk.cat_bug')}</option>
+                      <option value="other">{t('helpDesk.cat_other')}</option>
                     </select>
                     <ChevronDown
                       className="absolute right-6 top-1/2 -translate-y-1/2 text-[#002b5c] pointer-events-none transition-transform group-active:translate-y-0"
@@ -333,7 +265,7 @@ const HelpDesk = () => {
                   }}
                   rows={5}
                   placeholder={t('helpDesk.descriptionPlaceholder')}
-                  className={`w-full bg-white border border-slate-200 rounded-[32px] py-7 px-8 text-xl font-medium text-slate-600 transition-all outline-none leading-relaxed resize-none ${activeInput === 'Description' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}
+                  className={`w-full bg-white border border-slate-200 rounded-[32px] py-5 px-6 text-base font-medium text-slate-600 transition-all outline-none leading-relaxed resize-none ${activeInput === 'Description' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}
                 />
               </div>
 
@@ -341,7 +273,7 @@ const HelpDesk = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#002b5c] text-white py-8 rounded-[36px] font-black text-2xl shadow-2xl shadow-blue-900/30 active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-6 group mt-6"
+                className="w-full bg-[#002b5c] text-white py-6 rounded-[36px] font-black text-lg shadow-2xl shadow-blue-900/30 active:scale-[0.98] disabled:opacity-50 transition-all flex items-center justify-center gap-5 group mt-4"
               >
                 {isSubmitting ? (
                   <Loader2 className="animate-spin" size={32} />
@@ -371,6 +303,7 @@ const HelpDesk = () => {
           activeInputName={activeInput}
           onKeyPress={handleVirtualKeyPress}
           onClose={() => setActiveInput(null)}
+          numericOnly={activeInput === 'Contact'}
         />
       )}
 

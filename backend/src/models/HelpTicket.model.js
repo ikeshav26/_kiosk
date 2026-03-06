@@ -10,14 +10,18 @@ const helpTicketSchema = new mongoose.Schema({
     required: true,
   },
   category: {
-    type: String,
-    enum: ['software', 'hardware', 'network', 'other'],
-    default: 'other',
+    type: String
   },
   status: {
     type: String,
     enum: ['open', 'in-progress', 'resolved', 'closed'],
     default: 'open',
+  },
+  helperContactNumber:{
+    type:Number
+  },
+  helperName:{
+    type:String
   },
   createdAt: {
     type: Date,

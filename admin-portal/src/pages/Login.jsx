@@ -68,7 +68,6 @@ const Login = () => {
       localStorage.setItem('user', JSON.stringify(response.data.user));
       navigate('/dashboard');
       toast.success(`Welcome back, ${response.data.user.role || 'Admin'}!`);
-      console.log('Login Success:', response.data.user);
     } catch (err) {
       setError(err.response?.data?.message || 'Invalid User ID or Password.');
     } finally {
@@ -183,12 +182,6 @@ const Login = () => {
           </div>
         </form>
       </div>
-
-      <footer className="absolute bottom-10 text-center pointer-events-none z-10 w-full">
-        <p className="text-xs font-black text-white/50 uppercase tracking-[0.5em]">
-          Smart Campus Management System
-        </p>
-      </footer>
     </div>
   );
 };
