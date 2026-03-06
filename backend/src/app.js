@@ -14,9 +14,21 @@ import cors from 'cors';
 const app = express();
 connectDb();
 
+const allowedOrigins = [
+  process.env.ADMIN_PORTAL_URL,
+  process.env.KIOSK_URL,
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.ADMIN_PORTAL_URL || process.env.KIOSK_URL,
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS blocked: ${origin} is not allowed`));
+      }
+    },
     credentials: true,
   })
 );
