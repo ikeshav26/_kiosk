@@ -157,3 +157,53 @@ export const deleteUser = async (req, res) => {
     console.error('Delete user error:', err);
   }
 };
+
+
+
+export const updateUser=async(req,res)=>{
+  try{
+    const userId=req.user.userId;
+    const {name,email} = req.body;
+
+    const user=await User.findOne({ userId });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    user.name = name;
+    user.email = email;
+    await user.save();
+
+    res.json({ message: 'User updated successfully', user });
+  }catch(err){
+    res.status(500).json({ message: 'Error updating user', error: err.message });
+    console.error('Update user error:', err); 
+  }
+}
+
+
+
+export const changePassword = async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await User.findOne({ userId });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid current password' });
+    }
+
+    user.password = await bcrypt.hash(newPassword, 10);
+    await user.save();
+
+    res.json({ message: 'Password changed successfully' });
+  }catch(err){
+    res.status(500).json({ message: 'Error changing password', error: err.message });
+    console.error('Change password error:', err); 
+  }
+}

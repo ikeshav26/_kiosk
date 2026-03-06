@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  changePassword,
   createUserByAdmins,
   deleteUser,
   getAllUsers,
@@ -7,6 +8,7 @@ import {
   login,
   logout,
   registerSuperAdmin,
+  updateUser,
 } from '../controller/Auth.controller.js';
 import { auth } from '../middlewares/auth.middleware.js';
 
@@ -19,5 +21,7 @@ router.get('/logout', logout);
 router.get('/user-info', auth, getProfile);
 router.get('/all-users', auth, getAllUsers);
 router.get('/delete-user/:userId', auth, deleteUser);
+router.post('/update-profile',auth,updateUser)
+router.post('/change-password',auth,changePassword)
 
 export default router;

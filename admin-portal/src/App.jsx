@@ -48,15 +48,12 @@ const App = () => {
     const intervalId = setInterval(
       async () => {
         try {
-          await axiosInstance.get(`${import.meta.env.VITE_API_URL}/api/health`, {
-            withCredentials: true,
-          });
+          await axiosInstance.get('/api/health');
         } catch (err) {
           console.error('Health check failed:', err);
-          toast.error('Server is down. Please try again later.');
         }
       },
-      5*60*100
+      10 * 60 * 1000 
     );
 
     return () => clearInterval(intervalId);

@@ -38,7 +38,7 @@ const Settings = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axiosInstance.put('/api/auth/update-profile', profileData);
+      const res = await axiosInstance.post('/api/auth/update-profile', profileData);
       const updatedUser = { ...user, ...profileData };
       setuser(updatedUser);
       localStorage.setItem('user', JSON.stringify(updatedUser));
@@ -56,13 +56,10 @@ const Settings = () => {
       toast.error("New passwords don't match");
       return;
     }
-    if (passwordData.newPassword.length < 6) {
-      toast.error('Password must be at least 6 characters');
-      return;
-    }
+   
     setLoading(true);
     try {
-      await axiosInstance.put('/api/auth/change-password', {
+      await axiosInstance.post('/api/auth/change-password', {
         currentPassword: passwordData.currentPassword,
         newPassword: passwordData.newPassword,
       });

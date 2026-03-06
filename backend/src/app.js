@@ -8,7 +8,6 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/Auth.routes.js';
 import helpTicketRoutes from './routes/HelpTicket.routes.js';
 import scheduleRoutes from './routes/Schedule.routes.js'
-import { auth } from './middlewares/auth.middleware.js';
 import cors from 'cors';
 
 const app = express();
@@ -38,11 +37,11 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
 app.get('/api', (req, res) => {
-  res.send('Hello World');
+  res.send('BFGI kiosk API....');
 });
 
-app.get('/api/health', auth, (req, res) => {
-  res.json({ status: 'ok', user: req.user });
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
 });
 
 app.use('/api/kiosk', kioskRoutes);
