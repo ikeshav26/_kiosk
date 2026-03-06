@@ -23,6 +23,11 @@ import Ticket from './pages/Ticket';
 import Blocks from './pages/Blocks';
 import UpdateFaculty from './pages/UpdateFaculty';
 import Schedule from './pages/Schedule';
+import axiosInstance from './utils/Instance';
+import toast from 'react-hot-toast';
+import { useEffect } from 'react';
+
+
 
 const ProtectedRoute = ({ user, children }) => {
   const location = useLocation();
@@ -38,6 +43,24 @@ const App = () => {
   const isLoginPage = location.pathname === '/login' || location.pathname === '/';
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
+
+  useEffect(() => {
+    const intervalId = setInterval(
+      async () => {
+        try {
+          await axiosInstance.get(`${import.meta.env.VITE_API_URL}/api/health`, {
+            withCredentials: true,
+          });
+        } catch (err) {
+          console.error('Health check failed:', err);
+          toast.error('Server is down. Please try again later.');
+        }
+      },
+      5*60*100
+    );
+
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <div className="">
       {!isLoginPage && <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />}
