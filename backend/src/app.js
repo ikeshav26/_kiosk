@@ -16,7 +16,7 @@ connectDb();
 
 app.use(
   cors({
-    origin: '*',
+    origin: process.env.ADMIN_PORTAL_URL || process.env.KIOSK_URL,
     credentials: true,
   })
 );
