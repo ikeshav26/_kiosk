@@ -9,6 +9,7 @@ import authRoutes from './routes/Auth.routes.js';
 import helpTicketRoutes from './routes/HelpTicket.routes.js';
 import scheduleRoutes from './routes/Schedule.routes.js'
 import cors from 'cors';
+import { auth } from './middlewares/auth.middleware.js';
 
 const app = express();
 connectDb();
@@ -40,7 +41,7 @@ app.get('/api', (req, res) => {
   res.send('BFGI kiosk API....');
 });
 
-app.get('/api/health', (req, res) => {
+app.get('/api/health', auth, (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 

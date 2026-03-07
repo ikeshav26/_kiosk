@@ -82,7 +82,6 @@ const AdminDashboard = () => {
       });
     } catch (err) {
       console.error('Dashboard Sync Error:', err);
-      toast.error('Unable to sync with the server');
     } finally {
       setLoading(false);
     }

@@ -81,7 +81,11 @@ export const login = async (req, res) => {
       expiresIn: '1h',
     });
 
-    res.cookie('token', token, { httpOnly: true });
+    res.cookie('token', token, {
+       httpOnly: true,
+      secure: true,
+      sameSite: 'None',
+  });
     res.json({
       message: 'Login successful',
       user: { userId: user.userId, name: user.name, email: user.email, role: user.role },
@@ -96,7 +100,7 @@ export const logout = async (req, res) => {
   try {
     const token = req.cookies.token;
     if (!token) {
-      return res.status(400).json({ message: 'Unauthorized !! No token provided' });
+      return res.status(401).json({ message: 'Unauthorized !! No token provided' });
     }
     res.clearCookie('token');
     res.json({ message: 'Logout successful' });

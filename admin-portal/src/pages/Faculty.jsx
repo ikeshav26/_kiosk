@@ -57,7 +57,6 @@ const Faculty = () => {
       setFaculty(res.data.faculties || res.data || []);
     } catch (err) {
       console.error('Faculty Sync Error:', err);
-      toast.error('Unable to sync faculty directory.');
     } finally {
       setLoading(false);
     }
