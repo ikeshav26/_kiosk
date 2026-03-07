@@ -169,8 +169,12 @@ const Faculty = () => {
     reader.onloadend = async () => {
       setActionLoading(true);
       try {
-        const res = await axiosInstance.post('/api/faculty/add-excel', { excelData: reader.result });
-        toast.success(`Mass upload complete: ${res.data.added?.length} added, ${res.data.failed?.length} failed.`);
+        const res = await axiosInstance.post('/api/faculty/add-excel', {
+          excelData: reader.result,
+        });
+        toast.success(
+          `Mass upload complete: ${res.data.added?.length} added, ${res.data.failed?.length} failed.`
+        );
         fetchFaculty();
       } catch (err) {
         toast.error(err.response?.data?.message || 'Failed to process Excel upload.');
@@ -241,7 +245,9 @@ const Faculty = () => {
 
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
-      <div className={`grid gap-6 ${isAdmin ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1'} items-stretch`}>
+      <div
+        className={`grid gap-6 ${isAdmin ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1'} items-stretch`}
+      >
         {isAdmin && (
           <Card
             headerIcon={Camera}
@@ -250,7 +256,6 @@ const Faculty = () => {
             className="flex flex-col h-full"
           >
             <form onSubmit={handleSubmit} className="p-5 space-y-4">
-
               <div>
                 <input
                   type="file"
@@ -259,10 +264,10 @@ const Faculty = () => {
                   accept=".xlsx, .xls"
                   onChange={handleExcelUpload}
                 />
-                <Button 
-                  type="button" 
-                  loading={actionLoading} 
-                  icon={Upload} 
+                <Button
+                  type="button"
+                  loading={actionLoading}
+                  icon={Upload}
                   fullWidth
                   variant="outline"
                   onClick={() => excelInputRef.current?.click()}
@@ -435,7 +440,7 @@ const Faculty = () => {
           headerSubtitle="All registered faculty"
           headerAction={
             <div className="flex items-center gap-2">
-              <Button 
+              <Button
                 onClick={handleExportExcel}
                 loading={actionLoading}
                 icon={Upload}

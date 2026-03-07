@@ -16,7 +16,7 @@ import axiosInstance from '../utils/Instance';
 import { authContext } from '../context/AuthContext';
 
 const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
   const menuItems = [
     { label: 'Dashboard', icon: LayoutDashboard, route: '/dashboard' },
     { label: 'Faculty', icon: Users, route: '/faculty' },
@@ -46,8 +46,8 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       navigate('/login');
     } catch (err) {
       console.log(err);
-    }finally{
-      setloading(false)
+    } finally {
+      setloading(false);
     }
   };
 

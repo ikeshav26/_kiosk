@@ -1,8 +1,7 @@
 import cloudinary from '../config/Cloudinary.js';
 import Faculty from '../models/Faculty.model.js';
 import { translateText } from '../utils/translate.js';
-import xlsx from 'xlsx'
-
+import xlsx from 'xlsx';
 
 const buildTranslations = async (facultyName, designation, qualification) => {
   const fields = [
@@ -199,8 +198,6 @@ export const updateFaculty = async (req, res) => {
   }
 };
 
-
-
 export const addFacultyExcel = async (req, res) => {
   try {
     const { excelData } = req.body;
@@ -212,7 +209,7 @@ export const addFacultyExcel = async (req, res) => {
     const base64Data = excelData.split(',')[1] || excelData;
     const buffer = Buffer.from(base64Data, 'base64');
 
-    const workbook = xlsx.read(buffer, { type: "buffer" });
+    const workbook = xlsx.read(buffer, { type: 'buffer' });
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
     const data = xlsx.utils.sheet_to_json(sheet);
@@ -237,7 +234,8 @@ export const addFacultyExcel = async (req, res) => {
           designation: item.designation || '',
           qualification: item.qualification || '',
           totalExperience: item.totalExperience || 0,
-          imageUrl: "https://res.cloudinary.com/ducvkar80/image/upload/v1752789612/avatars/gbuufbs2fud7mrzvcsqj.jpg",
+          imageUrl:
+            'https://res.cloudinary.com/ducvkar80/image/upload/v1752789612/avatars/gbuufbs2fud7mrzvcsqj.jpg',
           email: item.email || '',
           phoneNumber: item.phoneNumber || '',
           department: item.department || 'CSE',
@@ -261,12 +259,11 @@ export const addFacultyExcel = async (req, res) => {
   }
 };
 
+export const exportFacultiesExcel = async (req, res) => {
+  try {
+    const faculties = await Faculty.find().lean();
 
-export const exportFacultiesExcel=async(req,res)=>{
-  try{
-    const faculties=await Faculty.find().lean();
-
-    const formattedData = faculties.map(faculty => ({
+    const formattedData = faculties.map((faculty) => ({
       facultyName: faculty.facultyName,
       designation: faculty.designation,
       qualification: faculty.qualification,
@@ -274,29 +271,29 @@ export const exportFacultiesExcel=async(req,res)=>{
       email: faculty.email,
       phoneNumber: faculty.phoneNumber,
       department: faculty.department,
-      imageUrl: faculty.imageUrl || ''
+      imageUrl: faculty.imageUrl || '',
     }));
 
     const worksheet = xlsx.utils.json_to_sheet(formattedData);
 
     const workbook = xlsx.utils.book_new();
 
-    xlsx.utils.book_append_sheet(workbook, worksheet, "Faculty");
+    xlsx.utils.book_append_sheet(workbook, worksheet, 'Faculty');
 
     const buffer = xlsx.write(workbook, {
-      type: "buffer",
-      bookType: "xlsx"
+      type: 'buffer',
+      bookType: 'xlsx',
     });
 
-    const base64Data = buffer.toString("base64");
+    const base64Data = buffer.toString('base64');
 
     res.status(200).json({
-      message: "Export successful",
+      message: 'Export successful',
       excelBase64: `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${base64Data}`,
-      filename: "faculties_export.xlsx"
+      filename: 'faculties_export.xlsx',
     });
-  }catch(err){
+  } catch (err) {
     res.status(500).json({ message: err.message });
     console.log(err);
   }
-}
+};

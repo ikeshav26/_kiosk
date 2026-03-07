@@ -35,13 +35,11 @@ export const saveBuildingLabels = async (req, res) => {
       },
     }));
     const result = await BuildingLabel.bulkWrite(ops);
-    res
-      .status(201)
-      .json({
-        message: 'Building labels saved',
-        upserted: result.upsertedCount,
-        modified: result.modifiedCount,
-      });
+    res.status(201).json({
+      message: 'Building labels saved',
+      upserted: result.upsertedCount,
+      modified: result.modifiedCount,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
