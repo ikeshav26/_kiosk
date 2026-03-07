@@ -7,10 +7,12 @@ import {
   getAllFaculties,
   getFacultyById,
   updateFaculty,
+  exportFacultiesExcel,
 } from '../controller/Faculty.controller.js';
 
 const router = express.Router();
 
+router.get('/export-excel', exportFacultiesExcel);
 router.post('/add', addFaculty);
 router.post('/add-excel', addFacultyExcel);
 router.post('/bulk-add', bulkAddFaculty);

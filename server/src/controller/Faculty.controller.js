@@ -260,3 +260,43 @@ export const addFacultyExcel = async (req, res) => {
     console.log(err);
   }
 };
+
+
+export const exportFacultiesExcel=async(req,res)=>{
+  try{
+    const faculties=await Faculty.find().lean();
+
+    const formattedData = faculties.map(faculty => ({
+      facultyName: faculty.facultyName,
+      designation: faculty.designation,
+      qualification: faculty.qualification,
+      totalExperience: faculty.totalExperience,
+      email: faculty.email,
+      phoneNumber: faculty.phoneNumber,
+      department: faculty.department,
+      imageUrl: faculty.imageUrl || ''
+    }));
+
+    const worksheet = xlsx.utils.json_to_sheet(formattedData);
+
+    const workbook = xlsx.utils.book_new();
+
+    xlsx.utils.book_append_sheet(workbook, worksheet, "Faculty");
+
+    const buffer = xlsx.write(workbook, {
+      type: "buffer",
+      bookType: "xlsx"
+    });
+
+    const base64Data = buffer.toString("base64");
+
+    res.status(200).json({
+      message: "Export successful",
+      excelBase64: `data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,${base64Data}`,
+      filename: "faculties_export.xlsx"
+    });
+  }catch(err){
+    res.status(500).json({ message: err.message });
+    console.log(err);
+  }
+}

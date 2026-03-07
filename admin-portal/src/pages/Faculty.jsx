@@ -31,7 +31,7 @@ const Faculty = () => {
   const [selectedDept, setSelectedDept] = useState('All');
   const [isDragging, setIsDragging] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 9;
 
   const { user } = useContext(authContext);
   const isAdmin = user?.role === 'admin' || user?.role === 'superAdmin';
@@ -182,6 +182,28 @@ const Faculty = () => {
     reader.readAsDataURL(file);
   };
 
+  const handleExportExcel = async () => {
+    setActionLoading(true);
+    try {
+      const res = await axiosInstance.get('/api/faculty/export-excel');
+      if (res.data && res.data.excelBase64) {
+        const link = document.createElement('a');
+        link.href = res.data.excelBase64;
+        link.download = res.data.filename || 'faculties_export.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        toast.success('Export successful!');
+      } else {
+        toast.error('Could not retrieve export data.');
+      }
+    } catch (err) {
+      toast.error('Failed to export faculties.');
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this faculty member?')) return;
     setActionLoading(true);
@@ -219,16 +241,46 @@ const Faculty = () => {
 
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
-      <div className={`grid gap-6 ${isAdmin ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1'}`}>
-        {/* Add Faculty Form */}
+      <div className={`grid gap-6 ${isAdmin ? 'grid-cols-1 lg:grid-cols-3' : 'grid-cols-1'} items-stretch`}>
         {isAdmin && (
           <Card
             headerIcon={Camera}
             headerTitle="Add Faculty"
             headerSubtitle="Register new member"
-            className="h-fit"
+            className="flex flex-col h-full"
           >
             <form onSubmit={handleSubmit} className="p-5 space-y-4">
+
+              <div>
+                <input
+                  type="file"
+                  ref={excelInputRef}
+                  className="hidden"
+                  accept=".xlsx, .xls"
+                  onChange={handleExcelUpload}
+                />
+                <Button 
+                  type="button" 
+                  loading={actionLoading} 
+                  icon={Upload} 
+                  fullWidth
+                  variant="outline"
+                  onClick={() => excelInputRef.current?.click()}
+                  className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300"
+                >
+                  Mass Add via Excel
+                </Button>
+              </div>
+
+              <div className="relative flex items-center justify-center py-2">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-slate-200"></div>
+                </div>
+                <div className="relative bg-white px-2 text-xs font-bold text-slate-400 uppercase">
+                  OR ADD MANUALLY
+                </div>
+              </div>
+
               {/* Image Upload */}
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
@@ -372,47 +424,26 @@ const Faculty = () => {
               <Button type="submit" loading={actionLoading} icon={UserPlus} fullWidth>
                 Add Faculty
               </Button>
-
-              <div className="relative flex items-center justify-center py-2">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-200"></div>
-                </div>
-                <div className="relative bg-white px-2 text-xs font-bold text-slate-400 uppercase">
-                  OR
-                </div>
-              </div>
-
-              <div>
-                <input
-                  type="file"
-                  ref={excelInputRef}
-                  className="hidden"
-                  accept=".xlsx, .xls"
-                  onChange={handleExcelUpload}
-                />
-                <Button 
-                  type="button" 
-                  loading={actionLoading} 
-                  icon={Upload} 
-                  fullWidth
-                  variant="outline"
-                  onClick={() => excelInputRef.current?.click()}
-                  className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300"
-                >
-                  Mass Add via Excel
-                </Button>
-              </div>
             </form>
           </Card>
         )}
 
         <Card
-          className={`${isAdmin ? 'col-span-2' : 'col-span-1'} flex flex-col h-[750px]`}
+          className={`${isAdmin ? 'col-span-2' : 'col-span-1'} flex flex-col h-full min-h-[750px]`}
           headerIcon={Users}
           headerTitle="Faculty Directory"
           headerSubtitle="All registered faculty"
           headerAction={
             <div className="flex items-center gap-2">
+              <Button 
+                onClick={handleExportExcel}
+                loading={actionLoading}
+                icon={Upload}
+                size="small"
+                className="mr-2 bg-slate-800 text-white hover:bg-slate-900 px-4 py-2 border-0"
+              >
+                Export Excel
+              </Button>
               <select
                 className="bg-slate-50 border border-slate-100 px-3 py-2 rounded-lg text-xs font-semibold text-slate-600 focus:outline-none"
                 value={selectedDept}
