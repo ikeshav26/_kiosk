@@ -24,10 +24,8 @@ import Blocks from './pages/Blocks';
 import UpdateFaculty from './pages/UpdateFaculty';
 import Schedule from './pages/Schedule';
 import axiosInstance from './utils/Instance';
-import toast from 'react-hot-toast';
-import { useEffect } from 'react';
-
-
+import { useEffect, useState } from 'react';
+import { PageLoader } from './components/ui';
 
 const ProtectedRoute = ({ user, children }) => {
   const location = useLocation();
@@ -43,8 +41,18 @@ const App = () => {
   const isLoginPage = location.pathname === '/login' || location.pathname === '/';
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
 
-
   useEffect(() => {
+    const verifyAuth = async () => {
+      if (!isLoginPage) {
+        try {
+          await axiosInstance.get('/api/auth/user-info');
+        } catch (err) {
+          console.error('Auth check failed:', err);
+        }
+      }
+    };
+    verifyAuth();
+
     const intervalId = setInterval(
       async () => {
         try {
@@ -53,11 +61,11 @@ const App = () => {
           console.error('Health check failed:', err);
         }
       },
-      10 * 60 * 1000 
+      10 * 60 * 1000
     );
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [location.pathname, isLoginPage]);
   return (
     <div className="">
       {!isLoginPage && <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />}

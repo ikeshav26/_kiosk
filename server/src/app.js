@@ -7,17 +7,14 @@ import facultyRoutes from './routes/Faculty.routes.js';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/Auth.routes.js';
 import helpTicketRoutes from './routes/HelpTicket.routes.js';
-import scheduleRoutes from './routes/Schedule.routes.js'
+import scheduleRoutes from './routes/Schedule.routes.js';
 import cors from 'cors';
 import { auth } from './middlewares/auth.middleware.js';
 
 const app = express();
 connectDb();
 
-const allowedOrigins = [
-  process.env.ADMIN_PORTAL_URL,
-  process.env.KIOSK_URL,
-].filter(Boolean);
+const allowedOrigins = [process.env.ADMIN_PORTAL_URL, process.env.KIOSK_URL].filter(Boolean);
 
 app.use(
   cors({
@@ -51,6 +48,6 @@ app.use('/api/announcement', announcementRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/help-ticket', helpTicketRoutes);
-app.use('/api/schedule',scheduleRoutes)
+app.use('/api/schedule', scheduleRoutes);
 
 export default app;

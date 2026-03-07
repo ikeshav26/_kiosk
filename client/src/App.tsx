@@ -6,7 +6,6 @@ import SidePanel from './components/SidePannel';
 import useInactivityTimer from './hooks/TrackInactivity';
 import { Toaster } from 'react-hot-toast';
 
-
 const Navigation = lazy(() => import('./pages/Navigation'));
 const HelpDesk = lazy(() => import('./pages/HelpDesk'));
 const Announcements = lazy(() => import('./pages/Announcements'));
@@ -18,7 +17,7 @@ const Campus360 = lazy(() => import('./pages/Campus360'));
 const FacultyDetail = lazy(() => import('./pages/FacultyDetail'));
 const BlockDetail = lazy(() => import('./pages/BlockDetail'));
 const Settings = lazy(() => import('./pages/Settings'));
-const Timetable=lazy(() => import('./pages/Timetable'));
+const Timetable = lazy(() => import('./pages/Timetable'));
 const App = () => {
   useInactivityTimer();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -66,7 +65,7 @@ const App = () => {
                 <Route path="/faculty/:id" element={<FacultyDetail />} />
                 <Route path="/block/:id" element={<BlockDetail />} />
                 <Route path="/settings" element={<Settings />} />
-                <Route path='/time-table/:id' element={<Timetable />} />
+                <Route path="/time-table/:id" element={<Timetable />} />
               </Routes>
             </Suspense>
           </div>

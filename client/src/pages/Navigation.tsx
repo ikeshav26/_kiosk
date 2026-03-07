@@ -5,7 +5,6 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapPin, Navigation2, ChevronRight, Compass, Loader2 } from 'lucide-react';
 
-
 interface LatLng {
   lat: number;
   lng: number;
@@ -41,8 +40,6 @@ interface MapData {
   paths: MapPath[];
 }
 
-
-
 function getCoordinatesFromPath(
   pathId: string,
   nodeMap: Map<string, LatLng>,
@@ -57,7 +54,6 @@ function getCoordinatesFromPath(
     return c ? [c] : [];
   });
 }
-
 
 const Navigation = () => {
   const { t, i18n } = useTranslation();
@@ -82,15 +78,11 @@ const Navigation = () => {
   const [activePathId, setActivePathId] = useState<string | null>(null);
   const [mapStarted, setMapStarted] = useState(false);
 
-
   useEffect(() => {
     if (!mapStarted) return;
     setLoadingData(true);
     setDataError(null);
-    Promise.all([
-      axios.get('/api/kiosk/map-data'),
-      axios.get('/api/kiosk/buildinglabel'),
-    ])
+    Promise.all([axios.get('/api/kiosk/map-data'), axios.get('/api/kiosk/buildinglabel')])
       .then(([mapRes, labelRes]) => {
         setMapData(mapRes.data);
         if (Array.isArray(labelRes.data)) setBuildingLabels(labelRes.data);
@@ -99,7 +91,6 @@ const Navigation = () => {
       .finally(() => setLoadingData(false));
   }, [mapStarted]);
 
-
   useEffect(() => {
     if (!mapStarted || !mapData || !mapRef.current || leafletMapRef.current) return;
 
@@ -107,14 +98,13 @@ const Navigation = () => {
       mapData.nodes.map((n) => [n.id, { lat: n.lat, lng: n.lng }])
     );
 
-
     const lats = mapData.nodes.map((n) => n.lat);
     const lngs = mapData.nodes.map((n) => n.lng);
     const centerLat = lats.reduce((a, b) => a + b, 0) / lats.length;
     const centerLng = lngs.reduce((a, b) => a + b, 0) / lngs.length;
 
     const nodeBounds = L.latLngBounds(mapData.nodes.map((n) => [n.lat, n.lng] as [number, number]));
-    const campusBounds = nodeBounds.pad(0.3); 
+    const campusBounds = nodeBounds.pad(0.3);
 
     const map = L.map(mapRef.current, {
       center: [centerLat, centerLng],
@@ -178,7 +168,6 @@ const Navigation = () => {
     const map = leafletMapRef.current;
     if (!map || buildingLabels.length === 0) return;
 
-
     buildingLayerGroupRef.current?.remove();
     const group = L.layerGroup();
 
@@ -206,11 +195,9 @@ const Navigation = () => {
     buildingLayerGroupRef.current = group;
   }, [buildingLabels, leafletMapRef.current]);
 
-  
   function drawPath(pathId: string) {
     const map = leafletMapRef.current;
     if (!map || !mapData) return;
-
 
     routeLayerRef.current?.remove();
     startMarkerRef.current?.remove();
@@ -227,7 +214,6 @@ const Navigation = () => {
 
     const latlngs: [number, number][] = coords.map((c) => [c.lat, c.lng]);
 
-
     const polyline = L.polyline(latlngs, {
       color: '#1d4ed8',
       weight: 5,
@@ -243,7 +229,6 @@ const Navigation = () => {
       fillOpacity: 1,
     }).addTo(map);
 
-  
     const last = latlngs[latlngs.length - 1];
     endMarkerRef.current = L.circleMarker(last, {
       radius: 9,
@@ -261,7 +246,6 @@ const Navigation = () => {
     drawPath(pathId);
   };
 
-  
   return (
     <div
       className="h-full w-full rounded-[40px] overflow-hidden flex font-sans relative shadow-sm"
@@ -359,7 +343,6 @@ const Navigation = () => {
         </div>
       </div>
 
-      
       <div className="flex-1 relative bg-[#0a1628]">
         {!mapStarted && (
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0a1628]">

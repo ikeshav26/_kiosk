@@ -1,9 +1,6 @@
-import { ArrowUp, Delete, Keyboard as KeyboardIcon, X } from "lucide-react";
-import { forwardRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-
-
+import { ArrowUp, Delete, Keyboard as KeyboardIcon, X } from 'lucide-react';
+import { forwardRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const VirtualKeyboard = forwardRef<
   HTMLDivElement,
@@ -39,7 +36,7 @@ export const VirtualKeyboard = forwardRef<
     ],
   };
 
-  const currentLayout = numericOnly ? numericLayout : (isShift ? layouts.shift : layouts.default);
+  const currentLayout = numericOnly ? numericLayout : isShift ? layouts.shift : layouts.default;
 
   const handleKeyClick = (key: string) => {
     if (key === 'SHIFT') {

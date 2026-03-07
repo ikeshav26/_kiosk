@@ -71,7 +71,7 @@ export const bulkAddFaculty = async (req, res) => {
       return res.status(400).json({ message: 'Provide an array of faculty objects.' });
     }
 
-    const added  = [];
+    const added = [];
     const failed = [];
 
     for (const item of list) {
@@ -87,14 +87,14 @@ export const bulkAddFaculty = async (req, res) => {
         );
 
         const faculty = await new Faculty({
-          facultyName:     item.facultyName,
-          designation:     item.designation,
-          qualification:   item.qualification,
+          facultyName: item.facultyName,
+          designation: item.designation,
+          qualification: item.qualification,
           totalExperience: item.totalExperience,
-          imageUrl:        upload.secure_url,
-          email:           item.email       || '',
-          phoneNumber:     item.phoneNumber || '',
-          department:      item.department  || 'CSE',
+          imageUrl: upload.secure_url,
+          email: item.email || '',
+          phoneNumber: item.phoneNumber || '',
+          department: item.department || 'CSE',
           translations,
         }).save();
 

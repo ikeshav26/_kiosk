@@ -66,14 +66,13 @@ export const getAnnouncementById = async (req, res) => {
   }
 };
 
-
-export const deleteAnnouncement=async(req,res)=>{
-  try{
-    const {id}=req.params;
-    const deletedAnnouncement=await Announcement.findByIdAndDelete(id)
+export const deleteAnnouncement = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedAnnouncement = await Announcement.findByIdAndDelete(id);
     res.status(200).json({ message: 'Announcement deleted successfully', deletedAnnouncement });
-  }catch(err){
+  } catch (err) {
     console.error('Error deleting announcement:', err);
     res.status(500).json({ error: 'Failed to delete announcement' });
   }
-}
+};

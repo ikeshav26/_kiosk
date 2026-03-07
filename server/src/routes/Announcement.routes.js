@@ -11,6 +11,6 @@ const router = express.Router();
 router.post('/add', createAnnouncement);
 router.get('/all', getAnnouncements);
 router.get('/:id', getAnnouncementById);
-router.get('/delete/:id',deleteAnnouncement)
+router.get('/delete/:id', deleteAnnouncement);
 
 export default router;

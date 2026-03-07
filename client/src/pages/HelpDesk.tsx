@@ -18,7 +18,6 @@ import {
 } from 'lucide-react';
 import { VirtualKeyboard } from '../components/VirtualKeyboard';
 
-
 const HelpDesk = () => {
   const [formData, setFormData] = useState({
     helperName: '',
@@ -37,7 +36,6 @@ const HelpDesk = () => {
   const keyboardRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
@@ -78,7 +76,12 @@ const HelpDesk = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.helperName || !formData.helperContactNumber || !formData.subject || !formData.description) {
+    if (
+      !formData.helperName ||
+      !formData.helperContactNumber ||
+      !formData.subject ||
+      !formData.description
+    ) {
       setError(t('helpDesk.incompletePayload'));
       return;
     }
@@ -90,7 +93,13 @@ const HelpDesk = () => {
     try {
       await axios.post('/api/help-ticket/create', formData);
       setIsSuccess(true);
-      setFormData({ helperName: '', helperContactNumber: '', subject: '', description: '', category: 'fees' });
+      setFormData({
+        helperName: '',
+        helperContactNumber: '',
+        subject: '',
+        description: '',
+        category: 'fees',
+      });
     } catch (err: any) {
       setError(t('helpDesk.diagnosticFailure'));
     } finally {
@@ -190,7 +199,10 @@ const HelpDesk = () => {
                     readOnly
                     onFocus={() => {
                       setActiveInput('Contact');
-                      setTimeout(() => scrollRef.current?.scrollBy({ top: 200, behavior: 'smooth' }), 100);
+                      setTimeout(
+                        () => scrollRef.current?.scrollBy({ top: 200, behavior: 'smooth' }),
+                        100
+                      );
                     }}
                     placeholder={t('helpDesk.contactNumberPlaceholder')}
                     className={`w-full bg-white border border-slate-200 rounded-[24px] py-4 px-5 text-base font-bold text-[#002b5c] transition-all outline-none ${activeInput === 'Contact' ? 'border-[#002b5c] shadow-2xl ring-8 ring-[#002b5c]/5' : 'hover:border-slate-300 shadow-sm'}`}

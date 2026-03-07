@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 const axiosInstance = axios.create({
   baseURL: import.meta.env.PROD ? import.meta.env.VITE_API_URL : undefined,
   withCredentials: true,
-  maxBodyLength: 52428800, 
+  maxBodyLength: 52428800,
   maxContentLength: 52428800,
 });
 

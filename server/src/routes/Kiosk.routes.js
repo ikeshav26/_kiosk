@@ -1,5 +1,10 @@
 import express from 'express';
-import { registerKiosk, getBuildingLabels, saveBuildingLabels, deleteBuildingLabel } from '../controller/Kiosk.cotnroller.js';
+import {
+  registerKiosk,
+  getBuildingLabels,
+  saveBuildingLabels,
+  deleteBuildingLabel,
+} from '../controller/Kiosk.cotnroller.js';
 import { saveMapData, getMapData } from '../controller/MapData.controller.js';
 
 const router = express.Router();

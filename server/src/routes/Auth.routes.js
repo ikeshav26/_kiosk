@@ -21,7 +21,7 @@ router.get('/logout', logout);
 router.get('/user-info', auth, getProfile);
 router.get('/all-users', auth, getAllUsers);
 router.get('/delete-user/:userId', auth, deleteUser);
-router.post('/update-profile',auth,updateUser)
-router.post('/change-password',auth,changePassword)
+router.post('/update-profile', auth, updateUser);
+router.post('/change-password', auth, changePassword);
 
 export default router;

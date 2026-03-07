@@ -56,7 +56,7 @@ const Settings = () => {
       toast.error("New passwords don't match");
       return;
     }
-   
+
     setLoading(true);
     try {
       await axiosInstance.post('/api/auth/change-password', {

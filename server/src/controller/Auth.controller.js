@@ -82,10 +82,10 @@ export const login = async (req, res) => {
     });
 
     res.cookie('token', token, {
-       httpOnly: true,
+      httpOnly: true,
       secure: true,
       sameSite: 'None',
-  });
+    });
     res.json({
       message: 'Login successful',
       user: { userId: user.userId, name: user.name, email: user.email, role: user.role },
@@ -162,14 +162,12 @@ export const deleteUser = async (req, res) => {
   }
 };
 
+export const updateUser = async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    const { name, email } = req.body;
 
-
-export const updateUser=async(req,res)=>{
-  try{
-    const userId=req.user.userId;
-    const {name,email} = req.body;
-
-    const user=await User.findOne({ userId });
+    const user = await User.findOne({ userId });
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -179,13 +177,11 @@ export const updateUser=async(req,res)=>{
     await user.save();
 
     res.json({ message: 'User updated successfully', user });
-  }catch(err){
+  } catch (err) {
     res.status(500).json({ message: 'Error updating user', error: err.message });
-    console.error('Update user error:', err); 
+    console.error('Update user error:', err);
   }
-}
-
-
+};
 
 export const changePassword = async (req, res) => {
   try {
@@ -206,8 +202,8 @@ export const changePassword = async (req, res) => {
     await user.save();
 
     res.json({ message: 'Password changed successfully' });
-  }catch(err){
+  } catch (err) {
     res.status(500).json({ message: 'Error changing password', error: err.message });
-    console.error('Change password error:', err); 
+    console.error('Change password error:', err);
   }
-}
+};
