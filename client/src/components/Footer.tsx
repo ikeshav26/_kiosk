@@ -21,7 +21,7 @@ const Footer = () => {
 
         if (!mounted) return;
 
-        const latest = (res.data.announcements || []).slice(0, 2).map((notice: any) => ({
+        const latest = (res.data.announcements || []).slice(0, 10).map((notice: any) => ({
           id: notice._id,
           subject: notice.subject,
         }));
