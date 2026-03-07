@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
@@ -16,6 +16,7 @@ import axiosInstance from '../utils/Instance';
 import { authContext } from '../context/AuthContext';
 
 const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+  const [loading, setloading] = useState(false)
   const menuItems = [
     { label: 'Dashboard', icon: LayoutDashboard, route: '/dashboard' },
     { label: 'Faculty', icon: Users, route: '/faculty' },
@@ -36,6 +37,7 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   const handleLogout = async () => {
+    setloading(true);
     try {
       const res = await axiosInstance.get('/api/auth/logout');
       console.log(res.data);
@@ -44,6 +46,8 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
       navigate('/login');
     } catch (err) {
       console.log(err);
+    }finally{
+      setloading(false)
     }
   };
 
@@ -127,10 +131,10 @@ const SideBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         <div className="p-4 border-t border-slate-200/50 bg-slate-50/50">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-xl transition-all font-medium text-sm shadow-sm"
+            className={`w-full flex items-center justify-center gap-2 py-2.5 bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-xl transition-all font-medium text-sm shadow-sm ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
           >
             <LogOut size={16} />
-            Logout
+            {loading ? 'Logging out...' : 'Logout'}
           </button>
         </div>
 

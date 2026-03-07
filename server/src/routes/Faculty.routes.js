@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   addFaculty,
+  addFacultyExcel,
   bulkAddFaculty,
   deleteFaculty,
   getAllFaculties,
@@ -11,6 +12,7 @@ import {
 const router = express.Router();
 
 router.post('/add', addFaculty);
+router.post('/add-excel', addFacultyExcel);
 router.post('/bulk-add', bulkAddFaculty);
 router.get('/all', getAllFaculties);
 router.get('/:id', getFacultyById);

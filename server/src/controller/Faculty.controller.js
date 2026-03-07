@@ -1,11 +1,9 @@
 import cloudinary from '../config/Cloudinary.js';
 import Faculty from '../models/Faculty.model.js';
 import { translateText } from '../utils/translate.js';
+import xlsx from 'xlsx'
 
-/**
- * Translate faculty text fields to hi & pa and return a translations map.
- * Runs Hindi & Punjabi translations in parallel for speed.
- */
+
 const buildTranslations = async (facultyName, designation, qualification) => {
   const fields = [
     { key: 'facultyName', value: facultyName },
@@ -41,7 +39,6 @@ export const addFaculty = async (req, res) => {
       folder: 'faculty_images',
     });
 
-    // Translate text fields to hi & pa
     const translations = await buildTranslations(facultyName, designation, qualification);
 
     const newFaculty = new Faculty({
@@ -173,7 +170,6 @@ export const updateFaculty = async (req, res) => {
       imageUrl = uploadImage.secure_url;
     }
 
-    // Re-translate text fields
     const translations = await buildTranslations(facultyName, designation, qualification);
 
     const updatedFaculty = await Faculty.findByIdAndUpdate(
@@ -197,6 +193,68 @@ export const updateFaculty = async (req, res) => {
     }
 
     res.status(200).json({ message: 'Faculty updated successfully', faculty: updatedFaculty });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+    console.log(err);
+  }
+};
+
+
+
+export const addFacultyExcel = async (req, res) => {
+  try {
+    const { excelData } = req.body;
+
+    if (!excelData) {
+      return res.status(400).json({ message: 'Excel data is required' });
+    }
+
+    const base64Data = excelData.split(',')[1] || excelData;
+    const buffer = Buffer.from(base64Data, 'base64');
+
+    const workbook = xlsx.read(buffer, { type: "buffer" });
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const data = xlsx.utils.sheet_to_json(sheet);
+
+    if (!data || data.length === 0) {
+      return res.status(400).json({ message: 'Excel file is empty or invalid' });
+    }
+
+    const added = [];
+    const failed = [];
+
+    for (const item of data) {
+      try {
+        const translations = await buildTranslations(
+          item.facultyName || '',
+          item.designation || '',
+          item.qualification || ''
+        );
+
+        const faculty = await new Faculty({
+          facultyName: item.facultyName || '',
+          designation: item.designation || '',
+          qualification: item.qualification || '',
+          totalExperience: item.totalExperience || 0,
+          imageUrl: "https://res.cloudinary.com/ducvkar80/image/upload/v1752789612/avatars/gbuufbs2fud7mrzvcsqj.jpg",
+          email: item.email || '',
+          phoneNumber: item.phoneNumber || '',
+          department: item.department || 'CSE',
+          translations,
+        }).save();
+
+        added.push(faculty);
+      } catch (err) {
+        failed.push({ facultyName: item.facultyName, error: err.message });
+      }
+    }
+
+    res.status(201).json({
+      message: `${added.length} added, ${failed.length} failed.`,
+      added,
+      failed,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
     console.log(err);

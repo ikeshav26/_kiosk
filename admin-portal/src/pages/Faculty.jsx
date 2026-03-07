@@ -37,6 +37,7 @@ const Faculty = () => {
   const isAdmin = user?.role === 'admin' || user?.role === 'superAdmin';
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+  const excelInputRef = useRef(null);
   const departments = ['CSE', 'ECE', 'MECH', 'CIVIL', 'EEE', 'IT'];
 
   const [formData, setFormData] = useState({
@@ -153,6 +154,32 @@ const Faculty = () => {
     } finally {
       setActionLoading(false);
     }
+  };
+
+  const handleExcelUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.name.match(/\.(xlsx|xls)$/)) {
+      toast.error('Please upload a valid Excel file (.xlsx or .xls)');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      setActionLoading(true);
+      try {
+        const res = await axiosInstance.post('/api/faculty/add-excel', { excelData: reader.result });
+        toast.success(`Mass upload complete: ${res.data.added?.length} added, ${res.data.failed?.length} failed.`);
+        fetchFaculty();
+      } catch (err) {
+        toast.error(err.response?.data?.message || 'Failed to process Excel upload.');
+      } finally {
+        setActionLoading(false);
+        if (excelInputRef.current) excelInputRef.current.value = '';
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleDelete = async (id) => {
@@ -345,11 +372,40 @@ const Faculty = () => {
               <Button type="submit" loading={actionLoading} icon={UserPlus} fullWidth>
                 Add Faculty
               </Button>
+
+              <div className="relative flex items-center justify-center py-2">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-slate-200"></div>
+                </div>
+                <div className="relative bg-white px-2 text-xs font-bold text-slate-400 uppercase">
+                  OR
+                </div>
+              </div>
+
+              <div>
+                <input
+                  type="file"
+                  ref={excelInputRef}
+                  className="hidden"
+                  accept=".xlsx, .xls"
+                  onChange={handleExcelUpload}
+                />
+                <Button 
+                  type="button" 
+                  loading={actionLoading} 
+                  icon={Upload} 
+                  fullWidth
+                  variant="outline"
+                  onClick={() => excelInputRef.current?.click()}
+                  className="bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300"
+                >
+                  Mass Add via Excel
+                </Button>
+              </div>
             </form>
           </Card>
         )}
 
-        {/* Faculty List */}
         <Card
           className={`${isAdmin ? 'col-span-2' : 'col-span-1'} flex flex-col h-[750px]`}
           headerIcon={Users}
