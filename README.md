@@ -13,11 +13,11 @@ _kiosk/
 
 ## Tech Stack
 
-| Layer | Technologies |
-|-------|-------------|
-| **Kiosk Client** | React, TypeScript, Vite, Electron, Tailwind CSS, i18next |
-| **Admin Portal** | React, JavaScript, Vite, Tailwind CSS |
-| **Backend** | Node.js, Express, MongoDB (Mongoose), Cloudinary, JWT Auth |
+| Layer            | Technologies                                               |
+| ---------------- | ---------------------------------------------------------- |
+| **Kiosk Client** | React, TypeScript, Vite, Electron, Tailwind CSS, i18next   |
+| **Admin Portal** | React, JavaScript, Vite, Tailwind CSS                      |
+| **Backend**      | Node.js, Express, MongoDB (Mongoose), Cloudinary, JWT Auth |
 
 ## Key Features
 
@@ -32,9 +32,9 @@ _kiosk/
 
 ## Core Developers
 
-| Name | GitHub |
-|------|--------|
-| **Keshav Gilhotra** | [@ikeshav26](https://github.com/ikeshav26) |
-| **Krish Puri** | [@ikrish21](https://github.com/ikrish21) |
-| **Manpreet Singh** | [@MannuVilasara](https://github.com/MannuVilasara) |
-| **Bhavuk Ahuja** | [@bhavukahuja](https://github.com/bhavukahuja) |
+| Name                | GitHub                                             |
+| ------------------- | -------------------------------------------------- |
+| **Keshav Gilhotra** | [@ikeshav26](https://github.com/ikeshav26)         |
+| **Krish Puri**      | [@ikrish21](https://github.com/ikrish21)           |
+| **Manpreet Singh**  | [@MannuVilasara](https://github.com/MannuVilasara) |
+| **Bhavuk Ahuja**    | [@bhavukahuja](https://github.com/bhavukahuja)     |

@@ -14,14 +14,7 @@ import {
 } from 'lucide-react';
 import { authContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import {
-  PageHeader,
-  StatCard,
-  Card,
-  FormInput,
-  Button,
-  SearchInput,
-} from '../components/ui';
+import { PageHeader, StatCard, Card, FormInput, Button, SearchInput } from '../components/ui';
 
 const SuperAdminDashboard = () => {
   const [allUsers, setAllUsers] = useState([]);

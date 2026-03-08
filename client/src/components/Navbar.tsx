@@ -44,7 +44,6 @@ const Navbar = () => {
     return () => clearInterval(timer);
   }, []);
 
-
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -109,7 +108,6 @@ const Navbar = () => {
             <span className="text-lg font-medium tracking-wide">{rest.replace(',', '')}</span>
           </div>
         </div>
-
 
         <div className="flex items-center gap-6" ref={dropdownRef}>
           <div className="relative">

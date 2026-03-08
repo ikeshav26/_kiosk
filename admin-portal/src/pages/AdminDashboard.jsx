@@ -158,7 +158,6 @@ const AdminDashboard = () => {
     );
   }, [allUsers, searchQuery]);
 
-
   const statsData = [
     {
       label: 'Users',
