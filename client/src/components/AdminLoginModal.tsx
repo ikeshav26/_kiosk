@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { X, Lock, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
+import { VirtualKeyboard } from './VirtualKeyboard';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -14,8 +15,53 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
   const [adminId, setAdminId] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [activeInput, setActiveInput] = useState<string | null>(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const keyboardRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (
+        activeInput &&
+        keyboardRef.current &&
+        !keyboardRef.current.contains(target) &&
+        formRef.current &&
+        !formRef.current.contains(target)
+      ) {
+        setActiveInput(null);
+      }
+    };
+
+    document.addEventListener('pointerdown', handleOutsideClick);
+    return () => document.removeEventListener('pointerdown', handleOutsideClick);
+  }, [activeInput]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setAdminId('');
+      setPassword('');
+      setLoading(false);
+      setActiveInput(null);
+    }
+  }, [isOpen]);
+
+  const handleVirtualKeyPress = (key: string) => {
+    if (!activeInput) return;
+    const setter = activeInput === 'Admin ID' ? setAdminId : setPassword;
+    const current = activeInput === 'Admin ID' ? adminId : password;
+
+    if (key === 'BKSP') {
+      setter(current.slice(0, -1));
+    } else if (key === 'SPACE') {
+      setter(current + ' ');
+    } else {
+      setter(current + key);
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -41,7 +87,7 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[150] flex items-center justify-center bg-black/60 backdrop-blur-sm">
       <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-300">
         <div className="bg-gradient-to-r from-[#001f3f] to-[#003366] p-6 text-white flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -57,7 +103,7 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
           </button>
         </div>
 
-        <form onSubmit={handleLogin} className="p-8 space-y-6">
+        <form ref={formRef} onSubmit={handleLogin} className="p-8 space-y-6">
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               {t('adminLogin.adminId')}
@@ -69,9 +115,9 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
               <input
                 type="text"
                 value={adminId}
-                onChange={(e) => setAdminId(e.target.value)}
-                required
-                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-medium text-gray-900"
+                onFocus={() => setActiveInput('Admin ID')}
+                readOnly
+                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-medium text-gray-900 cursor-pointer"
                 placeholder={t('adminLogin.adminIdPlaceholder')}
               />
             </div>
@@ -88,9 +134,9 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-medium text-gray-900"
+                onFocus={() => setActiveInput('Password')}
+                readOnly
+                className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all font-medium text-gray-900 cursor-pointer"
                 placeholder="••••••••"
               />
             </div>
@@ -109,6 +155,17 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
           </button>
         </form>
       </div>
+
+      {activeInput && (
+        <div className="fixed bottom-0 left-0 right-0 z-[110]">
+          <VirtualKeyboard
+            ref={keyboardRef}
+            activeInputName={activeInput}
+            onKeyPress={handleVirtualKeyPress}
+            onClose={() => setActiveInput(null)}
+          />
+        </div>
+      )}
     </div>
   );
 };

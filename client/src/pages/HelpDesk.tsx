@@ -259,7 +259,6 @@ const HelpDesk = () => {
                 </div>
               </div>
 
-              {/* Operational Description */}
               <div className="space-y-4">
                 <label className="text-[11px] font-black text-slate-500 uppercase tracking-[0.3em] ml-2 flex items-center gap-3">
                   <MessageSquare size={14} className="text-blue-500" />{' '}
@@ -281,7 +280,6 @@ const HelpDesk = () => {
                 />
               </div>
 
-              {/* Submit Suite */}
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -308,7 +306,6 @@ const HelpDesk = () => {
         </div>
       </div>
 
-      {/* 3. Scoped Virtual Keyboard Dock */}
       {activeInput && !isSuccess && (
         <VirtualKeyboard
           ref={keyboardRef}

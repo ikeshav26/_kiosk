@@ -346,7 +346,6 @@ const Navigation = () => {
       <div className="flex-1 relative bg-[#0a1628]">
         {!mapStarted && (
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-[#0a1628]">
-            {/* Decorative rings */}
             <div className="relative flex items-center justify-center mb-10">
               <div className="absolute w-48 h-48 rounded-full border border-white/5" />
               <div className="absolute w-32 h-32 rounded-full border border-white/10" />
