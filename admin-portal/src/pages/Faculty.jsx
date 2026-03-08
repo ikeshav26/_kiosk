@@ -60,6 +60,7 @@ const Faculty = () => {
     const cacheKey = `${currentPage}-${searchQuery}-${selectedDept}`;
 
     if (!forceRefetch && facultyCache.has(cacheKey)) {
+      setLoading(false);
       const cachedData = facultyCache.get(cacheKey);
       setFaculty(cachedData.faculties);
       setTotalPages(cachedData.totalPages);

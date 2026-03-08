@@ -90,6 +90,7 @@ const Blocks = () => {
     const cacheKey = `${currentPage}-${searchQuery}-${typeFilter}`;
 
     if (!forceRefetch && buildingCache.has(cacheKey)) {
+      setLoading(false);
       const cachedData = buildingCache.get(cacheKey);
       setBuildings(cachedData.buildings);
       setStats(cachedData.stats);
