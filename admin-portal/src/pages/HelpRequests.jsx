@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { authContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
-import { PageLoader, StatCard, Card, SearchInput } from '../components/ui';
+import { StatCard, Card, SearchInput } from '../components/ui';
 
 const HelpRequests = () => {
   const [tickets, setTickets] = useState([]);
@@ -129,8 +129,6 @@ const HelpRequests = () => {
     return config || statusOptions[0];
   };
 
-  if (loading) return <PageLoader message="Loading Tickets..." />;
-
   const statsData = [
     {
       label: 'Total',
@@ -164,14 +162,23 @@ const HelpRequests = () => {
 
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
-      {/* Stats */}
+
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-        {statsData.map((stat, i) => (
-          <StatCard key={i} {...stat} />
-        ))}
+        {loading
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-xl p-5 shadow-sm border border-slate-100 animate-pulse">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-slate-200 rounded-lg" />
+                  <div className="h-3 w-20 bg-slate-200 rounded" />
+                </div>
+                <div className="h-7 w-16 bg-slate-200 rounded mt-1" />
+              </div>
+            ))
+          : statsData.map((stat, i) => (
+              <StatCard key={i} {...stat} />
+            ))}
       </section>
 
-      {/* Tickets Card */}
       <Card
         headerIcon={LifeBuoy}
         headerTitle="Help Tickets"
@@ -198,7 +205,7 @@ const HelpRequests = () => {
           </div>
         }
       >
-        {/* Category Filter */}
+
         <div className="px-5 py-3 border-b border-slate-50 flex flex-wrap gap-2">
           {categories.map((cat) => (
             <button
@@ -237,7 +244,25 @@ const HelpRequests = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
-              {filteredTickets.length > 0 ? (
+              {loading ? (
+                Array.from({ length: 5 }).map((_, i) => (
+                  <tr key={i} className="animate-pulse">
+                    <td className="px-6 py-4">
+                      <div className="flex items-start gap-3">
+                        <div className="w-8 h-8 bg-slate-200 rounded-lg shrink-0" />
+                        <div className="space-y-2 flex-1">
+                          <div className="h-3.5 bg-slate-200 rounded w-3/4" />
+                          <div className="h-3 bg-slate-100 rounded w-1/2" />
+                        </div>
+                      </div>
+                    </td>
+                    <td className="px-4 py-4"><div className="h-3 bg-slate-200 rounded w-16" /></td>
+                    <td className="px-4 py-4"><div className="h-6 bg-slate-200 rounded-lg w-20" /></td>
+                    <td className="px-4 py-4"><div className="h-3 bg-slate-200 rounded w-20" /></td>
+                    <td className="px-6 py-4 text-right"><div className="h-8 w-8 bg-slate-200 rounded-lg ml-auto" /></td>
+                  </tr>
+                ))
+              ) : filteredTickets.length > 0 ? (
                 filteredTickets.map((ticket) => {
                   const status = getStatusConfig(ticket.status);
                   return (

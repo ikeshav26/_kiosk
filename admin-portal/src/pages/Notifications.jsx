@@ -3,7 +3,7 @@ import axiosInstance from '../utils/Instance';
 import { useNavigate } from 'react-router-dom';
 import { Bell, Plus, Clock, Trash2, ChevronRight, Megaphone, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { PageLoader, SearchInput, Button } from '../components/ui';
+import { SearchInput, Button } from '../components/ui';
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -51,11 +51,8 @@ const Notifications = () => {
       n.message.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  if (loading) return <PageLoader message="Loading Announcements..." />;
-
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
-      {/* Header */}
       <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-500 shrink-0">
@@ -90,9 +87,32 @@ const Notifications = () => {
         </div>
       </header>
 
-      {/* Announcements List */}
+
       <div className="space-y-4">
-        {filteredNotifications.length > 0 ? (
+        {loading ? (
+          Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className="bg-white p-5 rounded-xl flex items-center gap-4 shadow-sm border border-slate-100 animate-pulse"
+            >
+              <div className="w-1 h-12 bg-slate-200 rounded-full" />
+              <div className="flex-1 min-w-0 space-y-3">
+                <div className="flex justify-between items-start">
+                  <div className="h-4 bg-slate-200 rounded w-1/3" />
+                  <div className="h-3 bg-slate-100 rounded w-24" />
+                </div>
+                <div className="space-y-1.5">
+                  <div className="h-3 bg-slate-100 rounded w-full" />
+                  <div className="h-3 bg-slate-100 rounded w-2/3" />
+                </div>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="w-8 h-8 bg-slate-100 rounded-lg" />
+                <div className="w-8 h-8 bg-slate-200 rounded-lg" />
+              </div>
+            </div>
+          ))
+        ) : filteredNotifications.length > 0 ? (
           filteredNotifications.map((item) => (
             <div
               key={item._id}
@@ -134,7 +154,6 @@ const Notifications = () => {
           </div>
         )}
 
-        {/* Pagination Controls */}
         {totalPages > 1 && (
           <div className="flex items-center justify-between mt-6 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
             <p className="text-sm text-slate-500">
