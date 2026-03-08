@@ -112,8 +112,38 @@ export const bulkAddFaculty = async (req, res) => {
 
 export const getAllFaculties = async (req, res) => {
   try {
-    const faculties = await Faculty.find();
-    res.status(200).json({ faculties });
+    const { page, limit, search, department } = req.query;
+
+    if (!page && !limit && !search && !department) {
+      const faculties = await Faculty.find();
+      return res.status(200).json({ faculties });
+    }
+
+    const pageNumber = parseInt(page) || 1;
+    const pageSize = parseInt(limit) || 9;
+    const skip = (pageNumber - 1) * pageSize;
+
+    let query = {};
+    if (search) {
+      query.$or = [
+        { facultyName: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } },
+      ];
+    }
+    if (department && department !== 'All') {
+      query.department = department;
+    }
+
+    const faculties = await Faculty.find(query).skip(skip).limit(pageSize);
+
+    const total = await Faculty.countDocuments(query);
+
+    res.status(200).json({
+      faculties,
+      total,
+      page: pageNumber,
+      totalPages: Math.ceil(total / pageSize),
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
     console.log(err);

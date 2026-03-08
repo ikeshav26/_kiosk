@@ -31,6 +31,8 @@ const Faculty = () => {
   const [selectedDept, setSelectedDept] = useState('All');
   const [isDragging, setIsDragging] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalFacultyCount, setTotalFacultyCount] = useState(0);
   const [selectedIds, setSelectedIds] = useState([]);
   const itemsPerPage = 9;
 
@@ -55,8 +57,19 @@ const Faculty = () => {
   const fetchFaculty = async () => {
     setLoading(true);
     try {
-      const res = await axiosInstance.get('/api/faculty/all');
-      setFaculty(res.data.faculties || res.data || []);
+      const res = await axiosInstance.get('/api/faculty/all', {
+        params: {
+          page: currentPage,
+          limit: itemsPerPage,
+          search: searchQuery,
+          department: selectedDept,
+        },
+      });
+      setFaculty(res.data.faculties || []);
+      setTotalPages(
+        res.data.totalPages || Math.ceil((res.data.faculties || []).length / itemsPerPage)
+      );
+      setTotalFacultyCount(res.data.total || (res.data.faculties || []).length);
     } catch (err) {
       console.error('Faculty Sync Error:', err);
     } finally {
@@ -66,7 +79,7 @@ const Faculty = () => {
 
   useEffect(() => {
     fetchFaculty();
-  }, []);
+  }, [currentPage, searchQuery, selectedDept]);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -216,7 +229,7 @@ const Faculty = () => {
     try {
       await axiosInstance.post('/api/faculty/bulk-delete', { ids: selectedIds });
       toast.success(`${selectedIds.length} faculty deleted!`);
-      setFaculty((prev) => prev.filter((f) => !selectedIds.includes(f._id)));
+      fetchFaculty();
       setSelectedIds([]);
     } catch (err) {
       toast.error('Failed to delete some faculty members.');
@@ -231,7 +244,7 @@ const Faculty = () => {
     try {
       await axiosInstance.get(`/api/faculty/delete/${id}`);
       toast.success('Faculty deleted!');
-      setFaculty((prev) => prev.filter((f) => f._id !== id));
+      fetchFaculty();
       setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
     } catch (err) {
       toast.error('Failed to delete faculty.');
@@ -240,24 +253,13 @@ const Faculty = () => {
     }
   };
 
-  const filteredFaculty = useMemo(() => {
-    return faculty.filter((f) => {
-      const matchesSearch =
-        f.facultyName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        f.email?.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesDept = selectedDept === 'All' || f.department === selectedDept;
-      return matchesSearch && matchesDept;
-    });
-  }, [faculty, searchQuery, selectedDept]);
-
   useEffect(() => {
     setCurrentPage(1);
   }, [searchQuery, selectedDept]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredFaculty.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(filteredFaculty.length / itemsPerPage);
+  const currentItems = faculty;
 
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
@@ -661,10 +663,9 @@ const Faculty = () => {
               <p className="text-xs text-slate-500 font-medium">
                 Showing <span className="font-bold text-slate-700">{indexOfFirstItem + 1}</span> to{' '}
                 <span className="font-bold text-slate-700">
-                  {Math.min(indexOfLastItem, filteredFaculty.length)}
+                  {Math.min(indexOfLastItem, totalFacultyCount)}
                 </span>{' '}
-                of <span className="font-bold text-slate-700">{filteredFaculty.length}</span>{' '}
-                faculty
+                of <span className="font-bold text-slate-700">{totalFacultyCount}</span> faculty
               </p>
               <div className="flex items-center gap-2">
                 <button
