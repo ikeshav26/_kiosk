@@ -81,7 +81,6 @@ const Navbar = () => {
   return (
     <>
       <nav className="w-full h-32 bg-gradient-to-r from-[#001f3f] via-[#003366] to-[#001a33] px-10 flex items-center justify-between text-white shadow-2xl border-b border-white/10 select-none z-50">
-        {/* Logo */}
         <div
           onClick={handleLogoClick}
           className="flex items-center gap-4 group cursor-pointer active:scale-95 transition-transform"
@@ -99,7 +98,6 @@ const Navbar = () => {
             </p>
           </div>
         </div>
-
 
         <div className="flex items-center gap-10">
           <div className="text-5xl font-medium tracking-tighter tabular-nums">

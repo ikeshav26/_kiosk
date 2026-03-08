@@ -35,6 +35,8 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
       toast.error(error.response?.data?.message || t('adminLogin.loginFailed'));
     } finally {
       setLoading(false);
+      setAdminId('');
+      setPassword('');
     }
   };
 
