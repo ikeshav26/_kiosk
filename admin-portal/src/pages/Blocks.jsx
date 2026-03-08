@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useContext, useRef } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import axiosInstance from '../utils/Instance';
 import {
   Building2,
@@ -19,8 +19,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { authContext } from '../context/AuthContext';
-import { PageLoader, Card, FormInput, Button, SearchInput } from '../components/ui';
-import axios from 'axios';
+import { Card, FormInput, Button, SearchInput } from '../components/ui';
 
 const BUILDING_TYPES = [
   'block',
