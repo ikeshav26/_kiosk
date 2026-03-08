@@ -158,7 +158,6 @@ const AdminDashboard = () => {
     );
   }, [allUsers, searchQuery]);
 
-  if (loading) return <PageLoader message="Loading Dashboard..." />;
 
   const statsData = [
     {

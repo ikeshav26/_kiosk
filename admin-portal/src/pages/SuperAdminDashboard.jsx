@@ -15,7 +15,6 @@ import {
 import { authContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import {
-  PageLoader,
   PageHeader,
   StatCard,
   Card,
@@ -106,8 +105,6 @@ const SuperAdminDashboard = () => {
     [allUsers]
   );
 
-  if (loading) return <PageLoader icon={ShieldCheck} message="Establishing Secure Session..." />;
-
   const statsData = [
     {
       label: 'Total Users',
@@ -143,16 +140,13 @@ const SuperAdminDashboard = () => {
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       <PageHeader user={user} roleLabel="Super Admin" />
 
-      {/* Stats */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {statsData.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
       </section>
 
-      {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Create User Form */}
         <Card
           headerIcon={UserPlus}
           headerTitle="Create User"
@@ -199,7 +193,6 @@ const SuperAdminDashboard = () => {
               size="small"
             />
 
-            {/* Role Selector */}
             <div>
               <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                 Role
@@ -228,7 +221,6 @@ const SuperAdminDashboard = () => {
           </form>
         </Card>
 
-        {/* Users List */}
         <Card
           className="col-span-2"
           headerIcon={Users}
@@ -262,7 +254,16 @@ const SuperAdminDashboard = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50">
-                {filteredUsers.length > 0 ? (
+                {loading ? (
+                  <tr>
+                    <td colSpan={4} className="py-12 text-center">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="w-8 h-8 border-2 border-slate-300 border-t-slate-600 rounded-full animate-spin" />
+                        <p className="text-sm font-medium text-slate-400">Loading users...</p>
+                      </div>
+                    </td>
+                  </tr>
+                ) : filteredUsers.length > 0 ? (
                   filteredUsers.map((u) => (
                     <tr key={u._id} className="hover:bg-slate-50/50 transition-colors">
                       <td className="px-6 py-4">

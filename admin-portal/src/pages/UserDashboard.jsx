@@ -57,8 +57,6 @@ const UserDashboard = () => {
     fetchDashboardData();
   }, []);
 
-  if (loading) return <PageLoader message="Loading Dashboard..." />;
-
   const statsData = [
     {
       label: 'Announcements',
