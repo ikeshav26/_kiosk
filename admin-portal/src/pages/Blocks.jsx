@@ -14,6 +14,8 @@ import {
   Accessibility,
   ArrowUpCircle,
   Fingerprint,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { authContext } from '../context/AuthContext';
@@ -68,18 +70,36 @@ const Blocks = () => {
   const fileInputRef = useRef(null);
 
   const [buildings, setBuildings] = useState([]);
+  const [stats, setStats] = useState({ total: 0, block: 0, library: 0, lab: 0 });
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalCount, setTotalCount] = useState(0);
+  const [selectedIds, setSelectedIds] = useState([]);
+  const itemsPerPage = 6;
+
   const [formData, setFormData] = useState(initialFormState);
 
   // --- Fetch ---
   const fetchBuildings = async () => {
     setLoading(true);
     try {
-      const res = await axiosInstance.get('/api/building/all');
-      setBuildings(Array.isArray(res.data) ? res.data : res.data?.buildings || []);
+      const res = await axiosInstance.get('/api/building/all', {
+        params: {
+          page: currentPage,
+          limit: itemsPerPage,
+          search: searchQuery,
+          type: typeFilter,
+        },
+      });
+      setBuildings(res.data.buildings || []);
+      setStats(res.data.stats || { total: 0, block: 0, library: 0, lab: 0 });
+      setTotalPages(res.data.totalPages || 1);
+      setTotalCount(res.data.total || 0);
     } catch {
       toast.error('Failed to load buildings.');
     } finally {
@@ -89,7 +109,11 @@ const Blocks = () => {
 
   useEffect(() => {
     fetchBuildings();
-  }, []);
+  }, [currentPage, searchQuery, typeFilter]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, typeFilter]);
 
   // --- Form Handlers ---
   const handleInputChange = (e) => {
@@ -152,24 +176,40 @@ const Blocks = () => {
   };
 
   const handleDelete = async (id) => {
-    await axiosInstance.delete(`/api/building/delete/${id}`);
     if (!window.confirm('Delete this building?')) return;
-    setBuildings((prev) => prev.filter((b) => b._id !== id));
-    toast.success('Building removed.');
+    setActionLoading(true);
+    try {
+      await axiosInstance.delete(`/api/building/delete/${id}`);
+      setBuildings((prev) => prev.filter((b) => b._id !== id));
+      setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
+      setTotalCount((prev) => prev - 1);
+      toast.success('Building removed.');
+    } catch {
+      toast.error('Failed to delete building.');
+    } finally {
+      setActionLoading(false);
+    }
   };
 
-  // --- Filter ---
-  const filteredBuildings = useMemo(() => {
-    return buildings.filter((b) => {
-      const q = searchQuery.toLowerCase();
-      const matchesSearch =
-        (b.name || '').toLowerCase().includes(q) || (b.code || '').toLowerCase().includes(q);
-      const matchesType = typeFilter === 'all' || b.type === typeFilter;
-      return matchesSearch && matchesType;
-    });
-  }, [buildings, searchQuery, typeFilter]);
+  const handleBulkDelete = async () => {
+    if (selectedIds.length === 0) return;
+    if (!window.confirm(`Delete ${selectedIds.length} building(s)?`)) return;
+    setActionLoading(true);
+    try {
+      await axiosInstance.post('/api/building/bulk-delete', { ids: selectedIds });
+      toast.success(`${selectedIds.length} buildings deleted!`);
+      setBuildings((prev) => prev.filter((b) => !selectedIds.includes(b._id)));
+      setTotalCount((prev) => prev - selectedIds.length);
+      setSelectedIds([]);
+    } catch (err) {
+      toast.error('Failed to delete some buildings.');
+    } finally {
+      setActionLoading(false);
+    }
+  };
 
-  if (loading) return <PageLoader message="Loading Buildings..." />;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
@@ -183,7 +223,7 @@ const Blocks = () => {
             <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5">
               Total
             </p>
-            <p className="text-2xl font-bold text-slate-900">{buildings.length}</p>
+            <p className="text-2xl font-bold text-slate-900">{stats.total}</p>
           </div>
         </div>
         {['block', 'library', 'lab'].map((t) => (
@@ -200,9 +240,7 @@ const Blocks = () => {
               <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-0.5 capitalize">
                 {t}s
               </p>
-              <p className="text-2xl font-bold text-slate-900">
-                {buildings.filter((b) => b.type === t).length}
-              </p>
+              <p className="text-2xl font-bold text-slate-900">{stats[t] || 0}</p>
             </div>
           </div>
         ))}
@@ -421,12 +459,23 @@ const Blocks = () => {
 
         {/* Right: Buildings List */}
         <Card
-          className={isAdmin ? 'lg:col-span-2' : 'lg:col-span-3'}
+          className={`${isAdmin ? 'lg:col-span-2' : 'lg:col-span-3'} flex flex-col h-full`}
           headerIcon={Building2}
           headerTitle="Buildings Directory"
-          headerSubtitle={`${filteredBuildings.length} records`}
+          headerSubtitle={`${totalCount} records`}
           headerAction={
             <div className="flex items-center gap-3 w-full sm:w-auto">
+              {isAdmin && selectedIds.length > 0 && (
+                <Button
+                  onClick={handleBulkDelete}
+                  loading={actionLoading}
+                  icon={Trash2}
+                  size="small"
+                  className="bg-red-500 text-white hover:bg-red-600 px-4 py-2 border-0"
+                >
+                  Delete ({selectedIds.length})
+                </Button>
+              )}
               <SearchInput
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -448,130 +497,220 @@ const Blocks = () => {
             </div>
           }
         >
-          {filteredBuildings.length > 0 ? (
-            <div className="p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-              {filteredBuildings.map((b) => (
-                <div
-                  key={b._id}
-                  className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all group"
-                >
-                  {/* Image / Placeholder */}
-                  <div className="h-36 bg-slate-100 relative overflow-hidden">
-                    {b.imageUrl?.length > 0 ? (
-                      <img
-                        src={b.imageUrl[0]}
-                        alt={b.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-300">
-                        <Building2 size={40} strokeWidth={1} />
+          <div className="flex-1">
+            {loading ? (
+              <div className="p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[...Array(itemsPerPage)].map((_, i) => (
+                  <div
+                    key={`skeleton-${i}`}
+                    className="bg-white border border-slate-200 rounded-xl overflow-hidden min-h-[300px] animate-pulse"
+                  >
+                    <div className="h-36 bg-slate-200 w-full"></div>
+                    <div className="p-4 space-y-3">
+                      <div className="flex justify-between">
+                        <div className="h-5 w-1/2 bg-slate-200 rounded"></div>
+                        <div className="h-6 w-6 bg-slate-200 rounded-lg"></div>
                       </div>
-                    )}
-                    <span
-                      className={`absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border ${TYPE_COLORS[b.type] || TYPE_COLORS.other}`}
-                    >
-                      {b.type}
-                    </span>
-                    {b.code && (
-                      <span className="absolute bottom-3 left-3 bg-slate-900 text-white px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wide shadow">
-                        {b.code}
-                      </span>
-                    )}
+                      <div className="h-3 w-5/6 bg-slate-200 rounded"></div>
+                      <div className="h-3 w-4/6 bg-slate-200 rounded mb-4"></div>
+                      <div className="grid grid-cols-2 gap-2 mt-4">
+                        <div className="h-4 w-16 bg-slate-200 rounded"></div>
+                        <div className="h-4 w-20 bg-slate-200 rounded"></div>
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Info */}
-                  <div className="p-4">
-                    <div className="flex items-start justify-between mb-2">
-                      <h3 className="text-sm font-semibold text-slate-900 leading-snug">
-                        {b.name}
-                      </h3>
-                      {isAdmin && (
-                        <button
-                          onClick={() => handleDelete(b._id)}
-                          className="p-1.5 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors shrink-0"
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      )}
-                    </div>
-
-                    <p className="text-xs text-slate-500 line-clamp-2 mb-3">
-                      {b.description || 'No description available.'}
-                    </p>
-
-                    {/* Quick Info Grid */}
-                    <div className="grid grid-cols-2 gap-2 mb-3">
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Layers size={12} className="text-slate-400" />
-                        <span className="text-[10px] font-medium">{b.totalFloors || 0} Floors</span>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-slate-500">
-                        <Clock size={12} className="text-slate-400" />
-                        <span className="text-[10px] font-medium">
-                          {b.openTime || '09:00'} - {b.closeTime || '16:00'}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <Accessibility
-                          size={12}
-                          className={b.isAccessible ? 'text-emerald-500' : 'text-slate-300'}
+                ))}
+              </div>
+            ) : buildings.length > 0 ? (
+              <div className="p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                {buildings.map((b) => (
+                  <div
+                    key={b._id}
+                    className="bg-white border border-slate-200 rounded-xl overflow-hidden hover:shadow-md transition-all group relative"
+                  >
+                    {isAdmin && (
+                      <div className="absolute top-2 left-2 z-10">
+                        <input
+                          type="checkbox"
+                          className="w-5 h-5 rounded border-slate-300 text-slate-900 focus:ring-slate-500 bg-white/80 cursor-pointer"
+                          checked={selectedIds.includes(b._id)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedIds((prev) => [...prev, b._id]);
+                            } else {
+                              setSelectedIds((prev) => prev.filter((id) => id !== b._id));
+                            }
+                          }}
                         />
-                        <span className="text-[10px] font-medium text-slate-500">Accessible</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <ArrowUpCircle
-                          size={12}
-                          className={b.hasLift ? 'text-blue-500' : 'text-slate-300'}
-                        />
-                        <span className="text-[10px] font-medium text-slate-500">Elevator</span>
-                      </div>
-                    </div>
-
-                    {/* Departments */}
-                    {b.departments?.length > 0 && (
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {b.departments.map((dept, i) => (
-                          <span
-                            key={i}
-                            className="px-1.5 py-0.5 bg-slate-100 text-slate-500 text-[9px] font-bold uppercase rounded border border-slate-200"
-                          >
-                            {dept}
-                          </span>
-                        ))}
                       </div>
                     )}
-
-                    {/* Footer */}
-                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-slate-400">
-                      <div className="flex items-center gap-1">
-                        <MapPin size={11} className="text-red-400" />
-                        <span className="text-[10px] font-medium">
-                          {b.coordinates?.lat?.toFixed(4) || '—'},{' '}
-                          {b.coordinates?.lng?.toFixed(4) || '—'}
-                        </span>
-                      </div>
-                      {b.contactEmail && (
-                        <div className="flex items-center gap-1">
-                          <Mail size={11} />
-                          <span className="text-[10px] font-medium truncate max-w-[100px]">
-                            {b.contactEmail}
-                          </span>
+                    {/* Image / Placeholder */}
+                    <div className="h-36 bg-slate-100 relative overflow-hidden">
+                      {b.imageUrl?.length > 0 ? (
+                        <img
+                          src={b.imageUrl[0]}
+                          alt={b.name}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-slate-300">
+                          <Building2 size={40} strokeWidth={1} />
                         </div>
                       )}
+                      <span
+                        className={`absolute top-3 right-3 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider border ${TYPE_COLORS[b.type] || TYPE_COLORS.other}`}
+                      >
+                        {b.type}
+                      </span>
+                      {b.code && (
+                        <span className="absolute bottom-3 left-3 bg-slate-900 text-white px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wide shadow">
+                          {b.code}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Info */}
+                    <div className="p-4">
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="text-sm font-semibold text-slate-900 leading-snug">
+                          {b.name}
+                        </h3>
+                        {isAdmin && (
+                          <button
+                            onClick={() => handleDelete(b._id)}
+                            className="p-1.5 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors shrink-0"
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        )}
+                      </div>
+
+                      <p className="text-xs text-slate-500 line-clamp-2 mb-3">
+                        {b.description || 'No description available.'}
+                      </p>
+
+                      {/* Quick Info Grid */}
+                      <div className="grid grid-cols-2 gap-2 mb-3">
+                        <div className="flex items-center gap-1.5 text-slate-500">
+                          <Layers size={12} className="text-slate-400" />
+                          <span className="text-[10px] font-medium">
+                            {b.totalFloors || 0} Floors
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-slate-500">
+                          <Clock size={12} className="text-slate-400" />
+                          <span className="text-[10px] font-medium">
+                            {b.openTime || '09:00'} - {b.closeTime || '16:00'}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Accessibility
+                            size={12}
+                            className={b.isAccessible ? 'text-emerald-500' : 'text-slate-300'}
+                          />
+                          <span className="text-[10px] font-medium text-slate-500">Accessible</span>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <ArrowUpCircle
+                            size={12}
+                            className={b.hasLift ? 'text-blue-500' : 'text-slate-300'}
+                          />
+                          <span className="text-[10px] font-medium text-slate-500">Elevator</span>
+                        </div>
+                      </div>
+
+                      {/* Departments */}
+                      {b.departments?.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mb-3">
+                          {b.departments.map((dept, i) => (
+                            <span
+                              key={i}
+                              className="px-1.5 py-0.5 bg-slate-100 text-slate-500 text-[9px] font-bold uppercase rounded border border-slate-200"
+                            >
+                              {dept}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Footer */}
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-slate-400">
+                        <div className="flex items-center gap-1">
+                          <MapPin size={11} className="text-red-400" />
+                          <span className="text-[10px] font-medium">
+                            {b.coordinates?.lat?.toFixed(4) || '—'},{' '}
+                            {b.coordinates?.lng?.toFixed(4) || '—'}
+                          </span>
+                        </div>
+                        {b.contactEmail && (
+                          <div className="flex items-center gap-1">
+                            <Mail size={11} />
+                            <span className="text-[10px] font-medium truncate max-w-[100px]">
+                              {b.contactEmail}
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="py-16 text-center">
-              <Building2 size={40} className="mx-auto text-slate-200 mb-3" />
-              <p className="text-sm font-medium text-slate-400">
-                {searchQuery || typeFilter !== 'all'
-                  ? 'No buildings match your filters'
-                  : 'No buildings registered yet'}
+                ))}
+              </div>
+            ) : (
+              <div className="py-16 text-center">
+                <Building2 size={40} className="mx-auto text-slate-200 mb-3" />
+                <p className="text-sm font-medium text-slate-400">
+                  {searchQuery || typeFilter !== 'all'
+                    ? 'No buildings match your filters'
+                    : 'No buildings registered yet'}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {totalPages > 1 && (
+            <div className="mt-auto flex items-center justify-between px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-[20px]">
+              <p className="text-xs text-slate-500 font-medium">
+                Showing{' '}
+                <span className="font-bold text-slate-700">
+                  {totalCount === 0 ? 0 : indexOfFirstItem + 1}
+                </span>{' '}
+                to{' '}
+                <span className="font-bold text-slate-700">
+                  {Math.min(indexOfLastItem, totalCount)}
+                </span>{' '}
+                of <span className="font-bold text-slate-700">{totalCount}</span> buildings
               </p>
+              <div className="flex items-center gap-2">
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  className="p-1.5 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <div className="flex items-center gap-1">
+                  {[...Array(totalPages)].map((_, i) => (
+                    <button
+                      key={i + 1}
+                      onClick={() => setCurrentPage(i + 1)}
+                      className={`w-7 h-7 flex items-center justify-center rounded-md text-xs font-bold transition-all ${
+                        currentPage === i + 1
+                          ? 'bg-blue-600 text-white shadow-sm'
+                          : 'text-slate-500 hover:bg-slate-100'
+                      }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  className="p-1.5 rounded-lg border border-slate-200 text-slate-500 hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
             </div>
           )}
         </Card>

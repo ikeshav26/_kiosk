@@ -2,6 +2,7 @@ import express from 'express';
 import {
   addBuilding,
   deleteBuilding,
+  bulkDeleteBuildings,
   getAllBuildings,
   getBuildingById,
   updateBuilding,
@@ -10,6 +11,7 @@ import {
 const router = express.Router();
 
 router.post('/add', addBuilding);
+router.post('/bulk-delete', bulkDeleteBuildings);
 router.get('/all', getAllBuildings);
 router.get('/:id', getBuildingById);
 router.patch('/:id', updateBuilding);
