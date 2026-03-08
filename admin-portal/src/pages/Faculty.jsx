@@ -24,6 +24,7 @@ import { PageLoader, Card, FormInput, Button, SearchInput } from '../components/
 import { authContext } from '../context/AuthContext';
 
 const facultyCache = new Map();
+let globalFacultyPage = 1;
 
 const Faculty = () => {
   const [faculty, setFaculty] = useState([]);
@@ -32,7 +33,7 @@ const Faculty = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDept, setSelectedDept] = useState('All');
   const [isDragging, setIsDragging] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(globalFacultyPage);
   const [totalPages, setTotalPages] = useState(1);
   const [totalFacultyCount, setTotalFacultyCount] = useState(0);
   const [selectedIds, setSelectedIds] = useState([]);
@@ -100,6 +101,7 @@ const Faculty = () => {
 
   useEffect(() => {
     fetchFaculty();
+    globalFacultyPage = currentPage;
   }, [currentPage, searchQuery, selectedDept]);
 
   const handleInputChange = (e) => {
@@ -278,8 +280,16 @@ const Faculty = () => {
     }
   };
 
+  // Used strictly to prevent resetting page number on initial render from previous global state
+  const isInitialMount = useRef(true);
+
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     setCurrentPage(1);
+    globalFacultyPage = 1;
   }, [searchQuery, selectedDept]);
 
   const indexOfLastItem = currentPage * itemsPerPage;

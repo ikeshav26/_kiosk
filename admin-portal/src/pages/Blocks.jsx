@@ -64,6 +64,7 @@ const initialFormState = {
 };
 
 const buildingCache = new Map();
+let globalBuildingPage = 1;
 
 const Blocks = () => {
   const { user } = useContext(authContext);
@@ -77,7 +78,7 @@ const Blocks = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState('all');
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(globalBuildingPage);
   const [totalPages, setTotalPages] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [selectedIds, setSelectedIds] = useState([]);
@@ -132,10 +133,19 @@ const Blocks = () => {
 
   useEffect(() => {
     fetchBuildings();
+    globalBuildingPage = currentPage;
   }, [currentPage, searchQuery, typeFilter]);
 
+  // Used strictly to prevent resetting page number on initial render from previous global state
+  const isInitialMount = useRef(true);
+
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     setCurrentPage(1);
+    globalBuildingPage = 1;
   }, [searchQuery, typeFilter]);
 
   // --- Form Handlers ---
