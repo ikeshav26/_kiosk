@@ -255,14 +255,30 @@ const SuperAdminDashboard = () => {
               </thead>
               <tbody className="divide-y divide-slate-50">
                 {loading ? (
-                  <tr>
-                    <td colSpan={4} className="py-12 text-center">
-                      <div className="flex flex-col items-center gap-3">
-                        <div className="w-8 h-8 border-2 border-slate-300 border-t-slate-600 rounded-full animate-spin" />
-                        <p className="text-sm font-medium text-slate-400">Loading users...</p>
-                      </div>
-                    </td>
-                  </tr>
+                  [...Array(5)].map((_, i) => (
+                    <tr key={i} className="animate-pulse">
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-lg bg-slate-200" />
+                          <div className="space-y-2">
+                            <div className="h-3.5 w-28 bg-slate-200 rounded-md" />
+                            <div className="h-2.5 w-20 bg-slate-100 rounded-md" />
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-4">
+                        <div className="h-5 w-16 bg-slate-200 rounded-md" />
+                      </td>
+                      <td className="px-4 py-4">
+                        <div className="h-3.5 w-36 bg-slate-200 rounded-md" />
+                      </td>
+                      <td className="px-6 py-4">
+                        <div className="flex justify-end">
+                          <div className="w-8 h-8 bg-slate-200 rounded-lg" />
+                        </div>
+                      </td>
+                    </tr>
+                  ))
                 ) : filteredUsers.length > 0 ? (
                   filteredUsers.map((u) => (
                     <tr key={u._id} className="hover:bg-slate-50/50 transition-colors">

@@ -100,7 +100,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Clock */}
+
         <div className="flex items-center gap-10">
           <div className="text-5xl font-medium tracking-tighter tabular-nums">
             {formatTime(currentTime)}
@@ -112,7 +112,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Language Selector */}
+
         <div className="flex items-center gap-6" ref={dropdownRef}>
           <div className="relative">
             <button
