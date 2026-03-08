@@ -44,6 +44,8 @@ const Announcements = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
@@ -52,9 +54,10 @@ const Announcements = () => {
     setError(null);
     try {
       const response = await axios.get(`/api/announcement/all`, {
-        params: { lang: i18n.language },
+        params: { lang: i18n.language, page, limit: 10 },
       });
       setAnnouncements(response.data.announcements || []);
+      setTotalPages(response.data.pages || 1);
     } catch (err) {
       console.error('Kiosk Announcements Fetch Error:', err);
       setError(t('announcements.error', 'Unable to load latest notifications.'));
@@ -67,7 +70,7 @@ const Announcements = () => {
     fetchAnnouncements();
     const autoRefresh = setInterval(fetchAnnouncements, 300000);
     return () => clearInterval(autoRefresh);
-  }, [i18n.language]);
+  }, [i18n.language, page]);
 
   return (
     <div className="flex flex-col h-full bg-[#fcfdfe] rounded-[40px] shadow-2xl overflow-hidden border border-slate-100 font-sans relative">
@@ -166,6 +169,28 @@ const Announcements = () => {
                 </div>
               </div>
             ))}
+
+            {totalPages > 1 && (
+              <div className="flex justify-center items-center gap-4 mt-8">
+                <button
+                  onClick={() => setPage((p) => Math.max(1, p - 1))}
+                  disabled={page === 1}
+                  className="px-6 py-3 rounded-xl font-bold bg-white text-[#002b5c] border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition-all"
+                >
+                  {t('announcements.prevPage', 'Previous')}
+                </button>
+                <span className="font-bold text-slate-500">
+                  {page} / {totalPages}
+                </span>
+                <button
+                  onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                  disabled={page === totalPages}
+                  className="px-6 py-3 rounded-xl font-bold bg-white text-[#002b5c] border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition-all"
+                >
+                  {t('announcements.nextPage', 'Next')}
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>

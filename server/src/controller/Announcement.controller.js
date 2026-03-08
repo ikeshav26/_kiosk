@@ -41,8 +41,19 @@ const localize = (doc, lang) => ({
 export const getAnnouncements = async (req, res) => {
   try {
     const lang = getLang(req.query);
-    const announcements = await Announcement.find().sort({ createdAt: -1 });
-    res.status(200).json({ announcements: announcements.map((a) => localize(a, lang)) });
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const total = await Announcement.countDocuments();
+    const announcements = await Announcement.find().sort({ createdAt: -1 }).skip(skip).limit(limit);
+
+    res.status(200).json({
+      announcements: announcements.map((a) => localize(a, lang)),
+      total,
+      page,
+      pages: Math.ceil(total / limit),
+    });
   } catch (err) {
     console.error('Error fetching announcements:', err);
     res.status(500).json({ error: 'Failed to fetch announcements' });
