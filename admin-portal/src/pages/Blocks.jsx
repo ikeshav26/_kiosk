@@ -63,6 +63,8 @@ const initialFormState = {
   imageUrl: [],
 };
 
+const buildingCache = new Map();
+
 const Blocks = () => {
   const { user } = useContext(authContext);
   const isAdmin = user?.role === 'admin' || user?.role === 'superAdmin';
@@ -84,7 +86,18 @@ const Blocks = () => {
   const [formData, setFormData] = useState(initialFormState);
 
   // --- Fetch ---
-  const fetchBuildings = async () => {
+  const fetchBuildings = async (forceRefetch = false) => {
+    const cacheKey = `${currentPage}-${searchQuery}-${typeFilter}`;
+
+    if (!forceRefetch && buildingCache.has(cacheKey)) {
+      const cachedData = buildingCache.get(cacheKey);
+      setBuildings(cachedData.buildings);
+      setStats(cachedData.stats);
+      setTotalPages(cachedData.totalPages);
+      setTotalCount(cachedData.total);
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await axiosInstance.get('/api/building/all', {
@@ -95,10 +108,20 @@ const Blocks = () => {
           type: typeFilter,
         },
       });
-      setBuildings(res.data.buildings || []);
-      setStats(res.data.stats || { total: 0, block: 0, library: 0, lab: 0 });
-      setTotalPages(res.data.totalPages || 1);
-      setTotalCount(res.data.total || 0);
+
+      const responseData = {
+        buildings: res.data.buildings || [],
+        stats: res.data.stats || { total: 0, block: 0, library: 0, lab: 0 },
+        totalPages: res.data.totalPages || 1,
+        total: res.data.total || 0,
+      };
+
+      buildingCache.set(cacheKey, responseData);
+
+      setBuildings(responseData.buildings);
+      setStats(responseData.stats);
+      setTotalPages(responseData.totalPages);
+      setTotalCount(responseData.total);
     } catch {
       toast.error('Failed to load buildings.');
     } finally {
@@ -166,7 +189,8 @@ const Blocks = () => {
       toast.success('Building added successfully!');
       setFormData(initialFormState);
       if (fileInputRef.current) fileInputRef.current.value = '';
-      fetchBuildings();
+      buildingCache.clear();
+      fetchBuildings(true);
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to add building.');
     } finally {
@@ -179,9 +203,9 @@ const Blocks = () => {
     setActionLoading(true);
     try {
       await axiosInstance.delete(`/api/building/delete/${id}`);
-      setBuildings((prev) => prev.filter((b) => b._id !== id));
+      buildingCache.clear();
+      fetchBuildings(true);
       setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
-      setTotalCount((prev) => prev - 1);
       toast.success('Building removed.');
     } catch {
       toast.error('Failed to delete building.');
@@ -197,8 +221,8 @@ const Blocks = () => {
     try {
       await axiosInstance.post('/api/building/bulk-delete', { ids: selectedIds });
       toast.success(`${selectedIds.length} buildings deleted!`);
-      setBuildings((prev) => prev.filter((b) => !selectedIds.includes(b._id)));
-      setTotalCount((prev) => prev - selectedIds.length);
+      buildingCache.clear();
+      fetchBuildings(true);
       setSelectedIds([]);
     } catch (err) {
       toast.error('Failed to delete some buildings.');

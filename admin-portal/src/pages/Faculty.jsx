@@ -23,6 +23,8 @@ import toast from 'react-hot-toast';
 import { PageLoader, Card, FormInput, Button, SearchInput } from '../components/ui';
 import { authContext } from '../context/AuthContext';
 
+const facultyCache = new Map();
+
 const Faculty = () => {
   const [faculty, setFaculty] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -54,7 +56,17 @@ const Faculty = () => {
     department: 'CSE',
   });
 
-  const fetchFaculty = async () => {
+  const fetchFaculty = async (forceRefetch = false) => {
+    const cacheKey = `${currentPage}-${searchQuery}-${selectedDept}`;
+
+    if (!forceRefetch && facultyCache.has(cacheKey)) {
+      const cachedData = facultyCache.get(cacheKey);
+      setFaculty(cachedData.faculties);
+      setTotalPages(cachedData.totalPages);
+      setTotalFacultyCount(cachedData.total);
+      return;
+    }
+
     setLoading(true);
     try {
       const res = await axiosInstance.get('/api/faculty/all', {
@@ -65,11 +77,19 @@ const Faculty = () => {
           department: selectedDept,
         },
       });
-      setFaculty(res.data.faculties || []);
-      setTotalPages(
-        res.data.totalPages || Math.ceil((res.data.faculties || []).length / itemsPerPage)
-      );
-      setTotalFacultyCount(res.data.total || (res.data.faculties || []).length);
+
+      const responseData = {
+        faculties: res.data.faculties || [],
+        totalPages:
+          res.data.totalPages || Math.ceil((res.data.faculties || []).length / itemsPerPage),
+        total: res.data.total || (res.data.faculties || []).length,
+      };
+
+      facultyCache.set(cacheKey, responseData);
+
+      setFaculty(responseData.faculties);
+      setTotalPages(responseData.totalPages);
+      setTotalFacultyCount(responseData.total);
     } catch (err) {
       console.error('Faculty Sync Error:', err);
     } finally {
@@ -162,7 +182,8 @@ const Faculty = () => {
         department: 'CSE',
       });
       toast.success('Faculty added successfully!');
-      fetchFaculty();
+      facultyCache.clear();
+      fetchFaculty(true);
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to add faculty.');
     } finally {
@@ -189,7 +210,8 @@ const Faculty = () => {
         toast.success(
           `Mass upload complete: ${res.data.added?.length} added, ${res.data.failed?.length} failed.`
         );
-        fetchFaculty();
+        facultyCache.clear();
+        fetchFaculty(true);
       } catch (err) {
         toast.error(err.response?.data?.message || 'Failed to process Excel upload.');
       } finally {
@@ -229,7 +251,8 @@ const Faculty = () => {
     try {
       await axiosInstance.post('/api/faculty/bulk-delete', { ids: selectedIds });
       toast.success(`${selectedIds.length} faculty deleted!`);
-      fetchFaculty();
+      facultyCache.clear();
+      fetchFaculty(true);
       setSelectedIds([]);
     } catch (err) {
       toast.error('Failed to delete some faculty members.');
@@ -244,7 +267,8 @@ const Faculty = () => {
     try {
       await axiosInstance.get(`/api/faculty/delete/${id}`);
       toast.success('Faculty deleted!');
-      fetchFaculty();
+      facultyCache.clear();
+      fetchFaculty(true);
       setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
     } catch (err) {
       toast.error('Failed to delete faculty.');
