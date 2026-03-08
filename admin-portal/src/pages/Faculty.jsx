@@ -31,6 +31,7 @@ const Faculty = () => {
   const [selectedDept, setSelectedDept] = useState('All');
   const [isDragging, setIsDragging] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedIds, setSelectedIds] = useState([]);
   const itemsPerPage = 9;
 
   const { user } = useContext(authContext);
@@ -208,13 +209,30 @@ const Faculty = () => {
     }
   };
 
+  const handleBulkDelete = async () => {
+    if (selectedIds.length === 0) return;
+    if (!window.confirm(`Delete ${selectedIds.length} faculty member(s)?`)) return;
+    setActionLoading(true);
+    try {
+      await axiosInstance.post('/api/faculty/bulk-delete', { ids: selectedIds });
+      toast.success(`${selectedIds.length} faculty deleted!`);
+      setFaculty((prev) => prev.filter((f) => !selectedIds.includes(f._id)));
+      setSelectedIds([]);
+    } catch (err) {
+      toast.error('Failed to delete some faculty members.');
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this faculty member?')) return;
     setActionLoading(true);
     try {
       await axiosInstance.get(`/api/faculty/delete/${id}`);
       toast.success('Faculty deleted!');
-      fetchFaculty();
+      setFaculty((prev) => prev.filter((f) => f._id !== id));
+      setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
     } catch (err) {
       toast.error('Failed to delete faculty.');
     } finally {
@@ -240,8 +258,6 @@ const Faculty = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredFaculty.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(filteredFaculty.length / itemsPerPage);
-
-  if (loading) return <PageLoader message="Loading Faculty..." />;
 
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
@@ -440,6 +456,17 @@ const Faculty = () => {
           headerSubtitle="All registered faculty"
           headerAction={
             <div className="flex items-center gap-2">
+              {isAdmin && selectedIds.length > 0 && (
+                <Button
+                  onClick={handleBulkDelete}
+                  loading={actionLoading}
+                  icon={Trash2}
+                  size="small"
+                  className="mr-2 bg-red-500 text-white hover:bg-red-600 px-4 py-2 border-0"
+                >
+                  Delete ({selectedIds.length})
+                </Button>
+              )}
               <Button
                 onClick={handleExportExcel}
                 loading={actionLoading}
@@ -474,6 +501,24 @@ const Faculty = () => {
             <table className="w-full">
               <thead className="bg-slate-50 border-b border-slate-100 sticky top-0 z-10">
                 <tr className="text-left">
+                  {isAdmin && (
+                    <th className="px-6 py-3 w-12 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                      <input
+                        type="checkbox"
+                        className="rounded border-slate-300"
+                        checked={
+                          currentItems.length > 0 && selectedIds.length === currentItems.length
+                        }
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setSelectedIds(currentItems.map((item) => item._id));
+                          } else {
+                            setSelectedIds([]);
+                          }
+                        }}
+                      />
+                    </th>
+                  )}
                   <th className="px-6 py-3 text-xs font-bold text-slate-500 uppercase tracking-wider">
                     Faculty
                   </th>
@@ -491,9 +536,61 @@ const Faculty = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-50">
-                {currentItems.length > 0 ? (
+                {loading ? (
+                  [...Array(itemsPerPage)].map((_, i) => (
+                    <tr key={`skeleton-${i}`} className="animate-pulse">
+                      {isAdmin && (
+                        <td className="px-6 py-4">
+                          <div className="w-4 h-4 bg-slate-200 rounded"></div>
+                        </td>
+                      )}
+                      <td className="px-6 py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-lg bg-slate-200"></div>
+                          <div className="space-y-2">
+                            <div className="h-4 w-32 bg-slate-200 rounded"></div>
+                            <div className="h-3 w-24 bg-slate-200 rounded"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="px-4 py-4">
+                        <div className="w-16 h-6 bg-slate-200 rounded-md"></div>
+                      </td>
+                      <td className="px-4 py-4">
+                        <div className="space-y-2">
+                          <div className="h-4 w-20 bg-slate-200 rounded"></div>
+                          <div className="h-3 w-16 bg-slate-200 rounded"></div>
+                        </div>
+                      </td>
+                      {isAdmin && (
+                        <td className="px-6 py-4">
+                          <div className="flex justify-end gap-1">
+                            <div className="w-8 h-8 bg-slate-200 rounded-lg"></div>
+                            <div className="w-8 h-8 bg-slate-200 rounded-lg"></div>
+                          </div>
+                        </td>
+                      )}
+                    </tr>
+                  ))
+                ) : currentItems.length > 0 ? (
                   currentItems.map((member) => (
                     <tr key={member._id} className="hover:bg-slate-50/50 transition-colors">
+                      {isAdmin && (
+                        <td className="px-6 py-4">
+                          <input
+                            type="checkbox"
+                            className="rounded border-slate-300"
+                            checked={selectedIds.includes(member._id)}
+                            onChange={(e) => {
+                              if (e.target.checked) {
+                                setSelectedIds((prev) => [...prev, member._id]);
+                              } else {
+                                setSelectedIds((prev) => prev.filter((id) => id !== member._id));
+                              }
+                            }}
+                          />
+                        </td>
+                      )}
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 rounded-lg overflow-hidden bg-slate-100">
@@ -545,7 +642,7 @@ const Faculty = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={4} className="py-12 text-center">
+                    <td colSpan={isAdmin ? 5 : 4} className="py-12 text-center">
                       <Building2 size={40} className="mx-auto text-slate-200 mb-3" />
                       <p className="text-sm font-medium text-slate-400">
                         {searchQuery || selectedDept !== 'All'

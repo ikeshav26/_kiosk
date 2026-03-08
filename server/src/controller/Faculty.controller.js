@@ -148,6 +148,20 @@ export const deleteFaculty = async (req, res) => {
   }
 };
 
+export const bulkDeleteFaculty = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ message: 'Provide an array of faculty IDs to delete.' });
+    }
+    await Faculty.deleteMany({ _id: { $in: ids } });
+    res.status(200).json({ message: `${ids.length} faculties deleted successfully` });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+    console.log(err);
+  }
+};
+
 export const updateFaculty = async (req, res) => {
   try {
     const { id } = req.params;
