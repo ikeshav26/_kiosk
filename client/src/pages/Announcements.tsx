@@ -88,6 +88,28 @@ const Announcements = () => {
         </div>
 
         <div className="flex items-center gap-4">
+          {totalPages > 1 && (
+            <div className="flex items-center gap-4 mr-2">
+              <button
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+                className="px-6 py-4 rounded-2xl font-bold bg-white text-[#002b5c] border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition-all shadow-sm active:scale-95"
+              >
+                {t('announcements.prevPage', 'Prev')}
+              </button>
+              <span className="font-black text-xl text-[#002b5c]">
+                {page} <span className="text-slate-400 font-medium text-lg mx-1">/</span>{' '}
+                {totalPages}
+              </span>
+              <button
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+                className="px-6 py-4 rounded-2xl font-bold bg-white text-[#002b5c] border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50 transition-all shadow-sm active:scale-95"
+              >
+                {t('announcements.nextPage', 'Next')}
+              </button>
+            </div>
+          )}
           <button
             onClick={fetchAnnouncements}
             disabled={loading}

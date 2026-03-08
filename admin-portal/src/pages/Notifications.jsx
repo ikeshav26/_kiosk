@@ -9,13 +9,18 @@ const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
 
   const fetchNotifications = async () => {
     setLoading(true);
     try {
-      const response = await axiosInstance.get('/api/announcement/all');
+      const response = await axiosInstance.get('/api/announcement/all', {
+        params: { page, limit: 10 },
+      });
       setNotifications(response.data.announcements || []);
+      setTotalPages(response.data.pages || 1);
     } catch (err) {
       console.error('Fetch Error:', err);
       toast.error('Unable to load announcements.');
@@ -26,7 +31,7 @@ const Notifications = () => {
 
   useEffect(() => {
     fetchNotifications();
-  }, []);
+  }, [page]);
 
   const handleDelete = async (id, e) => {
     e.stopPropagation();
@@ -126,6 +131,33 @@ const Notifications = () => {
             <p className="text-sm font-medium text-slate-400">
               {searchQuery ? `No results for "${searchQuery}"` : 'No announcements yet'}
             </p>
+          </div>
+        )}
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-between mt-6 bg-white p-4 rounded-xl border border-slate-100 shadow-sm">
+            <p className="text-sm text-slate-500">
+              Page {page} of {totalPages}
+            </p>
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                onClick={() => setPage((p) => Math.max(1, p - 1))}
+                disabled={page === 1}
+                className="px-4 py-2"
+              >
+                Previous
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page === totalPages}
+                className="px-4 py-2"
+              >
+                Next
+              </Button>
+            </div>
           </div>
         )}
       </div>
