@@ -81,7 +81,24 @@
     "loadingBlock": "ਬਲਾਕ ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ",
     "blockNotFound": "ਬਲਾਕ ਨਹੀਂ ਮਿਲਿਆ",
     "errorLoading": "ਇਮਾਰਤ ਦੇ ਵੇਰਵੇ ਲੋਡ ਨਹੀਂ ਹੋ ਸਕੇ।",
-    "aboutDepartment": "ਵਿਭਾਗ ਬਾਰੇ"
+    "aboutDepartment": "ਵਿਭਾਗ ਬਾਰੇ",
+    "roomsDirectory": "ਕਮਰਿਆਂ ਦੀ ਸੂਚੀ",
+    "groundFloor": "ਭੂ-ਮੰਜ਼ਿਲ",
+    "floor": "ਮੰਜ਼ਿਲ",
+    "room": "ਕਮਰਾ",
+    "timings": "ਸਮਾਂ",
+    "yes": "ਹਾਂ",
+    "no": "ਨਹੀਂ",
+    "openWeekends": "ਹਫ਼ਤੇ ਦੇ ਅੰਤ ਵਿੱਚ ਖੁੱਲ੍ਹਾ",
+    "gallery": "ਗੈਲਰੀ",
+    "roomType": {
+      "classroom": "ਕਲਾਸਰੂਮ",
+      "lab": "ਪ੍ਰਯੋਗਸ਼ਾਲਾ",
+      "office": "ਦਫ਼ਤਰ",
+      "washroom": "ਵਾਸ਼ਰੂਮ",
+      "staircase": "ਪੌੜੀਆਂ",
+      "other": "ਹੋਰ"
+    }
   },
   "faculty": {
     "departmentDirectory": "ਵਿਭਾਗ ਡਾਇਰੈਕਟਰੀ",

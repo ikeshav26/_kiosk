@@ -81,7 +81,24 @@
     "loadingBlock": "Loading Block",
     "blockNotFound": "Block Not Found",
     "errorLoading": "Building details could not be loaded.",
-    "aboutDepartment": "About the Department"
+    "aboutDepartment": "About the Department",
+    "roomsDirectory": "Rooms Directory",
+    "groundFloor": "Ground Floor",
+    "floor": "Floor",
+    "room": "Room",
+    "timings": "Timings",
+    "yes": "Yes",
+    "no": "No",
+    "openWeekends": "Open on Weekends",
+    "gallery": "Gallery",
+    "roomType": {
+      "classroom": "Classroom",
+      "lab": "Laboratory",
+      "office": "Office",
+      "washroom": "Washroom",
+      "staircase": "Staircase",
+      "other": "Other"
+    }
   },
   "faculty": {
     "departmentDirectory": "Department Directory",

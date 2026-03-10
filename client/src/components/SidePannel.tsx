@@ -75,25 +75,6 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
               {t('sidebar.title', 'Sidebar Panel')}
             </h2>
           )}
-          <div className={`relative group ${isCollapsed ? 'flex justify-center' : ''}`}>
-            {isCollapsed ? (
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex items-center justify-center">
-                <Search size={24} className="text-slate-400" />
-              </div>
-            ) : (
-              <>
-                <Search
-                  className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors"
-                  size={24}
-                />
-                <input
-                  type="text"
-                  placeholder={t('sidebar.search')}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-[24px] py-5 pl-14 pr-6 text-lg focus:outline-none focus:ring-4 focus:ring-blue-500/10 transition-all shadow-inner"
-                />
-              </>
-            )}
-          </div>
         </div>
 
         <nav className={`flex flex-col ${isCollapsed ? 'gap-2 items-center' : 'gap-4'}`}>

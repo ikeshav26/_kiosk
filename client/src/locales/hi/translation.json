@@ -81,7 +81,24 @@
     "loadingBlock": "ब्लॉक लोड हो रहा है",
     "blockNotFound": "ब्लॉक नहीं मिला",
     "errorLoading": "भवन विवरण लोड नहीं हो सके।",
-    "aboutDepartment": "विभाग के बारे में"
+    "aboutDepartment": "विभाग के बारे में",
+    "roomsDirectory": "कमरों की सूची",
+    "groundFloor": "भूतल",
+    "floor": "मंज़िल",
+    "room": "कमरा",
+    "timings": "समय",
+    "yes": "हाँ",
+    "no": "नहीं",
+    "openWeekends": "सप्ताहांत में खुला",
+    "gallery": "गैलरी",
+    "roomType": {
+      "classroom": "कक्षा",
+      "lab": "प्रयोगशाला",
+      "office": "कार्यालय",
+      "washroom": "शौचालय",
+      "staircase": "सीढ़ी",
+      "other": "अन्य"
+    }
   },
   "faculty": {
     "departmentDirectory": "विभाग निर्देशिका",
