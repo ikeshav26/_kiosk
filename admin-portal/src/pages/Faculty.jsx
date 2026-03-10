@@ -12,7 +12,6 @@ import {
   Briefcase,
   Building2,
   Upload,
-  Download,
   User as UserIcon,
   Activity,
   X,
@@ -281,6 +280,7 @@ const Faculty = () => {
     }
   };
 
+  // Used strictly to prevent resetting page number on initial render from previous global state
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -309,7 +309,7 @@ const Faculty = () => {
             className="flex flex-col h-full"
           >
             <form onSubmit={handleSubmit} className="p-5 space-y-4">
-              <div className="space-y-2">
+              <div>
                 <input
                   type="file"
                   ref={excelInputRef}
@@ -317,14 +317,6 @@ const Faculty = () => {
                   accept=".xlsx, .xls"
                   onChange={handleExcelUpload}
                 />
-                <a
-                  href="/format.xlsx"
-                  download="faculty_format.xlsx"
-                  className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-bold border-2 border-dashed border-blue-200 bg-blue-50 text-blue-600 hover:bg-blue-100 hover:border-blue-300 transition-all"
-                >
-                  <Download size={16} />
-                  Download Excel Format
-                </a>
                 <Button
                   type="button"
                   loading={actionLoading}
@@ -336,9 +328,6 @@ const Faculty = () => {
                 >
                   Mass Add via Excel
                 </Button>
-                <p className="text-[10px] text-slate-400 text-center">
-                  Download the format, fill in faculty details, then upload to add in bulk
-                </p>
               </div>
 
               <div className="relative flex items-center justify-center py-2">
@@ -350,6 +339,7 @@ const Faculty = () => {
                 </div>
               </div>
 
+              {/* Image Upload */}
               <div>
                 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
                   Profile Photo

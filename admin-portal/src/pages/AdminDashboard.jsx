@@ -4,10 +4,6 @@ import {
   Users,
   Mail,
   User as UserIcon,
-  GraduationCap,
-  Bell,
-  AlertCircle,
-  CheckCircle2,
   UserPlus,
   Lock,
   Fingerprint,
@@ -28,6 +24,7 @@ import {
   Modal,
   SearchInput,
 } from '../components/ui';
+
 
 const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -200,20 +197,19 @@ const AdminDashboard = () => {
     },
   ];
 
+  
+
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       <PageHeader user={user} roleLabel="Admin" />
 
-      {/* Stats */}
       <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
         {statsData.map((stat, i) => (
           <StatCard key={i} {...stat} />
         ))}
       </section>
 
-      {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Create User Form */}
         <Card
           headerIcon={UserPlus}
           headerTitle="Create User"
@@ -265,7 +261,6 @@ const AdminDashboard = () => {
           </form>
         </Card>
 
-        {/* Users List */}
         <Card
           className="col-span-2"
           headerIcon={Users}
@@ -356,8 +351,7 @@ const AdminDashboard = () => {
           </div>
         </Card>
       </div>
-
-      {/* Edit User Modal */}
+      
       <Modal
         isOpen={!!editingUser}
         onClose={() => setEditingUser(null)}

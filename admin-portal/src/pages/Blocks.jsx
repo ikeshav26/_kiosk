@@ -16,6 +16,7 @@ import {
   Fingerprint,
   ChevronLeft,
   ChevronRight,
+  DoorOpen,
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { authContext } from '../context/AuthContext';
@@ -45,6 +46,16 @@ const TYPE_COLORS = {
   other: 'bg-slate-50 text-slate-600 border-slate-200',
 };
 
+const ROOM_TYPES = ['classroom', 'lab', 'office', 'washroom', 'staircase', 'other'];
+
+const emptyRoom = {
+  roomNumber: '',
+  roomName: '',
+  floor: 0,
+  type: 'classroom',
+  coordinates: { lat: '', lng: '' },
+};
+
 const initialFormState = {
   name: '',
   code: '',
@@ -61,6 +72,7 @@ const initialFormState = {
   contactNumber: '',
   contactEmail: '',
   imageUrl: [],
+  rooms: [],
 };
 
 const buildingCache = new Map();
@@ -136,7 +148,7 @@ const Blocks = () => {
     globalBuildingPage = currentPage;
   }, [currentPage, searchQuery, typeFilter]);
 
-  // Used strictly to prevent resetting page number on initial render from previous global state
+
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -184,6 +196,30 @@ const Blocks = () => {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
+  const addRoom = () => {
+    setFormData((prev) => ({ ...prev, rooms: [...prev.rooms, { ...emptyRoom }] }));
+  };
+
+  const removeRoom = (idx) => {
+    setFormData((prev) => ({ ...prev, rooms: prev.rooms.filter((_, i) => i !== idx) }));
+  };
+
+  const handleRoomChange = (idx, field, value) => {
+    setFormData((prev) => {
+      const updatedRooms = [...prev.rooms];
+      if (field === 'coordinates.lat' || field === 'coordinates.lng') {
+        const coordKey = field.split('.')[1];
+        updatedRooms[idx] = {
+          ...updatedRooms[idx],
+          coordinates: { ...updatedRooms[idx].coordinates, [coordKey]: value },
+        };
+      } else {
+        updatedRooms[idx] = { ...updatedRooms[idx], [field]: value };
+      }
+      return { ...prev, rooms: updatedRooms };
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isAdmin) return;
@@ -195,6 +231,7 @@ const Blocks = () => {
         departments: formData.departments
           ? formData.departments.split(',').map((d) => d.trim())
           : [],
+        rooms: formData.rooms.filter((r) => r.roomNumber || r.roomName),
       };
       await axiosInstance.post('/api/building/add', payload);
       toast.success('Building added successfully!');
@@ -446,6 +483,108 @@ const Blocks = () => {
                 ))}
               </div>
 
+              {/* Rooms */}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
+                    Rooms ({formData.rooms.length})
+                  </p>
+                  <button
+                    type="button"
+                    onClick={addRoom}
+                    className="flex items-center gap-1 text-[11px] font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    <Plus size={13} /> Add Room
+                  </button>
+                </div>
+
+                {formData.rooms.length === 0 && (
+                  <div
+                    onClick={addRoom}
+                    className="flex flex-col items-center justify-center py-5 border-2 border-dashed border-slate-200 rounded-xl cursor-pointer hover:border-blue-300 hover:bg-blue-50/30 transition-all"
+                  >
+                    <DoorOpen size={20} className="text-slate-300 mb-1" />
+                    <p className="text-[11px] font-medium text-slate-400">Click to add rooms</p>
+                  </div>
+                )}
+
+                <div className="space-y-3 max-h-72 overflow-y-auto pr-1">
+                  {formData.rooms.map((room, idx) => (
+                    <div
+                      key={idx}
+                      className="relative border border-slate-200 rounded-xl p-3 space-y-2 bg-slate-50/50"
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] font-bold text-slate-400 uppercase">
+                          Room {idx + 1}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => removeRoom(idx)}
+                          className="p-1 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-md transition-colors"
+                        >
+                          <X size={13} />
+                        </button>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          type="text"
+                          value={room.roomNumber}
+                          onChange={(e) => handleRoomChange(idx, 'roomNumber', e.target.value)}
+                          placeholder="Room No."
+                          className="w-full border border-slate-200 bg-white py-1.5 px-2.5 text-xs rounded-md text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all"
+                        />
+                        <input
+                          type="text"
+                          value={room.roomName}
+                          onChange={(e) => handleRoomChange(idx, 'roomName', e.target.value)}
+                          placeholder="Room Name"
+                          className="w-full border border-slate-200 bg-white py-1.5 px-2.5 text-xs rounded-md text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all"
+                        />
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <div className="relative">
+                          <input
+                            type="number"
+                            value={room.floor}
+                            onChange={(e) => handleRoomChange(idx, 'floor', Number(e.target.value))}
+                            placeholder="Floor"
+                            className="w-full border border-slate-200 bg-white py-1.5 px-2.5 text-xs rounded-md text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all"
+                          />
+                        </div>
+                        <select
+                          value={room.type}
+                          onChange={(e) => handleRoomChange(idx, 'type', e.target.value)}
+                          className="w-full border border-slate-200 bg-white py-1.5 px-2.5 text-xs rounded-md text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all capitalize"
+                        >
+                          {ROOM_TYPES.map((rt) => (
+                            <option key={rt} value={rt}>
+                              {rt}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        <input
+                          type="number"
+                          value={room.coordinates.lat}
+                          onChange={(e) => handleRoomChange(idx, 'coordinates.lat', e.target.value)}
+                          placeholder="Lat (optional)"
+                          className="w-full border border-slate-200 bg-white py-1.5 px-2.5 text-xs rounded-md text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all"
+                        />
+                        <input
+                          type="number"
+                          value={room.coordinates.lng}
+                          onChange={(e) => handleRoomChange(idx, 'coordinates.lng', e.target.value)}
+                          placeholder="Lng (optional)"
+                          className="w-full border border-slate-200 bg-white py-1.5 px-2.5 text-xs rounded-md text-slate-900 focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 transition-all"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Images */}
               <div className="space-y-2">
                 <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
@@ -624,11 +763,17 @@ const Blocks = () => {
                       </p>
 
                       {/* Quick Info Grid */}
-                      <div className="grid grid-cols-2 gap-2 mb-3">
+                      <div className="grid grid-cols-3 gap-2 mb-3">
                         <div className="flex items-center gap-1.5 text-slate-500">
                           <Layers size={12} className="text-slate-400" />
                           <span className="text-[10px] font-medium">
                             {b.totalFloors || 0} Floors
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-slate-500">
+                          <DoorOpen size={12} className="text-slate-400" />
+                          <span className="text-[10px] font-medium">
+                            {b.rooms?.length || 0} Rooms
                           </span>
                         </div>
                         <div className="flex items-center gap-1.5 text-slate-500">
