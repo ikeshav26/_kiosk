@@ -4,7 +4,6 @@ import axios from 'axios';
 import {
   AlertCircle,
   ChevronLeft,
-  Building2,
   BookOpen,
   GraduationCap,
   Layers,
@@ -16,7 +15,6 @@ import {
   Accessibility,
   ArrowUpCircle,
   FlaskConical,
-  Users,
   Bath,
   ArrowUpDown,
   MoreHorizontal,

@@ -1,5 +1,4 @@
 import {
-  Search,
   Navigation,
   Calendar,
   Users,
