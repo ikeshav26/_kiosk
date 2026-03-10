@@ -160,7 +160,7 @@ const Blocks = () => {
     globalBuildingPage = 1;
   }, [searchQuery, typeFilter]);
 
-  // --- Form Handlers ---
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name.includes('.')) {
@@ -317,9 +317,7 @@ const Blocks = () => {
         ))}
       </section>
 
-      {/* Main Content — Two Panel Dashboard Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left: Add Building Form */}
         {isAdmin && (
           <Card
             headerIcon={Plus}
@@ -366,7 +364,6 @@ const Blocks = () => {
                 </select>
               </div>
 
-              {/* Description */}
               <div className="relative group">
                 <label className="absolute -top-2.5 left-2 text-[10px] bg-white px-1 font-medium text-slate-500 z-10">
                   Description
@@ -460,7 +457,6 @@ const Blocks = () => {
                 size="small"
               />
 
-              {/* Checkboxes */}
               <div className="flex flex-wrap gap-x-5 gap-y-2 pt-1">
                 {[
                   { name: 'isAccessible', label: 'Accessible' },
@@ -483,7 +479,6 @@ const Blocks = () => {
                 ))}
               </div>
 
-              {/* Rooms */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
@@ -585,7 +580,6 @@ const Blocks = () => {
                 </div>
               </div>
 
-              {/* Images */}
               <div className="space-y-2">
                 <p className="text-[10px] font-medium text-slate-500 uppercase tracking-wider">
                   Images
@@ -630,7 +624,6 @@ const Blocks = () => {
           </Card>
         )}
 
-        {/* Right: Buildings List */}
         <Card
           className={`${isAdmin ? 'lg:col-span-2' : 'lg:col-span-3'} flex flex-col h-full`}
           headerIcon={Building2}
@@ -717,7 +710,7 @@ const Blocks = () => {
                         />
                       </div>
                     )}
-                    {/* Image / Placeholder */}
+
                     <div className="h-36 bg-slate-100 relative overflow-hidden">
                       {b.imageUrl?.length > 0 ? (
                         <img
@@ -742,7 +735,6 @@ const Blocks = () => {
                       )}
                     </div>
 
-                    {/* Info */}
                     <div className="p-4">
                       <div className="flex items-start justify-between mb-2">
                         <h3 className="text-sm font-semibold text-slate-900 leading-snug">
@@ -762,7 +754,6 @@ const Blocks = () => {
                         {b.description || 'No description available.'}
                       </p>
 
-                      {/* Quick Info Grid */}
                       <div className="grid grid-cols-3 gap-2 mb-3">
                         <div className="flex items-center gap-1.5 text-slate-500">
                           <Layers size={12} className="text-slate-400" />
@@ -798,7 +789,6 @@ const Blocks = () => {
                         </div>
                       </div>
 
-                      {/* Departments */}
                       {b.departments?.length > 0 && (
                         <div className="flex flex-wrap gap-1 mb-3">
                           {b.departments.map((dept, i) => (
@@ -811,8 +801,7 @@ const Blocks = () => {
                           ))}
                         </div>
                       )}
-
-                      {/* Footer */}
+                      
                       <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-slate-400">
                         <div className="flex items-center gap-1">
                           <MapPin size={11} className="text-red-400" />
