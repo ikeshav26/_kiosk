@@ -31,15 +31,6 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           </div>
           <h2 className="text-lg font-bold text-slate-900 tracking-tight">Admin Portal</h2>
         </div>
-
-        <div className="hidden xl:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-2 w-64 group focus-within:bg-white focus-within:border-slate-300 focus-within:ring-4 focus-within:ring-slate-100 transition-all">
-          <Search size={16} className="text-slate-400 group-focus-within:text-slate-600" />
-          <input
-            type="text"
-            placeholder="Search (⌘K)"
-            className="bg-transparent text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none w-full"
-          />
-        </div>
       </div>
 
       <div className="flex flex-col items-center justify-center">
