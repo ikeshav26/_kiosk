@@ -150,13 +150,21 @@ const Timetable = () => {
 
         <div className="h-full w-full p-6 lg:p-10 flex items-center justify-center">
           <div className="h-full w-full max-w-6xl bg-white rounded-4xl shadow-2xl border border-slate-200 overflow-hidden relative">
-            <iframe
-              key={schedule.scheduleLink}
-              src={`https://docs.google.com/viewer?url=${encodeURIComponent(schedule.scheduleLink)}&embedded=true`}
-              className="w-full h-full border-0 select-none"
-              title="Official Academic Timetable"
-              onLoad={() => setIframeReady(true)}
-            />
+            <div className="w-full h-full overflow-hidden">
+              <iframe
+                key={schedule.scheduleLink}
+                src={`https://docs.google.com/viewer?url=${encodeURIComponent(schedule.scheduleLink)}&embedded=true`}
+                className="w-full h-full border-0"
+                title="Official Academic Timetable"
+                style={{
+                  transform: 'scale(1.25)',
+                  transformOrigin: 'top left',
+                  width: '80%',
+                  height: '80%',
+                }}
+                onLoad={() => setIframeReady(true)}
+              />
+            </div>
           </div>
         </div>
       </div>

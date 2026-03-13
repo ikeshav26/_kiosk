@@ -24,7 +24,7 @@ interface ScheduleItem {
   createdAt: string;
 }
 
-const DEPARTMENTS = ['All', 'CSE', 'CIVIL', 'MECH', 'ELECTRICAL'] as const;
+const DEPARTMENTS = ['All', 'CSE', 'CIVIL', 'MECH', 'ELECTRICAL', 'AIML', 'IOT'] as const;
 
 const DEPT_CONFIG: Record<
   string,
@@ -73,6 +73,24 @@ const DEPT_CONFIG: Record<
     chipBorder: 'border-emerald-200',
     iconColor: 'text-emerald-600',
     dot: 'bg-emerald-500',
+  },
+  AIML: {
+    gradient: 'from-rose-500 to-pink-900',
+    barGradient: 'from-rose-400 to-pink-700',
+    chipBg: 'bg-rose-50',
+    chipText: 'text-rose-700',
+    chipBorder: 'border-rose-200',
+    iconColor: 'text-rose-600',
+    dot: 'bg-rose-500',
+  },
+  IOT: {
+    gradient: 'from-teal-600 to-teal-950',
+    barGradient: 'from-teal-400 to-teal-800',
+    chipBg: 'bg-teal-50',
+    chipText: 'text-teal-700',
+    chipBorder: 'border-teal-200',
+    iconColor: 'text-teal-600',
+    dot: 'bg-teal-500',
   },
 };
 

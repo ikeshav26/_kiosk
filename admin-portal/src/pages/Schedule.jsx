@@ -18,7 +18,7 @@ import toast from 'react-hot-toast';
 import { PageLoader } from '../components/ui';
 import { authContext } from '../context/AuthContext';
 
-const DEPARTMENTS = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'];
+const DEPARTMENTS = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL', 'AIML', 'IOT'];
 const SEMESTERS = [1, 2, 3, 4, 5, 6, 7, 8];
 const SECTIONS = ['A', 'B', 'C', 'D'];
 
@@ -35,7 +35,7 @@ const Schedule = () => {
   const [form, setForm] = useState({
     departmentName: 'CSE',
     semester: 1,
-    sectionName: 'A',
+    sectionName: '',
   });
   const [selectedFile, setSelectedFile] = useState(null);
 
@@ -201,6 +201,7 @@ const Schedule = () => {
                 onChange={(e) => setForm((f) => ({ ...f, sectionName: e.target.value }))}
                 className="w-full pl-8 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-semibold text-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-900/10 appearance-none"
               >
+                <option value="">No Section</option>
                 {SECTIONS.map((s) => (
                   <option key={s} value={s}>
                     Section {s}
@@ -340,7 +341,7 @@ const Schedule = () => {
                     <td className="py-3.5 pr-4">
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-50 text-xs font-black text-blue-600">
                         <Users size={11} />
-                        Section {s.sectionName}
+                        {s.sectionName ? `Section ${s.sectionName}` : 'No Section'}
                       </span>
                     </td>
                     <td className="py-3.5 pr-4 text-xs text-slate-400 font-medium">
@@ -356,7 +357,7 @@ const Schedule = () => {
                           onClick={() =>
                             setPreviewSchedule({
                               url: s.scheduleLink,
-                              label: `${s.departmentName} · Sem ${s.semester} · Sec ${s.sectionName}`,
+                              label: `${s.departmentName} · Sem ${s.semester} · ${s.sectionName ? `Sec ${s.sectionName}` : 'No Section'}`,
                             })
                           }
                           className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-600 transition-colors"

@@ -5,14 +5,14 @@ const scheduleSchema = new mongoose.Schema(
     departmentName: {
       type: String,
       required: true,
-      enum: ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'],
+      enum: ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL', 'AIML', 'IOT'],
     },
     semester: {
       type: Number,
     },
     sectionName: {
       type: String,
-      enum: ['A', 'B', 'C', 'D'],
+      enum: ['','A', 'B', 'C', 'D'],
     },
     scheduleLink: {
       type: String,

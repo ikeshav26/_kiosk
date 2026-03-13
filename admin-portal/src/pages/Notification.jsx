@@ -52,7 +52,7 @@ const Notification = () => {
 
     setActionLoading(true);
     try {
-      await axiosInstance.delete(`/api/announcement/delete/${id}`);
+      await axiosInstance.get(`/api/announcement/delete/${id}`);
       navigate('/notifications');
     } catch (err) {
       setError('Administrative deletion failed. System override required.');
