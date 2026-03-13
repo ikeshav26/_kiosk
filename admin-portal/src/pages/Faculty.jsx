@@ -44,7 +44,7 @@ const Faculty = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const excelInputRef = useRef(null);
-  const departments = ['CSE', 'ECE', 'MECH', 'CIVIL', 'EEE', 'IT'];
+  const departments = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'];
 
   const [formData, setFormData] = useState({
     facultyName: '',

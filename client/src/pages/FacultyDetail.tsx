@@ -22,7 +22,7 @@ interface FacultyMember {
   imageUrl: string;
   email: string;
   phoneNumber: string;
-  department: 'CSE' | 'ECE' | 'MECH' | 'CIVIL' | 'EEE' | 'IT';
+  department: 'CSE' | 'CIVIL' | 'MECH' | 'ELECTRICAL';
   translations?: Record<
     string,
     { facultyName?: string; designation?: string; qualification?: string }

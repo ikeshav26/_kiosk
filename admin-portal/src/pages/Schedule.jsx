@@ -18,7 +18,7 @@ import toast from 'react-hot-toast';
 import { PageLoader } from '../components/ui';
 import { authContext } from '../context/AuthContext';
 
-const DEPARTMENTS = ['CSE', 'ECE', 'MECH', 'CIVIL', 'AIML', 'IoT'];
+const DEPARTMENTS = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'];
 const SEMESTERS = [1, 2, 3, 4, 5, 6, 7, 8];
 const SECTIONS = ['A', 'B', 'C', 'D'];
 

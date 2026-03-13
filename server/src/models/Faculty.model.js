@@ -33,7 +33,7 @@ const FacultySchema = new mongoose.Schema({
   },
   department: {
     type: String,
-    enum: ['CSE', 'ECE', 'MECH', 'CIVIL', 'EEE', 'IT'],
+    enum: ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'],
   },
   translations: {
     type: Map,

@@ -413,7 +413,7 @@ const Blocks = () => {
                   name="departments"
                   value={formData.departments}
                   onChange={handleInputChange}
-                  placeholder="CSE, ECE"
+                  placeholder="CSE, CIVIL, MECH, ELECTRICAL"
                   size="small"
                 />
               </div>

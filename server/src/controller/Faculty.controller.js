@@ -3,6 +3,62 @@ import Faculty from '../models/Faculty.model.js';
 import { translateText } from '../utils/translate.js';
 import xlsx from 'xlsx';
 
+const normalizeDepartment = (value) => {
+  const raw = (value || '').toString().trim();
+  const key = raw.toUpperCase();
+
+  const map = {
+    CSE: 'CSE',
+    'COMPUTER SCIENCE': 'CSE',
+    'COMPUTER SCIENCE ENGINEERING': 'CSE',
+    ECE: 'ELECTRICAL',
+    'ELECTRONICS': 'ELECTRICAL',
+    'ELECTRONICS AND COMMUNICATION ENGINEERING': 'ELECTRICAL',
+    MECH: 'MECH',
+    'MECHANICAL': 'MECH',
+    'MECHANICAL ENGINEERING': 'MECH',
+    CIVIL: 'CIVIL',
+    'CIVIL ENGINEERING': 'CIVIL',
+    EEE: 'ELECTRICAL',
+    ELECTRICAL: 'ELECTRICAL',
+    'ELECTRICAL AND ELECTRONICS ENGINEERING': 'ELECTRICAL',
+    IT: 'CSE',
+    IOT: 'CSE',
+    AIML: 'CSE',
+    'AIML/IOT': 'CSE',
+    'INFORMATION TECHNOLOGY': 'CSE',
+    'ARTIFICIAL INTELLIGENCE': 'CSE',
+    'ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING': 'CSE',
+  };
+
+  return map[key] || 'CSE';
+};
+
+const getDepartmentFilterValues = (value) => {
+  const normalized = normalizeDepartment(value);
+  const aliases = {
+    CSE: ['CSE', 'AIML/IOT', 'AIML', 'IOT', 'IT'],
+    CIVIL: ['CIVIL'],
+    MECH: ['MECH'],
+    ELECTRICAL: ['ELECTRICAL', 'ECE', 'EEE'],
+  };
+
+  return aliases[normalized] || [normalized];
+};
+
+const resolveImageUrl = async (imageUrl) => {
+  if (!imageUrl) return '';
+
+  if (typeof imageUrl === 'string' && imageUrl.startsWith('data:')) {
+    const uploadImage = await cloudinary.uploader.upload(imageUrl, {
+      folder: 'faculty_images',
+    });
+    return uploadImage.secure_url;
+  }
+
+  return imageUrl;
+};
+
 const buildTranslations = async (facultyName, designation, qualification) => {
   const fields = [
     { key: 'facultyName', value: facultyName },
@@ -34,9 +90,7 @@ export const addFaculty = async (req, res) => {
       department,
     } = req.body;
 
-    const uploadImage = await cloudinary.uploader.upload(imageUrl, {
-      folder: 'faculty_images',
-    });
+    const finalImageUrl = await resolveImageUrl(imageUrl);
 
     const translations = await buildTranslations(facultyName, designation, qualification);
 
@@ -44,11 +98,11 @@ export const addFaculty = async (req, res) => {
       facultyName,
       designation,
       qualification,
-      totalExperience,
-      imageUrl: uploadImage.secure_url,
+      totalExperience: Number(totalExperience) || 0,
+      imageUrl: finalImageUrl,
       email,
       phoneNumber,
-      department,
+      department: normalizeDepartment(department),
       translations,
     });
 
@@ -72,9 +126,7 @@ export const bulkAddFaculty = async (req, res) => {
 
     for (const item of list) {
       try {
-        const upload = await cloudinary.uploader.upload(item.imageUrl, {
-          folder: 'faculty_images',
-        });
+        const finalImageUrl = await resolveImageUrl(item.imageUrl);
 
         const translations = await buildTranslations(
           item.facultyName,
@@ -86,11 +138,11 @@ export const bulkAddFaculty = async (req, res) => {
           facultyName: item.facultyName,
           designation: item.designation,
           qualification: item.qualification,
-          totalExperience: item.totalExperience,
-          imageUrl: upload.secure_url,
+          totalExperience: Number(item.totalExperience) || 0,
+          imageUrl: finalImageUrl,
           email: item.email || '',
           phoneNumber: item.phoneNumber || '',
-          department: item.department || 'CSE',
+          department: normalizeDepartment(item.department),
           translations,
         }).save();
 
@@ -115,7 +167,10 @@ export const getAllFaculties = async (req, res) => {
     const { page, limit, search, department } = req.query;
 
     if (!page && !limit && !search && !department) {
-      const faculties = await Faculty.find();
+      const faculties = (await Faculty.find().lean()).map((f) => ({
+        ...f,
+        department: normalizeDepartment(f.department),
+      }));
       return res.status(200).json({ faculties });
     }
 
@@ -131,10 +186,13 @@ export const getAllFaculties = async (req, res) => {
       ];
     }
     if (department && department !== 'All') {
-      query.department = department;
+      query.department = { $in: getDepartmentFilterValues(department) };
     }
 
-    const faculties = await Faculty.find(query).skip(skip).limit(pageSize);
+    const faculties = (await Faculty.find(query).skip(skip).limit(pageSize).lean()).map((f) => ({
+      ...f,
+      department: normalizeDepartment(f.department),
+    }));
 
     const total = await Faculty.countDocuments(query);
 
@@ -153,11 +211,11 @@ export const getAllFaculties = async (req, res) => {
 export const getFacultyById = async (req, res) => {
   try {
     const { id } = req.params;
-    const faculty = await Faculty.findById(id);
+    const faculty = await Faculty.findById(id).lean();
     if (!faculty) {
       return res.status(404).json({ message: 'Faculty not found' });
     }
-    res.status(200).json({ faculty });
+    res.status(200).json({ faculty: { ...faculty, department: normalizeDepartment(faculty.department) } });
   } catch (err) {
     res.status(500).json({ message: err.message });
     console.log(err);
@@ -206,11 +264,8 @@ export const updateFaculty = async (req, res) => {
       department,
     } = req.body;
 
-    if (imageUrl && imageUrl.startsWith('data:')) {
-      const uploadImage = await cloudinary.uploader.upload(imageUrl, {
-        folder: 'faculty_images',
-      });
-      imageUrl = uploadImage.secure_url;
+    if (imageUrl) {
+      imageUrl = await resolveImageUrl(imageUrl);
     }
 
     const translations = await buildTranslations(facultyName, designation, qualification);
@@ -221,11 +276,11 @@ export const updateFaculty = async (req, res) => {
         facultyName,
         designation,
         qualification,
-        totalExperience,
+        totalExperience: Number(totalExperience) || 0,
         imageUrl,
         email,
         phoneNumber,
-        department,
+        department: normalizeDepartment(department),
         translations,
       },
       { new: true }
@@ -277,12 +332,12 @@ export const addFacultyExcel = async (req, res) => {
           facultyName: item.facultyName || '',
           designation: item.designation || '',
           qualification: item.qualification || '',
-          totalExperience: item.totalExperience || 0,
+          totalExperience: Number(item.totalExperience) || 0,
           imageUrl:
             'https://res.cloudinary.com/ducvkar80/image/upload/v1752789612/avatars/gbuufbs2fud7mrzvcsqj.jpg',
           email: item.email || '',
           phoneNumber: item.phoneNumber || '',
-          department: item.department || 'CSE',
+          department: normalizeDepartment(item.department),
           translations,
         }).save();
 

@@ -5,7 +5,7 @@ const scheduleSchema = new mongoose.Schema(
     departmentName: {
       type: String,
       required: true,
-      enum: ['CSE', 'ECE', 'MECH', 'CIVIL', 'AIML', 'IoT'],
+      enum: ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'],
     },
     semester: {
       type: Number,

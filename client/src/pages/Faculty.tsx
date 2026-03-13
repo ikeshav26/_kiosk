@@ -21,7 +21,7 @@ interface FacultyMember {
   imageUrl: string;
   email: string;
   phoneNumber: string;
-  department: 'CSE' | 'ECE' | 'MECH' | 'CIVIL' | 'EEE' | 'IT';
+  department: 'CSE' | 'CIVIL' | 'MECH' | 'ELECTRICAL';
   translations?: Record<
     string,
     { facultyName?: string; designation?: string; qualification?: string }
@@ -29,7 +29,7 @@ interface FacultyMember {
   __v?: number;
 }
 
-const DEPARTMENTS = ['CSE', 'ECE', 'MECH', 'CIVIL', 'EEE', 'IT'] as const;
+const DEPARTMENTS = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'] as const;
 
 /** Get a translated field, falling back to the English (root) value. */
 const localized = (

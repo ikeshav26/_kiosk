@@ -1,6 +1,29 @@
 import Schedule from '../models/Schedule.model.js';
 import cloudinary from '../config/Cloudinary.js';
 
+const normalizeDepartmentName = (value) => {
+  const key = (value || '').toString().trim().toUpperCase();
+
+  const map = {
+    CSE: 'CSE',
+    CIVIL: 'CIVIL',
+    'CIVIL ENGINEERING': 'CIVIL',
+    MECH: 'MECH',
+    'MECHANICAL ENGINEERING': 'MECH',
+    AIML: 'CSE',
+    IOT: 'CSE',
+    'AIML/IOT': 'CSE',
+    IT: 'CSE',
+    ECE: 'ELECTRICAL',
+    EEE: 'ELECTRICAL',
+    ELECTRICAL: 'ELECTRICAL',
+    'ELECTRICAL ENGINEERING': 'ELECTRICAL',
+    'ELECTRONICS AND COMMUNICATION ENGINEERING': 'ELECTRICAL',
+  };
+
+  return map[key] || 'CSE';
+};
+
 export const addSchedule = async (req, res) => {
   try {
     const { departmentName, semester, sectionName, scheduleLink } = req.body;
@@ -10,7 +33,7 @@ export const addSchedule = async (req, res) => {
       folder: 'schedules',
     });
     const schedule = new Schedule({
-      departmentName,
+      departmentName: normalizeDepartmentName(departmentName),
       semester,
       sectionName,
       scheduleLink: cloudinaryRes.secure_url,
@@ -36,8 +59,12 @@ export const getScheduleById = async (req, res) => {
 
 export const getAllSchedules = async (req, res) => {
   try {
-    const schedules = await Schedule.find();
-    res.status(200).json(schedules);
+    const schedules = await Schedule.find().lean();
+    const normalized = schedules.map((s) => ({
+      ...s,
+      departmentName: normalizeDepartmentName(s.departmentName),
+    }));
+    res.status(200).json(normalized);
   } catch (err) {
     res.status(500).json({ message: err.message });
     console.log(err);
@@ -61,7 +88,7 @@ export const updateSchedule = async (req, res) => {
     const updatedSchedule = await Schedule.findByIdAndUpdate(
       scheduleId,
       {
-        departmentName,
+        departmentName: normalizeDepartmentName(departmentName),
         semester,
         sectionName,
         scheduleLink,

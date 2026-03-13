@@ -24,7 +24,7 @@ const UpdateFaculty = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
-  const departments = ['CSE', 'ECE', 'MECH', 'CIVIL', 'EEE', 'IT'];
+  const departments = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'];
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -113,10 +113,6 @@ const UpdateFaculty = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.facultyName || !formData.email) {
-      toast.error('Name and Email are required.');
-      return;
-    }
     setSaving(true);
     try {
       await axiosInstance.put(`/api/faculty/update/${id}`, formData);
