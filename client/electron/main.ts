@@ -36,11 +36,14 @@ let win: BrowserWindow | null;
 const VITE_DEV_SERVER_URL = process.env['VITE_DEV_SERVER_URL'];
 
 function createWindow() {
+  const iconPath = path.join(__dirname, '../public/logo.png');
+
   win = new BrowserWindow({
     width: 800,
     height: 600,
     kiosk: true, // Full screen kiosk mode, set true in production
     autoHideMenuBar: true,
+    icon: iconPath,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
