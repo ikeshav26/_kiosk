@@ -2,7 +2,11 @@ import Announcement from '../models/Announcement.model.js';
 import { translateToAllLangs } from '../utils/translate.js';
 
 const VALID_LANGS = ['en', 'hi', 'pa'];
-const getLang = (query) => (VALID_LANGS.includes(query?.lang) ? query.lang : 'en');
+const normalizeLang = (lang) => (lang ? lang.split('-')[0] : 'en');
+const getLang = (query) => {
+  const lang = normalizeLang(query?.lang);
+  return VALID_LANGS.includes(lang) ? lang : 'en';
+};
 
 export const createAnnouncement = async (req, res) => {
   try {
@@ -30,13 +34,16 @@ export const createAnnouncement = async (req, res) => {
   }
 };
 
-const localize = (doc, lang) => ({
-  _id: doc._id,
-  subject: doc.subject[lang] || doc.subject.en,
-  message: doc.message[lang] || doc.message.en,
-  createdAt: doc.createdAt,
-  updatedAt: doc.updatedAt,
-});
+const localize = (doc, lang) => {
+  if (!doc) return null;
+  return {
+    _id: doc._id,
+    subject: doc.subject?.[lang] || doc.subject?.en || '',
+    message: doc.message?.[lang] || doc.message?.en || '',
+    createdAt: doc.createdAt,
+    updatedAt: doc.updatedAt,
+  };
+};
 
 export const getAnnouncements = async (req, res) => {
   try {

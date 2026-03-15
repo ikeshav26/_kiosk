@@ -11,13 +11,14 @@ type Notice = {
 const Footer = () => {
   const [notices, setNotices] = useState<Notice[]>([]);
   const { t, i18n } = useTranslation();
+  const apiLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
   useEffect(() => {
     let mounted = true;
 
     const load = async () => {
       try {
-        const res = await instance.get('/api/announcement/all', { params: { lang: i18n.language } });
+        const res = await instance.get('/api/announcement/all', { params: { lang: apiLang } });
 
         if (!mounted) return;
 
@@ -40,10 +41,10 @@ const Footer = () => {
       mounted = false;
       clearInterval(interval);
     };
-  }, [i18n.language]);
+  }, [apiLang]);
 
   return (
-    <footer className="w-full h-22 flex bg-white border-t border-slate-200 overflow-hidden select-none z-[5] shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
+    <footer className="w-full h-22 flex bg-white border-t border-slate-200 overflow-hidden select-none z-5 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
       <div className="w-[65%] h-full bg-[#002b5c] relative flex items-center overflow-hidden">
         <div className="absolute left-0 top-0 h-full px-8 bg-[#001f3f] flex items-center z-20 shadow-[10px_0_25px_rgba(0,0,0,0.4)] border-r border-white/10">
           <div className="flex items-center gap-3">
@@ -54,7 +55,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex h-full items-center ml-[220px]">
+        <div className="flex h-full items-center ml-55">
           <div className="flex whitespace-nowrap animate-marquee-loop hover:pause cursor-pointer">
             {notices.length === 0 ? (
               <span className="text-white px-10 font-semibold">

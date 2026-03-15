@@ -18,17 +18,18 @@ const AnnouncementDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { t, i18n } = useTranslation();
+  const apiLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
   useEffect(() => {
     if (!id) return;
     setLoading(true);
     setError(null);
     instance
-      .get(`/api/announcement/${id}`, { params: { lang: i18n.language } })
+      .get(`/api/announcement/${id}`, { params: { lang: apiLang } })
       .then((res) => setData(res.data.announcement))
       .catch(() => setError(t('announcements.couldNotLoad')))
       .finally(() => setLoading(false));
-  }, [id, i18n.language]);
+  }, [id, apiLang, t]);
 
   if (loading)
     return (

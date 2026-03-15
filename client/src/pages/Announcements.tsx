@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Bell, Clock, RefreshCw, ChevronRight, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -49,13 +49,14 @@ const Announcements = () => {
   const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+  const apiLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
-  const fetchAnnouncements = async () => {
+  const fetchAnnouncements = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
       const response = await instance.get(`/api/announcement/all`, {
-        params: { lang: i18n.language, page, limit: 10 },
+        params: { lang: apiLang, page, limit: 10 },
       });
       setAnnouncements(response.data.announcements || []);
       setTotalPages(response.data.pages || 1);
@@ -65,13 +66,13 @@ const Announcements = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [apiLang, page, t]);
 
   useEffect(() => {
     fetchAnnouncements();
     const autoRefresh = setInterval(fetchAnnouncements, 300000);
     return () => clearInterval(autoRefresh);
-  }, [i18n.language, page]);
+  }, [fetchAnnouncements]);
 
   return (
     <div className="flex flex-col h-full bg-[#fcfdfe] rounded-[40px] shadow-2xl overflow-hidden border border-slate-100 font-sans relative">

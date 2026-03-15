@@ -7,8 +7,12 @@ import {
   UserPlus,
   Lock,
   Fingerprint,
+  Bell,
+  AlertCircle,
+  CheckCircle2,
   Trash2,
   Edit3,
+  GraduationCap,
   Save,
 } from 'lucide-react';
 import { authContext } from '../context/AuthContext';
