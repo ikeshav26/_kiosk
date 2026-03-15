@@ -12,6 +12,7 @@ import {
   Building,
 } from 'lucide-react';
 
+import { instance } from '../utils/instance';
 interface FacultyMember {
   _id: string;
   facultyName: string;

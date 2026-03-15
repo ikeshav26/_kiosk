@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {
   CalendarDays,
   Building2,
@@ -12,8 +11,6 @@ import {
   RefreshCw,
 } from 'lucide-react';
 import { instance } from '../utils/instance';
-
-const api = instance.create({ withCredentials: true });
 
 interface Schedule {
   departmentName: string;
@@ -35,7 +32,7 @@ const Timetable = () => {
     setLoading(true);
     setError(null);
     setIframeReady(false);
-    api
+    instance
       .get(`/api/schedule/${id}`)
       .then((res) => setSchedule(res.data))
       .catch(() => setError('Infrastructure link failed. Timetable unreachable.'))
