@@ -9,14 +9,53 @@ on:
                 type: string
 
 jobs:
-    release:
+    bump-version:
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        defaults:
+            run:
+                working-directory: ./client
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+
+            - name: Update package version
+              run: |
+                  CLEAN_VERSION="${{ github.event.inputs.version }}"
+                  CLEAN_VERSION="${CLEAN_VERSION#v}"
+                  npm version $CLEAN_VERSION --no-git-tag-version
+
+            - name: Commit and push version bump
+              working-directory: .
+              run: |
+                  git config --local user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --local user.name "github-actions[bot]"
+                  git add client/package.json
+                  git commit -m "chore(release): bump frontend to v${{ github.event.inputs.version }}"
+                  git tag v${{ github.event.inputs.version }}
+                  git push origin HEAD
+                  git push origin v${{ github.event.inputs.version }}
+
+    release:
+        needs: bump-version
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                os: [ubuntu-latest, windows-latest]
         permissions:
             contents: write
 
         defaults:
             run:
-                working-directory: ./frontend
+                working-directory: ./client
 
         steps:
             - name: Checkout Code
@@ -51,23 +90,6 @@ jobs:
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
-
-            - name: Update package version
-              run: |
-                  CLEAN_VERSION="${{ github.event.inputs.version }}"
-                  CLEAN_VERSION="${CLEAN_VERSION#v}"
-                  npm version $CLEAN_VERSION --no-git-tag-version
-
-            - name: Commit and push version bump
-              working-directory: .
-              run: |
-                  git config --local user.email "github-actions[bot]@users.noreply.github.com"
-                  git config --local user.name "github-actions[bot]"
-                  git add frontend/package.json
-                  git commit -m "chore(release): bump frontend to v${{ github.event.inputs.version }}"
-                  git tag v${{ github.event.inputs.version }}
-                  git push origin HEAD
-                  git push origin v${{ github.event.inputs.version }}
 
             - name: Build and Publish Release
               env:
