@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import {
   AlertCircle,
   Mail,
@@ -30,7 +29,6 @@ interface FacultyMember {
   __v?: number;
 }
 
-/** Get a translated field, falling back to the English (root) value. */
 const localized = (
   member: FacultyMember,
   field: 'facultyName' | 'designation' | 'qualification',
@@ -54,7 +52,7 @@ const FacultyDetail = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`/api/faculty/${id}`);
+        const res = await instance.get(`/api/faculty/${id}`);
         setData(res.data.faculty || res.data);
       } catch (err) {
         console.error('Error fetching faculty detail:', err);

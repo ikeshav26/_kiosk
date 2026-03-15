@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { ArrowLeft, Clock, Calendar, Megaphone } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { instance } from '../utils/instance';
 
 interface Announcement {
   _id: string;
@@ -23,7 +23,7 @@ const AnnouncementDetail = () => {
     if (!id) return;
     setLoading(true);
     setError(null);
-    axios
+    instance
       .get(`/api/announcement/${id}`, { params: { lang: i18n.language } })
       .then((res) => setData(res.data.announcement))
       .catch(() => setError(t('announcements.couldNotLoad')))

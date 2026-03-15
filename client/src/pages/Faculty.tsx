@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import {
   Users,
   ChevronRight,
@@ -11,6 +10,7 @@ import {
   AlertCircle,
   Contact2,
 } from 'lucide-react';
+import { instance } from '../utils/instance';
 
 interface FacultyMember {
   _id: string;
@@ -31,7 +31,6 @@ interface FacultyMember {
 
 const DEPARTMENTS = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'] as const;
 
-/** Get a translated field, falling back to the English (root) value. */
 const localized = (
   member: FacultyMember,
   field: 'facultyName' | 'designation' | 'qualification',
@@ -54,7 +53,7 @@ export const Faculty = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get('/api/faculty/all');
+      const res = await instance.get('/api/faculty/all');
       setFaculty(res.data.faculties || []);
     } catch (err) {
       console.error('Error fetching faculty:', err);

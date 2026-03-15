@@ -3,8 +3,6 @@ import react from '@vitejs/plugin-react';
 import electron from 'vite-plugin-electron';
 import renderer from 'vite-plugin-electron-renderer';
 import tailwindcss from '@tailwindcss/vite';
-// @ts-expect-error JS config module has no declaration file
-import API_URL from './src/api/config.js';
 
 // https://vite.dev/config/
 export default defineConfig(() => {
@@ -27,11 +25,6 @@ export default defineConfig(() => {
         },
       ]),
       renderer(),
-    ],
-    server: {
-      proxy: {
-        '/api': { target: API_URL, changeOrigin: true },
-      },
-    },
+    ]
   };
 });

@@ -11,8 +11,9 @@ import {
   FileText,
   RefreshCw,
 } from 'lucide-react';
+import { instance } from '../utils/instance';
 
-const api = axios.create({ withCredentials: true });
+const api = instance.create({ withCredentials: true });
 
 interface Schedule {
   departmentName: string;

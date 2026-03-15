@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { X, Lock, Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { VirtualKeyboard } from './VirtualKeyboard';
+import { instance } from '../utils/instance';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -70,7 +70,7 @@ const AdminLoginModal: React.FC<AdminLoginModalProps> = ({ isOpen, onClose }) =>
     setLoading(true);
 
     try {
-      const response = await axios.post('/api/auth/login', { userId: adminId, password });
+      const response = await instance.post('/api/auth/login', { userId: adminId, password });
 
       if (response.data && response.data.user) {
         toast.success(t('adminLogin.accessGranted'));

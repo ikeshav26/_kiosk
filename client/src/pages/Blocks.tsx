@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import { Building2, Search, ChevronRight, AlertCircle, Navigation, Layers } from 'lucide-react';
+import { instance } from '../utils/instance';
 
 interface BuildingBlock {
   _id: string;
@@ -22,11 +22,7 @@ interface BuildingBlock {
   contactNumber: string;
 }
 
-/**
- * Blocks Component
- * Fixed: Added strict Type guards for API responses to prevent "blocks.filter is not a function" errors.
- * Fixed: Removed environment-specific metadata checks to ensure cross-platform stability.
- */
+
 const Blocks = () => {
   const [blocks, setBlocks] = useState<BuildingBlock[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,13 +39,8 @@ const Blocks = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('/api/building/all');
+      const response = await instance.get('/api/building/all');
 
-      /**
-       * CRASH PREVENTION:
-       * Defensive check to ensure we are always working with an array.
-       * Handles nested objects like { buildings: [...] } or direct array responses.
-       */
       let data = response.data?.buildings || response.data?.blocks || response.data;
 
       if (!Array.isArray(data)) {
@@ -61,7 +52,7 @@ const Blocks = () => {
     } catch (err) {
       console.error('Kiosk Blocks Fetch Error:', err);
       setError(t('blocks.unableToSync'));
-      setBlocks([]); // Ensure blocks is empty array on error to prevent filter crash
+      setBlocks([]); 
     } finally {
       setLoading(false);
     }
@@ -71,7 +62,7 @@ const Blocks = () => {
     fetchBlocks();
   }, []);
 
-  // useMemo ensures we only recalculate when dependencies actually change
+
   const filteredBlocks = useMemo(() => {
     if (!Array.isArray(blocks)) return [];
 
@@ -83,10 +74,6 @@ const Blocks = () => {
     });
   }, [blocks, searchQuery]);
 
-  /**
-   * Helper to resolve the correct image source.
-   * Prevents crashes if path is non-string or malformed.
-   */
   const resolveImageSrc = (images: string | string[] | undefined) => {
     const path = Array.isArray(images) ? images[0] : images;
     if (typeof path !== 'string' || !path) return DEFAULT_IMAGE;

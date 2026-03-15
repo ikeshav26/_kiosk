@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {
   AlertCircle,
   ChevronLeft,
@@ -23,6 +22,7 @@ import {
   ImageIcon,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { instance } from '../utils/instance';
 
 interface RoomDetail {
   roomNumber?: string;
@@ -86,7 +86,7 @@ const BlockDetail = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`/api/building/${id}`);
+        const res = await instance.get(`/api/building/${id}`);
         setData(res.data.building || res.data);
       } catch (err) {
         console.error('Error fetching building detail:', err);

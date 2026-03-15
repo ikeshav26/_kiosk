@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import { instance } from '../utils/instance';
 
 type Notice = {
   id: string;
@@ -17,7 +17,7 @@ const Footer = () => {
 
     const load = async () => {
       try {
-        const res = await axios.get('/api/announcement/all', { params: { lang: i18n.language } });
+        const res = await instance.get('/api/announcement/all', { params: { lang: i18n.language } });
 
         if (!mounted) return;
 

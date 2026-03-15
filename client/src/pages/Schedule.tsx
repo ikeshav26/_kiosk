@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import {
   CalendarDays,
   Building2,
@@ -12,8 +11,9 @@ import {
   BookOpen,
   GraduationCap,
 } from 'lucide-react';
+import { instance } from '../utils/instance';
 
-const api = axios.create({ withCredentials: true });
+const api = instance.create({ withCredentials: true });
 
 interface ScheduleItem {
   _id: string;

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Bell, Clock, RefreshCw, ChevronRight, Info } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { instance } from '../utils/instance';
+
 
 interface Announcement {
   _id: string;
@@ -53,7 +54,7 @@ const Announcements = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/announcement/all`, {
+      const response = await instance.get(`/api/announcement/all`, {
         params: { lang: i18n.language, page, limit: 10 },
       });
       setAnnouncements(response.data.announcements || []);

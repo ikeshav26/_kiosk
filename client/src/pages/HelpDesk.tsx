@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import {
   LifeBuoy,
   Send,
@@ -17,6 +16,7 @@ import {
   Phone,
 } from 'lucide-react';
 import { VirtualKeyboard } from '../components/VirtualKeyboard';
+import { instance } from '../utils/instance';
 
 const HelpDesk = () => {
   const [formData, setFormData] = useState({
@@ -91,7 +91,7 @@ const HelpDesk = () => {
     setActiveInput(null);
 
     try {
-      await axios.post('/api/help-ticket/create', formData);
+      await instance.post('/api/help-ticket/create', formData);
       setIsSuccess(true);
       setFormData({
         helperName: '',

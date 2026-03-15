@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapPin, Navigation2, ChevronRight, Compass, Loader2 } from 'lucide-react';
+import { instance } from '../utils/instance';
 
 interface LatLng {
   lat: number;
@@ -82,7 +82,7 @@ const Navigation = () => {
     if (!mapStarted) return;
     setLoadingData(true);
     setDataError(null);
-    Promise.all([axios.get('/api/kiosk/map-data'), axios.get('/api/kiosk/buildinglabel')])
+    Promise.all([instance.get('/api/kiosk/map-data'), instance.get('/api/kiosk/buildinglabel')])
       .then(([mapRes, labelRes]) => {
         setMapData(mapRes.data);
         if (Array.isArray(labelRes.data)) setBuildingLabels(labelRes.data);
