@@ -27,4 +27,3 @@ release
 *.sw?
 
 .env
-config.js
