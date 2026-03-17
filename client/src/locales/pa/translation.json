@@ -226,5 +226,9 @@
   "keyboard": {
     "confirm": "ਪੁਸ਼ਟੀ",
     "space": "ਸਪੇਸ"
+  },
+  "Campus_Map":{
+    "Campus_360":"ਵਰਚੁਅਲ ਟੂਰ",
+    "Virtual_Tour":"ਆਭਾਸੀ ਯਾਤ੍ਰਾ"
   }
 }

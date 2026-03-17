@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { View, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Campus360 = () => {
   const [showVirtualTour, setShowVirtualTour] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className="h-full w-full bg-slate-50 rounded-2xl shadow-xl overflow-hidden relative border border-gray-100">
@@ -12,24 +14,24 @@ const Campus360 = () => {
           onClick={() => setShowVirtualTour(false)}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${
             !showVirtualTour
-              ? "bg-[#1e3a8a] text-white shadow-md scale-100" // using blue-900 equivalent or theme color
-              : "text-gray-600 hover:bg-gray-100/50 hover:text-[#1e3a8a] scale-95 opacity-80"
+              ? "bg-primary text-white shadow-md scale-100" // using blue-900 equivalent or theme color
+              : "text-gray-600 hover:bg-gray-100/50 hover:text-primary scale-95 opacity-80"
           }`}
         >
           <View className="w-5 h-5" />
-          <span>Campus 360</span>
+          <span>{t('Campus_Map.Campus_360')}</span>
         </button>
 
         <button
           onClick={() => setShowVirtualTour(true)}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${
             showVirtualTour
-              ? "bg-[#1e3a8a] text-white shadow-md scale-100"
-              : "text-gray-600 hover:bg-gray-100/50 hover:text-[#1e3a8a] scale-95 opacity-80"
+              ? "bg-primary text-white shadow-md scale-100"
+              : "text-gray-600 hover:bg-gray-100/50 hover:text-primary scale-95 opacity-80"
           }`}
         >
           <MapPin className="w-5 h-5" />
-          <span>Virtual Tour</span>
+          <span>{t('Campus_Map.Virtual_Tour')}</span>
         </button>
       </div>
 
