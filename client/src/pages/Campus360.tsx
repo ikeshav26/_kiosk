@@ -2,12 +2,10 @@ const Campus360 = () => {
   return (
     <div className="h-full w-full bg-white rounded-2xl shadow-md overflow-hidden relative">
       <iframe
-        src="/virtual-tour/index.html"
-        className="w-full h-full border-0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        title="Campus Virtual Tour"
-      />
+        src="/campus360/360.babafaridgroup.edu.in/index.html"
+        className="myiframe w-full h-full border-0 rounded-xl"
+        allow="fullscreen"
+      ></iframe>{' '}
     </div>
   );
 };
