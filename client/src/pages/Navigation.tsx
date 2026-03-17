@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -10,11 +11,15 @@ interface LatLng {
   lng: number;
 }
 interface BuildingLabel {
+  _id?: string;
   id: string;
+  kioskId?: string;
+  __v?: number;
   name: string;
   sub?: string;
   lat: number;
   lng: number;
+  navigationmapID?: string;
 }
 interface MapNode {
   id: string;
@@ -39,6 +44,163 @@ interface MapData {
   nodes: MapNode[];
   paths: MapPath[];
 }
+
+const HARDCODED_BUILDINGS: BuildingLabel[] = [
+  {
+    "_id": "69a5b09e69d4af22a31d75ab",
+    "id": "block_a",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251727099271356,
+    "lng": 74.8430039905376,
+    "name": "Block A",
+    "sub": "",
+    "navigationmapID": "ndOApxJoL"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75ac",
+    "id": "block_b",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251497009001497,
+    "lng": 74.8433633193658,
+    "name": "Block B",
+    "sub": "",
+    "navigationmapID": "SQKRUL6DV"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75ad",
+    "id": "block_c",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.250897183437715,
+    "lng": 74.84269049887598,
+    "name": "Block C",
+    "sub": "Agriculture Dept.",
+    "navigationmapID": "Q8Ke_egMx"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75ae",
+    "id": "block_d",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251013213459913,
+    "lng": 74.84218457360967,
+    "name": "Block D",
+    "sub": "",
+    "navigationmapID": "L6GdNLSBrIy"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75af",
+    "id": "block_e",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251215306883523,
+    "lng": 74.84068583913677,
+    "name": "Block E",
+    "sub": "",
+    "navigationmapID": "5Pd9XFNOX"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b0",
+    "id": "school",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251552035719214,
+    "lng": 74.84053658108215,
+    "name": "School",
+    "sub": "",
+    "navigationmapID": "UohmalxTf"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b1",
+    "id": "library",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251227380505014,
+    "lng": 74.84126721102429,
+    "name": "Innovation Lab",
+    "sub": "",
+    "navigationmapID": ""
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b2",
+    "id": "management_block",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.250731418446332,
+    "lng": 74.84043343362299,
+    "name": "Management Block",
+    "sub": "",
+    "navigationmapID": ""
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b3",
+    "id": "manufacturing_workshop",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.250843569998324,
+    "lng": 74.83952225017738,
+    "name": "Manufacturing Workshop",
+    "sub": "",
+    "navigationmapID": "2ZrYa9OBH"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b4",
+    "id": "cad_office",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.251261193167785,
+    "lng": 74.84259955724136,
+    "name": "CAD Office",
+    "sub": "",
+    "navigationmapID": "Q8Ke_egMx"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b5",
+    "id": "mini_seminar_hall",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.250719728127308,
+    "lng": 74.84106921046977,
+    "name": "Main Seminar Hall",
+    "sub": "",
+    "navigationmapID": "5mv7WJ6-QJC"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b6",
+    "id": "boys_hostel",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.250810411513115,
+    "lng": 74.84353515475948,
+    "name": "Boys Hostel",
+    "sub": "",
+    "navigationmapID": "CBm09mc8zMC"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b7",
+    "id": "girls_hostel",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.25059947876707,
+    "lng": 74.83977057117188,
+    "name": "Girls Hostel",
+    "sub": "",
+    "navigationmapID": "1-eH8pLDL"
+  },
+  {
+    "_id": "69a5b11769d4af22a31d75b9",
+    "id": "Parking",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.252661685480692,
+    "lng": 74.84401530892886,
+    "name": "Parking",
+    "sub": "",
+    "navigationmapID": ""
+  }
+];
 
 function getCoordinatesFromPath(
   pathId: string,
@@ -77,19 +239,26 @@ const Navigation = () => {
   const [dataError, setDataError] = useState<string | null>(null);
   const [activePathId, setActivePathId] = useState<string | null>(null);
   const [mapStarted, setMapStarted] = useState(false);
+  const [selectedSceneId, setSelectedSceneId] = useState<string | null>(null);
 
+  const openSceneModal = (sceneId?: string) => {
+    if (!sceneId) return;
+    setSelectedSceneId(sceneId);
+  };
+
+  const closeSceneModal = () => {
+    setSelectedSceneId(null);
+  };
   useEffect(() => {
     if (!mapStarted) return;
-    setLoadingData(true);
-    setDataError(null);
-    Promise.all([instance.get('/api/kiosk/map-data'), instance.get('/api/kiosk/buildinglabel')])
-      .then(([mapRes, labelRes]) => {
+    Promise.all([instance.get('/api/kiosk/map-data')])
+      .then(([mapRes]) => {
         setMapData(mapRes.data);
-        if (Array.isArray(labelRes.data)) setBuildingLabels(labelRes.data);
+        setBuildingLabels(HARDCODED_BUILDINGS);
       })
       .catch(() => setDataError(t('navigation.failedToLoad')))
       .finally(() => setLoadingData(false));
-  }, [mapStarted]);
+  }, [mapStarted, t]);
 
   useEffect(() => {
     if (!mapStarted || !mapData || !mapRef.current || leafletMapRef.current) return;
@@ -162,7 +331,7 @@ const Navigation = () => {
       map.remove();
       leafletMapRef.current = null;
     };
-  }, [mapStarted, mapData]);
+  }, [mapStarted, mapData, t]);
 
   useEffect(() => {
     const map = leafletMapRef.current;
@@ -176,24 +345,35 @@ const Navigation = () => {
         ? `<span class="bldg-pill"><span class="bldg-name">${b.name}</span><span class="bldg-sub">${b.sub}</span></span>`
         : `<span class="bldg-pill"><span class="bldg-name">${b.name}</span></span>`;
 
-      L.circleMarker([b.lat, b.lng], {
+      const marker = L.circleMarker([b.lat, b.lng], {
         radius: 0,
         opacity: 0,
         fillOpacity: 0,
-        interactive: false,
+        interactive: true,
       })
         .bindTooltip(html, {
           permanent: true,
           direction: 'center',
           className: 'bldg-tooltip',
+          interactive: true,
         })
         .addTo(group)
         .openTooltip();
+
+      marker.on('click', () => {
+        openSceneModal(b.navigationmapID);
+      });
+
+      marker.on('tooltipopen', () => {
+        const el = marker.getTooltip()?.getElement();
+        if (!el) return;
+        el.onclick = () => openSceneModal(b.navigationmapID);
+      });
     });
 
     group.addTo(map);
     buildingLayerGroupRef.current = group;
-  }, [buildingLabels, leafletMapRef.current]);
+  }, [buildingLabels]);
 
   function drawPath(pathId: string) {
     const map = leafletMapRef.current;
@@ -381,6 +561,39 @@ const Navigation = () => {
 
         <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
       </div>
+
+      {/* Scene Modal */}
+      {selectedSceneId && createPortal(
+        <div style={{ zIndex: 9999999, position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }} className="flex items-center justify-center bg-black/60 backdrop-blur-xl">
+          <div className="relative w-[95%] h-[80%] max-w-350 bg-white rounded-3xl shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col border border-white/20">
+            {/* Back Button - Top Left */}
+            <button
+              onClick={closeSceneModal}
+              className="absolute top-6 left-6 z-50 flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/95 hover:bg-white text-slate-900 font-bold transition-all duration-200 shadow-xl hover:shadow-2xl text-lg cursor-pointer pointer-events-auto"
+              title="Go Back"
+              style={{ pointerEvents: 'auto' }}
+            >
+              <span>← Back</span>
+            </button>
+
+            {/* Modal Title - Centered */}
+            <div className="bg-linear-to-r from-slate-900 to-slate-800 text-white px-6 py-4 border-b border-slate-700">
+              <h2 className="text-2xl font-bold text-center">Virtual Tour - Scene View</h2>
+            </div>
+
+            {/* Scene Viewer */}
+            <div className="flex-1 overflow-hidden rounded-b-3xl">
+              <iframe
+                src={`./virtual-tour/index.html?sceneId=${selectedSceneId}`}
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                allowFullScreen
+                title="Scene Viewer"
+              />
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
 
       <style>{`
         .leaflet-tooltip-custom {

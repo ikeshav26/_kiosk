@@ -41,7 +41,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    kiosk: false, // Full screen kiosk mode, set true in production
+    kiosk: true, // Full screen kiosk mode, set true in production
     autoHideMenuBar: true,
     icon: iconPath,
     webPreferences: {

@@ -14,6 +14,7 @@ const Schedule = lazy(() => import('./pages/Schedule'));
 const Faculty = lazy(() => import('./pages/Faculty'));
 const Blocks = lazy(() => import('./pages/Blocks'));
 const Campus360 = lazy(() => import('./pages/Campus360'));
+const VirtualTour = lazy(() => import('./pages/VirtualTour'));
 const FacultyDetail = lazy(() => import('./pages/FacultyDetail'));
 const BlockDetail = lazy(() => import('./pages/BlockDetail'));
 const Settings = lazy(() => import('./pages/Settings'));
@@ -56,6 +57,7 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Campus360 />} />
                 <Route path="/navigate" element={<Navigation />} />
+                <Route path="/virtual-tour" element={<VirtualTour />} />
                 <Route path="/announcements" element={<Announcements />} />
                 <Route path="/announcement/:id" element={<AnnouncementDetail />} />
                 <Route path="/help" element={<HelpDesk />} />

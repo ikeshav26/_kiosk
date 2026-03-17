@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Tour Scene Navigator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: flex;
+            min-height: 600px;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .main {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .scene-list {
+            list-style: none;
+        }
+        
+        .scene-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .scene-item:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+        
+        .scene-item.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            font-weight: 600;
+        }
+        
+        .scene-id {
+            font-size: 12px;
+            opacity: 0.7;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .scene-title {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .tour-frame {
+            flex: 1;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f0f0f0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+        
+        .tour-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #999;
+        }
+        
+        .info-box {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .info-box strong {
+            color: #667eea;
+        }
+        
+        .url-display {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin-top: 10px;
+            word-break: break-all;
+            color: #667eea;
+        }
+        
+        .sidebar h3 {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .status {
+            padding: 10px;
+            background: #f0f7ff;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h3>📍 Scenes</h3>
+            <div class="status" id="status">Loading...</div>
+            <input 
+                type="text" 
+                class="search-box" 
+                id="searchInput" 
+                placeholder="Search scenes..."
+            >
+            <ul class="scene-list" id="sceneList"></ul>
+        </div>
+        
+        <div class="main">
+            <h1>🎯 Virtual Tour Navigator</h1>
+            <p class="subtitle">Click any scene to navigate directly to it in the tour</p>
+            
+            <div class="info-box">
+                <strong>💡 Tip:</strong> Current scene URL:
+                <div class="url-display" id="urlDisplay">Loading...</div>
+            </div>
+            
+            <div class="tour-frame" id="tourFrame">
+                <div class="loading">
+                    <p>Loading virtual tour...</p>
+                    <p>Make sure the tour is accessible at ./index.html</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Wait for tour data to load
+        const tourWindow = window;
+        let sceneData = [];
+        
+        // Create an iframe to load the tour
+        function initTour() {
+            const frame = document.getElementById('tourFrame');
+            const iframeUrl = './index.html';
+            
+            // Try to load tour data
+            fetch('./js/tourData.js')
+                .then(r => r.text())
+                .then(data => {
+                    // Extract tourData from the script
+                    eval(data);
+                    if (window.tourData && window.tourData.scenes) {
+                        sceneData = window.tourData.scenes;
+                        populateSceneList();
+                        document.getElementById('status').innerHTML = '✓ Ready';
+                    }
+                })
+                .catch(e => {
+                    console.error('Error loading tour data:', e);
+                    document.getElementById('status').innerHTML = '⚠ Could not load scenes';
+                });
+        }
+        
+        // Populate scene list
+        function populateSceneList() {
+            const list = document.getElementById('sceneList');
+            list.innerHTML = '';
+            
+            sceneData.forEach(scene => {
+                if (scene.id && scene.title) {
+                    const li = document.createElement('li');
+                    li.className = 'scene-item';
+                    li.innerHTML = `
+                        <div class="scene-title">${scene.title}</div>
+                        <div class="scene-id">${scene.id}</div>
+                    `;
+                    li.addEventListener('click', () => navigateToScene(scene.id));
+                    list.appendChild(li);
+                }
+            });
+        }
+        
+        // Navigate to scene
+        function navigateToScene(sceneId) {
+            const url = `./index.html?sceneId=${sceneId}`;
+            const frame = document.getElementById('tourFrame');
+            
+            // Update iframe
+            if (frame.querySelector('iframe')) {
+                frame.querySelector('iframe').src = url;
+            } else {
+                const iframe = document.createElement('iframe');
+                iframe.src = url;
+                frame.innerHTML = '';
+                frame.appendChild(iframe);
+            }
+            
+            // Update URL display
+            document.getElementById('urlDisplay').textContent = url;
+            
+            // Update active state
+            document.querySelectorAll('.scene-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.textContent.includes(sceneId)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.scene-item').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(query) ? 'block' : 'none';
+            });
+        });
+        
+        // Load tour
+        document.addEventListener('DOMContentLoaded', initTour);
+        
+        // Load first scene by default after a delay
+        setTimeout(() => {
+            if (sceneData.length > 0) {
+                navigateToScene(sceneData[0].id);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
