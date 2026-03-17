@@ -140,7 +140,7 @@ const Navigation = () => {
         });
     });
 
-    const kioskCoord = nodeMap.get('kiosk_placed');
+    const kioskCoord = nodeMap.get('Library');
     if (kioskCoord) {
       L.circleMarker([kioskCoord.lat, kioskCoord.lng], {
         radius: 9,

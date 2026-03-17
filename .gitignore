@@ -25,3 +25,6 @@ release
 *.njsproj
 *.sln
 *.sw?
+
+old_paths.json
+sexxy.json
