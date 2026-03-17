@@ -7,7 +7,7 @@ const Campus360 = () => {
   return (
     <div className="h-full w-full bg-white rounded-2xl shadow-md p-6 flex items-center justify-center">
       <iframe
-        src="https://360.babafaridgroup.edu.in/"
+        src="/campus360/360.babafaridgroup.edu.in/index.html"
         className="myiframe w-full h-full border-0 rounded-xl"
         allow="fullscreen"
       ></iframe>{' '}
