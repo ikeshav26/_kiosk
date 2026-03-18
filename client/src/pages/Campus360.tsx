@@ -38,7 +38,7 @@ const Campus360 = () => {
       {/* Viewers */}
       <div className="w-full h-full relative">
         <iframe
-          src="./virtual-tour/index.html"
+          src="./virtual-tour/index.html/?sceneId=5Pd9XFNOX"
           className={`absolute top-0 left-0 w-full h-full border-0 transition-opacity duration-700 ${
             showVirtualTour ? "opacity-100 z-10" : "opacity-0 -z-10 pointer-events-none"
           }`}
