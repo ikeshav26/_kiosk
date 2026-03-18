@@ -77,7 +77,7 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     "lng": 74.84269049887598,
     "name": "Block C",
     "sub": "Agriculture Dept.",
-    "navigationmapID": "Q8Ke_egMx"
+    "navigationmapID": "Q8Ke_e_gMx_"
   },
   {
     "_id": "69a5b09e69d4af22a31d75ae",
@@ -121,18 +121,18 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     "lng": 74.84126721102429,
     "name": "Innovation Lab",
     "sub": "",
-    "navigationmapID": ""
+    "navigationmapID": "b57_ujvoR"
   },
   {
     "_id": "69a5b09e69d4af22a31d75b2",
-    "id": "management_block",
+    "id": "f_block",
     "kioskId": "default",
     "__v": 0,
     "lat": 30.250731418446332,
     "lng": 74.84043343362299,
-    "name": "Management Block",
+    "name": "Block F",
     "sub": "",
-    "navigationmapID": ""
+    "navigationmapID": "5Pd9XFNOX"
   },
   {
     "_id": "69a5b09e69d4af22a31d75b3",
@@ -154,7 +154,7 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     "lng": 74.84259955724136,
     "name": "CAD Office",
     "sub": "",
-    "navigationmapID": "Q8Ke_egMx"
+    "navigationmapID": "Q8Ke_e_gMx_"
   },
   {
     "_id": "69a5b09e69d4af22a31d75b5",
@@ -197,6 +197,17 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     "lat": 30.252661685480692,
     "lng": 74.84401530892886,
     "name": "Parking",
+    "sub": "",
+    "navigationmapID": "5sD6isScO"
+  },
+   {
+    "_id": "69a5b11769d4af22a31d75b9",
+    "id": "Main_Gate",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.2533061,
+    "lng": 74.8440539,
+    "name": "Main Gate",
     "sub": "",
     "navigationmapID": ""
   }
@@ -242,7 +253,10 @@ const Navigation = () => {
   const [selectedSceneId, setSelectedSceneId] = useState<string | null>(null);
 
   const openSceneModal = (sceneId?: string) => {
-    if (!sceneId) return;
+    if (!sceneId) {
+      setSelectedSceneId('main-tour');
+      return;
+    }
     setSelectedSceneId(sceneId);
   };
 
@@ -367,7 +381,20 @@ const Navigation = () => {
       marker.on('tooltipopen', () => {
         const el = marker.getTooltip()?.getElement();
         if (!el) return;
-        el.onclick = () => openSceneModal(b.navigationmapID);
+        const pill = el.querySelector('.bldg-pill') as HTMLElement | null;
+        if (pill) {
+          pill.style.cursor = 'pointer';
+          pill.onclick = (e: MouseEvent) => {
+            e.stopPropagation();
+            openSceneModal(b.navigationmapID);
+          };
+          pill.onkeydown = (e: KeyboardEvent) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openSceneModal(b.navigationmapID);
+            }
+          };
+        }
       });
     });
 
@@ -584,7 +611,7 @@ const Navigation = () => {
             {/* Scene Viewer */}
             <div className="flex-1 overflow-hidden rounded-b-3xl">
               <iframe
-                src={`./virtual-tour/index.html?sceneId=${selectedSceneId}`}
+                src={selectedSceneId === 'main-tour' ? './virtual-tour/index.html' : `./virtual-tour/index.html?sceneId=${selectedSceneId}`}
                 style={{ width: '100%', height: '100%', border: 'none' }}
                 allowFullScreen
                 title="Scene Viewer"
@@ -645,7 +672,7 @@ const Navigation = () => {
           border: none !important;
           box-shadow: none !important;
           padding: 0 !important;
-          pointer-events: none !important;
+          pointer-events: auto !important;
         }
         .bldg-tooltip::before { display: none !important; }
         .bldg-pill {
@@ -656,29 +683,46 @@ const Navigation = () => {
           background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(8px);
           -webkit-backdrop-filter: blur(8px);
-          padding: 4px 9px;
-          border-radius: 7px;
+          padding: 8px 14px;
+          border-radius: 8px;
           box-shadow: 0 2px 12px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255,255,255,0.9);
           border: 1px solid rgba(255,255,255,0.7);
-          pointer-events: none;
+          pointer-events: auto;
+          cursor: pointer;
+          user-select: none;
+          -webkit-user-select: none;
+          transition: all 0.2s ease;
+          min-height: 36px;
+          min-width: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .bldg-pill:hover {
+          background: rgba(255, 255, 255, 1);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255,255,255,0.95);
+          transform: scale(1.05);
+        }
+        .bldg-pill:active {
+          transform: scale(0.98);
         }
         .bldg-name {
           display: block;
           color: #0f172a;
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 800;
           letter-spacing: 0.02em;
           white-space: nowrap;
-          line-height: 1.3;
+          line-height: 1.4;
         }
         .bldg-sub {
           display: block;
           color: #64748b;
-          font-size: 8px;
+          font-size: 9px;
           font-weight: 600;
           letter-spacing: 0.03em;
           white-space: nowrap;
-          line-height: 1.3;
+          line-height: 1.2;
         }
       `}</style>
     </div>
