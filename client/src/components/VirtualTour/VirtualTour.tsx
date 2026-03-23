@@ -36,11 +36,12 @@ function coordsToPitchYaw(sceneCoords: Coords) {
 function renderCustomTooltip(hotSpotDiv: HTMLElement, args: any) {
   // Only append exactly once
   if (!hotSpotDiv.querySelector('.pnlm-tooltip')) {
-    // Inject a simple Unicode text arrow
-    const arrowSpan = document.createElement('div');
-    arrowSpan.className = 'simple-arrow-icon';
-    arrowSpan.innerHTML = '▲'; // Clean, universally supported triangle arrow
-    hotSpotDiv.appendChild(arrowSpan);
+    // Use the arrow image asset as the hotspot icon
+    const arrowImg = document.createElement('img');
+    arrowImg.src = './virtual-tour/public/hotspot-icon-white-thumb.png';
+    arrowImg.className = 'simple-arrow-icon';
+    arrowImg.alt = 'navigate';
+    hotSpotDiv.appendChild(arrowImg);
 
     // Inject the tooltip text
     const span = document.createElement('span');
@@ -102,7 +103,10 @@ export const VirtualTour: React.FC<VirtualTourProps> = ({
             console.log(`Pannellum loaded scene ${currentScene.title}`);
         }}
       >
+        {/* pannellum-react types are stale; `tooltip`/`tooltipArg` exist at runtime but not in d.ts */}
         {currentScene.hotspots.map((hotspot, idx) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const AnyHotspot = Pannellum.Hotspot as any;
           // Prevent rendering a hotspot that points to the exact scene we are already in, or is an info hotspot
           if (!hotspot.targetSceneId || hotspot.targetSceneId === currentScene.id) return null;
 
@@ -116,14 +120,14 @@ export const VirtualTour: React.FC<VirtualTourProps> = ({
           const scale = Math.max(0.3, Math.min(1.2, 500 / distance));
           
           return (
-            <Pannellum.Hotspot
+            <AnyHotspot
               key={hotspot.id || idx}
               type="custom"
               pitch={pitch}
               yaw={yaw}
               cssClass={hotspot.targetSceneId ? "custom-arrow-hotspot" : "custom-info-hotspot"}
-              createTooltipFunc={renderCustomTooltip}
-              createTooltipArgs={{ text: hotspot.title, scale, icon: hotspot.targetSceneId ? '↑' : 'i' }}
+              tooltip={renderCustomTooltip}
+              tooltipArg={{ text: hotspot.title, scale, icon: hotspot.targetSceneId ? '↑' : 'i' }}
               handleClick={() => handleHotspotClick(hotspot.targetSceneId)}
             />
           );

@@ -1,39 +1,55 @@
-/* Remove base styles from the Pannellum container */
-.custom-arrow-hotspot, .custom-info-hotspot {
+/* ── Pannellum hotspot base reset ──────────────────────────────────────────
+   pannellum.css applies border-radius:13px + background sprites to every
+   .pnlm-hotspot, creating the white ring/circle seen on screen.
+   We nuke ALL of those here with !important overrides.
+─────────────────────────────────────────────────────────────────────────── */
+.pnlm-hotspot-base,
+.pnlm-hotspot,
+.pnlm-hotspot:hover,
+.pnlm-hotspot.pnlm-info,
+.pnlm-hotspot.pnlm-scene,
+.pnlm-hotspot.custom-arrow-hotspot,
+.pnlm-hotspot.custom-info-hotspot {
+  background-color: transparent !important;
+  background-image: none !important;
+  background-position: 0 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* ── Our custom hotspot wrapper ───────────────────────────────────────────
+   Pannellum wraps our custom content in a div that still gets
+   .pnlm-hotspot-base. Make the wrapper fully transparent/zero-size.
+─────────────────────────────────────────────────────────────────────────── */
+.custom-arrow-hotspot,
+.custom-info-hotspot {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  width: 1px !important;
-  height: 1px !important;
   display: flex !important;
   align-items: center;
   justify-content: center;
+  overflow: visible !important;
 }
 
-/* Nuke Pannellum's implicit 26x26 ghost circles on hover */
-.pnlm-hotspot-base, .pnlm-hotspot, .pnlm-hotspot:hover {
-  background-color: transparent !important;
-  border: none !important;
-}
-
-/* Extremely Simple Text Arrow */
+/* Arrow image hotspot icon */
 .simple-arrow-icon {
-  font-size: 32px;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0px 2px 5px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);
-  font-weight: 900;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
   cursor: pointer;
   pointer-events: auto;
   transition: all 0.2s ease-in-out;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.8));
+  display: block;
 }
 
 .simple-arrow-icon:hover {
-  color: #3b82f6; /* Blue hover highlight */
   transform: scale(1.2) translateY(-5px);
-  text-shadow: 0px 4px 8px rgba(0,0,0,0.9), 0px 0px 15px rgba(59, 130, 246, 0.8);
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.9)) drop-shadow(0px 0px 8px rgba(59, 130, 246, 0.9));
 }
 
 /* Tooltip container */
@@ -50,7 +66,8 @@
   padding: 8px 14px;
   position: absolute;
   z-index: 10;
-  bottom: 35px; /* Sits right above the simple arrow */
+  bottom: 35px;
+  /* Sits right above the simple arrow */
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -59,7 +76,7 @@
   font-size: 13px;
   font-weight: 700;
   pointer-events: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 /* Make tooltip triangle pointer */
