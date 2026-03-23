@@ -5,6 +5,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapPin, Navigation2, ChevronRight, Compass, Loader2 } from 'lucide-react';
 import { instance } from '../utils/instance';
+import { VirtualTour } from '../components/VirtualTour';
 
 interface LatLng {
   lat: number;
@@ -610,11 +611,9 @@ const Navigation = () => {
 
             {/* Scene Viewer */}
             <div className="flex-1 overflow-hidden rounded-b-3xl">
-              <iframe
-                src={selectedSceneId === 'main-tour' ? './virtual-tour/index.html' : `./virtual-tour/index.html?sceneId=${selectedSceneId}`}
-                style={{ width: '100%', height: '100%', border: 'none' }}
-                allowFullScreen
-                title="Scene Viewer"
+              <VirtualTour 
+                sceneId={selectedSceneId === 'main-tour' ? null : selectedSceneId}
+                className="w-full h-full"
               />
             </div>
           </div>

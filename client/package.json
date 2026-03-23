@@ -60,6 +60,8 @@
     "i18next": "^25.8.13",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.575.0",
+    "pannellum-react": "^1.2.4",
+    "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",

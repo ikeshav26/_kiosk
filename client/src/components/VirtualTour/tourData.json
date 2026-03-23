@@ -1,0 +1,6865 @@
+[
+  {
+    "id": "oHw0iooe_",
+    "title": "BFGI Entry Gate",
+    "url": "images/scene-oHw0iooe_.jpg",
+    "previewUrl": "images/scene-thumb-oHw0iooe_.jpg",
+    "hotspots": [
+      {
+        "id": "BpvaTyi5n",
+        "title": "Reception",
+        "targetSceneId": "T5uABLST3",
+        "coords": {
+          "plane": {
+            "x": 628.8086456250184,
+            "y": -199.40000000000023,
+            "z": 1029.4262481714638
+          },
+          "scene": {
+            "x": 2595.5001156484254,
+            "y": -825.7428791024496,
+            "z": 4249.550868493705
+          }
+        }
+      },
+      {
+        "id": "Po9Jsz7dQ",
+        "title": "Parking Route",
+        "targetSceneId": "5sD6isScO",
+        "coords": {
+          "plane": {
+            "x": 1237.8896761924307,
+            "y": -199.52000000000012,
+            "z": 570.5194898841917
+          },
+          "scene": {
+            "x": 4535.575961112525,
+            "y": -733.7125475905733,
+            "z": 2091.4122538908964
+          }
+        }
+      },
+      {
+        "id": "tAMxH8kAI",
+        "title": "Parking Route",
+        "targetSceneId": "5sD6isScO",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 4538.448609621702,
+            "y": -490.1823556384305,
+            "z": -2156.2362679897647
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "T5uABLST3",
+    "title": "Reception",
+    "url": "images/scene-T5uABLST3.jpg",
+    "previewUrl": "images/scene-thumb-T5uABLST3.jpg",
+    "hotspots": [
+      {
+        "id": "einKGj0uH",
+        "title": "BFGI Entry Gate",
+        "targetSceneId": "oHw0iooe_",
+        "coords": {
+          "plane": {
+            "x": -79.77754547219011,
+            "y": -199.22000000000008,
+            "z": 222.43870444744422
+          },
+          "scene": {
+            "x": -1305.6689337433031,
+            "y": -3256.4402016072027,
+            "z": 3629.541241513451
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "5sD6isScO",
+    "title": "Parking Route",
+    "url": "images/scene-5sD6isScO.jpg",
+    "previewUrl": "images/scene-thumb-5sD6isScO.jpg",
+    "hotspots": [
+      {
+        "id": "ek9920FCF",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": {
+            "x": 636.1295670934225,
+            "y": -199.48000000000002,
+            "z": 22.739531094122896
+          },
+          "scene": {
+            "x": 4812.563118518125,
+            "y": -1510.554287529711,
+            "z": 172.91206957975513
+          }
+        }
+      },
+      {
+        "id": "G5pZRSeZW",
+        "title": "Parking Zone",
+        "targetSceneId": "YyAOZ6CYi",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 467.1611608315814,
+            "y": -485.7961101948858,
+            "z": 5001.362536431749
+          }
+        }
+      },
+      {
+        "id": "frkOwOmcz",
+        "title": "BFGI Entry Gate",
+        "targetSceneId": "oHw0iooe_",
+        "coords": {
+          "plane": {
+            "x": -1470.7503503981843,
+            "y": -199.94000000000017,
+            "z": 635.1996081826711
+          },
+          "scene": {
+            "x": -4598.093701609093,
+            "y": -625.3891539680752,
+            "z": 1984.6499955928803
+          }
+        }
+      },
+      {
+        "id": "WYpZCw6TM",
+        "title": "BFGI Entry Gate",
+        "targetSceneId": "oHw0iooe_",
+        "coords": {
+          "plane": {
+            "x": -1350.8155647840542,
+            "y": -199.5999999999998,
+            "z": -829.3950281746708
+          },
+          "scene": {
+            "x": -4268.0775255869075,
+            "y": -632.1801218672193,
+            "z": -2619.5681953304634
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "YyAOZ6CYi",
+    "title": "Parking Zone",
+    "url": "images/scene-YyAOZ6CYi.jpg",
+    "previewUrl": "images/scene-thumb-YyAOZ6CYi.jpg",
+    "hotspots": [
+      {
+        "id": "wyzrJ7zh7",
+        "title": "Parking Route",
+        "targetSceneId": "5sD6isScO",
+        "coords": {
+          "plane": {
+            "x": 1393.1227363723203,
+            "y": -199.79000000000002,
+            "z": 70.27325921504396
+          },
+          "scene": {
+            "x": 4990.142790306453,
+            "y": -716.0177996399714,
+            "z": 251.87462561478247
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "o2WCT_r9QoQ",
+    "title": "A Block  Midway",
+    "url": "images/scene-o2WCT_r9QoQ.jpg",
+    "previewUrl": "images/scene-thumb-o2WCT_r9QoQ.jpg",
+    "hotspots": [
+      {
+        "id": "xv9jgwlC8",
+        "title": "B Block Crossroad",
+        "targetSceneId": "nZJT4ZLPwy",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 1912.9910987620522,
+            "y": -521.1618501396414,
+            "z": 4641.663536868542
+          }
+        }
+      },
+      {
+        "id": "jNLMHqme0",
+        "title": "Triside Ground View (BFGI)",
+        "targetSceneId": "dfWFO7tdBRv",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 3600.7852268561733,
+            "y": -459.04115181970394,
+            "z": -3506.7182047544648
+          }
+        }
+      },
+      {
+        "id": "870aSR33g",
+        "title": "Parking Route",
+        "targetSceneId": "5sD6isScO",
+        "coords": {
+          "plane": {
+            "x": -231.0685398011024,
+            "y": -199.0100000000001,
+            "z": 532.0677341467999
+          },
+          "scene": {
+            "x": -1901.0212665450897,
+            "y": -1644.2598676687367,
+            "z": 4376.398837399004
+          }
+        }
+      },
+      {
+        "id": "MstH6iU07",
+        "title": "Nescafe Park",
+        "targetSceneId": "RQNputZKk",
+        "coords": {
+          "plane": {
+            "x": 1454.2902257983183,
+            "y": -199.36999999999983,
+            "z": -711.2444939468893
+          },
+          "scene": {
+            "x": 4500.559004925828,
+            "y": -618.9270877442377,
+            "z": -2200.458162931432
+          }
+        }
+      },
+      {
+        "id": "zBMny6lf5",
+        "title": "Boys Hostel Crossroad",
+        "targetSceneId": "-Q5JVudjQ",
+        "coords": {
+          "plane": {
+            "x": 815.4988583340846,
+            "y": -199.17,
+            "z": -33.96718993860555
+          },
+          "scene": {
+            "x": 4898.713109579861,
+            "y": -1199.4026318261822,
+            "z": -203.79965643818826
+          }
+        }
+      },
+      {
+        "id": "m_hFEWplP",
+        "title": "A block - Admission Cell",
+        "targetSceneId": "ndOApxJoL",
+        "coords": {
+          "plane": {
+            "x": 1097.0479834410826,
+            "y": -199.8900000000001,
+            "z": 588.7696544389624
+          },
+          "scene": {
+            "x": 4392.085751393751,
+            "y": -800.6695155488886,
+            "z": 2357.0588571885687
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ndOApxJoL",
+    "title": "A block - Admission Cell",
+    "url": "images/scene-ndOApxJoL.jpg",
+    "previewUrl": "images/scene-thumb-ndOApxJoL.jpg",
+    "hotspots": [
+      {
+        "id": "YsWj9qYZO",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": {
+            "x": -344.095487413928,
+            "y": -199.60000000000022,
+            "z": 993.6605270462891
+          },
+          "scene": {
+            "x": -1621.2223275049087,
+            "y": -942.3999988384912,
+            "z": 4686.026937958581
+          }
+        }
+      },
+      {
+        "id": "pXkfH-PAP",
+        "title": "Boys Hostel Crossroad",
+        "targetSceneId": "-Q5JVudjQ",
+        "coords": {
+          "plane": {
+            "x": -421.3782369354277,
+            "y": -199.9799999999998,
+            "z": -856.3919820148682
+          },
+          "scene": {
+            "x": -2181.2840519812567,
+            "y": -1035.105232678596,
+            "z": -4432.399103875515
+          }
+        }
+      },
+      {
+        "id": "Rl74ZxqSD",
+        "title": "A block 1st floor",
+        "targetSceneId": "m6Bl-b33i",
+        "coords": {
+          "plane": {
+            "x": 1460.2519428285934,
+            "y": -199.89,
+            "z": -1.4603488496796189
+          },
+          "scene": {
+            "x": 5002.173458885292,
+            "y": -685.017883820496,
+            "z": -5.49195183921088
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "m6Bl-b33i",
+    "title": "A block 1st floor",
+    "url": "images/scene-m6Bl-b33i.jpg",
+    "previewUrl": "images/scene-thumb-m6Bl-b33i.jpg",
+    "hotspots": [
+      {
+        "id": "x0eSxoCfy",
+        "title": "A block - Admission Cell",
+        "targetSceneId": "ndOApxJoL",
+        "coords": {
+          "plane": {
+            "x": -20.83070633350652,
+            "y": -199.83000000000007,
+            "z": 193.48366539784993
+          },
+          "scene": {
+            "x": -387.53402889952633,
+            "y": -3617.630091403619,
+            "z": 3499.5989033075252
+          }
+        }
+      },
+      {
+        "id": "vwtctnJhO",
+        "title": "A block - Administration Cell",
+        "targetSceneId": "Brl9WRhl1",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 4879.753741095134,
+            "y": -632.5505912027625,
+            "z": -1122.6470951020176
+          }
+        }
+      },
+      {
+        "id": "XFYYFRBS2",
+        "title": "A block - Department of Physics",
+        "targetSceneId": "LHMq0RUdb",
+        "coords": {
+          "plane": {
+            "x": -43.192339679610555,
+            "y": -199.5699999999998,
+            "z": -800.1300169293381
+          },
+          "scene": {
+            "x": -265.4375435461425,
+            "y": -1222.1390199798795,
+            "z": -4890.8430476869335
+          }
+        }
+      },
+      {
+        "id": "eOemQo62J",
+        "title": "A block cabin office",
+        "targetSceneId": "nu5RedbSc",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 4797.027068347502,
+            "y": -126.33964893554,
+            "z": 1569.3489207985879
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "nu5RedbSc",
+    "title": "A block cabin office",
+    "url": "images/scene-nu5RedbSc.jpg",
+    "previewUrl": "images/scene-thumb-nu5RedbSc.jpg",
+    "hotspots": [
+      {
+        "id": "v-cqctznY",
+        "title": "A block 1st floor",
+        "targetSceneId": "m6Bl-b33i",
+        "coords": {
+          "plane": {
+            "x": -316.69921141235096,
+            "y": -199.29999999999998,
+            "z": -61.67330018661416
+          },
+          "scene": {
+            "x": -4211.653276799298,
+            "y": -2659.273015694829,
+            "z": -826.379519122907
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ORTFhQz2p",
+    "title": "3rd Floor (A Block)",
+    "url": "images/scene-ORTFhQz2p.jpg",
+    "previewUrl": "images/scene-thumb-ORTFhQz2p.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "LHMq0RUdb",
+    "title": "A block - Department of Physics",
+    "url": "images/scene-LHMq0RUdb.jpg",
+    "previewUrl": "images/scene-thumb-LHMq0RUdb.jpg",
+    "hotspots": [
+      {
+        "id": "Mkhhd1Htk",
+        "title": "A block 1st floor",
+        "targetSceneId": "m6Bl-b33i",
+        "coords": {
+          "plane": {
+            "x": -350.98323442758345,
+            "y": -199.35999999999999,
+            "z": -155.58259247743575
+          },
+          "scene": {
+            "x": -4092.852641918592,
+            "y": -2329.120326958614,
+            "z": -1817.0693953323116
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Brl9WRhl1",
+    "title": "A block - Administration Cell",
+    "url": "images/scene-Brl9WRhl1.jpg",
+    "previewUrl": "images/scene-thumb-Brl9WRhl1.jpg",
+    "hotspots": [
+      {
+        "id": "1VIWGWhHP",
+        "title": "A block 1st floor",
+        "targetSceneId": "m6Bl-b33i",
+        "coords": {
+          "plane": {
+            "x": 239.89980984437994,
+            "y": -199.10999999999993,
+            "z": -439.6125911391963
+          },
+          "scene": {
+            "x": 2243.6083766477545,
+            "y": -1870.7839277882372,
+            "z": -4117.675658353609
+          }
+        }
+      },
+      {
+        "id": "F3c78o9J3",
+        "title": "A block library",
+        "targetSceneId": "J2J6-C_oJ",
+        "coords": {
+          "plane": {
+            "x": 873.5370007814139,
+            "y": -199.79000000000008,
+            "z": 255.42077521476648
+          },
+          "scene": {
+            "x": 4731.181217316453,
+            "y": -1083.0038836658075,
+            "z": 1382.6653790976416
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "J2J6-C_oJ",
+    "title": "A block library",
+    "url": "images/scene-J2J6-C_oJ.jpg",
+    "previewUrl": "images/scene-thumb-J2J6-C_oJ.jpg",
+    "hotspots": [
+      {
+        "id": "DBF56YQNQ",
+        "title": "A block - Administration Cell",
+        "targetSceneId": "Brl9WRhl1",
+        "coords": {
+          "plane": {
+            "x": 736.513752466553,
+            "y": -199.31000000000003,
+            "z": 105.21862527785811
+          },
+          "scene": {
+            "x": 4825.334800931085,
+            "y": -1309.8244619090462,
+            "z": 690.1963542632271
+          }
+        }
+      },
+      {
+        "id": "CaWlCQlfm",
+        "title": "A block reading hall",
+        "targetSceneId": "FOhLfaUIg",
+        "coords": {
+          "plane": {
+            "x": -286.5888394515797,
+            "y": -199.48999999999998,
+            "z": -23.255895889403366
+          },
+          "scene": {
+            "x": -4132.62679712695,
+            "y": -2879.5327833836704,
+            "z": -330.2718104215923
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "FOhLfaUIg",
+    "title": "A block reading hall",
+    "url": "images/scene-FOhLfaUIg.jpg",
+    "previewUrl": "images/scene-thumb-FOhLfaUIg.jpg",
+    "hotspots": [
+      {
+        "id": "ej0HICKDZ",
+        "title": "A block library",
+        "targetSceneId": "J2J6-C_oJ",
+        "coords": {
+          "plane": {
+            "x": 1038.455250835672,
+            "y": -199.9099999999998,
+            "z": -1038.883792135392
+          },
+          "scene": {
+            "x": 3535.2551263269575,
+            "y": -680.606903155794,
+            "z": -3536.502155852986
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "RQNputZKk",
+    "title": "Nescafe Park",
+    "url": "images/scene-RQNputZKk.jpg",
+    "previewUrl": "images/scene-thumb-RQNputZKk.jpg",
+    "hotspots": [
+      {
+        "id": "N6Ii51YYn",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -2367.368980406857,
+            "y": -302.962210897104,
+            "z": -4447.422386366602
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "dfWFO7tdBRv",
+    "title": "Triside Ground View (BFGI)",
+    "url": "images/scene-dfWFO7tdBRv.jpg",
+    "previewUrl": "images/scene-thumb-dfWFO7tdBRv.jpg",
+    "hotspots": [
+      {
+        "id": "wOZVcMotW",
+        "title": "Boys Hostel Crossroad",
+        "targetSceneId": "-Q5JVudjQ",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 2826.6000726908055,
+            "y": -420.84024449156806,
+            "z": 4160.101974940611
+          }
+        }
+      },
+      {
+        "id": "CbdwV_pMr",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": {
+            "x": 32.5786226644411,
+            "y": -199.54000000000028,
+            "z": 1401.8852551679106
+          },
+          "scene": {
+            "x": 115.55214527525938,
+            "y": -712.6416296980482,
+            "z": 4994.893890077604
+          }
+        }
+      },
+      {
+        "id": "Zg_e2krgc",
+        "title": "Football Ground",
+        "targetSceneId": "KWeR3yu0M",
+        "coords": {
+          "plane": {
+            "x": -1381.145854086065,
+            "y": -199.87000000000023,
+            "z": 1002.0445134824059
+          },
+          "scene": {
+            "x": -4059.6650285724604,
+            "y": -587.7868871961041,
+            "z": 2945.1497828131282
+          }
+        }
+      },
+      {
+        "id": "sZCJhMwup",
+        "title": "School Block Front",
+        "targetSceneId": "UohmalxTf",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 3529.4140499734303,
+            "y": -387.8902631382477,
+            "z": -3587.5296914573905
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "KWeR3yu0M",
+    "title": "Football Ground",
+    "url": "images/scene-KWeR3yu0M.jpg",
+    "previewUrl": "images/scene-thumb-KWeR3yu0M.jpg",
+    "hotspots": [
+      {
+        "id": "a57LcuSHg",
+        "title": "Triside Ground View (BFGI)",
+        "targetSceneId": "dfWFO7tdBRv",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -4978.915594153934,
+            "y": -414.2168485855246,
+            "z": 719.5315535684214
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "MNrfiMr3noY",
+    "title": "Basketball Ground",
+    "url": "images/scene-MNrfiMr3noY.jpg",
+    "previewUrl": "images/scene-thumb-MNrfiMr3noY.jpg",
+    "hotspots": [
+      {
+        "id": "gKn19CwJV",
+        "title": "School Block Front",
+        "targetSceneId": "UohmalxTf",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 1805.7016138622805,
+            "y": -64.53738948880769,
+            "z": -4713.223914182915
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "nZJT4ZLPwy",
+    "title": "B Block Crossroad",
+    "url": "images/scene-nZJT4ZLPwy.jpg",
+    "previewUrl": "images/scene-thumb-nZJT4ZLPwy.jpg",
+    "hotspots": [
+      {
+        "id": "70n-WpwXY",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": {
+            "x": 1095.9705433241088,
+            "y": -199.7699999999998,
+            "z": -906.2930078312078
+          },
+          "scene": {
+            "x": 3853.255224489694,
+            "y": -703.5954115670388,
+            "z": -3185.8671689612083
+          }
+        }
+      },
+      {
+        "id": "ZjMlcsCXq",
+        "title": "B Block Outer",
+        "targetSceneId": "SQKRUL6DV",
+        "coords": {
+          "plane": {
+            "x": 500.0450317152956,
+            "y": -199.95000000000013,
+            "z": 738.7862660673089
+          },
+          "scene": {
+            "x": 2758.908555544354,
+            "y": -1102.796652198166,
+            "z": 4079.406156651749
+          }
+        }
+      },
+      {
+        "id": "IKRkTv2Nm",
+        "title": "A Block garden",
+        "targetSceneId": "ghg9k-NxI",
+        "coords": {
+          "plane": {
+            "x": 501.2160847167887,
+            "y": -199.18999999999986,
+            "z": -677.6407669046998
+          },
+          "scene": {
+            "x": 2922.3737216942022,
+            "y": -1165.2883662568545,
+            "z": -3948.4485570040756
+          }
+        }
+      },
+      {
+        "id": "xEsRk9ieN",
+        "title": "Jaspal  Canteen Backside",
+        "targetSceneId": "mKAEn6a-E",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -4208.837079765247,
+            "y": -446.33829346560833,
+            "z": 2750.4227922745454
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ghg9k-NxI",
+    "title": "A Block garden",
+    "url": "images/scene-ghg9k-NxI.jpg",
+    "previewUrl": "images/scene-thumb-ghg9k-NxI.jpg",
+    "hotspots": [
+      {
+        "id": "qmHPO3Wan",
+        "title": "B Block Crossroad",
+        "targetSceneId": "nZJT4ZLPwy",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -2773.1518023190924,
+            "y": -424.9133468884815,
+            "z": -4195.940558326454
+          }
+        }
+      },
+      {
+        "id": "7jMZnPXQw",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5004.35457610001,
+            "y": -449.5563945473133,
+            "z": 473.41685506519366
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "SQKRUL6DV",
+    "title": "B Block Outer",
+    "url": "images/scene-SQKRUL6DV.jpg",
+    "previewUrl": "images/scene-thumb-SQKRUL6DV.jpg",
+    "hotspots": [
+      {
+        "id": "gCMlJsUVR",
+        "title": "B Block Crossroad",
+        "targetSceneId": "nZJT4ZLPwy",
+        "coords": {
+          "plane": {
+            "x": 263.6030653238907,
+            "y": -199.32000000000014,
+            "z": 605.3058264460844
+          },
+          "scene": {
+            "x": 1929.14909050132,
+            "y": -1462.899328906544,
+            "z": 4428.101887444023
+          }
+        }
+      },
+      {
+        "id": "Z6_UBjdOT",
+        "title": "C Block",
+        "targetSceneId": "Q8Ke_e_gMx_",
+        "coords": {
+          "plane": {
+            "x": 65.0736795163148,
+            "y": -199.58999999999986,
+            "z": -537.7244697140319
+          },
+          "scene": {
+            "x": 570.3589934691107,
+            "y": -1749.6781579437725,
+            "z": -4702.021588441429
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Q8Ke_e_gMx_",
+    "title": "C Block",
+    "url": "images/scene-Q8Ke_e_gMx_.jpg",
+    "previewUrl": "images/scene-thumb-Q8Ke_e_gMx_.jpg",
+    "hotspots": [
+      {
+        "id": "epo637sbQ",
+        "title": "Boys Hostel",
+        "targetSceneId": "CBm09mc8zMC",
+        "coords": {
+          "plane": {
+            "x": 1414.4811782581655,
+            "y": -199.37,
+            "z": 11.538013127896338
+          },
+          "scene": {
+            "x": 4998.0255071716065,
+            "y": -706.7828491447056,
+            "z": 41.68784935391128
+          }
+        }
+      },
+      {
+        "id": "W8A9jSZCH",
+        "title": "Boys Hostel Crossroad",
+        "targetSceneId": "-Q5JVudjQ",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5011.20828568938,
+            "y": -617.5835337694147,
+            "z": -14.796867462331164
+          }
+        }
+      },
+      {
+        "id": "pZgOLmTBA",
+        "title": "B Block Outer",
+        "targetSceneId": "SQKRUL6DV",
+        "coords": {
+          "plane": {
+            "x": -16.85338050940998,
+            "y": -199.6900000000002,
+            "z": 958.8665067636382
+          },
+          "scene": {
+            "x": -87.28711954991957,
+            "y": -1030.0311634971329,
+            "z": 4940.387682561556
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "-Q5JVudjQ",
+    "title": "Boys Hostel Crossroad",
+    "url": "images/scene--Q5JVudjQ.jpg",
+    "previewUrl": "images/scene-thumb--Q5JVudjQ.jpg",
+    "hotspots": [
+      {
+        "id": "6ZQjdxi0S",
+        "title": "C Block",
+        "targetSceneId": "Q8Ke_e_gMx_",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 335.2626412333514,
+            "y": -595.4597056580495,
+            "z": 5002.910976680893
+          }
+        }
+      },
+      {
+        "id": "77p-KeZPJ",
+        "title": "Triside Ground View (BFGI)",
+        "targetSceneId": "dfWFO7tdBRv",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 481.81049175067994,
+            "y": -613.9713879637181,
+            "z": -4986.487699184959
+          }
+        }
+      },
+      {
+        "id": "Xky8Jq1G3",
+        "title": "D Block Crossroad",
+        "targetSceneId": "L6GdNLSBrIy",
+        "coords": {
+          "plane": {
+            "x": 486.2091836081823,
+            "y": -199.08,
+            "z": 13.086224769528682
+          },
+          "scene": {
+            "x": 4667.542380777248,
+            "y": -1917.448344319082,
+            "z": 126.0280912898498
+          }
+        }
+      },
+      {
+        "id": "vnetFyDUj",
+        "title": "A Block  Midway",
+        "targetSceneId": "o2WCT_r9QoQ",
+        "coords": {
+          "plane": {
+            "x": -326.508508555338,
+            "y": -199.12,
+            "z": -48.836327297617586
+          },
+          "scene": {
+            "x": -4271.5682544081465,
+            "y": -2612.6342968089516,
+            "z": -638.9350090845367
+          }
+        }
+      },
+      {
+        "id": "CcUZDfqog",
+        "title": "A block - Admission Cell",
+        "targetSceneId": "ndOApxJoL",
+        "coords": {
+          "plane": {
+            "x": -900.1530169215357,
+            "y": -199.51000000000008,
+            "z": 425.3897075849052
+          },
+          "scene": {
+            "x": -4476.837632776314,
+            "y": -994.2274817643239,
+            "z": 2113.814232123035
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "CBm09mc8zMC",
+    "title": "Boys Hostel",
+    "url": "images/scene-CBm09mc8zMC.jpg",
+    "previewUrl": "images/scene-thumb-CBm09mc8zMC.jpg",
+    "hotspots": [
+      {
+        "id": "5dPWXzKkr",
+        "title": "C Block",
+        "targetSceneId": "Q8Ke_e_gMx_",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5040.126752080087,
+            "y": -268.721718854667,
+            "z": -58.060439115302486
+          }
+        }
+      },
+      {
+        "id": "gpdU4rQ51",
+        "title": "Jaspal Canteen",
+        "targetSceneId": "6jC5A-Kgz",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 415.9644188211781,
+            "y": -381.7676563901529,
+            "z": 5015.915078019446
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "6jC5A-Kgz",
+    "title": "Jaspal Canteen",
+    "url": "images/scene-6jC5A-Kgz.jpg",
+    "previewUrl": "images/scene-thumb-6jC5A-Kgz.jpg",
+    "hotspots": [
+      {
+        "id": "bVZDb7W9z",
+        "title": "Boys Hostel",
+        "targetSceneId": "CBm09mc8zMC",
+        "coords": {
+          "plane": {
+            "x": 396.93109704148696,
+            "y": -199.38000000000002,
+            "z": 103.20866310674731
+          },
+          "scene": {
+            "x": 4393.200872128261,
+            "y": -2211.5355589865826,
+            "z": 1139.5506112211215
+          }
+        }
+      },
+      {
+        "id": "TEfVoLT67",
+        "title": "Jaspal  Canteen Backside",
+        "targetSceneId": "mKAEn6a-E",
+        "coords": {
+          "plane": {
+            "x": -479.3042066916341,
+            "y": -199.05000000000004,
+            "z": 80.62018136246459
+          },
+          "scene": {
+            "x": -4604.346744150911,
+            "y": -1918.835667163906,
+            "z": 773.4579709705145
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "mKAEn6a-E",
+    "title": "Jaspal  Canteen Backside",
+    "url": "images/scene-mKAEn6a-E.jpg",
+    "previewUrl": "images/scene-thumb-mKAEn6a-E.jpg",
+    "hotspots": [
+      {
+        "id": "OEWDCvYzS",
+        "title": "Jaspal Canteen",
+        "targetSceneId": "6jC5A-Kgz",
+        "coords": {
+          "plane": {
+            "x": 1131.7177512451283,
+            "y": -199.39000000000001,
+            "z": 94.16366865224289
+          },
+          "scene": {
+            "x": 4953.38824761338,
+            "y": -875.3369849396306,
+            "z": 411.51643851909876
+          }
+        }
+      },
+      {
+        "id": "eTHUD7dn4",
+        "title": "B Block Crossroad",
+        "targetSceneId": "nZJT4ZLPwy",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5025.657207420054,
+            "y": -400.9482386398602,
+            "z": -264.4073928617094
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fbi1W1yjz",
+    "title": " Main SeminarTriside View",
+    "url": "images/scene-fbi1W1yjz.jpg",
+    "previewUrl": "images/scene-thumb-fbi1W1yjz.jpg",
+    "hotspots": [
+      {
+        "id": "AULcHkHFh",
+        "title": "Main Seminar Hall (Outer View)",
+        "targetSceneId": "5mv7WJ6-QJC",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 491.80272007272947,
+            "y": -531.0986185556562,
+            "z": -4994.553579144069
+          }
+        }
+      },
+      {
+        "id": "fjZPNpWJN",
+        "title": "D Block Crossroad",
+        "targetSceneId": "L6GdNLSBrIy",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5016.962667212135,
+            "y": -573.1608117879662,
+            "z": 1.3517511944436273
+          }
+        }
+      },
+      {
+        "id": "HrzBYG3gm",
+        "title": "Seminar Hall Backside",
+        "targetSceneId": "1JuSHnh_Kxa",
+        "coords": {
+          "plane": {
+            "x": 1368.9175930870717,
+            "y": -199.05000000000004,
+            "z": 96.1539425473961
+          },
+          "scene": {
+            "x": 4983.137453082919,
+            "y": -727.5525206527611,
+            "z": 350.39757746549884
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "1JuSHnh_Kxa",
+    "title": "Seminar Hall Backside",
+    "url": "images/scene-1JuSHnh_Kxa.jpg",
+    "previewUrl": "images/scene-thumb-1JuSHnh_Kxa.jpg",
+    "hotspots": [
+      {
+        "id": "Qx6DlPebF",
+        "title": "Workshop Crossroad",
+        "targetSceneId": "vhHXHHHnNa-",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 5045.408874467326,
+            "y": -202.7726363485901,
+            "z": 13.733362230061662
+          }
+        }
+      },
+      {
+        "id": "xxOazMvty",
+        "title": " Main SeminarTriside View",
+        "targetSceneId": "fbi1W1yjz",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -2636.169122873226,
+            "y": -394.7014362077698,
+            "z": -4287.136379619832
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "5mv7WJ6-QJC",
+    "title": "Main Seminar Hall (Outer View)",
+    "url": "images/scene-5mv7WJ6-QJC.jpg",
+    "previewUrl": "images/scene-thumb-5mv7WJ6-QJC.jpg",
+    "hotspots": [
+      {
+        "id": "shWSxd4ea",
+        "title": "Main Seminar Hall (Inner View)",
+        "targetSceneId": "GsZ79V_eWcs",
+        "coords": {
+          "plane": {
+            "x": 965.8617600586083,
+            "y": -199.48,
+            "z": -48.08751761454403
+          },
+          "scene": {
+            "x": 4937.073903036189,
+            "y": -1022.5035014771636,
+            "z": -245.2833328466981
+          }
+        }
+      },
+      {
+        "id": "OZfD0HktV",
+        "title": " Main SeminarTriside View",
+        "targetSceneId": "fbi1W1yjz",
+        "coords": {
+          "plane": {
+            "x": 261.23467977348184,
+            "y": -199.71000000000032,
+            "z": 1421.3368776552918
+          },
+          "scene": {
+            "x": 902.6279731288057,
+            "y": -692.2861838012349,
+            "z": 4918.222341138598
+          }
+        }
+      },
+      {
+        "id": "jwEntb_Yk",
+        "title": "Way to BFCET",
+        "targetSceneId": "Fnqj68rvtw",
+        "coords": {
+          "plane": {
+            "x": 293.66577562446696,
+            "y": -199.49999999999963,
+            "z": -1476.2574670174724
+          },
+          "scene": {
+            "x": 975.7575398855604,
+            "y": -664.6164390305278,
+            "z": -4908.0449889902575
+          }
+        }
+      },
+      {
+        "id": "NFkkSTGRa",
+        "title": "Shake Point",
+        "targetSceneId": "JeAi0Y71J",
+        "coords": {
+          "plane": {
+            "x": -1216.0604914268565,
+            "y": -199.63999999999993,
+            "z": -86.6867802108203
+          },
+          "scene": {
+            "x": -4969.187633113093,
+            "y": -817.2856969515153,
+            "z": -354.47981686685574
+          }
+        }
+      },
+      {
+        "id": "RJCbaEfyn",
+        "title": "Main Canteen ",
+        "targetSceneId": "lw8KWB8cx",
+        "coords": {
+          "plane": {
+            "x": 1335.5429050840144,
+            "y": -199.8599999999998,
+            "z": -1015.8119648704068
+          },
+          "scene": {
+            "x": 3990.2132620860552,
+            "y": -596.9887477138881,
+            "z": -3033.3483470866317
+          }
+        }
+      },
+      {
+        "id": "iHEh2P1El",
+        "title": "Canteen Block - Top ",
+        "targetSceneId": "ZXcX0DzFo",
+        "coords": {
+          "plane": {
+            "x": 1141.013017187468,
+            "y": -199.85000000000016,
+            "z": 795.0549922944799
+          },
+          "scene": {
+            "x": 4098.831072158526,
+            "y": -717.9648783014402,
+            "z": 2855.9095706194666
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "GsZ79V_eWcs",
+    "title": "Main Seminar Hall (Inner View)",
+    "url": "images/scene-GsZ79V_eWcs.jpg",
+    "previewUrl": "images/scene-thumb-GsZ79V_eWcs.jpg",
+    "hotspots": [
+      {
+        "id": "_q_RF8ndx",
+        "title": "Main Seminar Hall (Outer View)",
+        "targetSceneId": "5mv7WJ6-QJC",
+        "coords": {
+          "plane": {
+            "x": 1289.0710669152731,
+            "y": -199.05,
+            "z": 13.268034576332349
+          },
+          "scene": {
+            "x": 4988.452707848422,
+            "y": -773.4697788622024,
+            "z": 52.79121645360665
+          }
+        }
+      },
+      {
+        "id": "YNMcaR1MO",
+        "title": "Seminar Hall Backside",
+        "targetSceneId": "1JuSHnh_Kxa",
+        "coords": {
+          "plane": {
+            "x": 63.7599215764609,
+            "y": -199.11999999999986,
+            "z": -674.2404182638575
+          },
+          "scene": {
+            "x": 459.64980788855775,
+            "y": -1428.1103839202854,
+            "z": -4818.745333178937
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lw8KWB8cx",
+    "title": "Main Canteen ",
+    "url": "images/scene-lw8KWB8cx.jpg",
+    "previewUrl": "images/scene-thumb-lw8KWB8cx.jpg",
+    "hotspots": [
+      {
+        "id": "V-47PZAz6",
+        "title": "Main Seminar Hall (Outer View)",
+        "targetSceneId": "5mv7WJ6-QJC",
+        "coords": {
+          "plane": {
+            "x": -391.27734261521164,
+            "y": -199.19999999999996,
+            "z": -40.351336279656614
+          },
+          "scene": {
+            "x": -4476.181444495882,
+            "y": -2287.67816102397,
+            "z": -461.78841364731016
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ZXcX0DzFo",
+    "title": "Canteen Block - Top ",
+    "url": "images/scene-ZXcX0DzFo.jpg",
+    "previewUrl": "images/scene-thumb-ZXcX0DzFo.jpg",
+    "hotspots": [
+      {
+        "id": "xpdAtQD8p",
+        "title": "Main Seminar Hall (Outer View)",
+        "targetSceneId": "5mv7WJ6-QJC",
+        "coords": {
+          "plane": {
+            "x": 830.1902882214073,
+            "y": -199.19000000000003,
+            "z": 58.96006513900858
+          },
+          "scene": {
+            "x": 4897.112468753299,
+            "y": -1178.7264559356597,
+            "z": 347.5137653721608
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "JB6M-XMI1",
+    "title": "Shake Point Garden",
+    "url": "images/scene-JB6M-XMI1.jpg",
+    "previewUrl": "images/scene-thumb-JB6M-XMI1.jpg",
+    "hotspots": [
+      {
+        "id": "bl2UrltWJ",
+        "title": " Block- I  Park",
+        "targetSceneId": "h_RU2rVG8",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 420.26108743620813,
+            "y": -621.7194777093281,
+            "z": -4991.22983431772
+          }
+        }
+      },
+      {
+        "id": "rqENqEksE",
+        "title": "Way to BFCET",
+        "targetSceneId": "Fnqj68rvtw",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -177.39549185894305,
+            "y": -566.5300937437631,
+            "z": 5012.0832881069055
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "h_RU2rVG8",
+    "title": "Library Park",
+    "url": "images/scene-h_RU2rVG8.jpg",
+    "previewUrl": "images/scene-thumb-h_RU2rVG8.jpg",
+    "hotspots": [
+      {
+        "id": "58X87Ucf6",
+        "title": "Shake Point Garden",
+        "targetSceneId": "JB6M-XMI1",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -4812.209015832932,
+            "y": -580.8048826566129,
+            "z": 1407.3683752218938
+          }
+        }
+      },
+      {
+        "id": "-qDA0541p",
+        "title": "D Block Crossroad",
+        "targetSceneId": "L6GdNLSBrIy",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 4536.037594907118,
+            "y": -556.5952121629385,
+            "z": -2146.5672507050067
+          }
+        }
+      },
+      {
+        "id": "lpaSlEMP7",
+        "title": " Block- I (Front View)",
+        "targetSceneId": "b57_ujvoR",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 2581.3983190521926,
+            "y": -480.26789083654626,
+            "z": 4309.81123436305
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "X74R-YqsT",
+    "title": "Bru Park",
+    "url": "images/scene-X74R-YqsT.jpg",
+    "previewUrl": "images/scene-thumb-X74R-YqsT.jpg",
+    "hotspots": [
+      {
+        "id": "2mJiZMSNJ",
+        "title": " Block- I (Front View)",
+        "targetSceneId": "b57_ujvoR",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 3261.64554615088,
+            "y": -410.952669864994,
+            "z": 3830.809985932162
+          }
+        }
+      },
+      {
+        "id": "07aiXH35G",
+        "title": "School Block Front",
+        "targetSceneId": "UohmalxTf",
+        "coords": {
+          "plane": {
+            "x": -1299.92099636547,
+            "y": -199.5599999999999,
+            "z": -525.4651402352273
+          },
+          "scene": {
+            "x": -4632.769313344421,
+            "y": -712.7420387610009,
+            "z": -1874.1115647506163
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "67DycfOcigG",
+    "title": "Block I - Midaway Park",
+    "url": "images/scene-67DycfOcigG.jpg",
+    "previewUrl": "images/scene-thumb-67DycfOcigG.jpg",
+    "hotspots": [
+      {
+        "id": "k2Tn5QKNK",
+        "title": "D Block Crossroad",
+        "targetSceneId": "L6GdNLSBrIy",
+        "coords": {
+          "plane": {
+            "x": 444.4027595237436,
+            "y": -199.74000000000024,
+            "z": 986.3764556121617
+          },
+          "scene": {
+            "x": 2037.5051994794,
+            "y": -917.2458998350776,
+            "z": 4525.676819711929
+          }
+        }
+      },
+      {
+        "id": "dRfS-ygj6",
+        "title": "Triside Ground View (BFGI)",
+        "targetSceneId": "dfWFO7tdBRv",
+        "coords": {
+          "plane": {
+            "x": -640.1314241524391,
+            "y": -199.07999999999973,
+            "z": -1234.993383827243
+          },
+          "scene": {
+            "x": -2298.3185210826127,
+            "y": -717.6806405874886,
+            "z": -4435.374085365177
+          }
+        }
+      },
+      {
+        "id": "CzHymo5RM",
+        "title": "Triside Ground View (BFGI)",
+        "targetSceneId": "dfWFO7tdBRv",
+        "coords": {
+          "plane": {
+            "x": -1179.8386750942066,
+            "y": -199.8800000000001,
+            "z": 560.4765635948952
+          },
+          "scene": {
+            "x": -4508.352952217985,
+            "y": -763.9429137156355,
+            "z": 2141.002147971057
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "b57_ujvoR",
+    "title": " Block- I (Front View)",
+    "url": "images/scene-b57_ujvoR.jpg",
+    "previewUrl": "images/scene-thumb-b57_ujvoR.jpg",
+    "hotspots": [
+      {
+        "id": "xPjjak29d",
+        "title": "Ground Floor (I)",
+        "targetSceneId": "teGSuYAXlLq",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 5003.640854922218,
+            "y": -386.61079312034286,
+            "z": -542.7787203933744
+          }
+        }
+      },
+      {
+        "id": "7AN-CdjKA",
+        "title": "School Block Front",
+        "targetSceneId": "UohmalxTf",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -1050.8812947768013,
+            "y": -415.79630729340766,
+            "z": -4919.2497996595475
+          }
+        }
+      },
+      {
+        "id": "m4eQmry0F",
+        "title": "Block I - Midaway Park",
+        "targetSceneId": "67DycfOcigG",
+        "coords": {
+          "plane": {
+            "x": -719.6405816201633,
+            "y": -199.78000000000003,
+            "z": -6.916753833579776
+          },
+          "scene": {
+            "x": -4864.2179277734585,
+            "y": -1350.4098793098456,
+            "z": -47.57210836057667
+          }
+        }
+      },
+      {
+        "id": "NNeEeN3RU",
+        "title": "D Block Crossroad",
+        "targetSceneId": "L6GdNLSBrIy",
+        "coords": {
+          "plane": {
+            "x": -484.6490333153357,
+            "y": -199.91000000000017,
+            "z": 715.7710045494391
+          },
+          "scene": {
+            "x": -2760.0304975053273,
+            "y": -1137.8856977347152,
+            "z": 4069.339969383066
+          }
+        }
+      },
+      {
+        "id": "c_8YPhS0_",
+        "title": "Library Park",
+        "targetSceneId": "h_RU2rVG8",
+        "coords": {
+          "plane": {
+            "x": 66.17163777705008,
+            "y": -199.58000000000015,
+            "z": 489.05234824814755
+          },
+          "scene": {
+            "x": 627.8144094581717,
+            "y": -1894.0458877234105,
+            "z": 4637.233128881321
+          }
+        }
+      },
+      {
+        "id": "1pKy_K3lg",
+        "title": "Bru Park",
+        "targetSceneId": "X74R-YqsT",
+        "coords": {
+          "plane": {
+            "x": 103.23069196007633,
+            "y": -199.7999999999999,
+            "z": -583.4875563698512
+          },
+          "scene": {
+            "x": 836.9693689510068,
+            "y": -1613.5101400474812,
+            "z": -4709.151418579009
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "teGSuYAXlLq",
+    "title": "Ground Floor (I)",
+    "url": "images/scene-teGSuYAXlLq.jpg",
+    "previewUrl": "images/scene-thumb-teGSuYAXlLq.jpg",
+    "hotspots": [
+      {
+        "id": "nYkMOI5Yx",
+        "title": " Block- I (Front View)",
+        "targetSceneId": "b57_ujvoR",
+        "coords": {
+          "plane": {
+            "x": -625.4415984509317,
+            "y": -199.6100000000001,
+            "z": 343.8895092970894
+          },
+          "scene": {
+            "x": -4261.21439998633,
+            "y": -1361.2618199820654,
+            "z": 2342.9832053236396
+          }
+        }
+      },
+      {
+        "id": "RCWAoCSNi",
+        "title": "First Floor Upstairs - I Block",
+        "targetSceneId": "EVHn5HBSq",
+        "coords": {
+          "plane": {
+            "x": 291.6632922331293,
+            "y": -199.87999999999988,
+            "z": -541.7037022325616
+          },
+          "scene": {
+            "x": 2280.225906063593,
+            "y": -1558.9657150555179,
+            "z": -4226.38962680558
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "L6GdNLSBrIy",
+    "title": "D Block Crossroad",
+    "url": "images/scene-L6GdNLSBrIy.jpg",
+    "previewUrl": "images/scene-thumb-L6GdNLSBrIy.jpg",
+    "hotspots": [
+      {
+        "id": "ptVF-imE_",
+        "title": "Boys Hostel Crossroad",
+        "targetSceneId": "-Q5JVudjQ",
+        "coords": {
+          "plane": {
+            "x": 462.4432106765283,
+            "y": -199.26000000000022,
+            "z": 1062.857891530935
+          },
+          "scene": {
+            "x": 1982.947745754987,
+            "y": -857.3185883889714,
+            "z": 4560.940967335512
+          }
+        }
+      },
+      {
+        "id": "XMZzmpQXF",
+        "title": " Main SeminarTriside View",
+        "targetSceneId": "fbi1W1yjz",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -1636.5002314189935,
+            "y": -523.3063446303826,
+            "z": -4745.652104141509
+          }
+        }
+      },
+      {
+        "id": "tQ1lp1WyF",
+        "title": " Block- I  Park",
+        "targetSceneId": "h_RU2rVG8",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -4419.974495659964,
+            "y": -518.947715731976,
+            "z": -2382.5179486243564
+          }
+        }
+      },
+      {
+        "id": "-qn90bpy5",
+        "title": " Block- I (Front View)",
+        "targetSceneId": "b57_ujvoR",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5016.201681045277,
+            "y": -526.8316640323809,
+            "z": -170.76267309746427
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "QrCPnWY5p",
+    "title": "Library Entry",
+    "url": "images/scene-QrCPnWY5p.jpg",
+    "previewUrl": "images/scene-thumb-QrCPnWY5p.jpg",
+    "hotspots": [
+      {
+        "id": "1anxuc08p",
+        "title": "Library Interior (I)",
+        "targetSceneId": "GPa7xDGTN",
+        "coords": {
+          "plane": {
+            "x": -489.8918695778223,
+            "y": -199.1100000000001,
+            "z": 397.49358724445045
+          },
+          "scene": {
+            "x": -3739.7255675443066,
+            "y": -1525.8386176073154,
+            "z": 3028.2285905615317
+          }
+        }
+      },
+      {
+        "id": "chnTtxEEV",
+        "title": "Librarian Office  - Ground Floor (I)",
+        "targetSceneId": "TmtoGFcukeI",
+        "coords": {
+          "plane": {
+            "x": -751.2597425059171,
+            "y": -199.66000000000005,
+            "z": 209.77616432684184
+          },
+          "scene": {
+            "x": -4709.580655250952,
+            "y": -1253.0066298510517,
+            "z": 1312.357293484697
+          }
+        }
+      },
+      {
+        "id": "jRJiu8olt",
+        "title": "Ground Floor (I)",
+        "targetSceneId": "teGSuYAXlLq",
+        "coords": {
+          "plane": {
+            "x": 52.92664269083636,
+            "y": -199.51999999999995,
+            "z": -219.97870533442423
+          },
+          "scene": {
+            "x": 881.419220305697,
+            "y": -3338.4046412600715,
+            "z": -3682.4354327978385
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "GPa7xDGTN",
+    "title": "Library Interior (I)",
+    "url": "images/scene-GPa7xDGTN.jpg",
+    "previewUrl": "images/scene-thumb-GPa7xDGTN.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "TmtoGFcukeI",
+    "title": "Librarian Office  - Ground Floor (I)",
+    "url": "images/scene-TmtoGFcukeI.jpg",
+    "previewUrl": "images/scene-thumb-TmtoGFcukeI.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "EVHn5HBSq",
+    "title": "First Floor Upstairs - I Block",
+    "url": "images/scene-EVHn5HBSq.jpg",
+    "previewUrl": "images/scene-thumb-EVHn5HBSq.jpg",
+    "hotspots": [
+      {
+        "id": "4HxByC4QJ",
+        "title": "Reading Hall, 1st Floor - I",
+        "targetSceneId": "jsuD9zEcIq6",
+        "coords": {
+          "plane": {
+            "x": 253.4728680596599,
+            "y": -199.16000000000003,
+            "z": 187.2032871834656
+          },
+          "scene": {
+            "x": 3430.181753003802,
+            "y": -2701.5275427019014,
+            "z": 2533.9592302387177
+          }
+        }
+      },
+      {
+        "id": "vqWIwy9-G",
+        "title": "Innovation Lab - I",
+        "targetSceneId": "6Rbe0ZY00",
+        "coords": {
+          "plane": {
+            "x": 368.18294273679646,
+            "y": -199.33,
+            "z": -50.27111291405613
+          },
+          "scene": {
+            "x": 4406.015015901767,
+            "y": -2389.795971765613,
+            "z": -598.9357347134694
+          }
+        }
+      },
+      {
+        "id": "lB1AO9gIN",
+        "title": "SSD Dean Office  - I",
+        "targetSceneId": "VmcgXfiUdme",
+        "coords": {
+          "plane": {
+            "x": -321.79665898135283,
+            "y": -199.61999999999995,
+            "z": -65.66139127664935
+          },
+          "scene": {
+            "x": -4226.697923610931,
+            "y": -2621.602987531102,
+            "z": -865.3496259299947
+          }
+        }
+      },
+      {
+        "id": "gL8r3hsxu",
+        "title": "AI-ML Lab - 1st Floor (I)",
+        "targetSceneId": "Vuf9FVhlo",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 3516.268805217688,
+            "y": -179.89610631043124,
+            "z": -3616.991979262661
+          }
+        }
+      },
+      {
+        "id": "xVTDtiFOm",
+        "title": "Ground Floor (I)",
+        "targetSceneId": "teGSuYAXlLq",
+        "coords": {
+          "plane": {
+            "x": 100.9201640814752,
+            "y": -199.0399999999999,
+            "z": -245.25462945573332
+          },
+          "scene": {
+            "x": 1539.6037111046999,
+            "y": -3037.8856973461498,
+            "z": -3725.8676429814864
+          }
+        }
+      },
+      {
+        "id": "iaBq982S0",
+        "title": "2nd Floor - BFSoE - I",
+        "targetSceneId": "IapTLSsqx",
+        "coords": {
+          "plane": {
+            "x": 279.7460765555745,
+            "y": -199.4899999999999,
+            "z": -360.71228985631586
+          },
+          "scene": {
+            "x": 2836.1165014990793,
+            "y": -2024.5986661286586,
+            "z": -3650.892722531572
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "VmcgXfiUdme",
+    "title": "SSD Dean Office  - I",
+    "url": "images/scene-VmcgXfiUdme.jpg",
+    "previewUrl": "images/scene-thumb-VmcgXfiUdme.jpg",
+    "hotspots": [
+      {
+        "id": "hPmlztDse",
+        "title": "First Floor Upstairs - I Block",
+        "targetSceneId": "EVHn5HBSq",
+        "coords": {
+          "plane": {
+            "x": -6.208885282050024,
+            "y": -199.2400000000001,
+            "z": 293.293344476583
+          },
+          "scene": {
+            "x": -90.09834181122017,
+            "y": -2839.688099206947,
+            "z": 4172.3525347562845
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "jsuD9zEcIq6",
+    "title": "Reading Hall, 1st Floor - I",
+    "url": "images/scene-jsuD9zEcIq6.jpg",
+    "previewUrl": "images/scene-thumb-jsuD9zEcIq6.jpg",
+    "hotspots": [
+      {
+        "id": "YdeJkWlhW",
+        "title": "First Floor Upstairs - I Block",
+        "targetSceneId": "EVHn5HBSq",
+        "coords": {
+          "plane": {
+            "x": -201.00982770356688,
+            "y": -199.75000000000026,
+            "z": 1121.7833197803307
+          },
+          "scene": {
+            "x": -877.9605807779958,
+            "y": -872.1985553217507,
+            "z": 4893.597305783244
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Vuf9FVhlo",
+    "title": "AI-ML Lab - 1st Floor (I)",
+    "url": "images/scene-Vuf9FVhlo.jpg",
+    "previewUrl": "images/scene-thumb-Vuf9FVhlo.jpg",
+    "hotspots": [
+      {
+        "id": "_NiPWw94z",
+        "title": "Festo Lab Corridor",
+        "targetSceneId": "iNbqbMnLd",
+        "coords": {
+          "plane": {
+            "x": 648.0448458232302,
+            "y": -199.60000000000005,
+            "z": 86.74151593533502
+          },
+          "scene": {
+            "x": 4784.965226428188,
+            "y": -1475.9599490897992,
+            "z": 639.5915827586446
+          }
+        }
+      },
+      {
+        "id": "CDCh1QlLm",
+        "title": "First Floor Upstairs - I Block",
+        "targetSceneId": "EVHn5HBSq",
+        "coords": {
+          "plane": {
+            "x": -462.57047607793106,
+            "y": -199.9900000000001,
+            "z": 369.7912051231929
+          },
+          "scene": {
+            "x": -3737.2674421861448,
+            "y": -1613.717792946375,
+            "z": 2984.1589351899283
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "6Rbe0ZY00",
+    "title": "Innovation Lab - I",
+    "url": "images/scene-6Rbe0ZY00.jpg",
+    "previewUrl": "images/scene-thumb-6Rbe0ZY00.jpg",
+    "hotspots": [
+      {
+        "id": "GA2DgxOXf",
+        "title": "Festo Lab Corridor",
+        "targetSceneId": "iNbqbMnLd",
+        "coords": {
+          "plane": {
+            "x": 420.51232427217235,
+            "y": -199.22999999999988,
+            "z": -415.8811268606793
+          },
+          "scene": {
+            "x": 3401.907910606287,
+            "y": -1617.6583527231417,
+            "z": -3358.9761640144143
+          }
+        }
+      },
+      {
+        "id": "hzHPve01z",
+        "title": "First Floor Upstairs - I Block",
+        "targetSceneId": "EVHn5HBSq",
+        "coords": {
+          "plane": {
+            "x": -716.7153521664048,
+            "y": -199.25,
+            "z": 19.280579921393123
+          },
+          "scene": {
+            "x": -4860.111112597183,
+            "y": -1356.285562554453,
+            "z": 129.4661316311574
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "iNbqbMnLd",
+    "title": "Festo Lab Corridor",
+    "url": "images/scene-iNbqbMnLd.jpg",
+    "previewUrl": "images/scene-thumb-iNbqbMnLd.jpg",
+    "hotspots": [
+      {
+        "id": "tHQJe4jiQ",
+        "title": "Industrial Automation - FESTO Lab",
+        "targetSceneId": "5vJPC5eSsAV",
+        "coords": {
+          "plane": {
+            "x": 98.15000191147169,
+            "y": -199.96999999999986,
+            "z": -694.1366713634328
+          },
+          "scene": {
+            "x": 678.5596235296645,
+            "y": -1384.0465059486244,
+            "z": -4807.008696561699
+          }
+        }
+      },
+      {
+        "id": "VSrGYgi8D",
+        "title": "IOT Lab, 1st Floor  - I",
+        "targetSceneId": "R0rTZPmVsU",
+        "coords": {
+          "plane": {
+            "x": -599.2011115233669,
+            "y": -199.84000000000003,
+            "z": 97.7232643182851
+          },
+          "scene": {
+            "x": -4731.818754135557,
+            "y": -1578.4552729263544,
+            "z": 771.5205721142416
+          }
+        }
+      },
+      {
+        "id": "NMepjX3yy",
+        "title": "Innovation Lab - I",
+        "targetSceneId": "6Rbe0ZY00",
+        "coords": {
+          "plane": {
+            "x": 160.96859780967839,
+            "y": -199.06,
+            "z": 15.151436900416808
+          },
+          "scene": {
+            "x": 3163.772357705773,
+            "y": -3922.737496972711,
+            "z": 293.8927546001878
+          }
+        }
+      },
+      {
+        "id": "xUEYvEzxl",
+        "title": "AI-ML Lab - 1st Floor (I)",
+        "targetSceneId": "Vuf9FVhlo",
+        "coords": {
+          "plane": {
+            "x": -213.19996513330466,
+            "y": -199.88000000000002,
+            "z": 112.75523908522146
+          },
+          "scene": {
+            "x": -3439.0355670240024,
+            "y": -3219.669388748214,
+            "z": 1813.2628699134652
+          }
+        }
+      },
+      {
+        "id": "V-SJEranF",
+        "title": "First floor back stairs (I Block)",
+        "targetSceneId": "IYPr8lBhA",
+        "coords": {
+          "plane": {
+            "x": -61.665492126753485,
+            "y": -199.20999999999975,
+            "z": -1189.3920095033145
+          },
+          "scene": {
+            "x": -257.89792263077396,
+            "y": -835.1620869771166,
+            "z": -4971.655376365974
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "5vJPC5eSsAV",
+    "title": "Industrial Automation - FESTO Lab",
+    "url": "images/scene-5vJPC5eSsAV.jpg",
+    "previewUrl": "images/scene-thumb-5vJPC5eSsAV.jpg",
+    "hotspots": [
+      {
+        "id": "HSW7bvGxf",
+        "title": "Festo Lab Corridor",
+        "targetSceneId": "iNbqbMnLd",
+        "coords": {
+          "plane": {
+            "x": -307.04263755103227,
+            "y": -199.97999999999985,
+            "z": -595.0405918442668
+          },
+          "scene": {
+            "x": -2216.7299695324905,
+            "y": -1443.395220268736,
+            "z": -4298.069383865927
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "R0rTZPmVsU",
+    "title": "IOT Lab, 1st Floor  - I",
+    "url": "images/scene-R0rTZPmVsU.jpg",
+    "previewUrl": "images/scene-thumb-R0rTZPmVsU.jpg",
+    "hotspots": [
+      {
+        "id": "ig6juYv_e",
+        "title": "Festo Lab Corridor",
+        "targetSceneId": "iNbqbMnLd",
+        "coords": {
+          "plane": {
+            "x": -128.13184696995162,
+            "y": -199.17000000000004,
+            "z": 302.7250243373981
+          },
+          "scene": {
+            "x": -1684.4974467388695,
+            "y": -2620.301845213161,
+            "z": 3972.132925619583
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "IapTLSsqx",
+    "title": "2nd Floor - BFSoE - I",
+    "url": "images/scene-IapTLSsqx.jpg",
+    "previewUrl": "images/scene-thumb-IapTLSsqx.jpg",
+    "hotspots": [
+      {
+        "id": "O3gTK3eIV",
+        "title": "2nd Floor Cabins Entry - I Block",
+        "targetSceneId": "DM0aeToqg",
+        "coords": {
+          "plane": {
+            "x": 251.2427727988989,
+            "y": -199.10999999999999,
+            "z": -3.166100001686227
+          },
+          "scene": {
+            "x": 3952.1349227612877,
+            "y": -3141.22682549719,
+            "z": -49.88635825032657
+          }
+        }
+      },
+      {
+        "id": "-L218vNvO",
+        "title": "Incubation Centre Office - I",
+        "targetSceneId": "WbvVYyO9ppi",
+        "coords": {
+          "plane": {
+            "x": -62.0374579168261,
+            "y": -199.79000000000005,
+            "z": 266.6526299733746
+          },
+          "scene": {
+            "x": -919.8263910084128,
+            "y": -2974.2108650287264,
+            "z": 3974.1149332088808
+          }
+        }
+      },
+      {
+        "id": "BcoIVqcxQ",
+        "title": "LHI 1 - 2nd Floor - I",
+        "targetSceneId": "utJwbaiErKX",
+        "coords": {
+          "plane": {
+            "x": -58.12434414075994,
+            "y": -199.94999999999993,
+            "z": -313.64433604241793
+          },
+          "scene": {
+            "x": -776.416252063119,
+            "y": -2679.862380701613,
+            "z": -4207.663578737199
+          }
+        }
+      },
+      {
+        "id": "8FCOoVzO4",
+        "title": "BFSoE Head Office - I",
+        "targetSceneId": "9uqXPinC7",
+        "coords": {
+          "plane": {
+            "x": -765.8745514402398,
+            "y": -199.40000000000006,
+            "z": 161.95534264897327
+          },
+          "scene": {
+            "x": -4784.1076874566315,
+            "y": -1249.8177489186146,
+            "z": 1011.5252792306007
+          }
+        }
+      },
+      {
+        "id": "sCK3Va0s2",
+        "title": "First Floor Upstairs - I Block",
+        "targetSceneId": "EVHn5HBSq",
+        "coords": {
+          "plane": {
+            "x": -303.91236478691906,
+            "y": -199.41999999999996,
+            "z": -135.65417876873164
+          },
+          "scene": {
+            "x": -3951.171097186564,
+            "y": -2597.971022006312,
+            "z": -1765.8769028053725
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "WbvVYyO9ppi",
+    "title": "Incubation Centre Office - I",
+    "url": "images/scene-WbvVYyO9ppi.jpg",
+    "previewUrl": "images/scene-thumb-WbvVYyO9ppi.jpg",
+    "hotspots": [
+      {
+        "id": "jnpfl2ouT",
+        "title": "2nd Floor - BFSoE - I",
+        "targetSceneId": "IapTLSsqx",
+        "coords": {
+          "plane": {
+            "x": -230.9457389075155,
+            "y": -199.60999999999999,
+            "z": -305.49313240091203
+          },
+          "scene": {
+            "x": -2694.6839462353337,
+            "y": -2334.764440117409,
+            "z": -3573.062788001535
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "utJwbaiErKX",
+    "title": "LHI 1 - 2nd Floor - I",
+    "url": "images/scene-utJwbaiErKX.jpg",
+    "previewUrl": "images/scene-thumb-utJwbaiErKX.jpg",
+    "hotspots": [
+      {
+        "id": "4rn82Aqnw",
+        "title": "2nd Floor - BFSoE - I",
+        "targetSceneId": "IapTLSsqx",
+        "coords": {
+          "plane": {
+            "x": 966.4172615190138,
+            "y": -199.09999999999985,
+            "z": -682.1344373930565
+          },
+          "scene": {
+            "x": 4066.369467087568,
+            "y": -841.0498721285488,
+            "z": -2869.746592162187
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "DM0aeToqg",
+    "title": "2nd Floor Cabins Entry - I Block",
+    "url": "images/scene-DM0aeToqg.jpg",
+    "previewUrl": "images/scene-thumb-DM0aeToqg.jpg",
+    "hotspots": [
+      {
+        "id": "1F6PYOjk8",
+        "title": "2nd Floor Cabin ",
+        "targetSceneId": "ySu4iMKKF",
+        "coords": {
+          "plane": {
+            "x": -523.8871813139361,
+            "y": -199.34999999999997,
+            "z": -20.29051226056423
+          },
+          "scene": {
+            "x": -4712.2904080053795,
+            "y": -1798.6410435055386,
+            "z": -181.7813826175434
+          }
+        }
+      },
+      {
+        "id": "pZuYsfEWj",
+        "title": "2nd Floor - BFSoE - I",
+        "targetSceneId": "IapTLSsqx",
+        "coords": {
+          "plane": {
+            "x": 137.40054789940442,
+            "y": -199.74,
+            "z": -1.6953583186539398
+          },
+          "scene": {
+            "x": 2864.884258613074,
+            "y": -4156.8715481414165,
+            "z": -34.322190806885054
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ySu4iMKKF",
+    "title": "2nd Floor Cabin ",
+    "url": "images/scene-ySu4iMKKF.jpg",
+    "previewUrl": "images/scene-thumb-ySu4iMKKF.jpg",
+    "hotspots": [
+      {
+        "id": "JO0O5eg4x",
+        "title": "LHI 2 - 2nd Floor - I",
+        "targetSceneId": "K67rbMtg09",
+        "coords": {
+          "plane": {
+            "x": 118.53011453449366,
+            "y": -199.6300000000001,
+            "z": 567.4500376710686
+          },
+          "scene": {
+            "x": 973.4666256736217,
+            "y": -1645.2202512241217,
+            "z": 4671.257979639241
+          }
+        }
+      },
+      {
+        "id": "3ldTnYCSa",
+        "title": "Conference Room, 2nd Floor - I",
+        "targetSceneId": "2AE1FRSqG4a",
+        "coords": {
+          "plane": {
+            "x": 27.876018747086423,
+            "y": -199.40999999999988,
+            "z": -467.12267533994935
+          },
+          "scene": {
+            "x": 277.32346746806337,
+            "y": -1981.5084095362338,
+            "z": -4635.462197630131
+          }
+        }
+      },
+      {
+        "id": "nnMr0aEUl",
+        "title": "Trainings and Placements Cell - I",
+        "targetSceneId": "F0FeLPxmcvZ",
+        "coords": {
+          "plane": {
+            "x": -158.2489263956479,
+            "y": -199.31999999999988,
+            "z": -437.0089826419486
+          },
+          "scene": {
+            "x": -1573.4731868443205,
+            "y": -1995.359632271574,
+            "z": -4360.632259756648
+          }
+        }
+      },
+      {
+        "id": "FYh9v8pM2",
+        "title": "2nd Floor Cabins Entry - I Block",
+        "targetSceneId": "DM0aeToqg",
+        "coords": {
+          "plane": {
+            "x": 363.195769034199,
+            "y": -199.5,
+            "z": -10.364805982797161
+          },
+          "scene": {
+            "x": 4420.296651861898,
+            "y": -2433.6511711579383,
+            "z": -124.75808648884721
+          }
+        }
+      },
+      {
+        "id": "1eqq0xWMW",
+        "title": "2nd Floor Backstairs ( I Block )",
+        "targetSceneId": "60_XInti4",
+        "coords": {
+          "plane": {
+            "x": -84.46660015238302,
+            "y": -199.96000000000018,
+            "z": 597.9743854564356
+          },
+          "scene": {
+            "x": -671.3955927956806,
+            "y": -1585.4157069924695,
+            "z": 4745.234346941667
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "K67rbMtg09",
+    "title": "LHI 2 - 2nd Floor - I",
+    "url": "images/scene-K67rbMtg09.jpg",
+    "previewUrl": "images/scene-thumb-K67rbMtg09.jpg",
+    "hotspots": [
+      {
+        "id": "qY4pPRZUa",
+        "title": "2nd Floor Cabin ",
+        "targetSceneId": "ySu4iMKKF",
+        "coords": {
+          "plane": {
+            "x": 387.739185776211,
+            "y": -199.40999999999994,
+            "z": -176.94252535191885
+          },
+          "scene": {
+            "x": 4159.066078738649,
+            "y": -2143.114559672449,
+            "z": -1895.6553715828356
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "2AE1FRSqG4a",
+    "title": "Conference Room, 2nd Floor - I",
+    "url": "images/scene-2AE1FRSqG4a.jpg",
+    "previewUrl": "images/scene-thumb-2AE1FRSqG4a.jpg",
+    "hotspots": [
+      {
+        "id": "NX46PB-Iu",
+        "title": "2nd Floor Cabin ",
+        "targetSceneId": "ySu4iMKKF",
+        "coords": {
+          "plane": {
+            "x": 482.0391204975484,
+            "y": -199.9100000000001,
+            "z": 453.6244032033337
+          },
+          "scene": {
+            "x": 3520.835230528258,
+            "y": -1459.0429294259213,
+            "z": 3311.5669577370663
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "F0FeLPxmcvZ",
+    "title": "Trainings and Placements Cell - I",
+    "url": "images/scene-F0FeLPxmcvZ.jpg",
+    "previewUrl": "images/scene-thumb-F0FeLPxmcvZ.jpg",
+    "hotspots": [
+      {
+        "id": "njuz2xY5L",
+        "title": "2nd Floor Cabin ",
+        "targetSceneId": "ySu4iMKKF",
+        "coords": {
+          "plane": {
+            "x": 326.87101592490825,
+            "y": -199.95999999999995,
+            "z": -244.06677765899514
+          },
+          "scene": {
+            "x": 3636.481366136938,
+            "y": -2219.6344438495503,
+            "z": -2707.388198164076
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "9uqXPinC7",
+    "title": "BFSoE Head Office - I",
+    "url": "images/scene-9uqXPinC7.jpg",
+    "previewUrl": "images/scene-thumb-9uqXPinC7.jpg",
+    "hotspots": [
+      {
+        "id": "cqP15fjLe",
+        "title": "2nd Floor - BFSoE - I",
+        "targetSceneId": "IapTLSsqx",
+        "coords": {
+          "plane": {
+            "x": -47.63898161230433,
+            "y": -199.94000000000005,
+            "z": 270.2795162721274
+          },
+          "scene": {
+            "x": -712.4784859245206,
+            "y": -2969.1946772542947,
+            "z": 4020.90233197562
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "JA1cob8eK",
+    "title": "Ground Floor I Block Backstairs",
+    "url": "images/scene-JA1cob8eK.jpg",
+    "previewUrl": "images/scene-thumb-JA1cob8eK.jpg",
+    "hotspots": [
+      {
+        "id": "duTVz458Z",
+        "title": "First floor back stairs (I Block)",
+        "targetSceneId": "IYPr8lBhA",
+        "coords": {
+          "plane": {
+            "x": -36.47543697750233,
+            "y": -199.66000000000005,
+            "z": 242.87330480516934
+          },
+          "scene": {
+            "x": -582.789586509659,
+            "y": -3182.807900052334,
+            "z": 3874.172975917304
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "IYPr8lBhA",
+    "title": "First floor back stairs (I Block)",
+    "url": "images/scene-IYPr8lBhA.jpg",
+    "previewUrl": "images/scene-thumb-IYPr8lBhA.jpg",
+    "hotspots": [
+      {
+        "id": "CTFofiFX6",
+        "title": "1st Floor Bridge",
+        "targetSceneId": "HneidkQEm",
+        "coords": {
+          "plane": {
+            "x": 100.58189222516813,
+            "y": -199.8599999999999,
+            "z": -385.80773619984285
+          },
+          "scene": {
+            "x": 1142.399918718226,
+            "y": -2261.643930206593,
+            "z": -4367.076312130268
+          }
+        }
+      },
+      {
+        "id": "iPkTi5Tie",
+        "title": "2nd Floor Backstairs ( I Block )",
+        "targetSceneId": "60_XInti4",
+        "coords": {
+          "plane": {
+            "x": -212.08720307936997,
+            "y": -199.56999999999996,
+            "z": -150.63780040164906
+          },
+          "scene": {
+            "x": -3263.983973438474,
+            "y": -3077.489360013551,
+            "z": -2315.208922701972
+          }
+        }
+      },
+      {
+        "id": "CytvMo5Zt",
+        "title": "Ground Floor I Block Backstairs",
+        "targetSceneId": "JA1cob8eK",
+        "coords": {
+          "plane": {
+            "x": -253.8601215212883,
+            "y": -199.71,
+            "z": 73.2588237552437
+          },
+          "scene": {
+            "x": -3868.3198327493183,
+            "y": -3046.9828439185985,
+            "z": 1108.553471380289
+          }
+        }
+      },
+      {
+        "id": "Aj0ZvpjlW",
+        "title": "Festo Lab Corridor",
+        "targetSceneId": "iNbqbMnLd",
+        "coords": {
+          "plane": {
+            "x": -9.27057458130543,
+            "y": -199.95000000000007,
+            "z": 320.5545832005984
+          },
+          "scene": {
+            "x": -127.96003765307158,
+            "y": -2670.75678278828,
+            "z": 4281.238059279109
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "60_XInti4",
+    "title": "2nd Floor Backstairs ( I Block )",
+    "url": "images/scene-60_XInti4.jpg",
+    "previewUrl": "images/scene-thumb-60_XInti4.jpg",
+    "hotspots": [
+      {
+        "id": "rAfQCj75m",
+        "title": "2nd Floor Cabin ",
+        "targetSceneId": "ySu4iMKKF",
+        "coords": {
+          "plane": {
+            "x": 455.3631008407064,
+            "y": -199.72999999999996,
+            "z": -88.3458751064667
+          },
+          "scene": {
+            "x": 4552.10821924634,
+            "y": -1997.2193596182447,
+            "z": -882.6233407295846
+          }
+        }
+      },
+      {
+        "id": "IvH7ZGspJ",
+        "title": "2nd Floor Bridge",
+        "targetSceneId": "asZgWMqO_",
+        "coords": {
+          "plane": {
+            "x": -451.2279444108646,
+            "y": -199.75999999999996,
+            "z": 11.327336245860053
+          },
+          "scene": {
+            "x": -4613.5057106496115,
+            "y": -2043.2668189546116,
+            "z": 116.39986148194824
+          }
+        }
+      },
+      {
+        "id": "QnUwOddRW",
+        "title": "First floor back stairs (I Block)",
+        "targetSceneId": "IYPr8lBhA",
+        "coords": {
+          "plane": {
+            "x": 346.94314026363,
+            "y": -199.87000000000006,
+            "z": 208.34787415531238
+          },
+          "scene": {
+            "x": 3875.814493248873,
+            "y": -2236.9749266783333,
+            "z": 2334.3450179429956
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "asZgWMqO_",
+    "title": "2nd Floor Bridge",
+    "url": "images/scene-asZgWMqO_.jpg",
+    "previewUrl": "images/scene-thumb-asZgWMqO_.jpg",
+    "hotspots": [
+      {
+        "id": "Glja_3WZP",
+        "title": "2nd Floor Backstairs ( I Block )",
+        "targetSceneId": "60_XInti4",
+        "coords": {
+          "plane": {
+            "x": 680.3480848690278,
+            "y": -199.73000000000002,
+            "z": 109.23581665291441
+          },
+          "scene": {
+            "x": 4785.582213571936,
+            "y": -1407.180392062402,
+            "z": 769.0038255596301
+          }
+        }
+      },
+      {
+        "id": "hkFMrCNXE",
+        "title": "2nd floor Backstairs",
+        "targetSceneId": "cbdAUHbjtB",
+        "coords": {
+          "plane": {
+            "x": -790.9160503408456,
+            "y": -199.59999999999997,
+            "z": -76.94210530659748
+          },
+          "scene": {
+            "x": -4871.30501004932,
+            "y": -1231.1113930563226,
+            "z": -475.42208450186143
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "JeAi0Y71J",
+    "title": "Shake Point",
+    "url": "images/scene-JeAi0Y71J.jpg",
+    "previewUrl": "images/scene-thumb-JeAi0Y71J.jpg",
+    "hotspots": [
+      {
+        "id": "4oLdI46Zt",
+        "title": "Main Seminar Hall (Outer View)",
+        "targetSceneId": "5mv7WJ6-QJC",
+        "coords": {
+          "plane": {
+            "x": -44.16133191667617,
+            "y": -199.59000000000003,
+            "z": 174.31104722835227
+          },
+          "scene": {
+            "x": -828.6272529531125,
+            "y": -3751.7235196008605,
+            "z": 3275.569305558414
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Fnqj68rvtw",
+    "title": "Way to BFCET",
+    "url": "images/scene-Fnqj68rvtw.jpg",
+    "previewUrl": "images/scene-thumb-Fnqj68rvtw.jpg",
+    "hotspots": [
+      {
+        "id": "xlCwCaetl",
+        "title": "Main Seminar Hall (Outer View)",
+        "targetSceneId": "5mv7WJ6-QJC",
+        "coords": {
+          "plane": {
+            "x": 366.4927798527422,
+            "y": -199.98000000000022,
+            "z": 1063.502485222482
+          },
+          "scene": {
+            "x": 1617.4064424534388,
+            "y": -883.3430622514175,
+            "z": 4698.604082405225
+          }
+        }
+      },
+      {
+        "id": "MD9ohyCP8",
+        "title": "BFCET - Outer View",
+        "targetSceneId": "5Pd9XFNOX",
+        "coords": {
+          "plane": {
+            "x": 445.566381421891,
+            "y": -199.93999999999977,
+            "z": -1147.0799462924886
+          },
+          "scene": {
+            "x": 1806.2634166359442,
+            "y": -809.9079247109134,
+            "z": -4644.5423957393305
+          }
+        }
+      },
+      {
+        "id": "2KnocBJUb",
+        "title": "Badminton Court",
+        "targetSceneId": "Zy7RRieeT",
+        "coords": {
+          "plane": {
+            "x": 945.3918562731204,
+            "y": -199.79000000000008,
+            "z": 354.27684818475274
+          },
+          "scene": {
+            "x": 4636.4425442674665,
+            "y": -980.1759706214208,
+            "z": 1739.0429294274493
+          }
+        }
+      },
+      {
+        "id": "WtkLuGMEC",
+        "title": "Shake Point Garden",
+        "targetSceneId": "JB6M-XMI1",
+        "coords": {
+          "plane": {
+            "x": -538.8716908728438,
+            "y": -199.3599999999999,
+            "z": -625.7709682155177
+          },
+          "scene": {
+            "x": -3201.9022430910545,
+            "y": -1188.5921559937315,
+            "z": -3716.864238073101
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "5Pd9XFNOX",
+    "title": "BFCET - Outer View",
+    "url": "images/scene-5Pd9XFNOX.jpg",
+    "previewUrl": "images/scene-thumb-5Pd9XFNOX.jpg",
+    "hotspots": [
+      {
+        "id": "toW7zcOgS",
+        "title": "F- Block Midaway (Front)",
+        "targetSceneId": "ZaOhIldQbZH",
+        "coords": {
+          "plane": {
+            "x": 56.091118746997395,
+            "y": -199.43999999999977,
+            "z": -1011.4574851851726
+          },
+          "scene": {
+            "x": 275.61771838593353,
+            "y": -978.2926501319923,
+            "z": -4945.538448469367
+          }
+        }
+      },
+      {
+        "id": "a9oFR3BFw",
+        "title": "Ground Floor BFCET",
+        "targetSceneId": "0hyWw3t4u",
+        "coords": {
+          "plane": {
+            "x": -1128.747678571728,
+            "y": -199.83999999999995,
+            "z": -83.39828211606546
+          },
+          "scene": {
+            "x": -4957.141288100454,
+            "y": -878.038163904862,
+            "z": -366.6903961424182
+          }
+        }
+      },
+      {
+        "id": "XVWwWct0E",
+        "title": "Way to BFCET",
+        "targetSceneId": "Fnqj68rvtw",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -741.1110064948475,
+            "y": -654.0218373088946,
+            "z": 4949.160070565939
+          }
+        }
+      },
+      {
+        "id": "LOuV_Nsmt",
+        "title": "Ground Floor - F Block",
+        "targetSceneId": "UH5BcyXsB",
+        "coords": {
+          "plane": {
+            "x": 1174.1063825843564,
+            "y": -199.63,
+            "z": -46.739374084124094
+          },
+          "scene": {
+            "x": 4971.666970238005,
+            "y": -845.771144287032,
+            "z": -197.24297547182624
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "0hyWw3t4u",
+    "title": "Ground Floor BFCET",
+    "url": "images/scene-0hyWw3t4u.jpg",
+    "previewUrl": "images/scene-thumb-0hyWw3t4u.jpg",
+    "hotspots": [
+      {
+        "id": "2g7S7tPFg",
+        "title": "BFCET - Outer View",
+        "targetSceneId": "5Pd9XFNOX",
+        "coords": {
+          "plane": {
+            "x": 636.5130469659744,
+            "y": -199.77000000000004,
+            "z": 24.296433268048922
+          },
+          "scene": {
+            "x": 4811.854272253286,
+            "y": -1511.7225285089937,
+            "z": 184.19096528949828
+          }
+        }
+      },
+      {
+        "id": "AdijD80ne",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": -446.1618294800777,
+            "y": -199.73,
+            "z": -157.71479816348125
+          },
+          "scene": {
+            "x": -4384.583684956224,
+            "y": -1963.9751034734647,
+            "z": -1547.4521439731882
+          }
+        }
+      },
+      {
+        "id": "lFZA6GtPg",
+        "title": "Ground Floor Right Corridor",
+        "targetSceneId": "qfVwDGTIuGG",
+        "coords": {
+          "plane": {
+            "x": -134.17821264526526,
+            "y": -199.53000000000017,
+            "z": 710.8073424686446
+          },
+          "scene": {
+            "x": -904.937672634985,
+            "y": -1345.8913219607045,
+            "z": 4781.799148378855
+          }
+        }
+      },
+      {
+        "id": "lFmNIsevR",
+        "title": "Ground Floor Left Corridor",
+        "targetSceneId": "YDpikvYhazO",
+        "coords": {
+          "plane": {
+            "x": -135.91323844606282,
+            "y": -199.41999999999987,
+            "z": -535.8910720090937
+          },
+          "scene": {
+            "x": -1165.0737432899894,
+            "y": -1715.2616269915545,
+            "z": -4603.5533116037295
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "YDpikvYhazO",
+    "title": "Ground Floor Left Corridor",
+    "url": "images/scene-YDpikvYhazO.jpg",
+    "previewUrl": "images/scene-thumb-YDpikvYhazO.jpg",
+    "hotspots": [
+      {
+        "id": "tx5cqsDzc",
+        "title": "Ground Floor Backside",
+        "targetSceneId": "s_4I5ABgvhE",
+        "coords": {
+          "plane": {
+            "x": -1205.310407711562,
+            "y": -199.21,
+            "z": 15.373272461986021
+          },
+          "scene": {
+            "x": -4979.43687761197,
+            "y": -825.9105308421035,
+            "z": 62.85728005948372
+          }
+        }
+      },
+      {
+        "id": "wRaCBvlte",
+        "title": "CN Lab , Ground Floor, BFCET",
+        "targetSceneId": "x5fJjOiKhHE",
+        "coords": {
+          "plane": {
+            "x": 246.57525503729343,
+            "y": -199.65999999999997,
+            "z": -130.13663070559866
+          },
+          "scene": {
+            "x": 3627.646997186588,
+            "y": -2938.7736365264454,
+            "z": -1920.397215957204
+          }
+        }
+      },
+      {
+        "id": "vwQ5EKYfD",
+        "title": "Strength of Materials Lab - E 004",
+        "targetSceneId": "AtIMc-I-be1",
+        "coords": {
+          "plane": {
+            "x": 337.7579039205093,
+            "y": -199.96000000000006,
+            "z": 193.19688026380493
+          },
+          "scene": {
+            "x": 3898.116018375614,
+            "y": -2308.6863084126794,
+            "z": 2226.7818881004882
+          }
+        }
+      },
+      {
+        "id": "_t2dN4qQe",
+        "title": "Ground Floor BFCET",
+        "targetSceneId": "0hyWw3t4u",
+        "coords": {
+          "plane": {
+            "x": 350.07500204066713,
+            "y": -199.48,
+            "z": 3.5828967299962695
+          },
+          "scene": {
+            "x": 4384.882145595947,
+            "y": -2501.4719945106676,
+            "z": 42.42715068510999
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "s_4I5ABgvhE",
+    "title": "Ground Floor Backside",
+    "url": "images/scene-s_4I5ABgvhE.jpg",
+    "previewUrl": "images/scene-thumb-s_4I5ABgvhE.jpg",
+    "hotspots": [
+      {
+        "id": "j8NagVf26",
+        "title": "Ground Floor Left Corridor",
+        "targetSceneId": "YDpikvYhazO",
+        "coords": {
+          "plane": {
+            "x": 78.632690264106,
+            "y": -199.48000000000008,
+            "z": 430.8406781576115
+          },
+          "scene": {
+            "x": 823.3943899360755,
+            "y": -2094.2390459237304,
+            "z": 4519.43516726511
+          }
+        }
+      },
+      {
+        "id": "aGGEdLAoH",
+        "title": "Power System Lab (E 003)",
+        "targetSceneId": "F8IFRKIf7f5",
+        "coords": {
+          "plane": {
+            "x": -213.28750022282856,
+            "y": -199.67999999999995,
+            "z": -198.34256023316388
+          },
+          "scene": {
+            "x": -3051.44904995275,
+            "y": -2853.428992759328,
+            "z": -2834.708065195267
+          }
+        }
+      },
+      {
+        "id": "VAiIC66O8",
+        "title": "Ground Floor left Ramp Side",
+        "targetSceneId": "DMU6wghdlK-",
+        "coords": {
+          "plane": {
+            "x": -6.814506325830745,
+            "y": -199.06999999999994,
+            "z": -295.78336313867106
+          },
+          "scene": {
+            "x": -91.08148593318158,
+            "y": -2825.96799860024,
+            "z": -4181.883986610385
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "DMU6wghdlK-",
+    "title": "Ground Floor left Ramp Side",
+    "url": "images/scene-DMU6wghdlK-.jpg",
+    "previewUrl": "images/scene-thumb-DMU6wghdlK-.jpg",
+    "hotspots": [
+      {
+        "id": "TR8O1tK4Q",
+        "title": "Ground Floor Backside",
+        "targetSceneId": "s_4I5ABgvhE",
+        "coords": {
+          "plane": {
+            "x": 343.2340284814068,
+            "y": -199.15999999999997,
+            "z": -77.75554516482966
+          },
+          "scene": {
+            "x": 4279.375215198494,
+            "y": -2496.75483431014,
+            "z": -964.9638236137328
+          }
+        }
+      },
+      {
+        "id": "e0Ki220py",
+        "title": "1st Floor - Ramp Side (E)",
+        "targetSceneId": "_KsjfV5KviT",
+        "coords": {
+          "plane": {
+            "x": 926.032972226655,
+            "y": -199.81000000000003,
+            "z": 183.05719435633912
+          },
+          "scene": {
+            "x": 4844.972034812858,
+            "y": -1044.998378336801,
+            "z": 958.6353813409474
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "qfVwDGTIuGG",
+    "title": "Ground Floor Right Corridor",
+    "url": "images/scene-qfVwDGTIuGG.jpg",
+    "previewUrl": "images/scene-thumb-qfVwDGTIuGG.jpg",
+    "hotspots": [
+      {
+        "id": "z-EryISIB",
+        "title": "Language Lab - E 006",
+        "targetSceneId": "inYeewUM2p",
+        "coords": {
+          "plane": {
+            "x": 693.4618282252568,
+            "y": -199.58999999999997,
+            "z": -133.29760496192083
+          },
+          "scene": {
+            "x": 4771.994617264409,
+            "y": -1375.5302795866962,
+            "z": -914.487509586031
+          }
+        }
+      },
+      {
+        "id": "4Tph3j2sL",
+        "title": "Electrical Machine Lab - E 008",
+        "targetSceneId": "fVAK_ljUWsG",
+        "coords": {
+          "plane": {
+            "x": 280.4988552308196,
+            "y": -199.67000000000004,
+            "z": 147.94826649273534
+          },
+          "scene": {
+            "x": 3775.7274303278286,
+            "y": -2690.588687035623,
+            "z": 1996.2047011695545
+          }
+        }
+      },
+      {
+        "id": "iVkJQ7JBi",
+        "title": "Chemistry Lab, Ground Floor (E)",
+        "targetSceneId": "bLz23PFHp",
+        "coords": {
+          "plane": {
+            "x": -824.5377994380034,
+            "y": -199.95999999999998,
+            "z": -89.0818504271339
+          },
+          "scene": {
+            "x": -4878.6676540271865,
+            "y": -1184.0636899858725,
+            "z": -527.9241186441601
+          }
+        }
+      },
+      {
+        "id": "gGybe158l",
+        "title": "1st floor left Corridor",
+        "targetSceneId": "v7fdVFOChR",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5023.780198159865,
+            "y": -360.54292437369054,
+            "z": 346.0543581710474
+          }
+        }
+      },
+      {
+        "id": "9JdWyftdm",
+        "title": "Ground Floor BFCET",
+        "targetSceneId": "0hyWw3t4u",
+        "coords": {
+          "plane": {
+            "x": 849.6951665388709,
+            "y": -199.62,
+            "z": -23.192764180307986
+          },
+          "scene": {
+            "x": 4911.464038472318,
+            "y": -1155.1927461250393,
+            "z": -133.819211434765
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "x5fJjOiKhHE",
+    "title": "CN Lab , Ground Floor, BFCET",
+    "url": "images/scene-x5fJjOiKhHE.jpg",
+    "previewUrl": "images/scene-thumb-x5fJjOiKhHE.jpg",
+    "hotspots": [
+      {
+        "id": "O0oNLM6us",
+        "title": "Ground Floor Left Corridor",
+        "targetSceneId": "YDpikvYhazO",
+        "coords": {
+          "plane": {
+            "x": -157.02471982990045,
+            "y": -199.8499999999999,
+            "z": -265.79233186726924
+          },
+          "scene": {
+            "x": -2151.310720803917,
+            "y": -2742.6886043671466,
+            "z": -3650.355751797599
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "F8IFRKIf7f5",
+    "title": "Power System Lab (E 003)",
+    "url": "images/scene-F8IFRKIf7f5.jpg",
+    "previewUrl": "images/scene-thumb-F8IFRKIf7f5.jpg",
+    "hotspots": [
+      {
+        "id": "JJtis16S9",
+        "title": "Ground Floor Backside",
+        "targetSceneId": "s_4I5ABgvhE",
+        "coords": {
+          "plane": {
+            "x": -27.400788632403703,
+            "y": -199.0500000000001,
+            "z": 352.4448591071238
+          },
+          "scene": {
+            "x": -336.53844107312693,
+            "y": -2485.315054988305,
+            "z": 4381.28922774865
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "AtIMc-I-be1",
+    "title": "Strength of Materials Lab - E 004",
+    "url": "images/scene-AtIMc-I-be1.jpg",
+    "previewUrl": "images/scene-thumb-AtIMc-I-be1.jpg",
+    "hotspots": [
+      {
+        "id": "nCp2aLORD",
+        "title": "Ground Floor Left Corridor",
+        "targetSceneId": "YDpikvYhazO",
+        "coords": {
+          "plane": {
+            "x": 524.9116730860749,
+            "y": -199.87999999999994,
+            "z": -336.594780204728
+          },
+          "scene": {
+            "x": 4047.376264873589,
+            "y": -1542.0819270076233,
+            "z": -2594.90728491498
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "inYeewUM2p",
+    "title": "Language Lab - E 006",
+    "url": "images/scene-inYeewUM2p.jpg",
+    "previewUrl": "images/scene-thumb-inYeewUM2p.jpg",
+    "hotspots": [
+      {
+        "id": "5RVMz2h-l",
+        "title": "Ground Floor Right Corridor",
+        "targetSceneId": "qfVwDGTIuGG",
+        "coords": {
+          "plane": {
+            "x": 537.7233325263055,
+            "y": -199.15000000000006,
+            "z": 315.783432389341
+          },
+          "scene": {
+            "x": 4143.315418867969,
+            "y": -1541.6138059196187,
+            "z": 2435.7092497576014
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fVAK_ljUWsG",
+    "title": "Electrical Machine Lab - E 008",
+    "url": "images/scene-fVAK_ljUWsG.jpg",
+    "previewUrl": "images/scene-thumb-fVAK_ljUWsG.jpg",
+    "hotspots": [
+      {
+        "id": "QsYbxYsxW",
+        "title": "Ground Floor Right Corridor",
+        "targetSceneId": "qfVwDGTIuGG",
+        "coords": {
+          "plane": {
+            "x": 327.87960453258654,
+            "y": -199.94000000000005,
+            "z": 310.17605304051256
+          },
+          "scene": {
+            "x": 3353.153656517471,
+            "y": -2043.383520558102,
+            "z": 3173.207688609171
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "bLz23PFHp",
+    "title": "Chemistry Lab, Ground Floor (E)",
+    "url": "images/scene-bLz23PFHp.jpg",
+    "previewUrl": "images/scene-thumb-bLz23PFHp.jpg",
+    "hotspots": [
+      {
+        "id": "fEN78li3y",
+        "title": "Ground Floor Right Corridor",
+        "targetSceneId": "qfVwDGTIuGG",
+        "coords": {
+          "plane": {
+            "x": -798.7125251647096,
+            "y": -199.43000000000004,
+            "z": -14.304983467201007
+          },
+          "scene": {
+            "x": -4895.409273524706,
+            "y": -1226.0515204941707,
+            "z": -87.65289621788291
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "WDCXxLgKo",
+    "title": "1st Floor Block E",
+    "url": "images/scene-WDCXxLgKo.jpg",
+    "previewUrl": "images/scene-thumb-WDCXxLgKo.jpg",
+    "hotspots": [
+      {
+        "id": "o0znToL3u",
+        "title": "Visitor Room and PA Office (E 107)",
+        "targetSceneId": "fQL5ciXfvIH",
+        "coords": {
+          "plane": {
+            "x": -145.7325507835688,
+            "y": -199.57000000000008,
+            "z": 360.64098276146785
+          },
+          "scene": {
+            "x": -1678.39134892026,
+            "y": -2309.738300337039,
+            "z": 4164.146688198362
+          }
+        }
+      },
+      {
+        "id": "Yw9lleaJ0",
+        "title": "Staff Room , 1st Floor",
+        "targetSceneId": "VvrduRe6bT9",
+        "coords": {
+          "plane": {
+            "x": -53.031097194970904,
+            "y": -199.77999999999983,
+            "z": -752.8008057692516
+          },
+          "scene": {
+            "x": -341.59724438012773,
+            "y": -1292.5847856143987,
+            "z": -4867.850370376657
+          }
+        }
+      },
+      {
+        "id": "OZ-a748DV",
+        "title": "LHE 101 - Lecture Hall",
+        "targetSceneId": "vS6tnCEpJDF",
+        "coords": {
+          "plane": {
+            "x": 237.83276951216973,
+            "y": -199.86999999999983,
+            "z": -707.8893319729293
+          },
+          "scene": {
+            "x": 1552.214141959471,
+            "y": -1305.2407234695304,
+            "z": -4622.582753406389
+          }
+        }
+      },
+      {
+        "id": "Wa401z2No",
+        "title": "1st Floor - Right Corridor (E)",
+        "targetSceneId": "In0u5jlepyU",
+        "coords": {
+          "plane": {
+            "x": 116.2506123864875,
+            "y": -199.0999999999998,
+            "z": -930.8996707131213
+          },
+          "scene": {
+            "x": 612.1190208676135,
+            "y": -1052.4102350922503,
+            "z": -4899.924506960472
+          }
+        }
+      },
+      {
+        "id": "J6n2g0uo_",
+        "title": "1st floor left Corridor",
+        "targetSceneId": "v7fdVFOChR",
+        "coords": {
+          "plane": {
+            "x": -51.42949139924177,
+            "y": -199.37000000000015,
+            "z": 739.4427596830656
+          },
+          "scene": {
+            "x": -339.31329663481404,
+            "y": -1314.450233138543,
+            "z": 4862.337978693029
+          }
+        }
+      },
+      {
+        "id": "4FCdDOHeu",
+        "title": "Principle Conference Room",
+        "targetSceneId": "BnCp5k9hd",
+        "coords": {
+          "plane": {
+            "x": 126.11321446576804,
+            "y": -199.99000000000018,
+            "z": 706.953935388798
+          },
+          "scene": {
+            "x": 851.6240052791834,
+            "y": -1353.8087798828446,
+            "z": 4788.152435324655
+          }
+        }
+      },
+      {
+        "id": "PWeFIQivx",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -335.8025668343935,
+            "y": -199.00999999999996,
+            "z": -142.51643853870954
+          },
+          "scene": {
+            "x": -4076.783176327942,
+            "y": -2423.9958054671415,
+            "z": -1726.5763968325025
+          }
+        }
+      },
+      {
+        "id": "LMTRgn5nK",
+        "title": "CSE HOD Office, 1st Floor (E)",
+        "targetSceneId": "8f12_0ASSb2",
+        "coords": {
+          "plane": {
+            "x": -86.10402666463,
+            "y": -199.5699999999999,
+            "z": -412.6082755323424
+          },
+          "scene": {
+            "x": -928.1505141959732,
+            "y": -2165.383440251192,
+            "z": -4464.1021451015595
+          }
+        }
+      },
+      {
+        "id": "EcNq8qIVV",
+        "title": "Ground Floor BFCET",
+        "targetSceneId": "0hyWw3t4u",
+        "coords": {
+          "plane": {
+            "x": -362.20596514949045,
+            "y": -199.77000000000004,
+            "z": 69.62763487955108
+          },
+          "scene": {
+            "x": -4361.568924751706,
+            "y": -2402.7117515325403,
+            "z": 834.4759074088743
+          }
+        }
+      },
+      {
+        "id": "Aw5Mmev_J",
+        "title": "Principal Office",
+        "targetSceneId": "oFXtSCWIQ",
+        "coords": {
+          "plane": {
+            "x": 883.6640303790819,
+            "y": -199.37,
+            "z": 14.395557950849758
+          },
+          "scene": {
+            "x": 4922.451986300035,
+            "y": -1112.8387620702192,
+            "z": 79.87770829599995
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "oFXtSCWIQ",
+    "title": "Principal Office",
+    "url": "images/scene-oFXtSCWIQ.jpg",
+    "previewUrl": "images/scene-thumb-oFXtSCWIQ.jpg",
+    "hotspots": [
+      {
+        "id": "aWeEegS_K",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": 84.75330439557081,
+            "y": -199.63999999999996,
+            "z": -278.75507644175434
+          },
+          "scene": {
+            "x": 1208.6050651260782,
+            "y": -2855.7705634117865,
+            "z": -3982.8757656556427
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "BnCp5k9hd",
+    "title": "Principle Conference Room",
+    "url": "images/scene-BnCp5k9hd.jpg",
+    "previewUrl": "images/scene-thumb-BnCp5k9hd.jpg",
+    "hotspots": [
+      {
+        "id": "FTeEfnLth",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 889.8214891386224,
+            "y": -649.2732093567778,
+            "z": 4926.2713245171635
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "vS6tnCEpJDF",
+    "title": "LHE 101 - Lecture Hall",
+    "url": "images/scene-vS6tnCEpJDF.jpg",
+    "previewUrl": "images/scene-thumb-vS6tnCEpJDF.jpg",
+    "hotspots": [
+      {
+        "id": "pO7hekBGT",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": 945.6466498563942,
+            "y": -199.72000000000008,
+            "z": 420.9538790978572
+          },
+          "scene": {
+            "x": 4526.9173644752855,
+            "y": -957.4356275772974,
+            "z": 2016.5760498906845
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "8f12_0ASSb2",
+    "title": "CSE HOD Office, 1st Floor (E)",
+    "url": "images/scene-8f12_0ASSb2.jpg",
+    "previewUrl": "images/scene-thumb-8f12_0ASSb2.jpg",
+    "hotspots": [
+      {
+        "id": "rL4vZ1THG",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": -359.66781626297455,
+            "y": -199.24000000000004,
+            "z": 199.13828650742602
+          },
+          "scene": {
+            "x": -3973.5805477687777,
+            "y": -2208.2457269684264,
+            "z": 2196.392568685195
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "VvrduRe6bT9",
+    "title": "Staff Room , 1st Floor",
+    "url": "images/scene-VvrduRe6bT9.jpg",
+    "previewUrl": "images/scene-thumb-VvrduRe6bT9.jpg",
+    "hotspots": [
+      {
+        "id": "x8TOXKFf3",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": 706.6420832111526,
+            "y": -199.2899999999999,
+            "z": -258.66069813245684
+          },
+          "scene": {
+            "x": 4581.397799972704,
+            "y": -1296.0126026879827,
+            "z": -1673.714783388854
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "7_scw7SMOfA",
+    "title": "LHE 102 - Lecture Hall",
+    "url": "images/scene-7_scw7SMOfA.jpg",
+    "previewUrl": "images/scene-thumb-7_scw7SMOfA.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "HtYt3GvSfzx",
+    "title": "LHE 104 - Lecture Hall",
+    "url": "images/scene-HtYt3GvSfzx.jpg",
+    "previewUrl": "images/scene-thumb-HtYt3GvSfzx.jpg",
+    "hotspots": [
+      {
+        "id": "4z-OnH5w3",
+        "title": "1st Floor - Right Corridor (E)",
+        "targetSceneId": "In0u5jlepyU",
+        "coords": {
+          "plane": {
+            "x": -333.17874828068443,
+            "y": -199.48999999999992,
+            "z": -197.23107982437227
+          },
+          "scene": {
+            "x": -3857.8366440515906,
+            "y": -2318.608353561245,
+            "z": -2284.4771891855016
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "NsCFKixBT",
+    "title": "LHE 105 - Lecture Hall",
+    "url": "images/scene-NsCFKixBT.jpg",
+    "previewUrl": "images/scene-thumb-NsCFKixBT.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "v7fdVFOChR",
+    "title": "1st floor left Corridor",
+    "url": "images/scene-v7fdVFOChR.jpg",
+    "previewUrl": "images/scene-thumb-v7fdVFOChR.jpg",
+    "hotspots": [
+      {
+        "id": "rEOaXAcqB",
+        "title": " LHE 109  - Girls common Room",
+        "targetSceneId": "kQ1Er9r4Vs9",
+        "coords": {
+          "plane": {
+            "x": -434.5813248569935,
+            "y": -199.47,
+            "z": 122.08559252559705
+          },
+          "scene": {
+            "x": -4444.182910560982,
+            "y": -2042.7886808915625,
+            "z": 1245.1066861473691
+          }
+        }
+      },
+      {
+        "id": "YUgT2qd0c",
+        "title": "1st Floor Bridge",
+        "targetSceneId": "HneidkQEm",
+        "coords": {
+          "plane": {
+            "x": 444.58501334186843,
+            "y": -199.64,
+            "z": -10.668482670536358
+          },
+          "scene": {
+            "x": 4602.897331256613,
+            "y": -2068.174174748307,
+            "z": -107.2884148677638
+          }
+        }
+      },
+      {
+        "id": "2keOFgmd-",
+        "title": "Ground Floor Right Corridor",
+        "targetSceneId": "qfVwDGTIuGG",
+        "coords": {
+          "plane": {
+            "x": -258.50970921019666,
+            "y": -199.7899999999999,
+            "z": -425.873661102561
+          },
+          "scene": {
+            "x": -2426.496488410719,
+            "y": -1879.8665686891243,
+            "z": -4006.6737011290365
+          }
+        }
+      },
+      {
+        "id": "D3FQr7DaI",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": -522.3528123173426,
+            "y": -199.52,
+            "z": -23.98685173638473
+          },
+          "scene": {
+            "x": -4709.992485072575,
+            "y": -1801.6575491431422,
+            "z": -217.33397603851824
+          }
+        }
+      },
+      {
+        "id": "j4QBuQRgW",
+        "title": "LHE 110  - Lecture Hall",
+        "targetSceneId": "p-to2OEOF0y",
+        "coords": {
+          "plane": {
+            "x": -431.88515761268286,
+            "y": -199.93999999999997,
+            "z": -163.3897489071409
+          },
+          "scene": {
+            "x": -4334.750431224743,
+            "y": -2002.724200733108,
+            "z": -1635.8578780431817
+          }
+        }
+      },
+      {
+        "id": "9EvqS_vSa",
+        "title": "2nd floor Backstairs",
+        "targetSceneId": "cbdAUHbjtB",
+        "coords": {
+          "plane": {
+            "x": 32.48929939831059,
+            "y": -199.99999999999994,
+            "z": -261.9804026685258
+          },
+          "scene": {
+            "x": 493.5847199541614,
+            "y": -3047.2896059694526,
+            "z": -3995.0472581678882
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "fQL5ciXfvIH",
+    "title": "Visitor Room and PA Office (E 107)",
+    "url": "images/scene-fQL5ciXfvIH.jpg",
+    "previewUrl": "images/scene-thumb-fQL5ciXfvIH.jpg",
+    "hotspots": [
+      {
+        "id": "bMLhvcaNF",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": -612.9142296132881,
+            "y": -199.05000000000007,
+            "z": 269.1801494143129
+          },
+          "scene": {
+            "x": -4427.547808594643,
+            "y": -1444.7435379369654,
+            "z": 1944.2902733683736
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "pmcuAbmAA0U",
+    "title": "CAD Office, 1st Floor (E)",
+    "url": "images/scene-pmcuAbmAA0U.jpg",
+    "previewUrl": "images/scene-thumb-pmcuAbmAA0U.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "kQ1Er9r4Vs9",
+    "title": " LHE 109  - Girls common Room",
+    "url": "images/scene-kQ1Er9r4Vs9.jpg",
+    "previewUrl": "images/scene-thumb-kQ1Er9r4Vs9.jpg",
+    "hotspots": [
+      {
+        "id": "Rp2K4ttVe",
+        "title": "1st floor left Corridor",
+        "targetSceneId": "v7fdVFOChR",
+        "coords": {
+          "plane": {
+            "x": -710.6095376916387,
+            "y": -199.75000000000006,
+            "z": 316.31491044560977
+          },
+          "scene": {
+            "x": -4466.395271581949,
+            "y": -1255.6599433817787,
+            "z": 1986.5887286708478
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "p-to2OEOF0y",
+    "title": "LHE 110  - Lecture Hall",
+    "url": "images/scene-p-to2OEOF0y.jpg",
+    "previewUrl": "images/scene-thumb-p-to2OEOF0y.jpg",
+    "hotspots": [
+      {
+        "id": "K0MC38gBm",
+        "title": "1st floor left Corridor",
+        "targetSceneId": "v7fdVFOChR",
+        "coords": {
+          "plane": {
+            "x": -682.7998377262902,
+            "y": -199.67000000000002,
+            "z": 111.6831578913996
+          },
+          "scene": {
+            "x": -4785.627040837976,
+            "y": -1401.1849402219132,
+            "z": 780.3413319013634
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "_KsjfV5KviT",
+    "title": "1st Floor - Ramp Side (E)",
+    "url": "images/scene-_KsjfV5KviT.jpg",
+    "previewUrl": "images/scene-thumb-_KsjfV5KviT.jpg",
+    "hotspots": [
+      {
+        "id": "3CC-7NfrV",
+        "title": "Ground Floor left Ramp Side",
+        "targetSceneId": "DMU6wghdlK-",
+        "coords": {
+          "plane": {
+            "x": 380.9807496269993,
+            "y": -199.76999999999998,
+            "z": -71.57858585772163
+          },
+          "scene": {
+            "x": 4411.318830599676,
+            "y": -2313.97636789228,
+            "z": -824.3831899752516
+          }
+        }
+      },
+      {
+        "id": "OoMfGEufj",
+        "title": "1st Floor - Right Corridor (E)",
+        "targetSceneId": "In0u5jlepyU",
+        "coords": {
+          "plane": {
+            "x": 832.0421054863275,
+            "y": -199.94000000000008,
+            "z": 206.38087256660484
+          },
+          "scene": {
+            "x": 4771.546688026699,
+            "y": -1146.5612767028638,
+            "z": 1185.0213214669834
+          }
+        }
+      },
+      {
+        "id": "0AO86dCsl",
+        "title": "2nd Floor Right End (E)",
+        "targetSceneId": "YpMrwQwhwDd",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 4977.842833199751,
+            "y": -237.85856411922526,
+            "z": 797.3002165634119
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "In0u5jlepyU",
+    "title": "1st Floor - Right Corridor (E)",
+    "url": "images/scene-In0u5jlepyU.jpg",
+    "previewUrl": "images/scene-thumb-In0u5jlepyU.jpg",
+    "hotspots": [
+      {
+        "id": "8Bn38P2L_",
+        "title": "1st Floor - Ramp Side (E)",
+        "targetSceneId": "_KsjfV5KviT",
+        "coords": {
+          "plane": {
+            "x": -331.88915206195,
+            "y": -199.71000000000004,
+            "z": 141.45598677243106
+          },
+          "scene": {
+            "x": -4064.3085169356177,
+            "y": -2444.427971649873,
+            "z": 1727.9180150182322
+          }
+        }
+      },
+      {
+        "id": "DyCDY4ejH",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": 376.134051265609,
+            "y": -199.88,
+            "z": -1.2163778223059263
+          },
+          "scene": {
+            "x": 4458.409491940445,
+            "y": -2368.946528144598,
+            "z": -12.515500948509056
+          }
+        }
+      },
+      {
+        "id": "P7nh5ywDH",
+        "title": "LHE 104 - Lecture Hall",
+        "targetSceneId": "HtYt3GvSfzx",
+        "coords": {
+          "plane": {
+            "x": 353.67072840614486,
+            "y": -199.20000000000005,
+            "z": 155.96486863774086
+          },
+          "scene": {
+            "x": 4104.209992011483,
+            "y": -2318.3780568602583,
+            "z": 1805.2746872390594
+          }
+        }
+      },
+      {
+        "id": "VA_WA-8n6",
+        "title": "LHE 104 - Lecture Hall",
+        "targetSceneId": "HtYt3GvSfzx",
+        "coords": {
+          "plane": {
+            "x": 355.9292538094356,
+            "y": -199.25999999999996,
+            "z": -126.7707776645798
+          },
+          "scene": {
+            "x": 4204.651839937219,
+            "y": -2356.3023121130536,
+            "z": -1497.564411614871
+          }
+        }
+      },
+      {
+        "id": "sCgUAnAvD",
+        "title": "2nd Floor - Ramp Side",
+        "targetSceneId": "dXztEapWd45",
+        "coords": {
+          "plane": {
+            "x": -312.03586561514084,
+            "y": -199.05999999999995,
+            "z": -186.11136008136944
+          },
+          "scene": {
+            "x": -3800.564242216841,
+            "y": -2432.4153375441856,
+            "z": -2261.877121932427
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "HneidkQEm",
+    "title": "1st Floor Bridge",
+    "url": "images/scene-HneidkQEm.jpg",
+    "previewUrl": "images/scene-thumb-HneidkQEm.jpg",
+    "hotspots": [
+      {
+        "id": "pDopR_TkO",
+        "title": "1st floor left Corridor",
+        "targetSceneId": "v7fdVFOChR",
+        "coords": {
+          "plane": {
+            "x": -1031.238380962482,
+            "y": -199.61000000000024,
+            "z": 1065.2874014498252
+          },
+          "scene": {
+            "x": -3479.5141378389326,
+            "y": -674.1817476026426,
+            "z": 3593.499350102844
+          }
+        }
+      },
+      {
+        "id": "gC2j2wyCL",
+        "title": "First floor back stairs (I Block)",
+        "targetSceneId": "IYPr8lBhA",
+        "coords": {
+          "plane": {
+            "x": 421.3790248155523,
+            "y": -199.52,
+            "z": -15.357244061193368
+          },
+          "scene": {
+            "x": 4558.328145631847,
+            "y": -2160.7418375241214,
+            "z": -166.6068893519764
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "7aiORKJsxlf",
+    "title": "2nd Floor Upstairs (E)",
+    "url": "images/scene-7aiORKJsxlf.jpg",
+    "previewUrl": "images/scene-thumb-7aiORKJsxlf.jpg",
+    "hotspots": [
+      {
+        "id": "yiRYQtXbP",
+        "title": "Staff Room - T & P Deptt. (E - 213)",
+        "targetSceneId": "ung-NDcTUct",
+        "coords": {
+          "plane": {
+            "x": -261.7820634982696,
+            "y": -199.13000000000005,
+            "z": 398.88841834366724
+          },
+          "scene": {
+            "x": -2557.937106758322,
+            "y": -1948.857794679821,
+            "z": 3891.2610979007627
+          }
+        }
+      },
+      {
+        "id": "mvZ13PS-t",
+        "title": "Student Cell (Other States) - E 207",
+        "targetSceneId": "lRg1xyFrHXx",
+        "coords": {
+          "plane": {
+            "x": -453.8105787356918,
+            "y": -199.99999999999994,
+            "z": -183.58974623024537
+          },
+          "scene": {
+            "x": -4332.806626878905,
+            "y": -1906.2898620347378,
+            "z": -1755.289984478685
+          }
+        }
+      },
+      {
+        "id": "7aRiu1zP4",
+        "title": "Student Counselling Cell (E)",
+        "targetSceneId": "utrJwyVC_07",
+        "coords": {
+          "plane": {
+            "x": 408.36722685699897,
+            "y": -199.56999999999996,
+            "z": -262.7608487378868
+          },
+          "scene": {
+            "x": 3927.300458089012,
+            "y": -1923.999174829781,
+            "z": -2523.5422215558733
+          }
+        }
+      },
+      {
+        "id": "VnQtemhgB",
+        "title": "Hardware Lab (E 208)",
+        "targetSceneId": "lDJGK5crd2m",
+        "coords": {
+          "plane": {
+            "x": -965.3673394346655,
+            "y": -199.19999999999996,
+            "z": -123.54577820686497
+          },
+          "scene": {
+            "x": -4905.7884779286605,
+            "y": -1015.9637172059951,
+            "z": -628.9315142816122
+          }
+        }
+      },
+      {
+        "id": "EDHsnJV5A",
+        "title": "Staff Room , 2nd Floor , E-Block",
+        "targetSceneId": "HoE43F0Tl62",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -4893.677623546105,
+            "y": -636.992646437213,
+            "z": 1057.540195291315
+          }
+        }
+      },
+      {
+        "id": "GjKrO5cc0",
+        "title": "2nd floor Backstairs",
+        "targetSceneId": "cbdAUHbjtB",
+        "coords": {
+          "plane": {
+            "x": -659.868153909519,
+            "y": -199.57,
+            "z": 27.15670906923732
+          },
+          "scene": {
+            "x": -4826.628645875978,
+            "y": -1461.6753015781974,
+            "z": 197.1495608525465
+          }
+        }
+      },
+      {
+        "id": "4J_ER50KQ",
+        "title": "LHE  210 - Lecture Hall",
+        "targetSceneId": "zC9pUs_BmsH",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -4961.68537013738,
+            "y": -352.46791504481644,
+            "z": 856.1301812398705
+          }
+        }
+      },
+      {
+        "id": "OQ2h1LzUW",
+        "title": "Career Guidance & Counselling Cell (E)",
+        "targetSceneId": "PTn-LMtD5rs",
+        "coords": {
+          "plane": {
+            "x": 60.145724542486484,
+            "y": -199.01000000000028,
+            "z": 1111.1313212494433
+          },
+          "scene": {
+            "x": 266.68759910703614,
+            "y": -893.7838572778759,
+            "z": 4960.910534014027
+          }
+        }
+      },
+      {
+        "id": "gi8_4FK0i",
+        "title": "1st Floor Block E",
+        "targetSceneId": "WDCXxLgKo",
+        "coords": {
+          "plane": {
+            "x": -170.388066477222,
+            "y": -199.37999999999988,
+            "z": -522.9253990692271
+          },
+          "scene": {
+            "x": -1466.7949750639102,
+            "y": -1725.5870258181083,
+            "z": -4513.217818829873
+          }
+        }
+      },
+      {
+        "id": "-tgcSypPE",
+        "title": "2nd Floor Right Corridor (E)",
+        "targetSceneId": "DTYA6jIbe",
+        "coords": {
+          "plane": {
+            "x": 999.6343888794041,
+            "y": -199.41999999999996,
+            "z": -72.17449129085959
+          },
+          "scene": {
+            "x": 4938.548614121043,
+            "y": -987.2890264112071,
+            "z": -355.2667882396746
+          }
+        }
+      },
+      {
+        "id": "ZC0bqzIaB",
+        "title": "3rd Floor Upstairs (Block E)",
+        "targetSceneId": "Fvpr0QQns",
+        "coords": {
+          "plane": {
+            "x": 83.69067034171,
+            "y": -199.4599999999999,
+            "z": -532.246538659427
+          },
+          "scene": {
+            "x": 734.0039020717144,
+            "y": -1754.2928802798544,
+            "z": -4675.767106696022
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "cbdAUHbjtB",
+    "title": "2nd floor Backstairs",
+    "url": "images/scene-cbdAUHbjtB.jpg",
+    "previewUrl": "images/scene-thumb-cbdAUHbjtB.jpg",
+    "hotspots": [
+      {
+        "id": "BBPdQLML9",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -1188.7440048589408,
+            "y": -199.44000000000003,
+            "z": -18.411613010125443
+          },
+          "scene": {
+            "x": -4976.913234919175,
+            "y": -837.5248294930957,
+            "z": -77.16632061603784
+          }
+        }
+      },
+      {
+        "id": "qhEZKVJrI",
+        "title": "LHF 209 - Lecture Hall",
+        "targetSceneId": "SPK1bOUolWI",
+        "coords": {
+          "plane": {
+            "x": -367.0570272145903,
+            "y": -199.62999999999994,
+            "z": -153.0692330334376
+          },
+          "scene": {
+            "x": -4164.577165256836,
+            "y": -2265.98546337134,
+            "z": -1732.9327425136034
+          }
+        }
+      },
+      {
+        "id": "Z3FLgZlRh",
+        "title": "1st floor left Corridor",
+        "targetSceneId": "v7fdVFOChR",
+        "coords": {
+          "plane": {
+            "x": -125.24721748836576,
+            "y": -199.70999999999992,
+            "z": -396.58131030318924
+          },
+          "scene": {
+            "x": -1367.4909225176038,
+            "y": -2187.0548886688766,
+            "z": -4339.337036028966
+          }
+        }
+      },
+      {
+        "id": "xZFiRvMsF",
+        "title": "Boys Common Room - 2nd Floor (E)",
+        "targetSceneId": "DTJE8bftEWN",
+        "coords": {
+          "plane": {
+            "x": -363.76705322374477,
+            "y": -199.58000000000004,
+            "z": 147.8839873904864
+          },
+          "scene": {
+            "x": -4168.783748654386,
+            "y": -2289.4016364877243,
+            "z": 1694.6280487029353
+          }
+        }
+      },
+      {
+        "id": "seAkbVoR7",
+        "title": "3rd Floor Leftstairs (E-Block)",
+        "targetSceneId": "lR0u_EfME",
+        "coords": {
+          "plane": {
+            "x": 170.68519313698638,
+            "y": -199.70999999999992,
+            "z": -381.4349874119663
+          },
+          "scene": {
+            "x": 1858.3318771854033,
+            "y": -2177.7283457781245,
+            "z": -4156.932986842819
+          }
+        }
+      },
+      {
+        "id": "D0OX_67IP",
+        "title": "2nd Floor Bridge",
+        "targetSceneId": "asZgWMqO_",
+        "coords": {
+          "plane": {
+            "x": 667.1985020261227,
+            "y": -199.30000000000004,
+            "z": 38.31060858886714
+          },
+          "scene": {
+            "x": 4829.030111834578,
+            "y": -1445.4627618173504,
+            "z": 277.22976201944977
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "DTYA6jIbe",
+    "title": "2nd Floor Right Corridor (E)",
+    "url": "images/scene-DTYA6jIbe.jpg",
+    "previewUrl": "images/scene-thumb-DTYA6jIbe.jpg",
+    "hotspots": [
+      {
+        "id": "lVGlQEQbY",
+        "title": "2nd Floor Right End (E)",
+        "targetSceneId": "YpMrwQwhwDd",
+        "coords": {
+          "plane": {
+            "x": 935.1451052688435,
+            "y": -199.06,
+            "z": 3.182574041778682
+          },
+          "scene": {
+            "x": 4936.768152928751,
+            "y": -1056.6458401025207,
+            "z": 16.65108024803982
+          }
+        }
+      },
+      {
+        "id": "Clze6ggUA",
+        "title": "LHE 204 - Lecture Hall",
+        "targetSceneId": "lR2_aLIJw5e",
+        "coords": {
+          "plane": {
+            "x": 505.85176871324944,
+            "y": -199.27,
+            "z": -111.98331823781345
+          },
+          "scene": {
+            "x": 4597.193460225015,
+            "y": -1817.7972554476762,
+            "z": -1016.3192865522681
+          }
+        }
+      },
+      {
+        "id": "q2_igdFxK",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -544.7919404354293,
+            "y": -199.49,
+            "z": 5.511543756633824
+          },
+          "scene": {
+            "x": -4739.538797454483,
+            "y": -1738.6852993867658,
+            "z": 48.35798094321078
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "YpMrwQwhwDd",
+    "title": "2nd Floor Right End (E)",
+    "url": "images/scene-YpMrwQwhwDd.jpg",
+    "previewUrl": "images/scene-thumb-YpMrwQwhwDd.jpg",
+    "hotspots": [
+      {
+        "id": "RHB2Iez03",
+        "title": "2nd Floor Right Corridor (E)",
+        "targetSceneId": "DTYA6jIbe",
+        "coords": {
+          "plane": {
+            "x": 554.8059620086063,
+            "y": -199.17000000000002,
+            "z": 24.994788745471443
+          },
+          "scene": {
+            "x": 4744.245357812647,
+            "y": -1710.0193585711183,
+            "z": 214.90256545429938
+          }
+        }
+      },
+      {
+        "id": "OXF0QPRKN",
+        "title": "2nd Floor - Ramp Side",
+        "targetSceneId": "dXztEapWd45",
+        "coords": {
+          "plane": {
+            "x": -315.5379179313863,
+            "y": -199.45999999999998,
+            "z": -158.27929095768437
+          },
+          "scene": {
+            "x": -3929.154978829467,
+            "y": -2485.9289763578404,
+            "z": -1965.3578804056044
+          }
+        }
+      },
+      {
+        "id": "6ZEv44zf1",
+        "title": "1st Floor - Ramp Side (E)",
+        "targetSceneId": "_KsjfV5KviT",
+        "coords": {
+          "plane": {
+            "x": -303.8057366390504,
+            "y": -199.97000000000003,
+            "z": 120.49075063764514
+          },
+          "scene": {
+            "x": -4007.0805730882407,
+            "y": -2633.9109786090867,
+            "z": 1583.1721071109728
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "dXztEapWd45",
+    "title": "2nd Floor - Ramp Side",
+    "url": "images/scene-dXztEapWd45.jpg",
+    "previewUrl": "images/scene-thumb-dXztEapWd45.jpg",
+    "hotspots": [
+      {
+        "id": "1YGlKpyfd",
+        "title": "2nd Floor Right End (E)",
+        "targetSceneId": "YpMrwQwhwDd",
+        "coords": {
+          "plane": {
+            "x": 185.24991701217405,
+            "y": -199.22999999999996,
+            "z": -96.0816099291049
+          },
+          "scene": {
+            "x": 3239.115741435206,
+            "y": -3490.7999466796414,
+            "z": -1674.088649820225
+          }
+        }
+      },
+      {
+        "id": "ciWcPBnm-",
+        "title": "3rd Floor Right end - E Block",
+        "targetSceneId": "ZOd0d3vYW",
+        "coords": {
+          "plane": {
+            "x": 904.97187774554,
+            "y": -199.8700000000001,
+            "z": 239.2089855580455
+          },
+          "scene": {
+            "x": 4773.144186922682,
+            "y": -1055.1556869081974,
+            "z": 1260.1180929297911
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "utrJwyVC_07",
+    "title": "Student Counselling Cell (E)",
+    "url": "images/scene-utrJwyVC_07.jpg",
+    "previewUrl": "images/scene-thumb-utrJwyVC_07.jpg",
+    "hotspots": [
+      {
+        "id": "7f6kWwGoN",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -238.60388687617365,
+            "y": -199.93999999999997,
+            "z": -104.99423452716893
+          },
+          "scene": {
+            "x": -3669.2316461620076,
+            "y": -3068.9409540745214,
+            "z": -1611.3184364901379
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "HoE43F0Tl62",
+    "title": "Staff Room , 2nd Floor , E-Block",
+    "url": "images/scene-HoE43F0Tl62.jpg",
+    "previewUrl": "images/scene-thumb-HoE43F0Tl62.jpg",
+    "hotspots": [
+      {
+        "id": "HagXXxoYF",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": 405.07731216189603,
+            "y": -199.39999999999995,
+            "z": -248.02587232647676
+          },
+          "scene": {
+            "x": 3969.7697333851925,
+            "y": -1957.317302822199,
+            "z": -2427.139024209706
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "2XSlkr8n31G",
+    "title": "LHE 201 - Lecture Hall",
+    "url": "images/scene-2XSlkr8n31G.jpg",
+    "previewUrl": "images/scene-thumb-2XSlkr8n31G.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "lR2_aLIJw5e",
+    "title": "LHE 204 - Lecture Hall",
+    "url": "images/scene-lR2_aLIJw5e.jpg",
+    "previewUrl": "images/scene-thumb-lR2_aLIJw5e.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "hHQY-_Kg2_X",
+    "title": "LHE 205",
+    "url": "images/scene-hHQY-_Kg2_X.jpg",
+    "previewUrl": "images/scene-thumb-hHQY-_Kg2_X.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "lRg1xyFrHXx",
+    "title": "Student Cell (Other States) - E 207",
+    "url": "images/scene-lRg1xyFrHXx.jpg",
+    "previewUrl": "images/scene-thumb-lRg1xyFrHXx.jpg",
+    "hotspots": [
+      {
+        "id": "1CdnOm_H7",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -254.05743407272809,
+            "y": -199,
+            "z": 57.53618888528279
+          },
+          "scene": {
+            "x": -3907.355026279902,
+            "y": -3072.257729551099,
+            "z": 878.4287526841669
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lDJGK5crd2m",
+    "title": "Hardware Lab (E 208)",
+    "url": "images/scene-lDJGK5crd2m.jpg",
+    "previewUrl": "images/scene-thumb-lDJGK5crd2m.jpg",
+    "hotspots": [
+      {
+        "id": "kmrpXPLwl",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -402.1146281051758,
+            "y": -199.7600000000001,
+            "z": 311.3659424306145
+          },
+          "scene": {
+            "x": -3713.5367328297816,
+            "y": -1845.508125623409,
+            "z": 2876.571646769761
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "zC9pUs_BmsH",
+    "title": "LHE  210 - Lecture Hall",
+    "url": "images/scene-zC9pUs_BmsH.jpg",
+    "previewUrl": "images/scene-thumb-zC9pUs_BmsH.jpg",
+    "hotspots": [
+      {
+        "id": "8bj3Pi-VE",
+        "title": "2nd Floor Upstairs (F)",
+        "targetSceneId": "1ulloVq2g",
+        "coords": {
+          "plane": {
+            "x": -264.35778492870844,
+            "y": -199.09000000000012,
+            "z": 501.1865093273576
+          },
+          "scene": {
+            "x": -2224.5259552662556,
+            "y": -1680.2421574484035,
+            "z": 4207.670421513779
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ung-NDcTUct",
+    "title": "Staff Room - T & P Deptt. (E - 213)",
+    "url": "images/scene-ung-NDcTUct.jpg",
+    "previewUrl": "images/scene-thumb-ung-NDcTUct.jpg",
+    "hotspots": [
+      {
+        "id": "XDD3UEHYs",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": -353.50731271998404,
+            "y": -199.21999999999994,
+            "z": -256.1357408474734
+          },
+          "scene": {
+            "x": -3717.9689415022553,
+            "y": -2100.024739406942,
+            "z": -2695.349883928402
+          }
+        }
+      },
+      {
+        "id": "EmXiAifOB",
+        "title": "Career Guidance & Counselling Cell (E)",
+        "targetSceneId": "PTn-LMtD5rs",
+        "coords": {
+          "plane": {
+            "x": 577.8579294138725,
+            "y": -199.4099999999999,
+            "z": -201.82269516648748
+          },
+          "scene": {
+            "x": 4530.308756592674,
+            "y": -1567.1890438217254,
+            "z": -1581.3971951464841
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "DTJE8bftEWN",
+    "title": "Boys Common Room - 2nd Floor (E)",
+    "url": "images/scene-DTJE8bftEWN.jpg",
+    "previewUrl": "images/scene-thumb-DTJE8bftEWN.jpg",
+    "hotspots": [
+      {
+        "id": "rPoADiV69",
+        "title": "2nd floor Backstairs",
+        "targetSceneId": "cbdAUHbjtB",
+        "coords": {
+          "plane": {
+            "x": -449.1278407046993,
+            "y": -199.11000000000007,
+            "z": 265.5907601553609
+          },
+          "scene": {
+            "x": -4057.617531406882,
+            "y": -1805.8274583780585,
+            "z": 2397.2543159597235
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "7kqhvjlxBTw",
+    "title": "Roots Club Office - 2nd floor (E)",
+    "url": "images/scene-7kqhvjlxBTw.jpg",
+    "previewUrl": "images/scene-thumb-7kqhvjlxBTw.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "JF3kFATpf-",
+    "title": "Roots Club - Activity Room (E)",
+    "url": "images/scene-JF3kFATpf-.jpg",
+    "previewUrl": "images/scene-thumb-JF3kFATpf-.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "v3XlY1voz",
+    "title": "Conference Room, 3rd Floor (E)",
+    "url": "images/scene-v3XlY1voz.jpg",
+    "previewUrl": "images/scene-thumb-v3XlY1voz.jpg",
+    "hotspots": [
+      {
+        "id": "qjTPWU-Rr",
+        "title": "3rd Floor Upstairs (Block E)",
+        "targetSceneId": "Fvpr0QQns",
+        "coords": {
+          "plane": {
+            "x": -251.26565439687425,
+            "y": -199.02999999999997,
+            "z": 30.850441235719348
+          },
+          "scene": {
+            "x": -3934.726571643222,
+            "y": -3128.8216622331956,
+            "z": 474.59388847014117
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Fvpr0QQns",
+    "title": "3rd Floor Upstairs (Block E)",
+    "url": "images/scene-Fvpr0QQns.jpg",
+    "previewUrl": "images/scene-thumb-Fvpr0QQns.jpg",
+    "hotspots": [
+      {
+        "id": "GWeEUZrPt",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": 494.51046161007156,
+            "y": -199.45999999999998,
+            "z": -81.65139146323503
+          },
+          "scene": {
+            "x": 4626.047750955137,
+            "y": -1868.3739559387866,
+            "z": -762.6337989187275
+          }
+        }
+      },
+      {
+        "id": "0b7b7B5P1",
+        "title": "3rd Floor Right Corridor - E",
+        "targetSceneId": "6uu4e7xRt",
+        "coords": {
+          "plane": {
+            "x": 55.83500960722167,
+            "y": -199.34000000000012,
+            "z": 346.4678572275255
+          },
+          "scene": {
+            "x": 692.5590916944612,
+            "y": -2496.6726887294053,
+            "z": 4331.854707226473
+          }
+        }
+      },
+      {
+        "id": "4s3BH4W6x",
+        "title": "3rd Floor Left Corridor",
+        "targetSceneId": "o-8ezJqUKxi",
+        "coords": {
+          "plane": {
+            "x": 22.152787646778368,
+            "y": -199.8799999999999,
+            "z": -433.5179309043604
+          },
+          "scene": {
+            "x": 233.5779926759496,
+            "y": -2110.0237618664246,
+            "z": -4580.623041366618
+          }
+        }
+      },
+      {
+        "id": "kWkDwQbll",
+        "title": "Conference Room, 3rd Floor (E)",
+        "targetSceneId": "v3XlY1voz",
+        "coords": {
+          "plane": {
+            "x": -145.3979312308014,
+            "y": -199.84999999999988,
+            "z": -492.6147567438541
+          },
+          "scene": {
+            "x": -1329.6137390998817,
+            "y": -1830.4443158045679,
+            "z": -4511.414884649943
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "o-8ezJqUKxi",
+    "title": "3rd Floor Left Corridor",
+    "url": "images/scene-o-8ezJqUKxi.jpg",
+    "previewUrl": "images/scene-thumb-o-8ezJqUKxi.jpg",
+    "hotspots": [
+      {
+        "id": "TOqAXcwR0",
+        "title": "IT Lab (E 310)",
+        "targetSceneId": "RehM02MYbVg",
+        "coords": {
+          "plane": {
+            "x": 911.2281993622206,
+            "y": -199.69999999999996,
+            "z": -205.3551410184184
+          },
+          "scene": {
+            "x": 4814.462171840334,
+            "y": -1056.3258980673788,
+            "z": -1083.7413376656411
+          }
+        }
+      },
+      {
+        "id": "hYlOa_DMD",
+        "title": "Web Development Lab ( E 311)",
+        "targetSceneId": "vf78vZSFxJs",
+        "coords": {
+          "plane": {
+            "x": 729.5612163679644,
+            "y": -199.90000000000006,
+            "z": 203.25470473325282
+          },
+          "scene": {
+            "x": 4700.217503823081,
+            "y": -1287.3889074026806,
+            "z": 1312.4429992775943
+          }
+        }
+      },
+      {
+        "id": "tyQzQ7E_P",
+        "title": "3rd Floor Leftstairs (E-Block)",
+        "targetSceneId": "lR0u_EfME",
+        "coords": {
+          "plane": {
+            "x": -908.7461442784712,
+            "y": -199.20999999999998,
+            "z": -160.7144768802305
+          },
+          "scene": {
+            "x": -4857.495144037729,
+            "y": -1068.2331877903805,
+            "z": -860.5682723032421
+          }
+        }
+      },
+      {
+        "id": "fcvtegA5Q",
+        "title": "3rd Floor Upstairs (Block E)",
+        "targetSceneId": "Fvpr0QQns",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 5018.547812961428,
+            "y": -491.6551783265641,
+            "z": 206.35195104938995
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "lR0u_EfME",
+    "title": "3rd Floor Leftstairs (E-Block)",
+    "url": "images/scene-lR0u_EfME.jpg",
+    "previewUrl": "images/scene-thumb-lR0u_EfME.jpg",
+    "hotspots": [
+      {
+        "id": "Tm7buW_z4",
+        "title": "2nd floor Backstairs",
+        "targetSceneId": "cbdAUHbjtB",
+        "coords": {
+          "plane": {
+            "x": -26.296415782422113,
+            "y": -199.53999999999988,
+            "z": -454.7249204637788
+          },
+          "scene": {
+            "x": -267.34220817665255,
+            "y": -2030.9452924407062,
+            "z": -4614.151670104944
+          }
+        }
+      },
+      {
+        "id": "-_oIlemI2",
+        "title": "3rd Floor Left Corridor",
+        "targetSceneId": "o-8ezJqUKxi",
+        "coords": {
+          "plane": {
+            "x": -313.6544769377312,
+            "y": -199.25999999999993,
+            "z": -78.53324220797097
+          },
+          "scene": {
+            "x": -4166.994651850954,
+            "y": -2654.318525363937,
+            "z": -1040.70323353165
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ZOd0d3vYW",
+    "title": "3rd Floor Right end - E Block",
+    "url": "images/scene-ZOd0d3vYW.jpg",
+    "previewUrl": "images/scene-thumb-ZOd0d3vYW.jpg",
+    "hotspots": [
+      {
+        "id": "n6twTVBse",
+        "title": "3rd Floor Right Corridor - E",
+        "targetSceneId": "6uu4e7xRt",
+        "coords": {
+          "plane": {
+            "x": 601.6021240626106,
+            "y": -199.5,
+            "z": 19.133583322529393
+          },
+          "scene": {
+            "x": 4787.421695052428,
+            "y": -1591.1934299758589,
+            "z": 152.180694545947
+          }
+        }
+      },
+      {
+        "id": "y8egOxqsW",
+        "title": "2nd Floor - Ramp Side",
+        "targetSceneId": "dXztEapWd45",
+        "coords": {
+          "plane": {
+            "x": -140.8795678204762,
+            "y": -199.66000000000003,
+            "z": 104.37384506979686
+          },
+          "scene": {
+            "x": -2678.703349225679,
+            "y": -3797.726171439071,
+            "z": 1972.7437484973707
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "6uu4e7xRt",
+    "title": "3rd Floor Right Corridor - E",
+    "url": "images/scene-6uu4e7xRt.jpg",
+    "previewUrl": "images/scene-thumb-6uu4e7xRt.jpg",
+    "hotspots": [
+      {
+        "id": "-NMZsEaaX",
+        "title": "3rd Floor Right end - E Block",
+        "targetSceneId": "ZOd0d3vYW",
+        "coords": {
+          "plane": {
+            "x": -347.60608544919785,
+            "y": -199.66999999999996,
+            "z": -141.3417541103406
+          },
+          "scene": {
+            "x": -4128.080255024701,
+            "y": -2371.3466858050647,
+            "z": -1678.859873470914
+          }
+        }
+      },
+      {
+        "id": "5JE9DojB_",
+        "title": "OS Lab (E 304)",
+        "targetSceneId": "BL35jOJ8oA7",
+        "coords": {
+          "plane": {
+            "x": -992.8077586291023,
+            "y": -199.28999999999994,
+            "z": -273.8098363448708
+          },
+          "scene": {
+            "x": -4777.001338227877,
+            "y": -961.3037545697665,
+            "z": -1317.11700677603
+          }
+        }
+      },
+      {
+        "id": "2RYOSCRqL",
+        "title": "Basic Programming Lab 2 (E 305)",
+        "targetSceneId": "zixK1KcmErg",
+        "coords": {
+          "plane": {
+            "x": 239.81290265196904,
+            "y": -199.4300000000001,
+            "z": 410.18203605728644
+          },
+          "scene": {
+            "x": 2350.690491301447,
+            "y": -1955.2396536641827,
+            "z": 4016.036556166306
+          }
+        }
+      },
+      {
+        "id": "L1N5_LJUl",
+        "title": "Advance Programming Lab (E 309)",
+        "targetSceneId": "oCmtvGPAQjr",
+        "coords": {
+          "plane": {
+            "x": 386.3620420228707,
+            "y": -199.93000000000004,
+            "z": 63.47860460484448
+          },
+          "scene": {
+            "x": 4436.266476367257,
+            "y": -2294.513061500297,
+            "z": 733.3406306526107
+          }
+        }
+      },
+      {
+        "id": "Jd0WG9gYJ",
+        "title": "3rd Floor Upstairs (Block E)",
+        "targetSceneId": "Fvpr0QQns",
+        "coords": {
+          "plane": {
+            "x": 1218.1541922110032,
+            "y": -199.1600000000002,
+            "z": 734.6813524749716
+          },
+          "scene": {
+            "x": 4279.876882954714,
+            "y": -702.5754213966493,
+            "z": 2580.498172210013
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "BL35jOJ8oA7",
+    "title": "OS Lab (E 304)",
+    "url": "images/scene-BL35jOJ8oA7.jpg",
+    "previewUrl": "images/scene-thumb-BL35jOJ8oA7.jpg",
+    "hotspots": [
+      {
+        "id": "QREptKfZD",
+        "title": "3rd Floor Right Corridor - E",
+        "targetSceneId": "6uu4e7xRt",
+        "coords": {
+          "plane": {
+            "x": -391.8193840553386,
+            "y": -199.17999999999995,
+            "z": -221.68078245921245
+          },
+          "scene": {
+            "x": -4012.638985690967,
+            "y": -2047.8874004292882,
+            "z": -2276.864536129365
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "zixK1KcmErg",
+    "title": "Basic Programming Lab 2 (E 305)",
+    "url": "images/scene-zixK1KcmErg.jpg",
+    "previewUrl": "images/scene-thumb-zixK1KcmErg.jpg",
+    "hotspots": [
+      {
+        "id": "TkktzjB6i",
+        "title": "3rd Floor Right Corridor - E",
+        "targetSceneId": "6uu4e7xRt",
+        "coords": {
+          "plane": {
+            "x": -119.42668733894213,
+            "y": -199.46999999999997,
+            "z": -159.47028172060828
+          },
+          "scene": {
+            "x": -2138.9529870571723,
+            "y": -3571.624913870004,
+            "z": -2856.886305351758
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "oCmtvGPAQjr",
+    "title": "Advance Programming Lab (E 309)",
+    "url": "images/scene-oCmtvGPAQjr.jpg",
+    "previewUrl": "images/scene-thumb-oCmtvGPAQjr.jpg",
+    "hotspots": [
+      {
+        "id": "NiNSjaBrk",
+        "title": "3rd Floor Right Corridor - E",
+        "targetSceneId": "6uu4e7xRt",
+        "coords": {
+          "plane": {
+            "x": -418.1690457057542,
+            "y": -199.90999999999985,
+            "z": -569.7975641937288
+          },
+          "scene": {
+            "x": -2871.620190444784,
+            "y": -1373.544983335823,
+            "z": -3919.6413336346136
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ZLIxSGbBPWP",
+    "title": "Basic Programming - 1 (E 306)",
+    "url": "images/scene-ZLIxSGbBPWP.jpg",
+    "previewUrl": "images/scene-thumb-ZLIxSGbBPWP.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "RehM02MYbVg",
+    "title": "IT Lab (E 310)",
+    "url": "images/scene-RehM02MYbVg.jpg",
+    "previewUrl": "images/scene-thumb-RehM02MYbVg.jpg",
+    "hotspots": [
+      {
+        "id": "a-hXgeeGJ",
+        "title": "3rd Floor Left Corridor",
+        "targetSceneId": "o-8ezJqUKxi",
+        "coords": {
+          "plane": {
+            "x": 329.630365218789,
+            "y": -199.48999999999984,
+            "z": -623.3648724680024
+          },
+          "scene": {
+            "x": 2269.7406422501717,
+            "y": -1376.8839354549536,
+            "z": -4293.692027469361
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "vf78vZSFxJs",
+    "title": "Web Development Lab ( E 311)",
+    "url": "images/scene-vf78vZSFxJs.jpg",
+    "previewUrl": "images/scene-thumb-vf78vZSFxJs.jpg",
+    "hotspots": [
+      {
+        "id": "Pksa26lmX",
+        "title": "3rd Floor Left Corridor",
+        "targetSceneId": "o-8ezJqUKxi",
+        "coords": {
+          "plane": {
+            "x": -136.1317636472995,
+            "y": -199.07,
+            "z": 32.745431302056026
+          },
+          "scene": {
+            "x": -2821.620642566247,
+            "y": -4130.882744226209,
+            "z": 679.1513874936935
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "6JnIH8_Fs",
+    "title": "Lab - 3 3rd Floor(E-Block)",
+    "url": "images/scene-6JnIH8_Fs.jpg",
+    "previewUrl": "images/scene-thumb-6JnIH8_Fs.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "PTn-LMtD5rs",
+    "title": "Career Guidance & Counselling Cell (E)",
+    "url": "images/scene-PTn-LMtD5rs.jpg",
+    "previewUrl": "images/scene-thumb-PTn-LMtD5rs.jpg",
+    "hotspots": [
+      {
+        "id": "o5CfH0xQ2",
+        "title": "2nd Floor Upstairs (E)",
+        "targetSceneId": "7aiORKJsxlf",
+        "coords": {
+          "plane": {
+            "x": 342.5853676095186,
+            "y": -199.07000000000008,
+            "z": 350.76761432777295
+          },
+          "scene": {
+            "x": 3265.2952666219467,
+            "y": -1904.7706847625022,
+            "z": 3344.9611199023057
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "oBDIYovrh",
+    "title": "E Block Back Gate",
+    "url": "images/scene-oBDIYovrh.jpg",
+    "previewUrl": "images/scene-thumb-oBDIYovrh.jpg",
+    "hotspots": [
+      {
+        "id": "WID5EZ9vD",
+        "title": "School Block Backside",
+        "targetSceneId": "rlhCZMC3XyQ",
+        "coords": {
+          "plane": {
+            "x": 581.8896674920151,
+            "y": -199.81999999999982,
+            "z": -705.2015208820018
+          },
+          "scene": {
+            "x": 3138.942874305985,
+            "y": -1079.2516673662046,
+            "z": -3804.338861350531
+          }
+        }
+      },
+      {
+        "id": "XqOzPRzLq",
+        "title": "School Block Front",
+        "targetSceneId": "UohmalxTf",
+        "coords": {
+          "plane": {
+            "x": -255.53573511878832,
+            "y": -199.61000000000016,
+            "z": 538.9273173654979
+          },
+          "scene": {
+            "x": -2053.11172775325,
+            "y": -1604.7873737428572,
+            "z": 4324.36198173143
+          }
+        }
+      },
+      {
+        "id": "MIJIKWAn7",
+        "title": "Ground Floor BFCET",
+        "targetSceneId": "0hyWw3t4u",
+        "coords": {
+          "plane": {
+            "x": 634.8038592329441,
+            "y": -199.74,
+            "z": 28.89373748613569
+          },
+          "scene": {
+            "x": 4809.914702514417,
+            "y": -1514.4325806753159,
+            "z": 219.74887052416696
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ZaOhIldQbZH",
+    "title": "F- Block Midaway (Front)",
+    "url": "images/scene-ZaOhIldQbZH.jpg",
+    "previewUrl": "images/scene-thumb-ZaOhIldQbZH.jpg",
+    "hotspots": [
+      {
+        "id": "lbQKhO3J2",
+        "title": "BFCET - Outer View",
+        "targetSceneId": "5Pd9XFNOX",
+        "coords": {
+          "plane": {
+            "x": -906.3721366984499,
+            "y": -199.84999999999997,
+            "z": -92.03926967835689
+          },
+          "scene": {
+            "x": -4904.182099577164,
+            "y": -1081.737745438298,
+            "z": -498.73666951204166
+          }
+        }
+      },
+      {
+        "id": "pRZi2KH4j",
+        "title": "Girls Hostel - Front View",
+        "targetSceneId": "1-eH8pLDL",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 5013.84771197133,
+            "y": -505.2436871372487,
+            "z": 313.324123503172
+          }
+        }
+      },
+      {
+        "id": "JJj-YyqOv",
+        "title": "F Block Entry",
+        "targetSceneId": "marwgQr-P",
+        "coords": {
+          "plane": {
+            "x": 997.5394809772849,
+            "y": -199.18000000000012,
+            "z": 546.0876084262248
+          },
+          "scene": {
+            "x": 4362.050509531014,
+            "y": -873.835425965552,
+            "z": 2387.2407252239527
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "marwgQr-P",
+    "title": "F Block Entry",
+    "url": "images/scene-marwgQr-P.jpg",
+    "previewUrl": "images/scene-thumb-marwgQr-P.jpg",
+    "hotspots": [
+      {
+        "id": "p3PVqBZjN",
+        "title": "F- Block Midaway (Front)",
+        "targetSceneId": "ZaOhIldQbZH",
+        "coords": {
+          "plane": {
+            "x": -45.62462948840328,
+            "y": -199.67999999999975,
+            "z": -977.0359366436825
+          },
+          "scene": {
+            "x": -230.94453575616737,
+            "y": -1010.5802004993519,
+            "z": -4940.1405819510865
+          }
+        }
+      },
+      {
+        "id": "zIHOMkCG8",
+        "title": "F block Back Gate ",
+        "targetSceneId": "FHjoHhtQE",
+        "coords": {
+          "plane": {
+            "x": 92.53341481655859,
+            "y": -199.22000000000023,
+            "z": 960.7136779633033
+          },
+          "scene": {
+            "x": 473.7125668445954,
+            "y": -1024.1224878403912,
+            "z": 4919.238755013697
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "FHjoHhtQE",
+    "title": "F block Back Gate ",
+    "url": "images/scene-FHjoHhtQE.jpg",
+    "previewUrl": "images/scene-thumb-FHjoHhtQE.jpg",
+    "hotspots": [
+      {
+        "id": "pr3yeDlmk",
+        "title": "F Block Entry",
+        "targetSceneId": "marwgQr-P",
+        "coords": {
+          "plane": {
+            "x": 50.65489730655625,
+            "y": -199.41000000000014,
+            "z": 615.8801799870101
+          },
+          "scene": {
+            "x": 393.6342584319311,
+            "y": -1553.7359553255958,
+            "z": 4786.7263863998205
+          }
+        }
+      },
+      {
+        "id": "tOgJWnP-v",
+        "title": "Workshop Crossroad",
+        "targetSceneId": "vhHXHHHnNa-",
+        "coords": {
+          "plane": {
+            "x": -95.94796034224014,
+            "y": -199.34999999999988,
+            "z": -699.1325534439538
+          },
+          "scene": {
+            "x": -659.9144595364022,
+            "y": -1374.4838834649477,
+            "z": -4812.897304395624
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "1-eH8pLDL",
+    "title": "Girls Hostel - Front View",
+    "url": "images/scene-1-eH8pLDL.jpg",
+    "previewUrl": "images/scene-thumb-1-eH8pLDL.jpg",
+    "hotspots": [
+      {
+        "id": "0O160DjlY",
+        "title": "F- Block Midaway (Front)",
+        "targetSceneId": "ZaOhIldQbZH",
+        "coords": {
+          "plane": {
+            "x": -26.025299232514914,
+            "y": -199.60000000000014,
+            "z": 767.3123190928442
+          },
+          "scene": {
+            "x": -165.54921289958386,
+            "y": -1271.4781586258018,
+            "z": 4881.107264433437
+          }
+        }
+      },
+      {
+        "id": "kH9b44QOJ",
+        "title": "School Block Backside",
+        "targetSceneId": "rlhCZMC3XyQ",
+        "coords": {
+          "plane": {
+            "x": -1347.6204053609601,
+            "y": -199.12,
+            "z": -84.53888123088915
+          },
+          "scene": {
+            "x": -4984.985290385832,
+            "y": -739.5117225219946,
+            "z": -312.5861446209501
+          }
+        }
+      },
+      {
+        "id": "PeANXkSXu",
+        "title": "Girls Hostel Midway",
+        "targetSceneId": "T2UcAkhP1",
+        "coords": {
+          "plane": {
+            "x": 1430.450769077397,
+            "y": -199.58999999999997,
+            "z": -123.48748596026752
+          },
+          "scene": {
+            "x": 4979.936471666263,
+            "y": -696.536942464624,
+            "z": -429.8221070350592
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "T2UcAkhP1",
+    "title": "Girls Hostel Midway",
+    "url": "images/scene-T2UcAkhP1.jpg",
+    "previewUrl": "images/scene-thumb-T2UcAkhP1.jpg",
+    "hotspots": [
+      {
+        "id": "XmSwYN_NG",
+        "title": "Girls Hostel - Front View",
+        "targetSceneId": "1-eH8pLDL",
+        "coords": {
+          "plane": {
+            "x": -228.61581636629143,
+            "y": -199.80000000000032,
+            "z": 1267.0669954490552
+          },
+          "scene": {
+            "x": -887.0726941055292,
+            "y": -774.8224026022824,
+            "z": 4909.1332434723645
+          }
+        }
+      },
+      {
+        "id": "ylloi_Xzi",
+        "title": "Workshop Crossroad",
+        "targetSceneId": "vhHXHHHnNa-",
+        "coords": {
+          "plane": {
+            "x": 249.46006183052535,
+            "y": -199.79999999999984,
+            "z": -736.9800542113676
+          },
+          "scene": {
+            "x": 1567.4317746167792,
+            "y": -1256.5967208359136,
+            "z": -4630.58847083706
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "vhHXHHHnNa-",
+    "title": "Workshop Crossroad",
+    "url": "images/scene-vhHXHHHnNa-.jpg",
+    "previewUrl": "images/scene-thumb-vhHXHHHnNa-.jpg",
+    "hotspots": [
+      {
+        "id": "9pFtzuWmz",
+        "title": "Seminar Hall Backside",
+        "targetSceneId": "1JuSHnh_Kxa",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 813.0147619228956,
+            "y": -32.46640163450024,
+            "z": -4981.011933843609
+          }
+        }
+      },
+      {
+        "id": "a_5jIv62w",
+        "title": "Way to MP Workshop",
+        "targetSceneId": "oGBSvHXoByM",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -487.67637457321763,
+            "y": -449.3697806900171,
+            "z": 5003.025020546364
+          }
+        }
+      },
+      {
+        "id": "L9b3a_bor",
+        "title": "F block Back Gate ",
+        "targetSceneId": "FHjoHhtQE",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 1401.8836823311187,
+            "y": -576.9661696092467,
+            "z": -4814.1959719071165
+          }
+        }
+      },
+      {
+        "id": "zcFyID7WC",
+        "title": "Girls Hostel Midway",
+        "targetSceneId": "T2UcAkhP1",
+        "coords": {
+          "plane": {
+            "x": 899.6532216546346,
+            "y": -199.60999999999999,
+            "z": -186.20280273669692
+          },
+          "scene": {
+            "x": 4830.0723019777615,
+            "y": -1072.8568307719418,
+            "z": -997.286914819388
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "oGBSvHXoByM",
+    "title": "Way to MP Workshop",
+    "url": "images/scene-oGBSvHXoByM.jpg",
+    "previewUrl": "images/scene-thumb-oGBSvHXoByM.jpg",
+    "hotspots": [
+      {
+        "id": "gxOeML3rI",
+        "title": "Workshop Crossroad",
+        "targetSceneId": "vhHXHHHnNa-",
+        "coords": {
+          "plane": {
+            "x": -1453.1272775454868,
+            "y": -199.11999999999998,
+            "z": -168.488734670295
+          },
+          "scene": {
+            "x": -4967.889652299793,
+            "y": -683.4077074495183,
+            "z": -576.5534180132871
+          }
+        }
+      },
+      {
+        "id": "FHE6c9vVH",
+        "title": "MP WORKSHOP ( FRONT VIEW )",
+        "targetSceneId": "2ZrYa9OBH",
+        "coords": {
+          "plane": {
+            "x": 920.9400052242715,
+            "y": -199.93000000000004,
+            "z": 66.08773852946557
+          },
+          "scene": {
+            "x": 4920.79555470323,
+            "y": -1068.2180444290298,
+            "z": 354.487953697801
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "2ZrYa9OBH",
+    "title": "MP WORKSHOP ( FRONT VIEW )",
+    "url": "images/scene-2ZrYa9OBH.jpg",
+    "previewUrl": "images/scene-thumb-2ZrYa9OBH.jpg",
+    "hotspots": [
+      {
+        "id": "AgqPQVHH0",
+        "title": "Way to MP Workshop",
+        "targetSceneId": "oGBSvHXoByM",
+        "coords": {
+          "plane": {
+            "x": 368.28152907672245,
+            "y": -199.1000000000002,
+            "z": 766.7063672817715
+          },
+          "scene": {
+            "x": 2129.8895415097763,
+            "y": -1154.5534818776734,
+            "z": 4429.186978893545
+          }
+        }
+      },
+      {
+        "id": "7QTnxNFeF",
+        "title": "Work Shop Inner",
+        "targetSceneId": "ujLRXkV52",
+        "coords": {
+          "plane": {
+            "x": -1299.9459947687603,
+            "y": -199.21,
+            "z": -57.513145698581155
+          },
+          "scene": {
+            "x": -4984.069748303977,
+            "y": -766.8985299742404,
+            "z": -221.18195785536608
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "ujLRXkV52",
+    "title": "Work Shop Inner",
+    "url": "images/scene-ujLRXkV52.jpg",
+    "previewUrl": "images/scene-thumb-ujLRXkV52.jpg",
+    "hotspots": [
+      {
+        "id": "1VlAEY9hK",
+        "title": "MP WORKSHOP ( FRONT VIEW )",
+        "targetSceneId": "2ZrYa9OBH",
+        "coords": {
+          "plane": {
+            "x": -473.3458610620389,
+            "y": -199.3,
+            "z": -7.167338987807168
+          },
+          "scene": {
+            "x": -4650.40060588824,
+            "y": -1962.2317020030252,
+            "z": -70.2824802150343
+          }
+        }
+      },
+      {
+        "id": "qUc6MIQm7",
+        "title": "Toyota Learning Shop",
+        "targetSceneId": "iie8v4vl-",
+        "coords": {
+          "plane": {
+            "x": 561.5656696652371,
+            "y": -199.57,
+            "z": 175.45305020496394
+          },
+          "scene": {
+            "x": 4562.331429706545,
+            "y": -1623.7521560338998,
+            "z": 1424.335091558824
+          }
+        }
+      },
+      {
+        "id": "e5_TjTkN5",
+        "title": "WORKSHOP Corridor",
+        "targetSceneId": "Zl9rcKR4a",
+        "coords": {
+          "plane": {
+            "x": 770.5884218522332,
+            "y": -199.66,
+            "z": 17.01799451971605
+          },
+          "scene": {
+            "x": 4883.889554409127,
+            "y": -1267.8783014138708,
+            "z": 106.90799034733408
+          }
+        }
+      },
+      {
+        "id": "1bESmXwpf",
+        "title": "Foundary shop",
+        "targetSceneId": "6r2O3-mko",
+        "coords": {
+          "plane": {
+            "x": 1024.5293454483772,
+            "y": -199.99000000000007,
+            "z": 202.0081151119678
+          },
+          "scene": {
+            "x": 4864.850129563603,
+            "y": -949.8955635263386,
+            "z": 958.7064003838749
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "Zl9rcKR4a",
+    "title": "WORKSHOP Corridor",
+    "url": "images/scene-Zl9rcKR4a.jpg",
+    "previewUrl": "images/scene-thumb-Zl9rcKR4a.jpg",
+    "hotspots": [
+      {
+        "id": "HuFSJE98d",
+        "title": "Electrical Shop (MP)",
+        "targetSceneId": "C07xrMyQO_",
+        "coords": {
+          "plane": {
+            "x": 425.81709049839435,
+            "y": -199.76000000000002,
+            "z": 166.8694484172479
+          },
+          "scene": {
+            "x": 4307.310042016093,
+            "y": -2022.1227184689387,
+            "z": 1687.039741697048
+          }
+        }
+      },
+      {
+        "id": "uUSni0uj0",
+        "title": "Work Shop Inner",
+        "targetSceneId": "ujLRXkV52",
+        "coords": {
+          "plane": {
+            "x": 872.3886332399865,
+            "y": -199.07,
+            "z": 76.01045913194307
+          },
+          "scene": {
+            "x": 4901.5204361255,
+            "y": -1124.2261595648663,
+            "z": 427.8838078060106
+          }
+        }
+      },
+      {
+        "id": "LNGMpYHxr",
+        "title": "Welding shop",
+        "targetSceneId": "J9Qpg8Yj4",
+        "coords": {
+          "plane": {
+            "x": -349.97355383764796,
+            "y": -199.13000000000002,
+            "z": 163.6439278535127
+          },
+          "scene": {
+            "x": -4064.926111578016,
+            "y": -2319.3883759664805,
+            "z": 1894.695281332279
+          }
+        }
+      },
+      {
+        "id": "TV-FOhMzD",
+        "title": "Lathe Machine Shop",
+        "targetSceneId": "4DdHS3125Ip",
+        "coords": {
+          "plane": {
+            "x": -1312.4400326398247,
+            "y": -199.05999999999997,
+            "z": -68.89546415190961
+          },
+          "scene": {
+            "x": -4983.912036621739,
+            "y": -758.9591019920988,
+            "z": -261.14419782564187
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "iie8v4vl-",
+    "title": "Toyota Learning Shop",
+    "url": "images/scene-iie8v4vl-.jpg",
+    "previewUrl": "images/scene-thumb-iie8v4vl-.jpg",
+    "hotspots": [
+      {
+        "id": "vxKWKfYJH",
+        "title": "Work Shop Inner",
+        "targetSceneId": "ujLRXkV52",
+        "coords": {
+          "plane": {
+            "x": -135.24409573397313,
+            "y": -199.8800000000001,
+            "z": 501.80937402705445
+          },
+          "scene": {
+            "x": -1224.6670190677232,
+            "y": -1812.961081037098,
+            "z": 4549.027061792756
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "C07xrMyQO_",
+    "title": "Electrical Shop (MP)",
+    "url": "images/scene-C07xrMyQO_.jpg",
+    "previewUrl": "images/scene-thumb-C07xrMyQO_.jpg",
+    "hotspots": [
+      {
+        "id": "ybQZUPoQM",
+        "title": "WORKSHOP Corridor",
+        "targetSceneId": "Zl9rcKR4a",
+        "coords": {
+          "plane": {
+            "x": -289.5576845077406,
+            "y": -199.26999999999992,
+            "z": -341.3979806921941
+          },
+          "scene": {
+            "x": -2980.1545661634937,
+            "y": -2057.185130738676,
+            "z": -3516.797652110181
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "J9Qpg8Yj4",
+    "title": "Welding shop",
+    "url": "images/scene-J9Qpg8Yj4.jpg",
+    "previewUrl": "images/scene-thumb-J9Qpg8Yj4.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "6r2O3-mko",
+    "title": "Foundary shop",
+    "url": "images/scene-6r2O3-mko.jpg",
+    "previewUrl": "images/scene-thumb-6r2O3-mko.jpg",
+    "hotspots": [
+      {
+        "id": "lXJms0ptb",
+        "title": "Work Shop Inner",
+        "targetSceneId": "ujLRXkV52",
+        "coords": {
+          "plane": {
+            "x": -410.0950570797865,
+            "y": -199.37,
+            "z": 53.82657941624839
+          },
+          "scene": {
+            "x": -4507.506933927126,
+            "y": -2195.577959704951,
+            "z": 590.7374706519342
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "4DdHS3125Ip",
+    "title": "Lathe Machine Shop",
+    "url": "images/scene-4DdHS3125Ip.jpg",
+    "previewUrl": "images/scene-thumb-4DdHS3125Ip.jpg",
+    "hotspots": [
+      {
+        "id": "bkDqUd1qD",
+        "title": "WORKSHOP Corridor",
+        "targetSceneId": "Zl9rcKR4a",
+        "coords": {
+          "plane": {
+            "x": -454.20647369735207,
+            "y": -199.07000000000005,
+            "z": 223.9576323675197
+          },
+          "scene": {
+            "x": -4210.390544532127,
+            "y": -1852.5335043438552,
+            "z": 2077.3717036347884
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "rlhCZMC3XyQ",
+    "title": "School Block Backside",
+    "url": "images/scene-rlhCZMC3XyQ.jpg",
+    "previewUrl": "images/scene-thumb-rlhCZMC3XyQ.jpg",
+    "hotspots": [
+      {
+        "id": "IcvJrJqTr",
+        "title": "Girls Hostel - Front View",
+        "targetSceneId": "1-eH8pLDL",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -5039.7130782377735,
+            "y": -283.57702663965176,
+            "z": -43.34715749382714
+          }
+        }
+      },
+      {
+        "id": "rHznAsmXA",
+        "title": "E Block Back Gate",
+        "targetSceneId": "oBDIYovrh",
+        "coords": {
+          "plane": {
+            "x": 39.521683155198865,
+            "y": -199.91999999999967,
+            "z": -1261.137373834296
+          },
+          "scene": {
+            "x": 156.1369997700067,
+            "y": -789.571258913666,
+            "z": -4982.977868411945
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "UohmalxTf",
+    "title": "School Block Front",
+    "url": "images/scene-UohmalxTf.jpg",
+    "previewUrl": "images/scene-thumb-UohmalxTf.jpg",
+    "hotspots": [
+      {
+        "id": "KwsTV7L6U",
+        "title": "Basketball Ground",
+        "targetSceneId": "MNrfiMr3noY",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 2073.3502085909295,
+            "y": -287.6433295245483,
+            "z": 4592.645359480049
+          }
+        }
+      },
+      {
+        "id": "jWpixWs9-",
+        "title": "Triside Ground View (BFGI)",
+        "targetSceneId": "dfWFO7tdBRv",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 3277.3217396585023,
+            "y": -10.463070959533207,
+            "z": 3839.3927236528825
+          }
+        }
+      },
+      {
+        "id": "XNxJMduBY",
+        "title": "E Block Back Gate",
+        "targetSceneId": "oBDIYovrh",
+        "coords": {
+          "plane": {
+            "x": -542.5308513286086,
+            "y": -199.65999999999966,
+            "z": -1454.6537327039125
+          },
+          "scene": {
+            "x": -1747.9981447999473,
+            "y": -645.0875726034185,
+            "z": -4690.588855165265
+          }
+        }
+      },
+      {
+        "id": "oUO94dYYe",
+        "title": "Bru Park",
+        "targetSceneId": "X74R-YqsT",
+        "coords": {
+          "plane": {
+            "x": 865.4407534350291,
+            "y": -199.00999999999996,
+            "z": -101.03431456694783
+          },
+          "scene": {
+            "x": 4887.100439256601,
+            "y": -1129.7802419931672,
+            "z": -567.4886593483067
+          }
+        }
+      },
+      {
+        "id": "YqO-f15p2",
+        "title": " Block- I (Front View)",
+        "targetSceneId": "b57_ujvoR",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": 4405.557602637603,
+            "y": -426.7160862954065,
+            "z": 2429.856626501424
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "UH5BcyXsB",
+    "title": "Ground Floor - F Block",
+    "url": "images/scene-UH5BcyXsB.jpg",
+    "previewUrl": "images/scene-thumb-UH5BcyXsB.jpg",
+    "hotspots": [
+      {
+        "id": "a8hD3HYb_",
+        "title": "Badminton Court",
+        "targetSceneId": "Zy7RRieeT",
+        "coords": {
+          "plane": {
+            "x": 847.9439843819185,
+            "y": -199.41,
+            "z": -43.801150156862334
+          },
+          "scene": {
+            "x": 4907.236050910312,
+            "y": -1157.494319712154,
+            "z": -252.28409001162737
+          }
+        }
+      },
+      {
+        "id": "2d5bBrqFw",
+        "title": "BFCET - Outer View",
+        "targetSceneId": "5Pd9XFNOX",
+        "coords": {
+          "plane": {
+            "x": -557.4647211205651,
+            "y": -199.15,
+            "z": -26.672445869869435
+          },
+          "scene": {
+            "x": -4746.756164916101,
+            "y": -1701.5623755231568,
+            "z": -228.3248154082141
+          }
+        }
+      },
+      {
+        "id": "ZNID9KdUn",
+        "title": "1st Floor Upstairs - F Block",
+        "targetSceneId": "8Ua-_4VAY",
+        "coords": {
+          "plane": {
+            "x": 270.4641589929555,
+            "y": -199.05999999999986,
+            "z": -745.2937710531917
+          },
+          "scene": {
+            "x": 1666.9032880173534,
+            "y": -1233.4733299493873,
+            "z": -4601.186390094702
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "PZ9971Ih05",
+    "title": "Material Lab (F 006)",
+    "url": "images/scene-PZ9971Ih05.jpg",
+    "previewUrl": "images/scene-thumb-PZ9971Ih05.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "Zy7RRieeT",
+    "title": "Badminton Court",
+    "url": "images/scene-Zy7RRieeT.jpg",
+    "previewUrl": "images/scene-thumb-Zy7RRieeT.jpg",
+    "hotspots": [
+      {
+        "id": "Fjf5B1TpR",
+        "title": "Way to BFCET",
+        "targetSceneId": "Fnqj68rvtw",
+        "coords": {
+          "plane": {
+            "x": 1450.5794224910212,
+            "y": -199.62,
+            "z": 19.58211696854009
+          },
+          "scene": {
+            "x": 4999.711907351962,
+            "y": -688.8515233151899,
+            "z": 66.94649918191513
+          }
+        }
+      },
+      {
+        "id": "tyWz8FNV_",
+        "title": "Ground Floor - F Block",
+        "targetSceneId": "UH5BcyXsB",
+        "coords": {
+          "plane": {
+            "x": 108.4072548371418,
+            "y": -199.2200000000002,
+            "z": 866.3462985176346
+          },
+          "scene": {
+            "x": 611.2742238924841,
+            "y": -1126.8526264499903,
+            "z": 4883.606416963811
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "8Ua-_4VAY",
+    "title": "1st Floor Upstairs - F Block",
+    "url": "images/scene-8Ua-_4VAY.jpg",
+    "previewUrl": "images/scene-thumb-8Ua-_4VAY.jpg",
+    "hotspots": [
+      {
+        "id": "yJYa1Wlvd",
+        "title": "Ground Floor - F Block",
+        "targetSceneId": "UH5BcyXsB",
+        "coords": {
+          "plane": {
+            "x": 206.93902047765584,
+            "y": -199.59,
+            "z": -55.601595854754315
+          },
+          "scene": {
+            "x": 3569.599490488916,
+            "y": -3439.746634159103,
+            "z": -958.0677909631402
+          }
+        }
+      },
+      {
+        "id": "JnkuwZmcp",
+        "title": "2nd Floor Upstairs (F)",
+        "targetSceneId": "1ulloVq2g",
+        "coords": {
+          "plane": {
+            "x": 200.48770537768053,
+            "y": -199.83,
+            "z": 49.67673946303325
+          },
+          "scene": {
+            "x": 3524.5405122355837,
+            "y": -3508.479910740838,
+            "z": 868.4423189667568
+          }
+        }
+      },
+      {
+        "id": "acCsd7FLF",
+        "title": "103 - Lecture Hall (F)",
+        "targetSceneId": "PYFOl1I61",
+        "coords": {
+          "plane": {
+            "x": 41.233971522773174,
+            "y": -199.2,
+            "z": 183.56126989671228
+          },
+          "scene": {
+            "x": 754.917876481559,
+            "y": -3675.3159238700396,
+            "z": 3377.224758512024
+          }
+        }
+      },
+      {
+        "id": "m8TctIVhH",
+        "title": "1st  Floor Outer (F)",
+        "targetSceneId": "MFEGq_1Nh",
+        "coords": {
+          "plane": {
+            "x": 16.77263637991501,
+            "y": -199.9200000000001,
+            "z": 349.8270833092573
+          },
+          "scene": {
+            "x": 210.37768693701008,
+            "y": -2500.271926915652,
+            "z": 4380.307298017354
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "MFEGq_1Nh",
+    "title": "1st  Floor Outer (F)",
+    "url": "images/scene-MFEGq_1Nh.jpg",
+    "previewUrl": "images/scene-thumb-MFEGq_1Nh.jpg",
+    "hotspots": [
+      {
+        "id": "0oXrTfxbV",
+        "title": "LHF 104 - Lecture Hall (F)",
+        "targetSceneId": "MA8dIKHHtEr",
+        "coords": {
+          "plane": {
+            "x": 465.96189290780677,
+            "y": -199.27000000000007,
+            "z": 263.3880617323473
+          },
+          "scene": {
+            "x": 4116.42079429607,
+            "y": -1764.031697759437,
+            "z": 2329.9434865005096
+          }
+        }
+      },
+      {
+        "id": "RHGO8gAjd",
+        "title": "LHF 106 - Lecture Hall (F)",
+        "targetSceneId": "feqru6tgGQx",
+        "coords": {
+          "plane": {
+            "x": -242.18532831845488,
+            "y": -199.33999999999995,
+            "z": -278.8316868655219
+          },
+          "scene": {
+            "x": -2907.7694781260034,
+            "y": -2402.003728030207,
+            "z": -3354.1690970603377
+          }
+        }
+      },
+      {
+        "id": "duAHLZbAg",
+        "title": "1st Floor Upstairs - F Block",
+        "targetSceneId": "8Ua-_4VAY",
+        "coords": {
+          "plane": {
+            "x": 1366.3631276411338,
+            "y": -199.88,
+            "z": -17.62490454850123
+          },
+          "scene": {
+            "x": 4993.907319440379,
+            "y": -731.2016826287664,
+            "z": -65.25697111175488
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "PYFOl1I61",
+    "title": "103 - Lecture Hall (F)",
+    "url": "images/scene-PYFOl1I61.jpg",
+    "previewUrl": "images/scene-thumb-PYFOl1I61.jpg",
+    "hotspots": [
+      {
+        "id": "ZO-1t_yMQ",
+        "title": "1st Floor Upstairs - F Block",
+        "targetSceneId": "8Ua-_4VAY",
+        "coords": {
+          "plane": {
+            "x": -297.8069446600705,
+            "y": -199.74000000000007,
+            "z": 396.88196468901003
+          },
+          "scene": {
+            "x": -2808.8115005526333,
+            "y": -1886.5612124229572,
+            "z": 3745.7718452534614
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "MA8dIKHHtEr",
+    "title": "LHF 104 - Lecture Hall (F)",
+    "url": "images/scene-MA8dIKHHtEr.jpg",
+    "previewUrl": "images/scene-thumb-MA8dIKHHtEr.jpg",
+    "hotspots": [
+      {
+        "id": "OdX8uRZMc",
+        "title": "1st  Floor Outer (F)",
+        "targetSceneId": "MFEGq_1Nh",
+        "coords": {
+          "plane": {
+            "x": 570.3347612271392,
+            "y": -199.61000000000007,
+            "z": 306.95007085239666
+          },
+          "scene": {
+            "x": 4246.720038582427,
+            "y": -1488.18673992741,
+            "z": 2287.5949280926707
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "feqru6tgGQx",
+    "title": "LHF 106 - Lecture Hall (F)",
+    "url": "images/scene-feqru6tgGQx.jpg",
+    "previewUrl": "images/scene-thumb-feqru6tgGQx.jpg",
+    "hotspots": [
+      {
+        "id": "xTPSqLhiL",
+        "title": "1st  Floor Outer (F)",
+        "targetSceneId": "MFEGq_1Nh",
+        "coords": {
+          "plane": {
+            "x": -83.20762242596508,
+            "y": -199.5200000000001,
+            "z": 415.9773092342784
+          },
+          "scene": {
+            "x": -895.178474907228,
+            "y": -2150.143713778159,
+            "z": 4479.042728071716
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "1ulloVq2g",
+    "title": "2nd Floor Upstairs (F)",
+    "url": "images/scene-1ulloVq2g.jpg",
+    "previewUrl": "images/scene-thumb-1ulloVq2g.jpg",
+    "hotspots": [
+      {
+        "id": "C3zdJl6iY",
+        "title": "1st Floor Upstairs - F Block",
+        "targetSceneId": "8Ua-_4VAY",
+        "coords": {
+          "plane": {
+            "x": 541.7815830325483,
+            "y": -199.01999999999998,
+            "z": -60.66725608909947
+          },
+          "scene": {
+            "x": 4710.337319967441,
+            "y": -1737.7881114200197,
+            "z": -527.0251129873602
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "SbDg0wxrj",
+    "title": "EGD Hall (LHF-201)",
+    "url": "images/scene-SbDg0wxrj.jpg",
+    "previewUrl": "images/scene-thumb-SbDg0wxrj.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "O4cP-qhaISH",
+    "title": "NCC Room, (LHF-208)",
+    "url": "images/scene-O4cP-qhaISH.jpg",
+    "previewUrl": "images/scene-thumb-O4cP-qhaISH.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "SPK1bOUolWI",
+    "title": "LHF 209 - Lecture Hall",
+    "url": "images/scene-SPK1bOUolWI.jpg",
+    "previewUrl": "images/scene-thumb-SPK1bOUolWI.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "EQGBf5zmc61",
+    "title": "2nd Floor - Triside view (F)",
+    "url": "images/scene-EQGBf5zmc61.jpg",
+    "previewUrl": "images/scene-thumb-EQGBf5zmc61.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "9nZ8uOvykzW",
+    "title": "2nd Floor Backside (F)",
+    "url": "images/scene-9nZ8uOvykzW.jpg",
+    "previewUrl": "images/scene-thumb-9nZ8uOvykzW.jpg",
+    "hotspots": [
+      {
+        "id": "6K7q3NkWK",
+        "title": "F block 3rd floor corridor",
+        "targetSceneId": "M1soh-grU",
+        "coords": {
+          "plane": {
+            "x": -1442.3126080396537,
+            "y": -199.59,
+            "z": -62.35096085941212
+          },
+          "scene": {
+            "x": -4994.507916863588,
+            "y": -692.4872671418836,
+            "z": -216.53809512352763
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "t4YewdKDq",
+    "title": "F block 3rd floor upstairs",
+    "url": "images/scene-t4YewdKDq.jpg",
+    "previewUrl": "images/scene-thumb-t4YewdKDq.jpg",
+    "hotspots": [
+      {
+        "id": "g5pj5nUhO",
+        "title": "2nd Floor Upstairs (F)",
+        "targetSceneId": "1ulloVq2g",
+        "coords": {
+          "plane": {
+            "x": -105.3751426647355,
+            "y": -199.62999999999988,
+            "z": -510.06941084713196
+          },
+          "scene": {
+            "x": -949.5635486142708,
+            "y": -1808.0440227718864,
+            "z": -4616.024740323825
+          }
+        }
+      },
+      {
+        "id": "9XSyBzgCd",
+        "title": "F block 3rd floor corridor",
+        "targetSceneId": "M1soh-grU",
+        "coords": {
+          "plane": {
+            "x": 666.6465312065304,
+            "y": -199.85,
+            "z": 3.1008954498736063
+          },
+          "scene": {
+            "x": 4835.86649664623,
+            "y": -1449.4085467744737,
+            "z": 21.60641614680542
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "M1soh-grU",
+    "title": "F block 3rd floor corridor",
+    "url": "images/scene-M1soh-grU.jpg",
+    "previewUrl": "images/scene-thumb-M1soh-grU.jpg",
+    "hotspots": [
+      {
+        "id": "ReFui8vA1",
+        "title": "F block 3rd floor upstairs",
+        "targetSceneId": "t4YewdKDq",
+        "coords": {
+          "plane": {
+            "x": -85.51078301090686,
+            "y": -199.56000000000017,
+            "z": 811.9429144050426
+          },
+          "scene": {
+            "x": -513.7344962853381,
+            "y": -1200.4739409248452,
+            "z": 4875.709814915297
+          }
+        }
+      },
+      {
+        "id": "voYV80dyo",
+        "title": "DE LAb, (LHF-304)",
+        "targetSceneId": "K7mPfN2gk",
+        "coords": {
+          "plane": {
+            "x": -141.03771813876173,
+            "y": -199.8600000000001,
+            "z": 317.3753359428367
+          },
+          "scene": {
+            "x": -1774.3923058719931,
+            "y": -2515.2830370002935,
+            "z": 4000.2676673018636
+          }
+        }
+      },
+      {
+        "id": "Rm8gB_e4F",
+        "title": "2nd Floor Backside (F)",
+        "targetSceneId": "9nZ8uOvykzW",
+        "coords": {
+          "plane": {
+            "x": 851.953127270952,
+            "y": -199.47,
+            "z": 23.571748474167666
+          },
+          "scene": {
+            "x": 4912.046522367886,
+            "y": -1152.2691040381214,
+            "z": 135.69550333451338
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "nlx8-zrO6cZ",
+    "title": "Mini Seminar Hall (F-301)",
+    "url": "images/scene-nlx8-zrO6cZ.jpg",
+    "previewUrl": "images/scene-thumb-nlx8-zrO6cZ.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "K7mPfN2gk",
+    "title": "DE LAb, (LHF-304)",
+    "url": "images/scene-K7mPfN2gk.jpg",
+    "previewUrl": "images/scene-thumb-K7mPfN2gk.jpg",
+    "hotspots": [
+      {
+        "id": "eWYVn_fqu",
+        "title": "F block 3rd floor corridor",
+        "targetSceneId": "M1soh-grU",
+        "coords": {
+          "plane": {
+            "x": 660.7509439870041,
+            "y": -199.51000000000002,
+            "z": 153.11106151612245
+          },
+          "scene": {
+            "x": 4716.355629097105,
+            "y": -1426.340271887336,
+            "z": 1092.7810561608405
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "gqCKvhox9X",
+    "title": "(LHF-304),Lecture Hall",
+    "url": "images/scene-gqCKvhox9X.jpg",
+    "previewUrl": "images/scene-thumb-gqCKvhox9X.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "wr67IDl4aq",
+    "title": "LHF 308 - Lecture Hall",
+    "url": "images/scene-wr67IDl4aq.jpg",
+    "previewUrl": "images/scene-thumb-wr67IDl4aq.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "_-rIKXVHbuk",
+    "title": "3rd Floor - Backside (F)",
+    "url": "images/scene-_-rIKXVHbuk.jpg",
+    "previewUrl": "images/scene-thumb-_-rIKXVHbuk.jpg",
+    "hotspots": [
+      {
+        "id": "WX4jaKgkY",
+        "title": "3rd Floor Backside Stairs (F)",
+        "targetSceneId": "h9XARLb1Sw9",
+        "coords": {
+          "plane": {
+            "x": -2.556867866337211,
+            "y": -199.69999999999985,
+            "z": -661.2041636948634
+          },
+          "scene": {
+            "x": -15.723232960018555,
+            "y": -1461.5026663675978,
+            "z": -4832.382657180086
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "h9XARLb1Sw9",
+    "title": "3rd Floor Backside Stairs (F)",
+    "url": "images/scene-h9XARLb1Sw9.jpg",
+    "previewUrl": "images/scene-thumb-h9XARLb1Sw9.jpg",
+    "hotspots": [
+      {
+        "id": "8EHYlceHK",
+        "title": "3rd Floor - Backside (F)",
+        "targetSceneId": "_-rIKXVHbuk",
+        "coords": {
+          "plane": {
+            "x": 512.8894189649185,
+            "y": -199.4799999999997,
+            "z": -1203.5196384883802
+          },
+          "scene": {
+            "x": 1956.468678109121,
+            "y": -761.9356703652741,
+            "z": -4589.719788227471
+          }
+        }
+      },
+      {
+        "id": "9SjGX7yin",
+        "title": "2nd Floor Backside (F)",
+        "targetSceneId": "9nZ8uOvykzW",
+        "coords": {
+          "plane": null,
+          "scene": {
+            "x": -441.4979632284101,
+            "y": -534.5323445578839,
+            "z": -4998.969293527588
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "FgNELwWn9w",
+    "title": "LHF 401 - Tutorial Room",
+    "url": "images/scene-FgNELwWn9w.jpg",
+    "previewUrl": "images/scene-thumb-FgNELwWn9w.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "ucaiLaGt-Z",
+    "title": "LHF 402 - Tutorial Room",
+    "url": "images/scene-ucaiLaGt-Z.jpg",
+    "previewUrl": "images/scene-thumb-ucaiLaGt-Z.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "i57BHhQMYA",
+    "title": " LHF - 407, Tutorial room",
+    "url": "images/scene-i57BHhQMYA.jpg",
+    "previewUrl": "images/scene-thumb-i57BHhQMYA.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "NKwzO27G6l",
+    "title": "Digital Signal Lab (F - 412)",
+    "url": "images/scene-NKwzO27G6l.jpg",
+    "previewUrl": "images/scene-thumb-NKwzO27G6l.jpg",
+    "hotspots": []
+  },
+  {
+    "id": "QijPgKKrat",
+    "title": "LHF 409 - Tutorial Room",
+    "url": "images/scene-QijPgKKrat.jpg",
+    "previewUrl": "images/scene-thumb-QijPgKKrat.jpg",
+    "hotspots": []
+  }
+]

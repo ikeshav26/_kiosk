@@ -1,0 +1,82 @@
+/* Remove base styles from the Pannellum container */
+.custom-arrow-hotspot, .custom-info-hotspot {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 1px !important;
+  height: 1px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Nuke Pannellum's implicit 26x26 ghost circles on hover */
+.pnlm-hotspot-base, .pnlm-hotspot, .pnlm-hotspot:hover {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Extremely Simple Text Arrow */
+.simple-arrow-icon {
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0px 2px 5px rgba(0,0,0,0.8), 0px 0px 10px rgba(0,0,0,0.5);
+  font-weight: 900;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s ease-in-out;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-arrow-icon:hover {
+  color: #3b82f6; /* Blue hover highlight */
+  transform: scale(1.2) translateY(-5px);
+  text-shadow: 0px 4px 8px rgba(0,0,0,0.9), 0px 0px 15px rgba(59, 130, 246, 0.8);
+}
+
+/* Tooltip container */
+.custom-arrow-hotspot .pnlm-tooltip,
+.custom-info-hotspot .pnlm-tooltip {
+  display: block;
+  visibility: hidden;
+  width: max-content;
+  max-width: 180px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 14px;
+  position: absolute;
+  z-index: 10;
+  bottom: 35px; /* Sits right above the simple arrow */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s, visibility 0.2s;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Make tooltip triangle pointer */
+.custom-arrow-hotspot .pnlm-tooltip::after,
+.custom-info-hotspot .pnlm-tooltip::after {
+  content: "" !important;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}
+
+.custom-arrow-hotspot:hover .pnlm-tooltip,
+.custom-info-hotspot:hover .pnlm-tooltip {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,14 +1,10 @@
 import { useState, memo } from 'react';
 import { View, MapPin } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { VirtualTour } from '../components/VirtualTour';
 
 const VirtualTourIframe = memo(() => (
-  <iframe
-    src="./virtual-tour/index.html?sceneId=5Pd9XFNOX"
-    className="absolute top-0 left-0 w-full h-full border-0"
-    allow="fullscreen"
-    title="Virtual Tour"
-  />
+  <VirtualTour sceneId="5Pd9XFNOX" className="absolute top-0 left-0 w-full h-full" />
 ));
 
 const Campus360Iframe = memo(() => (
