@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import SidePanel from './components/SidePannel';
 import useInactivityTimer from './hooks/TrackInactivity';
 import { Toaster } from 'react-hot-toast';
+import Administration from './pages/Adminstration';
 
 const Navigation = lazy(() => import('./pages/Navigation'));
 const HelpDesk = lazy(() => import('./pages/HelpDesk'));
@@ -68,6 +69,7 @@ const App = () => {
                 <Route path="/block/:id" element={<BlockDetail />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/time-table/:id" element={<Timetable />} />
+                <Route path='/administration' element={<Administration/>}/>
               </Routes>
             </Suspense>
           </div>
