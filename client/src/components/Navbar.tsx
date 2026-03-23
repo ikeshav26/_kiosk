@@ -205,7 +205,7 @@ const Navbar = () => {
             },
             { 
               name: "Manpreet Singh", 
-              handle: "manpreetvilasara", 
+              handle: "MannuVilasara", 
               dept: "CSE", 
               batch: "2024-2028", 
               avatar: "https://avatars.githubusercontent.com/u/117009138?s=130&v=4" 
