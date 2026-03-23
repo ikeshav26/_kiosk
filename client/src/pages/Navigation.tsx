@@ -104,12 +104,12 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
   },
   {
     "_id": "69a5b09e69d4af22a31d75b0",
-    "id": "school",
+    "id": "block_h",
     "kioskId": "default",
     "__v": 0,
     "lat": 30.251552035719214,
     "lng": 74.84053658108215,
-    "name": "School",
+    "name": "Block H",
     "sub": "",
     "navigationmapID": "UohmalxTf"
   },
@@ -120,7 +120,7 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     "__v": 0,
     "lat": 30.251227380505014,
     "lng": 74.84126721102429,
-    "name": "Innovation Lab",
+    "name": "Innovation Centre",
     "sub": "",
     "navigationmapID": "b57_ujvoR"
   },
@@ -129,11 +129,22 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     "id": "f_block",
     "kioskId": "default",
     "__v": 0,
-    "lat": 30.250731418446332,
-    "lng": 74.84043343362299,
+    "lat": 30.250843569998324,
+    "lng": 74.84068583913677,
     "name": "Block F",
     "sub": "",
     "navigationmapID": "5Pd9XFNOX"
+  },
+  {
+    "_id": "69a5b09e69d4af22a31d75b2",
+    "id": "g_block",
+    "kioskId": "default",
+    "__v": 0,
+    "lat": 30.25059947876707,
+    "lng": 74.84068583913677,
+    "name": "Block G",
+    "sub": "",
+    "navigationmapID": "Zy7RRieeT"
   },
   {
     "_id": "69a5b09e69d4af22a31d75b3",
