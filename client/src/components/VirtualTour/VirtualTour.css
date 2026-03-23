@@ -1,3 +1,46 @@
+/* ── Root container ─────────────────────────────────────────────────────── */
+.vt-root {
+  background: #0a0a0a;
+}
+
+/* ── Scene transition overlay ────────────────────────────────────────────── */
+.vt-transition-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  background: #0a0a0a;
+  pointer-events: none;
+  /* Start fully transparent and hidden */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vt-transition-overlay.fade-in {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s; /* instantly show */
+}
+
+.vt-transition-overlay.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: none; /* hold position while scene loads */
+}
+
+.vt-transition-overlay.fade-out {
+  visibility: visible;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vt-transition-overlay.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
 /* ── Pannellum hotspot base reset ──────────────────────────────────────────
    pannellum.css applies border-radius:13px + background sprites to every
    .pnlm-hotspot, creating the white ring/circle seen on screen.
