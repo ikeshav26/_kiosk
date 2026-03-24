@@ -617,8 +617,8 @@ const Navigation = () => {
                 <iframe
                   src={
                     selectedSceneId === 'main-tour'
-                      ? './virtual-tour/index.html'
-                      : `./virtual-tour/index.html?sceneId=${selectedSceneId}`
+                      ? 'https://virtual-tour-bfgi.vercel.app/'
+                      : `https://virtual-tour-bfgi.vercel.app/?sceneId=${selectedSceneId}`
                   }
                   style={{ width: '100%', height: '100%', border: 'none' }}
                   allowFullScreen
