@@ -69,7 +69,7 @@ const App = () => {
                 <Route path="/block/:id" element={<BlockDetail />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/time-table/:id" element={<Timetable />} />
-                <Route path='/administration' element={<Administration/>}/>
+                <Route path="/administration" element={<Administration />} />
               </Routes>
             </Suspense>
           </div>

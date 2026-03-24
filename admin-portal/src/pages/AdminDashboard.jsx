@@ -29,7 +29,6 @@ import {
   SearchInput,
 } from '../components/ui';
 
-
 const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
@@ -201,8 +200,6 @@ const AdminDashboard = () => {
     },
   ];
 
-  
-
   return (
     <div className="lg:ml-64 mt-20 min-h-[calc(100vh-5rem)] p-4 sm:p-8">
       <PageHeader user={user} roleLabel="Admin" />
@@ -355,7 +352,7 @@ const AdminDashboard = () => {
           </div>
         </Card>
       </div>
-      
+
       <Modal
         isOpen={!!editingUser}
         onClose={() => setEditingUser(null)}

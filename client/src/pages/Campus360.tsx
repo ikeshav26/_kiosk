@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 const VirtualTourIframe = memo(() => (
   <iframe
-    src="./virtual-tour/index.html?sceneId=5Pd9XFNOX"
+    src="https://virtual-tour-bfgi.vercel.app/"
     className="absolute top-0 left-0 w-full h-full border-0"
     allow="fullscreen"
     title="Virtual Tour"
@@ -13,7 +13,7 @@ const VirtualTourIframe = memo(() => (
 
 const Campus360Iframe = memo(() => (
   <iframe
-    src="./campus360/360.babafaridgroup.edu.in/index.html"
+    src="https://ikeshav26.github.io/campus-360/"
     className="absolute top-0 left-0 w-full h-full border-0"
     allow="fullscreen"
     title="Campus 360"

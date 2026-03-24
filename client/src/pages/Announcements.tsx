@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { instance } from '../utils/instance';
 
-
 interface Announcement {
   _id: string;
   subject: string;

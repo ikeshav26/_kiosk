@@ -63,7 +63,11 @@ const ROOM_TYPE_CONFIG: Record<string, { icon: typeof DoorOpen; color: string; b
   lab: { icon: FlaskConical, color: 'text-cyan-600', bg: 'bg-cyan-50 border-cyan-100' },
   office: { icon: Briefcase, color: 'text-amber-600', bg: 'bg-amber-50 border-amber-100' },
   washroom: { icon: Bath, color: 'text-purple-600', bg: 'bg-purple-50 border-purple-100' },
-  staircase: { icon: ArrowUpDown, color: 'text-emerald-600', bg: 'bg-emerald-50 border-emerald-100' },
+  staircase: {
+    icon: ArrowUpDown,
+    color: 'text-emerald-600',
+    bg: 'bg-emerald-50 border-emerald-100',
+  },
   other: { icon: MoreHorizontal, color: 'text-slate-600', bg: 'bg-slate-50 border-slate-100' },
 };
 
@@ -98,22 +102,28 @@ const BlockDetail = () => {
     fetchBuilding();
   }, [id]);
 
-  const images = Array.isArray(data?.imageUrl) && data.imageUrl.length > 0 ? data.imageUrl : [DEFAULT_IMAGE];
+  const images =
+    Array.isArray(data?.imageUrl) && data.imageUrl.length > 0 ? data.imageUrl : [DEFAULT_IMAGE];
 
   const nextSlide = useCallback(() => {
     setActiveImg((prev) => (prev + 1) % images.length);
   }, [images.length]);
 
-  const goToSlide = useCallback((idx: number) => {
-    setActiveImg(idx);
-    if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(nextSlide, 4000);
-  }, [nextSlide]);
+  const goToSlide = useCallback(
+    (idx: number) => {
+      setActiveImg(idx);
+      if (timerRef.current) clearInterval(timerRef.current);
+      timerRef.current = setInterval(nextSlide, 4000);
+    },
+    [nextSlide]
+  );
 
   useEffect(() => {
     if (images.length <= 1) return;
     timerRef.current = setInterval(nextSlide, 4000);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [images.length, nextSlide]);
 
   useEffect(() => {
@@ -152,7 +162,6 @@ const BlockDetail = () => {
   const about = data.departmentInfo?.about ?? '';
   const rooms = data.rooms ?? [];
 
-
   const roomsByFloor = rooms.reduce<Record<number, RoomDetail[]>>((acc, room) => {
     const floor = room.floor ?? 0;
     if (!acc[floor]) acc[floor] = [];
@@ -176,7 +185,9 @@ const BlockDetail = () => {
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
                   idx === activeImg ? 'opacity-100' : 'opacity-0'
                 }`}
-                onError={(e) => { (e.target as HTMLImageElement).src = DEFAULT_IMAGE; }}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = DEFAULT_IMAGE;
+                }}
               />
             ))}
 
@@ -195,7 +206,9 @@ const BlockDetail = () => {
             {images.length > 1 && (
               <div className="absolute top-5 right-5 z-20 flex items-center gap-1.5 px-2.5 py-1 bg-black/40 backdrop-blur-sm rounded-lg">
                 <ImageIcon size={10} className="text-white/80" />
-                <span className="text-[9px] font-bold text-white">{activeImg + 1}/{images.length}</span>
+                <span className="text-[9px] font-bold text-white">
+                  {activeImg + 1}/{images.length}
+                </span>
               </div>
             )}
 
@@ -250,22 +263,26 @@ const BlockDetail = () => {
             </h1>
 
             {data.description && (
-              <p className="text-[13px] text-slate-500 leading-relaxed mb-6">
-                {data.description}
-              </p>
+              <p className="text-[13px] text-slate-500 leading-relaxed mb-6">{data.description}</p>
             )}
             <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-6">
               <div className="flex items-center gap-2.5">
                 <Layers size={14} className="text-slate-400" />
-                <span className="text-xs text-slate-600">{data.totalFloors || 0} {t('common.floors')}</span>
+                <span className="text-xs text-slate-600">
+                  {data.totalFloors || 0} {t('common.floors')}
+                </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <DoorOpen size={14} className="text-slate-400" />
-                <span className="text-xs text-slate-600">{rooms.length} {t('common.rooms')}</span>
+                <span className="text-xs text-slate-600">
+                  {rooms.length} {t('common.rooms')}
+                </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Clock size={14} className="text-slate-400" />
-                <span className="text-xs text-slate-600">{data.openTime || '09:00'} – {data.closeTime || '16:00'}</span>
+                <span className="text-xs text-slate-600">
+                  {data.openTime || '09:00'} – {data.closeTime || '16:00'}
+                </span>
               </div>
               {data.isAccessible && (
                 <div className="flex items-center gap-2.5">
@@ -289,10 +306,15 @@ const BlockDetail = () => {
 
             {data.departments && data.departments.length > 0 && (
               <div className="mb-5">
-                <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">{t('common.departments')}</p>
+                <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  {t('common.departments')}
+                </p>
                 <div className="flex flex-wrap gap-1.5">
                   {data.departments.map((dept, i) => (
-                    <span key={i} className="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 rounded-md text-[10px] font-semibold">
+                    <span
+                      key={i}
+                      className="px-2.5 py-1 bg-slate-50 border border-slate-100 text-slate-600 rounded-md text-[10px] font-semibold"
+                    >
                       {dept}
                     </span>
                   ))}
@@ -332,7 +354,14 @@ const BlockDetail = () => {
                       : 'border-transparent opacity-50 hover:opacity-80'
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" onError={(e) => { (e.target as HTMLImageElement).src = DEFAULT_IMAGE; }} />
+                  <img
+                    src={img}
+                    alt=""
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = DEFAULT_IMAGE;
+                    }}
+                  />
                 </button>
               ))}
             </div>
@@ -389,23 +418,29 @@ const BlockDetail = () => {
                       {floor === 0 ? 'G' : floor}
                     </span>
                     <span className="text-[11px] font-semibold text-slate-600">
-                      {floor === 0 ? t('blockDetail.groundFloor') : `${t('blockDetail.floor')} ${floor}`}
+                      {floor === 0
+                        ? t('blockDetail.groundFloor')
+                        : `${t('blockDetail.floor')} ${floor}`}
                     </span>
                     <span className="text-[10px] text-slate-300 ml-1">
-                      {roomsByFloor[floor].length} {roomsByFloor[floor].length === 1 ? t('blockDetail.room') : t('common.rooms')}
+                      {roomsByFloor[floor].length}{' '}
+                      {roomsByFloor[floor].length === 1 ? t('blockDetail.room') : t('common.rooms')}
                     </span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5">
                     {roomsByFloor[floor].map((room, idx) => {
-                      const config = ROOM_TYPE_CONFIG[room.type || 'other'] || ROOM_TYPE_CONFIG.other;
+                      const config =
+                        ROOM_TYPE_CONFIG[room.type || 'other'] || ROOM_TYPE_CONFIG.other;
                       const IconComponent = config.icon;
                       return (
                         <div
                           key={idx}
                           className={`flex items-center gap-3 px-3.5 py-3 rounded-xl border transition-colors ${config.bg}`}
                         >
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-white/70 ${config.color}`}>
+                          <div
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 bg-white/70 ${config.color}`}
+                          >
                             <IconComponent size={15} />
                           </div>
                           <div className="min-w-0">
@@ -414,7 +449,9 @@ const BlockDetail = () => {
                                 ? `${room.roomNumber} — ${room.roomName}`
                                 : room.roomName || room.roomNumber || '—'}
                             </p>
-                            <span className="text-[9px] text-slate-400 capitalize">{t(`blockDetail.roomType.${room.type || 'other'}`)}</span>
+                            <span className="text-[9px] text-slate-400 capitalize">
+                              {t(`blockDetail.roomType.${room.type || 'other'}`)}
+                            </span>
                           </div>
                         </div>
                       );
@@ -425,7 +462,6 @@ const BlockDetail = () => {
             </div>
           </div>
         )}
-
       </div>
 
       <style>{`

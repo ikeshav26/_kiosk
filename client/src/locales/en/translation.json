@@ -228,8 +228,8 @@
     "confirm": "CONFIRM",
     "space": "SPACE"
   },
-  "Campus_Map":{
-    "Campus_360":"Campus 360",
-    "Virtual_Tour":"Virtual Tour"
+  "Campus_Map": {
+    "Campus_360": "Campus 360",
+    "Virtual_Tour": "Virtual Tour"
   }
 }

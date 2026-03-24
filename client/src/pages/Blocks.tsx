@@ -22,7 +22,6 @@ interface BuildingBlock {
   contactNumber: string;
 }
 
-
 const Blocks = () => {
   const [blocks, setBlocks] = useState<BuildingBlock[]>([]);
   const [loading, setLoading] = useState(true);
@@ -52,7 +51,7 @@ const Blocks = () => {
     } catch (err) {
       console.error('Kiosk Blocks Fetch Error:', err);
       setError(t('blocks.unableToSync'));
-      setBlocks([]); 
+      setBlocks([]);
     } finally {
       setLoading(false);
     }
@@ -61,7 +60,6 @@ const Blocks = () => {
   useEffect(() => {
     fetchBlocks();
   }, []);
-
 
   const filteredBlocks = useMemo(() => {
     if (!Array.isArray(blocks)) return [];

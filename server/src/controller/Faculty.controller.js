@@ -12,10 +12,10 @@ const normalizeDepartment = (value) => {
     'COMPUTER SCIENCE': 'CSE',
     'COMPUTER SCIENCE ENGINEERING': 'CSE',
     ECE: 'ELECTRICAL',
-    'ELECTRONICS': 'ELECTRICAL',
+    ELECTRONICS: 'ELECTRICAL',
     'ELECTRONICS AND COMMUNICATION ENGINEERING': 'ELECTRICAL',
     MECH: 'MECH',
-    'MECHANICAL': 'MECH',
+    MECHANICAL: 'MECH',
     'MECHANICAL ENGINEERING': 'MECH',
     CIVIL: 'CIVIL',
     'CIVIL ENGINEERING': 'CIVIL',
@@ -215,7 +215,9 @@ export const getFacultyById = async (req, res) => {
     if (!faculty) {
       return res.status(404).json({ message: 'Faculty not found' });
     }
-    res.status(200).json({ faculty: { ...faculty, department: normalizeDepartment(faculty.department) } });
+    res
+      .status(200)
+      .json({ faculty: { ...faculty, department: normalizeDepartment(faculty.department) } });
   } catch (err) {
     res.status(500).json({ message: err.message });
     console.log(err);

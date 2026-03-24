@@ -12,7 +12,7 @@ const scheduleSchema = new mongoose.Schema(
     },
     sectionName: {
       type: String,
-      enum: ['','A', 'B', 'C', 'D'],
+      enum: ['', 'A', 'B', 'C', 'D'],
     },
     scheduleLink: {
       type: String,
