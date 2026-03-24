@@ -5,9 +5,7 @@ import {
   ChevronDown,
   Check,
   BadgeInfo,
-  Calendar,
   X,
-  Cpu,
   Github,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -173,44 +171,32 @@ const Navbar = () => {
 
       {badgeInfoModalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#001226]/70 backdrop-blur-xl animate-in fade-in duration-500"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-md animate-in fade-in duration-300"
           onClick={() => setBadgeInfoModalOpen(false)}
         >
           <div
-            className="bg-white rounded-[60px] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.6)] max-w-5xl w-[95%] overflow-hidden relative border border-white/20 animate-in zoom-in-95 duration-400"
+            className="bg-white rounded-3xl shadow-2xl max-w-4xl w-[90%] overflow-hidden relative border border-slate-200 animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-[#002b5c] p-12 flex justify-between items-center relative overflow-hidden">
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-                <svg width="100%" height="100%">
-                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
-                  </pattern>
-                  <rect width="100%" height="100%" fill="url(#grid)" />
-                </svg>
+            {/* Header */}
+            <div className="bg-gradient-to-r from-[#002b5c] to-[#003d7a] p-10 flex justify-between items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-white uppercase tracking-wider">
+                  Development Team
+                </h2>
+                <p className="text-sm text-blue-200 mt-2">Campus Kiosk Project</p>
               </div>
-
-              <div className="relative z-10 flex items-center gap-8">
-                <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-[32px] flex items-center justify-center border border-white/20 shadow-2xl">
-                  <Cpu className="text-blue-300" size={40} />
-                </div>
-                <div>
-                  <h2 className="text-4xl font-black text-white  uppercase italic leading-none">
-                    Core Developers
-                  </h2>
-                </div>
-              </div>
-
               <button
                 onClick={() => setBadgeInfoModalOpen(false)}
-                className="relative z-10 w-16 h-16 bg-white/5 hover:bg-red-500/20 border border-white/10 rounded-[24px] text-white transition-all active:scale-90 group flex items-center justify-center"
+                className="w-12 h-12 bg-white/10 hover:bg-red-500/30 border border-white/20 rounded-2xl text-white transition-all active:scale-90 flex items-center justify-center"
               >
-                <X size={32} className="group-hover:rotate-90 transition-transform duration-300" />
+                <X size={24} />
               </button>
             </div>
 
-            <div className="p-12 lg:p-16 bg-[#f8fafc]">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Content */}
+            <div className="p-10 bg-slate-50">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {[
                   {
                     name: 'Keshav Gilhotra',
@@ -243,15 +229,11 @@ const Navbar = () => {
                 ].map((dev, idx) => (
                   <div
                     key={idx}
-                    className="group bg-white border border-slate-200 rounded-[44px] p-6 flex items-center gap-8 hover:border-blue-500/40 hover:shadow-[0_40px_80px_-20px_rgba(0,43,92,0.1)] transition-all duration-500 relative overflow-hidden"
+                    className="bg-white border border-slate-100 rounded-2xl p-5 hover:shadow-lg hover:border-[#002b5c]/30 transition-all duration-300 group"
                   >
-                    <span className="absolute -bottom-4 -right-4 text-7xl font-black text-slate-50 select-none pointer-events-none group-hover:text-blue-50 transition-colors">
-                      {idx + 1}
-                    </span>
-
-                    <div className="relative shrink-0">
-                      <div className="absolute inset-0 bg-[#002b5c] rounded-[38px] blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
-                      <div className="w-28 h-28 rounded-[36px] overflow-hidden border-[6px] border-slate-50 shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-500">
+                    <div className="flex items-start gap-4">
+                      {/* Avatar */}
+                      <div className="w-20 h-20 rounded-xl overflow-hidden border-3 border-[#002b5c]/10 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
                         <img
                           src={dev.avatar}
                           alt={dev.name}
@@ -261,46 +243,39 @@ const Navbar = () => {
                           }}
                         />
                       </div>
-                    </div>
 
-                    <div className="flex-1 min-w-0 z-10">
-                      <h3 className="text-2xl font-black text-[#002b5c] tracking-tighter truncate mb-1 italic">
-                        {dev.name}
-                      </h3>
+                      {/* Info */}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg font-bold text-[#002b5c] truncate">
+                          {dev.name}
+                        </h3>
+                        <p className="text-xs text-slate-500 font-semibold mb-3 flex items-center gap-1.5">
+                          <Github size={14} className="text-blue-500" />
+                          {dev.handle}
+                        </p>
 
-                      <p className="text-sm font-bold text-slate-400 mb-5 flex items-center gap-2">
-                        <Github size={22} className="text-blue-400" />
-                        {dev.handle}
-                      </p>
-
-                      <div className="flex items-center gap-6 pt-5 border-t border-slate-100">
-                        <div className="flex items-center gap-2.5">
-                          <div className="p-2 bg-slate-50 rounded-xl text-slate-400 group-hover:text-[#002b5c] transition-colors">
-                            <GraduationCap size={20} />
-                          </div>
+                        <div className="flex gap-3 text-xs">
                           <div>
-                            <p className="text-[8px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">
-                              Department
-                            </p>
-                            <p className="text-xs font-bold text-[#002b5c]">{dev.dept}</p>
+                            <span className="font-bold text-slate-600">{dev.dept}</span>
                           </div>
-                        </div>
-                        <div className="w-px h-8 bg-slate-100 " />
-                        <div className="flex items-center gap-2.5">
-                          <div className="p-2 bg-slate-50 rounded-xl text-slate-400 group-hover:text-[#002b5c] transition-colors">
-                            <Calendar size={20} />
-                          </div>
+                          <span className="text-slate-300">•</span>
                           <div>
-                            <p className="text-[8px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">
-                              Batch
-                            </p>
-                            <p className="text-xs font-bold text-[#002b5c]">{dev.batch}</p>
+                            <span className="font-bold text-slate-600">{dev.batch}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Mentor Section */}
+              <div className="mt-8 pt-8 border-t border-slate-200 flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Project Mentor</p>
+                  <p className="text-lg font-bold text-[#002b5c]">Er. Charandeep Singh Bedi</p>
+                </div>
+                <div className="w-1 h-12 bg-gradient-to-b from-[#002b5c] to-transparent rounded-full" />
               </div>
             </div>
           </div>
