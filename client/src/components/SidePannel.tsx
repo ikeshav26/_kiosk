@@ -8,6 +8,7 @@ import {
   ChevronRight,
   ChevronLeft,
   Building,
+  ShieldCheck,
 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +25,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
     { key: 'schedule', label: 'Schedule', icon: Calendar, route: '/schedule' },
     { key: 'faculty', label: 'Faculty', icon: Users, route: '/faculty' },
     { key: 'Blocks', label: 'Blocks', icon: DoorOpen, route: '/blocks' },
+    { key: 'adminstration', label: 'Administration', icon: ShieldCheck, route: '/administration' },
   ];
 
   const { t } = useTranslation();

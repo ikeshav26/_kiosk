@@ -1,5 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
-import { Globe, GraduationCap, ChevronDown, Check, BadgeInfo, Calendar, X, Cpu, Github } from 'lucide-react';
+import {
+  Globe,
+  GraduationCap,
+  ChevronDown,
+  Check,
+  BadgeInfo,
+  Calendar,
+  X,
+  Cpu,
+  Github,
+} from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import AdminLoginModal from './AdminLoginModal';
 
@@ -110,181 +120,192 @@ const Navbar = () => {
           </div>
         </div>
 
-       
-        <div className='flex items-center justify-center gap-6'>
-           <button
+        <div className="flex items-center justify-center gap-6">
+          <button
             onClick={() => setBadgeInfoModalOpen(true)}
-            className='flex items-center justify-center cursor-pointer hover:opacity-80 active:scale-95 transition-all'
-            title='Info'
+            className="flex items-center justify-center cursor-pointer hover:opacity-80 active:scale-95 transition-all"
+            title="Info"
           >
-            <BadgeInfo height={37} width={37}/>
-           </button>
+            <BadgeInfo height={37} width={37} />
+          </button>
 
           <div className="flex items-center gap-6" ref={dropdownRef}>
-          <div className="relative">
-            <button
-              className="flex items-center gap-3 bg-white text-[#001f3f] px-6 py-3 rounded-full font-bold text-sm shadow-lg active:bg-gray-100 transition-colors touch-none"
-              onClick={() => setDropdownOpen((prev) => !prev)}
-            >
-              <Globe size={20} strokeWidth={2.5} />
-              <span>{currentLang.label}</span>
-              <ChevronDown
-                size={16}
-                strokeWidth={2.5}
-                className={`transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
+            <div className="relative">
+              <button
+                className="flex items-center gap-3 bg-white text-[#001f3f] px-6 py-3 rounded-full font-bold text-sm shadow-lg active:bg-gray-100 transition-colors touch-none"
+                onClick={() => setDropdownOpen((prev) => !prev)}
+              >
+                <Globe size={20} strokeWidth={2.5} />
+                <span>{currentLang.label}</span>
+                <ChevronDown
+                  size={16}
+                  strokeWidth={2.5}
+                  className={`transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
 
-            {dropdownOpen && (
-              <div className="absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      i18n.changeLanguage(lang.code);
-                      setDropdownOpen(false);
-                    }}
-                    className={`w-full flex items-center justify-between px-5 py-4 text-sm font-semibold transition-colors ${
-                      i18n.language === lang.code
-                        ? 'bg-[#001f3f] text-white'
-                        : 'text-[#001f3f] hover:bg-gray-50 active:bg-gray-100'
-                    }`}
-                  >
-                    <span>{lang.label}</span>
-                    {i18n.language === lang.code && <Check size={16} strokeWidth={2.5} />}
-                  </button>
-                ))}
-              </div>
-            )}
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-3 w-48 bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden z-50">
+                  {LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => {
+                        i18n.changeLanguage(lang.code);
+                        setDropdownOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between px-5 py-4 text-sm font-semibold transition-colors ${
+                        i18n.language === lang.code
+                          ? 'bg-[#001f3f] text-white'
+                          : 'text-[#001f3f] hover:bg-gray-50 active:bg-gray-100'
+                      }`}
+                    >
+                      <span>{lang.label}</span>
+                      {i18n.language === lang.code && <Check size={16} strokeWidth={2.5} />}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
         </div>
       </nav>
       <AdminLoginModal isOpen={adminModalOpen} onClose={() => setAdminModalOpen(false)} />
-      
-     {badgeInfoModalOpen && (
-  <div
-    className="fixed inset-0 z-[100] flex items-center justify-center bg-[#001226]/70 backdrop-blur-xl animate-in fade-in duration-500"
-    onClick={() => setBadgeInfoModalOpen(false)}
-  >
-    <div
-      className="bg-white rounded-[60px] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.6)] max-w-5xl w-[95%] overflow-hidden relative border border-white/20 animate-in zoom-in-95 duration-400"
-      onClick={(e) => e.stopPropagation()}
-    >
-      <div className="bg-[#002b5c] p-12 flex justify-between items-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          <svg width="100%" height="100%"><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1"/></pattern><rect width="100%" height="100%" fill="url(#grid)" /></svg>
-        </div>
-        
-        <div className="relative z-10 flex items-center gap-8">
-          <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-[32px] flex items-center justify-center border border-white/20 shadow-2xl">
-            <Cpu className="text-blue-300" size={40} />
-          </div>
-          <div>
-            <h2 className="text-4xl font-black text-white  uppercase italic leading-none">Core Developers</h2>
-          </div>
-        </div>
 
-        <button
+      {badgeInfoModalOpen && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#001226]/70 backdrop-blur-xl animate-in fade-in duration-500"
           onClick={() => setBadgeInfoModalOpen(false)}
-          className="relative z-10 w-16 h-16 bg-white/5 hover:bg-red-500/20 border border-white/10 rounded-[24px] text-white transition-all active:scale-90 group flex items-center justify-center"
         >
-          <X size={32} className="group-hover:rotate-90 transition-transform duration-300" />
-        </button>
-      </div>
+          <div
+            className="bg-white rounded-[60px] shadow-[0_50px_120px_-20px_rgba(0,0,0,0.6)] max-w-5xl w-[95%] overflow-hidden relative border border-white/20 animate-in zoom-in-95 duration-400"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-[#002b5c] p-12 flex justify-between items-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+                <svg width="100%" height="100%">
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
+                  </pattern>
+                  <rect width="100%" height="100%" fill="url(#grid)" />
+                </svg>
+              </div>
 
-      <div className="p-12 lg:p-16 bg-[#f8fafc]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {[
-            { 
-              name: "Keshav Gilhotra", 
-              handle: "ikeshav26", 
-              dept: "CSE", 
-              batch: "2024-2028", 
-              avatar: "https://avatars.githubusercontent.com/u/203427446?v=4" 
-            },
-            { 
-              name: "Manpreet Singh", 
-              handle: "manpreetvilasara", 
-              dept: "CSE", 
-              batch: "2024-2028", 
-              avatar: "https://avatars.githubusercontent.com/u/117009138?s=130&v=4" 
-            },
-            { 
-              name: "Bhavuk Ahuja", 
-              handle: "bhavukahuja", 
-              dept: "CSE", 
-              batch: "2024-2028", 
-              avatar: "https://avatars.githubusercontent.com/u/219114795?v=4" 
-            },
-            { 
-              name: "Krish Puri", 
-              handle: "KrishTrue", 
-              dept: "CSE", 
-              batch: "2024-2028", 
-              avatar: "https://avatars.githubusercontent.com/u/215704039?v=4" 
-            }
-          ].map((dev, idx) => (
-            <div 
-              key={idx}
-              className="group bg-white border border-slate-200 rounded-[44px] p-6 flex items-center gap-8 hover:border-blue-500/40 hover:shadow-[0_40px_80px_-20px_rgba(0,43,92,0.1)] transition-all duration-500 relative overflow-hidden"
-            >
-              <span className="absolute -bottom-4 -right-4 text-7xl font-black text-slate-50 select-none pointer-events-none group-hover:text-blue-50 transition-colors">
-                {idx + 1}
-              </span>
-
-              <div className="relative shrink-0">
-                <div className="absolute inset-0 bg-[#002b5c] rounded-[38px] blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
-                <div className="w-28 h-28 rounded-[36px] overflow-hidden border-[6px] border-slate-50 shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-500">
-                  <img 
-                    src={dev.avatar} 
-                    alt={dev.name} 
-                    className="w-full h-full object-cover"
-                    onError={(e) => { e.currentTarget.src = `https://ui-avatars.com/api/?name=${dev.name}&background=002b5c&color=fff`; }}
-                  />
+              <div className="relative z-10 flex items-center gap-8">
+                <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-[32px] flex items-center justify-center border border-white/20 shadow-2xl">
+                  <Cpu className="text-blue-300" size={40} />
                 </div>
-             </div>
-
-              <div className="flex-1 min-w-0 z-10">
-                
-                <h3 className="text-2xl font-black text-[#002b5c] tracking-tighter truncate mb-1 italic">
-                  {dev.name}
-                </h3>
-                
-                <p className="text-sm font-bold text-slate-400 mb-5 flex items-center gap-2">
-                   <Github size={22} className="text-blue-400" />
-                   {dev.handle}
-                </p>
-
-                <div className="flex items-center gap-6 pt-5 border-t border-slate-100">
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-2 bg-slate-50 rounded-xl text-slate-400 group-hover:text-[#002b5c] transition-colors">
-                      <GraduationCap size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[8px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">Department</p>
-                      <p className="text-xs font-bold text-[#002b5c]">{dev.dept}</p>
-                    </div>
-                  </div>
-                  <div className="w-px h-8 bg-slate-100 " />
-                  <div className="flex items-center gap-2.5">
-                    <div className="p-2 bg-slate-50 rounded-xl text-slate-400 group-hover:text-[#002b5c] transition-colors">
-                      <Calendar size={20} />
-                    </div>
-                    <div>
-                      <p className="text-[8px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">Batch</p>
-                      <p className="text-xs font-bold text-[#002b5c]">{dev.batch}</p>
-                    </div>
-                  </div>
+                <div>
+                  <h2 className="text-4xl font-black text-white  uppercase italic leading-none">
+                    Core Developers
+                  </h2>
                 </div>
               </div>
+
+              <button
+                onClick={() => setBadgeInfoModalOpen(false)}
+                className="relative z-10 w-16 h-16 bg-white/5 hover:bg-red-500/20 border border-white/10 rounded-[24px] text-white transition-all active:scale-90 group flex items-center justify-center"
+              >
+                <X size={32} className="group-hover:rotate-90 transition-transform duration-300" />
+              </button>
             </div>
-          ))}
+
+            <div className="p-12 lg:p-16 bg-[#f8fafc]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {[
+                  {
+                    name: 'Keshav Gilhotra',
+                    handle: 'ikeshav26',
+                    dept: 'CSE',
+                    batch: '2024-2028',
+                    avatar: 'https://avatars.githubusercontent.com/u/203427446?v=4',
+                  },
+                  {
+                    name: 'Manpreet Singh',
+                    handle: 'MannuVilasara',
+                    dept: 'CSE',
+                    batch: '2024-2028',
+                    avatar: 'https://avatars.githubusercontent.com/u/117009138?s=130&v=4',
+                  },
+                  {
+                    name: 'Bhavuk Ahuja',
+                    handle: 'bhavukahuja',
+                    dept: 'CSE',
+                    batch: '2024-2028',
+                    avatar: 'https://avatars.githubusercontent.com/u/219114795?v=4',
+                  },
+                  {
+                    name: 'Krish Puri',
+                    handle: 'KrishTrue',
+                    dept: 'CSE',
+                    batch: '2024-2028',
+                    avatar: 'https://avatars.githubusercontent.com/u/215704039?v=4',
+                  },
+                ].map((dev, idx) => (
+                  <div
+                    key={idx}
+                    className="group bg-white border border-slate-200 rounded-[44px] p-6 flex items-center gap-8 hover:border-blue-500/40 hover:shadow-[0_40px_80px_-20px_rgba(0,43,92,0.1)] transition-all duration-500 relative overflow-hidden"
+                  >
+                    <span className="absolute -bottom-4 -right-4 text-7xl font-black text-slate-50 select-none pointer-events-none group-hover:text-blue-50 transition-colors">
+                      {idx + 1}
+                    </span>
+
+                    <div className="relative shrink-0">
+                      <div className="absolute inset-0 bg-[#002b5c] rounded-[38px] blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-700" />
+                      <div className="w-28 h-28 rounded-[36px] overflow-hidden border-[6px] border-slate-50 shadow-xl relative z-10 group-hover:scale-105 transition-transform duration-500">
+                        <img
+                          src={dev.avatar}
+                          alt={dev.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.currentTarget.src = `https://ui-avatars.com/api/?name=${dev.name}&background=002b5c&color=fff`;
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="flex-1 min-w-0 z-10">
+                      <h3 className="text-2xl font-black text-[#002b5c] tracking-tighter truncate mb-1 italic">
+                        {dev.name}
+                      </h3>
+
+                      <p className="text-sm font-bold text-slate-400 mb-5 flex items-center gap-2">
+                        <Github size={22} className="text-blue-400" />
+                        {dev.handle}
+                      </p>
+
+                      <div className="flex items-center gap-6 pt-5 border-t border-slate-100">
+                        <div className="flex items-center gap-2.5">
+                          <div className="p-2 bg-slate-50 rounded-xl text-slate-400 group-hover:text-[#002b5c] transition-colors">
+                            <GraduationCap size={20} />
+                          </div>
+                          <div>
+                            <p className="text-[8px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">
+                              Department
+                            </p>
+                            <p className="text-xs font-bold text-[#002b5c]">{dev.dept}</p>
+                          </div>
+                        </div>
+                        <div className="w-px h-8 bg-slate-100 " />
+                        <div className="flex items-center gap-2.5">
+                          <div className="p-2 bg-slate-50 rounded-xl text-slate-400 group-hover:text-[#002b5c] transition-colors">
+                            <Calendar size={20} />
+                          </div>
+                          <div>
+                            <p className="text-[8px] font-black text-slate-300 uppercase tracking-widest leading-none mb-1">
+                              Batch
+                            </p>
+                            <p className="text-xs font-bold text-[#002b5c]">{dev.batch}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-)}
+      )}
     </>
   );
 };

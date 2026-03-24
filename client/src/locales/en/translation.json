@@ -17,7 +17,8 @@
     "announcements": "Announcements",
     "maintenance": "Upcoming network maintenance: Fri at 5 PM",
     "help": "HELP",
-    "helpDesk": "Help Desk"
+    "helpDesk": "Help Desk",
+    "adminstration": "Administration"
   },
   "footer": {
     "text": "Touch the screen anywhere to interact • For immediate assistance, please visit the reception desk",
@@ -227,8 +228,8 @@
     "confirm": "CONFIRM",
     "space": "SPACE"
   },
-  "Campus_Map":{
-    "Campus_360":"Campus 360",
-    "Virtual_Tour":"Virtual Tour"
+  "Campus_Map": {
+    "Campus_360": "Campus 360",
+    "Virtual_Tour": "Virtual Tour"
   }
 }

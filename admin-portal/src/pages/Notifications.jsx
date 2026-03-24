@@ -87,7 +87,6 @@ const Notifications = () => {
         </div>
       </header>
 
-
       <div className="space-y-4">
         {loading ? (
           Array.from({ length: 5 }).map((_, i) => (

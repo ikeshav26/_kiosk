@@ -148,7 +148,6 @@ const Blocks = () => {
     globalBuildingPage = currentPage;
   }, [currentPage, searchQuery, typeFilter]);
 
-
   const isInitialMount = useRef(true);
 
   useEffect(() => {
@@ -159,7 +158,6 @@ const Blocks = () => {
     setCurrentPage(1);
     globalBuildingPage = 1;
   }, [searchQuery, typeFilter]);
-
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -801,7 +799,7 @@ const Blocks = () => {
                           ))}
                         </div>
                       )}
-                      
+
                       <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-slate-400">
                         <div className="flex items-center gap-1">
                           <MapPin size={11} className="text-red-400" />
