@@ -29,7 +29,14 @@ process.env.VITE_PUBLIC = app.isPackaged
 // Suppress common Wayland and dbus console errors on Linux
 if (process.platform === 'linux') {
   app.commandLine.appendSwitch('log-level', '3');
+  app.commandLine.appendSwitch('disable-dev-shm-usage');
 }
+
+// Limit V8 heap size to prevent runaway memory growth (default is unbounded)
+app.commandLine.appendSwitch('js-flags', '--expose-gc --max-old-space-size=512');
+
+// Disable unneeded features to reduce memory overhead
+app.commandLine.appendSwitch('disable-features', 'HardwareMediaKeyHandling,MediaSessionService');
 
 let win: BrowserWindow | null;
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin - SystemJS only
@@ -49,6 +56,7 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       webSecurity: false,
+      backgroundThrottling: true,
     },
   });
 
@@ -57,6 +65,17 @@ function createWindow() {
   // Test active push message to Renderer-process.
   win.webContents.on('did-finish-load', () => {
     win?.webContents.send('main-process-message', new Date().toLocaleString());
+  });
+
+  // Periodically hint the renderer to release unused memory
+  const cacheCleanupInterval = setInterval(() => {
+    if (win && !win.isDestroyed()) {
+      win.webContents.session.clearCache();
+    }
+  }, 1000 * 60 * 30); // every 30 minutes
+
+  win.on('closed', () => {
+    clearInterval(cacheCleanupInterval);
   });
 
   if (VITE_DEV_SERVER_URL) {

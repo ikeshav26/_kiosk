@@ -310,14 +310,18 @@ const Navigation = () => {
       zoomControl: false,
     });
 
-    L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+    L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
       maxZoom: 21,
+      maxNativeZoom: 18,
+      keepBuffer: 1,
+      updateWhenIdle: true,
       attribution: '© Google',
     }).addTo(map);
 
     L.control.zoom({ position: 'bottomright' }).addTo(map);
 
+    const nodeLayerGroup = L.layerGroup();
     mapData.nodes.forEach((node) => {
       L.circleMarker([node.lat, node.lng], {
         radius: 5,
@@ -326,13 +330,14 @@ const Navigation = () => {
         fillColor: '#94a3b8',
         fillOpacity: 0.9,
       })
-        .addTo(map)
         .bindTooltip(node.id.replace(/_/g, ' '), {
           permanent: false,
           direction: 'top',
           className: 'leaflet-tooltip-custom',
-        });
+        })
+        .addTo(nodeLayerGroup);
     });
+    nodeLayerGroup.addTo(map);
 
     const kioskCoord = nodeMap.get('Library');
     if (kioskCoord) {
@@ -362,6 +367,7 @@ const Navigation = () => {
     const map = leafletMapRef.current;
     if (!map || buildingLabels.length === 0) return;
 
+    buildingLayerGroupRef.current?.clearLayers();
     buildingLayerGroupRef.current?.remove();
     const group = L.layerGroup();
 
@@ -411,6 +417,12 @@ const Navigation = () => {
 
     group.addTo(map);
     buildingLayerGroupRef.current = group;
+
+    return () => {
+      group.clearLayers();
+      group.remove();
+      buildingLayerGroupRef.current = null;
+    };
   }, [buildingLabels]);
 
   function drawPath(pathId: string) {
