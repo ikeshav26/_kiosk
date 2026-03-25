@@ -156,6 +156,7 @@ export const Faculty = () => {
                   <img
                     src={member.imageUrl || 'https://via.placeholder.com/300'}
                     alt={member.facultyName}
+                    loading="lazy"
                     className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md relative z-10 group-hover:scale-105 transition-transform"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300';

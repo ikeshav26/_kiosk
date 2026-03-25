@@ -237,6 +237,7 @@ const Navbar = () => {
                         <img
                           src={dev.avatar}
                           alt={dev.name}
+                          loading="lazy"
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.currentTarget.src = `https://ui-avatars.com/api/?name=${dev.name}&background=002b5c&color=fff`;
