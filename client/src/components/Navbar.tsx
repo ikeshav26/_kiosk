@@ -184,7 +184,7 @@ const Navbar = () => {
                 <h2 className="text-3xl font-bold text-white uppercase tracking-wider">
                   Development Team
                 </h2>
-                <p className="text-sm text-blue-200 mt-2">Campus Kiosk Project</p>
+                <p className="text-sm text-blue-200 mt-2">BFGI CAMPUS KIOSK</p>
               </div>
               <button
                 onClick={() => setBadgeInfoModalOpen(false)}

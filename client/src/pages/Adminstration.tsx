@@ -159,7 +159,7 @@ const Administration = () => {
       {selectedMember && createPortal(
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/60 backdrop-blur-lg transition-opacity" onClick={() => setSelectedMember(null)}>
           <div 
-            className="bg-white w-full max-w-5xl max-h-[85vh] flex flex-col relative shadow-2xl rounded-sm"
+            className="bg-white w-full max-w-5xl max-h-[85vh] flex flex-col relative shadow-2xl rounded-2xl overflow-hidden"
             onClick={e => e.stopPropagation()}
           >
             <button 
@@ -177,11 +177,11 @@ const Administration = () => {
                   className="w-full h-full object-cover"
                 />
                 
-                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 w-[160px] sm:w-[200px] md:w-[280px] bg-white p-1 md:p-1.5 shadow-md">
+                <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 w-[160px] sm:w-[200px] md:w-[280px] bg-white p-1 md:p-1.5 shadow-md rounded-xl">
                   <img 
                     src={selectedMember.deskImageUrl || selectedMember.imageUrl} 
                     alt={`${selectedMember.name} Desk`}
-                    className="w-full h-auto object-cover border border-slate-100"
+                    className="w-full h-auto object-cover border border-slate-100 rounded-lg"
                   />
                 </div>
               </div>
