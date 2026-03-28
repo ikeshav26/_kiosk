@@ -40,6 +40,8 @@ const TimeAgo = ({ date }: { date: string }) => {
   );
 };
 
+let cachedAnnouncements: Record<string, { announcements: Announcement[]; totalPages: number }> = {};
+
 const Announcements = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [loading, setLoading] = useState(true);
@@ -50,15 +52,27 @@ const Announcements = () => {
   const { t, i18n } = useTranslation();
   const apiLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
-  const fetchAnnouncements = useCallback(async () => {
+  const fetchAnnouncements = useCallback(async (forceRefresh: boolean = false) => {
+    const cacheKey = `${apiLang}-${page}`;
+    if (!forceRefresh && cachedAnnouncements[cacheKey]) {
+      setAnnouncements(cachedAnnouncements[cacheKey].announcements);
+      setTotalPages(cachedAnnouncements[cacheKey].totalPages);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
       const response = await instance.get(`/api/announcement/all`, {
         params: { lang: apiLang, page, limit: 10 },
       });
-      setAnnouncements(response.data.announcements || []);
-      setTotalPages(response.data.pages || 1);
+      const data = {
+        announcements: response.data.announcements || [],
+        totalPages: response.data.pages || 1,
+      };
+      cachedAnnouncements[cacheKey] = data;
+      setAnnouncements(data.announcements);
+      setTotalPages(data.totalPages);
     } catch (err) {
       console.error('Kiosk Announcements Fetch Error:', err);
       setError(t('announcements.error', 'Unable to load latest notifications.'));
@@ -68,8 +82,8 @@ const Announcements = () => {
   }, [apiLang, page, t]);
 
   useEffect(() => {
-    fetchAnnouncements();
-    const autoRefresh = setInterval(fetchAnnouncements, 300000);
+    fetchAnnouncements(false);
+    const autoRefresh = setInterval(() => fetchAnnouncements(true), 300000);
     return () => clearInterval(autoRefresh);
   }, [fetchAnnouncements]);
 
@@ -112,7 +126,7 @@ const Announcements = () => {
             </div>
           )}
           <button
-            onClick={fetchAnnouncements}
+            onClick={() => fetchAnnouncements(true)}
             disabled={loading}
             className="p-4 bg-white border border-slate-200 rounded-2xl text-[#002b5c] shadow-sm active:scale-90 active:bg-slate-50 transition-all group flex items-center justify-center"
           >
@@ -143,7 +157,7 @@ const Announcements = () => {
             </div>
             <p className="text-xl font-bold text-slate-500 mb-8">{error}</p>
             <button
-              onClick={fetchAnnouncements}
+              onClick={() => fetchAnnouncements(true)}
               className="px-10 py-4 bg-[#002b5c] text-white rounded-2xl font-black text-lg shadow-xl active:scale-95 transition-all"
             >
               {t('announcements.retry', 'Retry')}

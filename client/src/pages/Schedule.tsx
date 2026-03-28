@@ -104,6 +104,8 @@ const DEFAULT_CONFIG = {
   dot: 'bg-slate-500',
 };
 
+let cachedSchedules: ScheduleItem[] | null = null;
+
 const Schedule = () => {
   const navigate = useNavigate();
 
@@ -113,9 +115,18 @@ const Schedule = () => {
   const [activeDept, setActiveDept] = useState<string>('All');
 
   useEffect(() => {
+    if (cachedSchedules) {
+      setSchedules(cachedSchedules);
+      setLoading(false);
+      return;
+    }
     api
       .get('/api/schedule/all')
-      .then((res) => setSchedules(res.data || []))
+      .then((res) => {
+        const data = res.data || [];
+        cachedSchedules = data;
+        setSchedules(data);
+      })
       .catch(() => setError('Failed to load schedules.'))
       .finally(() => setLoading(false));
   }, []);

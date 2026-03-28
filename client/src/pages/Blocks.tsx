@@ -22,6 +22,8 @@ interface BuildingBlock {
   contactNumber: string;
 }
 
+let cachedBlocks: BuildingBlock[] | null = null;
+
 const Blocks = () => {
   const [blocks, setBlocks] = useState<BuildingBlock[]>([]);
   const [loading, setLoading] = useState(true);
@@ -35,6 +37,11 @@ const Blocks = () => {
     'https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800&auto=format&fit=crop';
 
   const fetchBlocks = async () => {
+    if (cachedBlocks) {
+      setBlocks(cachedBlocks);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
@@ -47,6 +54,7 @@ const Blocks = () => {
         data = [];
       }
 
+      cachedBlocks = data;
       setBlocks(data);
     } catch (err) {
       console.error('Kiosk Blocks Fetch Error:', err);

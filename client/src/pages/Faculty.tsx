@@ -29,6 +29,8 @@ interface FacultyMember {
   __v?: number;
 }
 
+let cachedFaculty: FacultyMember[] | null = null;
+
 const DEPARTMENTS = ['CSE', 'CIVIL', 'MECH', 'ELECTRICAL'] as const;
 
 const localized = (
@@ -50,11 +52,18 @@ export const Faculty = () => {
   const { t, i18n } = useTranslation();
 
   const fetchFaculty = async () => {
+    if (cachedFaculty) {
+      setFaculty(cachedFaculty);
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
       const res = await instance.get('/api/faculty/all');
-      setFaculty(res.data.faculties || []);
+      const data = res.data.faculties || [];
+      cachedFaculty = data;
+      setFaculty(data);
     } catch (err) {
       console.error('Error fetching faculty:', err);
       setError(t('faculty.unableToLoad'));
