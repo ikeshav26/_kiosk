@@ -9,13 +9,19 @@ import {
   Minus,
   LogOut as DoorOpen,
   DownloadCloud,
+  LayoutDashboard,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useTabSettings, defaultTabs } from '../hooks/useTabSettings';
+import type { TabKey } from '../hooks/useTabSettings';
 
 const Settings = () => {
   const navigate = useNavigate();
   const [zoomLevel, setZoomLevel] = useState(0);
+  const { tabs, toggleTab } = useTabSettings();
 
   const [appVersion, setAppVersion] = useState('');
   const [updateStatus, setUpdateStatus] = useState('');
@@ -248,6 +254,41 @@ const Settings = () => {
               >
                 <Plus size={20} className="stroke-[3]" />
               </button>
+            </div>
+          </div>
+
+          {/* Navigation Visibility Config */}
+          <div className="bg-white border border-slate-200 p-6 rounded-3xl flex flex-col hover:shadow-md transition-shadow group mt-2">
+            <div className="flex items-center gap-6 mb-6">
+              <div className="p-4 bg-purple-50 rounded-2xl text-purple-600 group-hover:scale-110 transition-transform">
+                <LayoutDashboard size={28} />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-slate-800 mb-1">Navigation Visibility</h3>
+                <p className="text-slate-500 font-medium max-w-lg">
+                  Toggle which navigation tabs are accessible and visible to users in the main sidebar.
+                </p>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+              {(Object.keys(defaultTabs) as TabKey[]).map((key) => {
+                const isVisible = tabs[key];
+                return (
+                  <button 
+                    key={key}
+                    onClick={() => toggleTab(key)}
+                    className={`flex items-center justify-between p-4 rounded-2xl border transition-all active:scale-95 ${
+                      isVisible 
+                        ? 'bg-blue-50 border-blue-200 text-blue-700 font-bold shadow-sm' 
+                        : 'bg-slate-50 border-slate-100 text-slate-400 opacity-70 font-semibold hover:bg-slate-100'
+                    }`}
+                  >
+                    <span className="capitalize">{key === 'adminstration' ? 'Administration' : key}</span>
+                    {isVisible ? <Eye size={18} className="text-blue-600" /> : <EyeOff size={18} />}
+                  </button>
+                );
+              })}
             </div>
           </div>
 

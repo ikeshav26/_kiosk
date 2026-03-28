@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useTabSettings } from '../hooks/useTabSettings';
 
 interface SidePanelProps {
   isCollapsed: boolean;
@@ -29,6 +30,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
   ];
 
   const { t } = useTranslation();
+  const { tabs } = useTabSettings();
 
   const getNavLinkClass = (isActive: boolean, activeColor?: string) => {
     const baseClasses = isCollapsed
@@ -79,7 +81,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
         </div>
 
         <nav className={`flex flex-col ${isCollapsed ? 'gap-2 items-center' : 'gap-4'}`}>
-          {navItems.map((item) => (
+          {navItems.filter((item) => tabs[item.key as keyof typeof tabs] !== false).map((item) => (
             <NavLink
               key={item.key}
               to={item.route}
@@ -109,6 +111,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
         <div
           className={`mt-auto pt-6 border-t border-slate-100 ${isCollapsed ? 'flex flex-col items-center' : ''}`}
         >
+          {tabs.announcements && (
           <NavLink to="/announcements" title={isCollapsed ? t('sidebar.announcements') : undefined}>
             {({ isActive }) => (
               <div className={getNavLinkClass(isActive, 'bg-[#002b5c]')}>
@@ -122,6 +125,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
               </div>
             )}
           </NavLink>
+          )}
           {!isCollapsed && (
             <p className="text-xs text-slate-400 mt-5 px-4 leading-relaxed text-center font-medium">
               {t('sidebar.maintenance')}
@@ -135,6 +139,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
               {t('sidebar.help')}
             </h2>
           )}
+          {tabs.help && (
           <NavLink to="/help" title={isCollapsed ? t('sidebar.contactSupport') : undefined}>
             {({ isActive }) => (
               <div className={getNavLinkClass(isActive, 'bg-slate-800')}>
@@ -146,6 +151,7 @@ const SidePanel = ({ isCollapsed, onToggle }: SidePanelProps) => {
               </div>
             )}
           </NavLink>
+          )}
         </div>
 
         <style>{`
