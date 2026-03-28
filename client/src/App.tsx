@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import Administration from './pages/Adminstration';
 import { ChatBot } from './components/ChatBot';
 import { MessageSquareText, X } from 'lucide-react';
+import { useTabSettings } from './hooks/useTabSettings';
 
 const Navigation = lazy(() => import('./pages/Navigation'));
 const HelpDesk = lazy(() => import('./pages/HelpDesk'));
@@ -26,6 +27,7 @@ const App = () => {
   useInactivityTimer();
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isChatVisible, setIsChatVisible] = useState(false);
+  const { tabs } = useTabSettings();
 
   return (
     <div className="h-screen w-screen overflow-hidden bg-gray-100 flex flex-col">
@@ -84,21 +86,24 @@ const App = () => {
       </div>
       <Toaster position="bottom-right" />
       
+      {tabs.chatButton && (
+        <>
+          <button
+            onClick={() => setIsChatVisible(!isChatVisible)}
+            className={`fixed bottom-20 right-20 z-[30] w-[68px] h-[68px] rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,43,92,0.3)] transition-all duration-500 hover:scale-105 active:scale-95 group ${
+              isChatVisible ? 'bg-white border-2 border-slate-100 text-slate-800' : 'bg-gradient-to-tr from-[#002b5c] to-blue-600 text-white hover:shadow-[0_12px_40px_rgba(0,43,92,0.4)]'
+            }`}
+          >
+            {isChatVisible ? (
+              <X size={28} className="transition-transform duration-300 group-hover:rotate-90" />
+            ) : (
+              <MessageSquareText size={30} className="fill-white/10 transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110" />
+            )}
+          </button>
 
-      <button
-        onClick={() => setIsChatVisible(!isChatVisible)}
-        className={`fixed bottom-20 right-20 z-[105] w-[68px] h-[68px] rounded-full flex items-center justify-center shadow-[0_8px_30px_rgba(0,43,92,0.3)] transition-all duration-500 hover:scale-105 active:scale-95 group ${
-          isChatVisible ? 'bg-white border-2 border-slate-100 text-slate-800' : 'bg-gradient-to-tr from-[#002b5c] to-blue-600 text-white hover:shadow-[0_12px_40px_rgba(0,43,92,0.4)]'
-        }`}
-      >
-        {isChatVisible ? (
-          <X size={28} className="transition-transform duration-300 group-hover:rotate-90" />
-        ) : (
-          <MessageSquareText size={30} className="fill-white/10 transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110" />
-        )}
-      </button>
-
-      <ChatBot isVisible={isChatVisible} onClose={() => setIsChatVisible(false)} />
+          <ChatBot isVisible={isChatVisible} onClose={() => setIsChatVisible(false)} />
+        </>
+      )}
     </div>
   );
 };

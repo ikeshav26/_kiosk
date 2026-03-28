@@ -9,6 +9,7 @@ export const defaultTabs = {
   adminstration: true,
   announcements: true,
   help: true,
+  chatButton: true,
 };
 
 export type TabKey = keyof typeof defaultTabs;
@@ -30,12 +31,12 @@ export function useTabSettings() {
   }, []);
 
   const toggleTab = (key: TabKey) => {
-    setTabs(prev => {
-      const updated = { ...prev, [key]: !prev[key] };
-      localStorage.setItem('kiosk_tab_settings', JSON.stringify(updated));
-      window.dispatchEvent(new Event('kiosk_tab_update'));
-      return updated;
-    });
+    const saved = localStorage.getItem('kiosk_tab_settings');
+    const currentTabs = saved ? { ...defaultTabs, ...JSON.parse(saved) } : defaultTabs;
+    const updated = { ...currentTabs, [key]: !currentTabs[key] };
+    
+    localStorage.setItem('kiosk_tab_settings', JSON.stringify(updated));
+    window.dispatchEvent(new Event('kiosk_tab_update'));
   };
 
   return { tabs, toggleTab };

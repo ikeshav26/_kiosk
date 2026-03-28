@@ -284,7 +284,7 @@ const Settings = () => {
                         : 'bg-slate-50 border-slate-100 text-slate-400 opacity-70 font-semibold hover:bg-slate-100'
                     }`}
                   >
-                    <span className="capitalize">{key === 'adminstration' ? 'Administration' : key}</span>
+                    <span className="capitalize">{key === 'adminstration' ? 'Administration' : key === 'chatButton' ? 'AI Chat' : key}</span>
                     {isVisible ? <Eye size={18} className="text-blue-600" /> : <EyeOff size={18} />}
                   </button>
                 );
