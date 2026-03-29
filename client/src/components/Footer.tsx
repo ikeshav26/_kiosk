@@ -10,6 +10,7 @@ type Notice = {
 
 const Footer = () => {
   const [notices, setNotices] = useState<Notice[]>([]);
+  const [appVersion, setAppVersion] = useState<string>('');
   const { t, i18n } = useTranslation();
   const apiLang = (i18n.resolvedLanguage || i18n.language || 'en').split('-')[0];
 
@@ -22,7 +23,7 @@ const Footer = () => {
 
         if (!mounted) return;
 
-        const latest = (res.data.announcements || []).slice(0, 10).map((notice: any) => ({
+        const latest = (res.data.announcements || []).slice(0, 10).map((notice :any) => ({
           id: notice._id,
           subject: notice.subject,
         }));
@@ -42,6 +43,20 @@ const Footer = () => {
       clearInterval(interval);
     };
   }, [apiLang]);
+
+  useEffect(() => {
+    if (window.ipcRenderer) {
+      window.ipcRenderer
+        .invoke('get-app-version')
+        .then((version: string) => {
+          setAppVersion(version);
+          console.log('App Version:', version);
+        })
+        .catch((error: Error) => {
+          console.error('Failed to get app version:', error);
+        });
+    }
+  }, []);
 
   return (
     <footer className="w-full h-22 flex bg-white border-t border-slate-200 overflow-hidden select-none z-5 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
@@ -84,6 +99,11 @@ const Footer = () => {
           <p className="relative z-10 text-slate-400 font-black text-[11px] uppercase tracking-widest text-center leading-tight">
             {t('footer.text')}
           </p>
+          {appVersion && (
+            <div className="flex items-center absolute right-5 bottom-2 gap-2 text-slate-500 text-[14px] font-semibold">
+              <span className="text-slate-400">Current : v{appVersion}</span>
+            </div>
+          )}
         </div>
       </div>
 

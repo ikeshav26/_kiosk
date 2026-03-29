@@ -18,7 +18,7 @@
     "maintenance": "ਆਉਣ ਵਾਲੀ ਨੈੱਟਵਰਕ ਸਾਂਭ-ਸੰਭਾਲ: ਸ਼ੁੱਕਰ ਨੂੰ ਸ਼ਾਮ 5 ਵਜੇ",
     "help": "ਮਦਦ",
     "helpDesk": "ਹੈਲਪ ਡੈਸਕ",
-    "adminstration": "ਪ੍ਰਸ਼ਾਸਨ"
+    "adminstration": "ਪ੍ਰਬੰਧਨ"
   },
   "footer": {
     "text": "ਇੰਟਰੈਕਟ ਕਰਨ ਲਈ ਕਿਤੇ ਵੀ ਸਕ੍ਰੀਨ ਛੂਹੋ • ਤੁਰੰਤ ਸਹਾਇਤਾ ਲਈ, ਕਿਰਪਾ ਕਰਕੇ ਰਿਸੈਪਸ਼ਨ ਡੈਸਕ 'ਤੇ ਜਾਓ",
@@ -231,5 +231,75 @@
   "Campus_Map": {
     "Campus_360": "ਵਰਚੁਅਲ ਟੂਰ",
     "Virtual_Tour": "ਆਭਾਸੀ ਯਾਤ੍ਰਾ"
+  },
+  "administration": {
+    "title": "ਪ੍ਰਬੰਧਨ",
+    "directory": "ਡਿਰੈਕਟਰੀ",
+    "noRecords": "ਕੋਈ ਰਿਕਾਰਡ ਨਹੀਂ",
+    "directoryClear": "ਪ੍ਰਬੰਧਨ ਡਿਰੈਕਟਰੀ ਵਰਤਮਾਨ ਵਿੱਚ ਸਾਫ਼ ਹੈ",
+    "chairmanDesk": "ਚੇਅਰਮੈਨ ਡੈਸਕ",
+    "deskLabel": "{{designation}} ਡੈਸਕ",
+    "members": [
+      {
+        "name": "ਡਾ. ਗੁਰਮੀਤ ਸਿੰਘ ਧਾਲੀਵਾਲ",
+        "designation": "ਚੇਅਰਮੈਨ",
+        "phoneNumber": "-",
+        "imageUrl": "http://www.bfcet.com/wp-content/uploads/2025/02/Dr.-Gurmeet-Singh-Dhaliwal.png",
+        "deskImageUrl": "https://www.bfcet.com/wp-content/uploads/2021/01/Dr.-Gurmeet-Singh-Dhaliwal.jpg",
+        "deskContent": "ਇਹ ਹਮੇਸ਼ਾ ਮੇਰੀ ਮਾਨਤਾ ਰਹੀ ਹੈ ਕਿ ਇਕ ਵਿਅਕਤੀ ਆਪਣੇ ਵਿਚਾਰਾਂ ਤੱਕ ਸੀਮਿਤ ਹੁੰਦਾ ਹੈ ਅਤੇ ਜਿਵੇਂ ਹੀ ਇਹ ਵਿਆਕ, ਨੈਤਿਕਤਾ ਅਤੇ ਸਕਾਰਾਤਮਕ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਦੀਆਂ ਸੀਮਾਵਾਂ ਦੇ ਅੰਦਰ ਕੀਤਾ ਜਾਵੇ, ਅਸੀਂ ਜੋ ਕੁਝ ਵੀ ਚਾਹਨ ਲਈ ਕੋਈ ਸੀਮਾ ਨਹੀਂ ਹੈ।\nਮੇਰੇ ਵਿਦਿਆਰਥੀ ਜੀਵਨ ਦੇ ਦੌਰਾਨ, ਮੈਨੂੰ ਆਪਣੀ ਸਿੱਖਿਆ ਪ੍ਰਣਾਲੀ ਵਿੱਚ ਅਸਪਸ਼ਟਤਾ ਦਿਖਾਈ ਦਿੱਤੀ ਜਿਸ ਵਿੱਚ ਅਧਿਆਪਕਾਂ ਦh ਸਿਰਫ ਪਰੁਪਰਾਂਤ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਸੀ। ਇਹ ਇਕ ਪਾਸੜਫ਼ਾ ਪੜ੍ਹਾਯਾ ਸੀ ਜਸ ਵਿੱਚ ਵਿਆਰਥੀਆਂ ਦੀ ਭਾਗੀਦਾਰੀ ਦੀ ਘਾਟ ਸੀ।\nਮੈਂ 1993 ਵਿੱਚ ਪ੍ਰਾਇਮਰੀ ਸਿੱਖਿਆ ਦੇ ਨਾਲ ਸ਼ੁਰੂ ਕੀਤਾ। ਮੈਂ ਬਾਬਾ ਫਰੀਦ ਕਾਲਜ ਆਫ ਇੰਜੀਨੀਅਰਿੰਗ ਅਤੇ ਟੈਕਨੋਲੌਜੀ ਦੀ ਸਥਾਪਨਾ ਕੀ।\nਮਾਂ ਬੀ.ਐਫ.ਸੀ.ਈ.ਟੀ ਵਿੱਚ ਵਿਸ਼ਵਾਸ ਕਰਦਾ ਹਾਂ ਕਿ ਇੰਜੀਨੀਅਰਾਂ ਨੂੰ ਬਣਾਉਂ ਜਿਹੜੇ ਤਕਨੀਕੀ ਮਾਹਿਰ ਹੋਣ।"
+      },
+      {
+        "name": "ਪ੍ਰੋ. (ਡਾ.) ਐਮ.ਪੀ. ਪੂਨੀਆ",
+        "designation": "ਕੈਂਪਸ ਡਾਇਰੈਕਟਰ",
+        "phoneNumber": "98155-75260",
+        "imageUrl": "http://www.bfcet.com/wp-content/uploads/2025/02/puniasir.png",
+        "deskImageUrl": "https://www.bfcet.com/wp-content/uploads/2025/10/Campus-Director.png",
+        "deskContent": "ਬੀ.ਐਫ.ਜੀ.ਆਈ ਵਿੱਚ, ਅਸੀਂ ਭਵਿਸ਼ਯਤ ਦੇ ਨੇਤਾਵਾਂ ਅਤੇ ਨਵਾਚਾਰਾਂ ਨੂੰ ਬਣਾਉਣ ਲਈ ਸਮਰਪਿਤ ਹਾਂ। ਸਾਡਾ ਜੀਵੰਤ ਪਾਠ ਸ਼ਾਲਾ, ਭਾਈਆਂ ਅਤੇ ਅਤਿਆਧੁਨਿਕ ਸੁਵਿਧਾਵਾਂ ਅਕਾਦਮਿਕ, ਪੇਸ਼ਾਵਰ ਅਤੇ ਨਿੱਜੀ ਬਹੁਤਤਾ ਸ਼ਿੱਖਿਆ ਦੇ ਲਈ ਅਨੁਕੂਲ ਮਾਹੌਲ ਬਣਾਉਂਦੀ ਹੈ।\nਚਾਹੁ ਕਿ ਵਿਦਿਆਰਥੀਆਂ ਦੀਆਂ ਺ਿਲਾਸ਼ਾਂ ਇੰਜੀਨੀਅਰਿੰਗ, ਪ੍ਰਬੰਧਨ ਜਾਂ ਸਿਹਤ ਸਿੱਖਿਆ ਵਿੱਚ ਹੋਣ, ਬੀ.ਐਫ.ਜੀ.ਆਈ ਪਾਠ ਪ੍ਰੋਗਰਾਮਾਂ ਦੀ ਇਕ ਭਿੰਨ ਲੜੀ ਪ੍ਰਦਾਨ ਕਰਦਾ ਹੈ।\n10 ਪਾਇਓਨੀਅਰ ਉਦਯੋਗ ਸ਼ੁਰੂ ਕੀਤੇ ਗਏ ਹਨ। ਬੀ.ਐਫ.ਜੀ.ਆਈ ਸਾਰੀ ਆਕਾਂਖਾ ਕਰਨ ਵਾਲੇ ਲੋਕਾਂ ਨੂੰ ਸਾਡੇ ਜੀਵੰਤ ਸਿਖਾ ਕਮਿਊਨਿਟੀ ਦਾ ਅਭਿੰਨ ਅੰਗ ਬਣਨ ਲਈ ਸੱਦਾ ਦਿੰਦਿ ਹਾਂ।"
+      },
+      {
+        "name": "ਪ੍ਰੋ. (ਡਾ.) ਜਯੋਤੀ ਬਾਂਸਲ",
+        "designation": "ਪ੍ਰਿੰਸਪਲ, ਬੀ.ਐਫ.ਸੀ.ਈ.ਟੀ",
+        "phoneNumber": "95011-15405",
+        "imageUrl": "http://www.bfcet.com/wp-content/uploads/2021/08/Dr-Jyoti-Bansal.jpg",
+        "deskImageUrl": "https://www.bfcet.com/wp-content/uploads/2021/07/Dr-Jayoti-Bansal.jpg",
+        "deskContent": "ਬਾਬਾ ਫਰੀਦ ਕਾਲਜ ਆਫ ਇੰਜੀਨੀਅਰਿੰਗ ਅਤੇ ਟੈਕਨੋਲੌਜੀ ਵਿੱਚ ਤਾ ਸਾਇਟ ਕਰਨ ਲਈ ਮੈਨੂੰ ਬਹੁਤ ਖੁਸ਼ੀ ਹੈ। ਸੰਸਥਾ ਤਕਨੀਕੀ ਪੇਸ਼ਿਆਂ ਨੂੰ ਬਣਾਉਣeਲਈ ਸਥਾਪਿਤ ਕੀਤਾ ਗਿਆ ਸੀ।\nਬੀ.ਐਫ.ਸੀ.ਈ.ਟੀ ਨੇ ਵਿਦਿਆਰਥੀਆਂ ਨੂੰ ਉਨ੍ਹਾਂ ਦੇ ਕੈਰੀਅਰ ਵਿੱਚ ਆਗੇ ਵਧਣ ਲਈ ਇਕ ਆਕਾਰ ਜਾਂ ਵਿਕਾਸ ਪ੍ਰਦਾਨ ਕਰ ਕੇ ਸਦਾ ਜਕਲਾਸ ਪ੍ਰਾਪਤ ਕਿਆ ਹੈ।\nਸਾਡਾ ਮਕਸਦ ਵਿਦਿਆਰਥਾਂ ਵਿਆ ਗੁਣਤਕ ਵਿਹਿਆ ਤੇ ਅਮਲੀ ਡਾਕ ਬਣਗੀ ਪ੍ਰਦਾਣ ਕਰਨਾ ਹੈ।"
+      },
+      {
+        "name": "ਮਿਸਟਰ ਰਾਜਿੰਦਰ ਸਿੰਘ ਧਨੋਆ",
+        "designation": "ਸਹਾਇਕ ਡਾਇਰੈਕਟਰ",
+        "phoneNumber": "95011-15021",
+        "imageUrl": "https://www.bfcet.com/wp-content/smush-webp/2025/02/dhanoa-282x300.jpg.webp"
+      },
+      {
+        "name": "ਡਾ. ਮਨੀਸ਼ ਗੁਪਤਾ",
+        "designation": "ਪ੍ਰਮੁੱਖ, ਯਂਟਰ ਕੇਂਦਰ",
+        "phoneNumber": "95011-15418",
+        "imageUrl": "http://www.bfcet.com/wp-content/uploads/2021/08/Dr-Manish-Gupta.jpg"
+      },
+      {
+        "name": "ਡਾ. ਨਿਮਿਸ਼ਾ ਸਿੰਘ",
+        "designation": "ਪ੍ਰਮੁੱਖ, ਹੁਨਰ ਵਿਕਾਸ ਸਕੂਲ",
+        "phoneNumber": "95011-15422",
+        "imageUrl": "https://www.bfcet.com/wp-content/uploads/2025/07/Nimisha-Singh_School-of-Skill-development-e1752730746553-282x300.jpeg"
+      },
+      {
+        "name": "ਡਾ. ਤੇਜਿੰਦਰਪਾਲ ਸਿੰਘ ਸਰਾਓ",
+        "designation": "ਆਈ.ਕਯੂ.ਏ.ਸੀ ਸਮਨਵੇਕ",
+        "phoneNumber": "95011-15438",
+        "imageUrl": "http://www.bfcet.com/wp-content/uploads/2025/02/tajinder-270x300.jpg"
+      },
+      {
+        "name": "ਮਿਸਟਰ ਹਰਦੀਪ ਸਿੰਘ",
+        "designation": "ਡੀਨ ਵਿਦਿਆਰਥੀ ਕਲਿਆਨ",
+        "phoneNumber": "95011-15485",
+        "imageUrl": "https://www.bfcet.com/wp-content/uploads/2025/02/hardeep-287x300.jpg"
+      },
+      {
+        "name": "ਮਿਸਟਰ ਕ੍ਰਿਸ਼ਨ ਠਾਕੁਰ",
+        "designation": "ਵਿੱਤ ਅਧਿਕਾਰੀ",
+        "phoneNumber": "95011-15034",
+        "imageUrl": "https://www.bfcet.com/wp-content/uploads/2025/02/krishan.jpg"
+      }
+    ]
   }
 }

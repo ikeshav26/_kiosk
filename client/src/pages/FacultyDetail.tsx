@@ -9,7 +9,6 @@ import {
   Briefcase,
   ChevronLeft,
   BadgeCheck,
-  Building,
 } from 'lucide-react';
 
 import { instance } from '../utils/instance';
@@ -109,9 +108,6 @@ const FacultyDetail = () => {
 
         <div className="flex items-center gap-6">
           <div className="flex flex-col items-end">
-            <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.4em] mb-1">
-              {t('facultyDetail.academicUnit')}
-            </span>
             <span className="text-sm font-bold text-[#002b5c]">
               {data.department} {t('facultyDetail.engineering')}
             </span>
@@ -135,12 +131,6 @@ const FacultyDetail = () => {
           </div>
 
           <div className="flex-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-slate-100 rounded-full mb-4">
-              <Building size={14} className="text-slate-400" />
-              <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                {t('facultyDetail.verifiedFaculty')}
-              </span>
-            </div>
             <h1 className="text-6xl font-black text-[#002b5c] tracking-tighter leading-none mb-4">
               {localized(data, 'facultyName', i18n.language)}
             </h1>

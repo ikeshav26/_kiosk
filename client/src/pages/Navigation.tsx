@@ -88,7 +88,7 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     lng: 74.84218457360967,
     name: 'Block D',
     sub: '',
-    navigationmapID: 'L6GdNLSBrIy',
+    navigationmapID: 'ea77862c',
   },
   {
     _id: '69a5b09e69d4af22a31d75af',
@@ -119,7 +119,7 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     __v: 0,
     lat: 30.251227380505014,
     lng: 74.84126721102429,
-    name: 'Innovation Lab',
+    name: 'Innovation Center',
     sub: '',
     navigationmapID: 'b57_ujvoR',
   },
@@ -218,9 +218,9 @@ const HARDCODED_BUILDINGS: BuildingLabel[] = [
     __v: 0,
     lat: 30.2533061,
     lng: 74.8440539,
-    name: 'Main Gate',
+    name: 'BFGI Campus Entry Gate',
     sub: '',
-    navigationmapID: '',
+    navigationmapID: 'oHw0iooe_',
   },
 ];
 
